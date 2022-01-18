@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "booked-events.component.scss"
+    ],
+    "names": [],
+    "file": "booked-events.component.css"
+}

@@ -1,0 +1,432 @@
+/*for button*/
+/*for font styling*/
+.height-auto {
+  min-height: 80rem;
+  height: auto;
+}
+
+.postion-manage {
+  position: static;
+  top: 28rem;
+  margin-top: -12rem;
+  z-index: 2;
+}
+
+.card-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  min-height: 300px;
+  margin-bottom: 3.8rem;
+}
+
+.card-box {
+  width: 34rem;
+  min-height: 27rem;
+  border-radius: 4px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 3px #00000020;
+          box-shadow: 0 0 3px #00000020;
+  margin: 0 .54rem 1.8rem;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.card-top-box {
+  width: 100%;
+  height: 3.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+}
+
+.ticket-header {
+  width: 55%;
+  color: #715ff2;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.img-circle {
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  background: #efeff1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  margin: 0 .5rem;
+  cursor: pointer;
+}
+
+.img-circle img {
+  width: 1.3rem;
+}
+
+.ticket-type {
+  color: #343a43;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 0 1rem;
+}
+
+.ticket-details {
+  font-size: 1.4rem;
+  color: #9697b5;
+  margin: .5rem auto;
+  padding: 0 1rem;
+}
+
+.price-quan-box {
+  width: 100%;
+  height: 3.4rem;
+  background-color: #f2f2f8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 1.3rem auto;
+  padding: 0 1rem;
+}
+
+.ticket-price {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #343a43;
+}
+
+.date-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: .5rem auto;
+  padding: 0 1rem;
+}
+
+.date {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #343a4380;
+}
+
+.form-position-remove {
+  height: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: static;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.radio-wrapper {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.example-radio-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.form-wrapper {
+  width: 100%;
+}
+
+.form-row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 1.5rem 0;
+}
+
+.card-input-box {
+  width: 40rem;
+  border: 1px solid #f8f8f8ec;
+  border-radius: 4px;
+  height: 3.8rem;
+}
+
+.card-input-box input,
+.card-input-box textarea {
+  height: 100%;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: #9697b5;
+}
+
+.card-input-box input::-webkit-outer-spin-button,
+.card-input-box input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.card-input-box input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.card-input-box input::-webkit-input-placeholder,
+.card-input-box textarea::-webkit-input-placeholder {
+  font-size: 1.4rem;
+  font-weight: #f8f8f8ec;
+}
+
+.card-input-box input:-ms-input-placeholder,
+.card-input-box textarea:-ms-input-placeholder {
+  font-size: 1.4rem;
+  font-weight: #f8f8f8ec;
+}
+
+.card-input-box input::-ms-input-placeholder,
+.card-input-box textarea::-ms-input-placeholder {
+  font-size: 1.4rem;
+  font-weight: #f8f8f8ec;
+}
+
+.card-input-box input::placeholder,
+.card-input-box textarea::placeholder {
+  font-size: 1.4rem;
+  font-weight: #f8f8f8ec;
+}
+
+.textarea-height {
+  height: auto;
+  resize: none;
+}
+
+.border-error {
+  border: 1px solid rgba(255, 57, 90, 0.4);
+  -webkit-box-shadow: 0 0px 3px rgba(255, 57, 90, 0.4);
+          box-shadow: 0 0px 3px rgba(255, 57, 90, 0.4);
+}
+
+.date-row {
+  width: 47%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.width-picker {
+  width: 40%;
+}
+
+.date-input {
+  height: 2.5rem;
+  font-size: 1.6rem;
+  color: #343a43;
+  font-weight: 500;
+  margin-left: .5rem;
+  margin-top: 1rem;
+}
+
+.date-input::-webkit-input-placeholder {
+  font-size: 1.4rem;
+  color: #b1b1b1;
+}
+
+.date-input:-ms-input-placeholder {
+  font-size: 1.4rem;
+  color: #b1b1b1;
+}
+
+.date-input::-ms-input-placeholder {
+  font-size: 1.4rem;
+  color: #b1b1b1;
+}
+
+.date-input::placeholder {
+  font-size: 1.4rem;
+  color: #b1b1b1;
+}
+
+mat-label.date-label {
+  font-size: 1.4rem;
+  color: #6b7380;
+  font-weight: 500;
+}
+
+.action-btn {
+  width: 17rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 25px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.4rem;
+  color: #7c6eec;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.action-btn img {
+  width: 2.5rem;
+}
+
+.card-input-lable {
+  width: 27rem;
+  font-size: 1.6rem;
+  color: #343a43;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.quantity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.quantity-minus,
+.quantity-plus {
+  display: block;
+  width: 35px;
+  height: 23px;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  line-height: 23px;
+  cursor: pointer;
+}
+
+.btn-disable {
+  background-color: transparent;
+  border: none;
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.quantity-input {
+  width: 9rem;
+  height: 19px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #fff;
+  color: #343a43;
+  border: none;
+  font-size: 1.6rem;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.quantity-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.caution {
+  font-size: 1.3rem;
+  color: #f43e3e;
+  padding: 0 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .card-input-box {
+    width: 65%;
+    height: 3.8rem;
+  }
+  .textarea-height {
+    height: auto;
+    resize: none;
+  }
+  .radio-wrapper {
+    width: 100%;
+  }
+  .hide {
+    display: none;
+  }
+  .radio-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .date-row {
+    width: 100%;
+  }
+  .width-picker {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .card-input-box {
+    width: 100%;
+    height: 3.8rem;
+  }
+  .textarea-height {
+    height: auto;
+    resize: none;
+  }
+  .card-input-lable {
+    width: 100%;
+  }
+  .card-block {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .hide {
+    display: none;
+  }
+}
+/*# sourceMappingURL=create-ticket.component.css.map */

@@ -1,0 +1,79 @@
+<div class="add-new-main">
+    <div fxLayout="column">
+        <div fxFlex="100" fxLayoutAlign="end center">
+            <button type="button" mat-dialog-close>×</button>
+        </div>
+        <div fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
+            <h5 style="color: red;">{{errorMessage}}</h5>
+            <h2 class="pb-4"> {{ STRINGS.addAccountPopup.heading }}</h2>
+            <h4 class="pb-4">{{ STRINGS.addAccountPopup.subHeading }}</h4>
+        </div>
+        <div class="m-5">
+            <div fxLayoutAlign="center center">
+                <mat-spinner *ngIf="matSpinner"></mat-spinner>
+            </div>
+           
+            <form [formGroup]="bankDetailForm" *ngIf="!matSpinner">
+                <div fxLayout="column" fxLayoutGap="10px">
+
+                    <div fxFlex="100" fxLayout="row" fxLayout.xs="column">
+                        <div fxFlex="30" fxLayoutAlign="start center">
+                            <mat-label>{{ STRINGS.addAccountPopup.routingNoLabel }}</mat-label>
+                        </div>
+                        <div fxFlex="65">
+                            <mat-form-field appearance="standard" class="matinput-space w-100">
+                                <input type="text" matInput #name formControlName="routingNo" placeholder=""
+                                    autocomplete="off" />
+
+                            </mat-form-field>
+                            <mat-error *ngIf="bankDetailForm.get('routingNo')?.errors?.required && submit">
+                                Routing Number is required
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxLayout="row" fxLayout.xs="column">
+                        <div fxFlex="30" fxLayoutAlign="start center">
+                            <mat-label>{{ STRINGS.addAccountPopup.bankNameLabel }}</mat-label>
+                        </div>
+                        <div fxFlex="65">
+                            <mat-form-field appearance="standard" class="matinput-space w-100">
+                                <input type="text" matInput #name formControlName="bankName" placeholder=""
+                                    autocomplete="off" />
+
+                            </mat-form-field>
+                            <mat-error *ngIf="bankDetailForm.get('bankName')?.errors?.required && submit">
+                                Bank Name is required
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxLayout="row" fxLayout.xs="column">
+                        <div fxFlex="30" fxLayoutAlign="start center">
+                            <mat-label>{{ STRINGS.addAccountPopup.accountNumberLabel }}</mat-label>
+                        </div>
+                        <div fxFlex="65">
+                            <mat-form-field appearance="standard" class="matinput-space w-100">
+                                <input type="text" matInput #name formControlName="AccountNo" placeholder=""
+                                    autocomplete="off" />
+
+                            </mat-form-field>
+                            <mat-error *ngIf="bankDetailForm.get('AccountNo')?.errors?.required && submit">
+                                Account Number is required
+                            </mat-error>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </form>
+
+        </div>
+        <div fxFlex="100" fxLayoutAlign="center end">
+            <div fxFlex="40" >
+                <button *ngIf="!matSpinner" (click)="addBankDetail()" class="sub-btn"
+                    type="button">{{STRINGS.addAccountPopup.subBtnText}}</button>
+            </div>
+
+        </div>
+    </div>
+</div>

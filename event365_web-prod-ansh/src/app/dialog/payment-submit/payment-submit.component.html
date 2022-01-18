@@ -1,0 +1,26 @@
+<div fxLayout="column"  class="payment_modal">
+    <div fxLayoutAlign="end end">
+    <button type="button" mat-dialog-close>×</button>
+    </div>
+    <div  fxLayout="column" fxLayoutGap="30px">
+        <div  fxLayoutAlign="center center">
+            <div class="circle-right">
+                <img src="../../../assets/img/right-tick.png" alt="" srcset="">
+            </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" >
+                <div>
+                    <h1>{{STRINGS.paymentSubmitPopup.heading}}</h1>
+                </div>
+                <div >
+                    <p  class="label-des">{{STRINGS. paymentSubmitPopup.description}}</p>
+                </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <button mat-button type="button" routerLink="/home" mat-dialog-close>{{STRINGS. paymentSubmitPopup.backhome}}  </button>
+            <a class="tran-history" routerLink="/getpaid" mat-dialog-close>{{STRINGS. paymentSubmitPopup.transaction}}</a>
+        </div>
+    </div>
+    
+
+</div>

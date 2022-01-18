@@ -1,0 +1,29 @@
+<div class="height-auto  venue-location-wrapper">
+    <div class="width-80">
+        <mat-card>
+            <div  fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="end center">
+                <div fxFlex="100" fxFlex.lt-md="50"  fxFlex.lt-sm="100" fxLayoutAlign="end center">
+                    <button class="create-btn" routerLink="../location/create/1">+ Create Venue</button>
+                </div>
+            </div>
+
+            <div class="card-row">
+                <div class="card-box" *ngFor="let venue of venueList?.myVenues" routerLink="../location/detail/{{venue.id}}">
+                    <div class="card-image" [ngStyle]="{
+                        'background-image': venue.venueImages[0]?.venueImages
+                            ? 'url(' + venue.venueImages[0]?.venueImages + ')'
+                            : ''
+                        }">
+                        <span class="no-image" *ngIf = "venue?.venueImages?.length ==0"><p>No Image</p></span>
+                        </div>
+                        <div class="venue-location-lower-part">
+                            <h4>{{(venue.venueName.length>30)?(venue.venueName | slice:0:29)+'...':(venue.venueName)}}
+                            </h4>
+                            <p *ngIf="!venue.is_active" class="text-center pt-2" >{{STRINGS.venueLocation.adminDisable }}</p>
+                       
+                    </div> 
+                </div>
+                </div>
+            </mat-card>
+    </div>
+</div>

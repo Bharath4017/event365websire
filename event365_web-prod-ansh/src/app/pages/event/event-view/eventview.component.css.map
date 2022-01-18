@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "eventview.component.scss"
+    ],
+    "names": [],
+    "file": "eventview.component.css"
+}

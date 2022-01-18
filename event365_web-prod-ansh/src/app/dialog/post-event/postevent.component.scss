@@ -1,0 +1,28 @@
+@import '../../../assets/css/mixin.scss';
+.postevent_modal{
+    [mat-dialog-close]{
+        font-size: 3rem;
+        color: #9697b5;
+        height: 30px;
+        line-height: 30px;
+    }
+    h3{
+        font-family: Caros;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--charcoal-grey);
+    }
+    [mat-button]{
+        @include replacewidth(18.8rem);
+        height: 4.8rem;
+        margin-top: 8px;
+        .mat-button-wrapper
+       {
+        font-family: Caros;
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 1.22;
+        color: #f4f2ff;
+    }
+}
+}

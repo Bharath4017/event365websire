@@ -1,0 +1,55 @@
+.padding-4 {
+  padding-right: 6rem;
+}
+
+.padding-4 .input-error-wrapper {
+  margin: 2rem auto 7rem;
+}
+
+.padding-4 .input-error-wrapper .otp-field-wrapper {
+  width: 28rem;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.padding-4 .input-error-wrapper .otp-field-wrapper .otp-input {
+  width: 4.6rem;
+  height: 4.6rem;
+  min-width: 4.6rem;
+  margin: 0rem 2rem 0 0;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #4b4b4b;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.padding-4 .input-error-wrapper .otp-field-wrapper .border-error {
+  border: 1px solid #ff395a;
+  -webkit-box-shadow: 0 0px 3px #ff395a;
+          box-shadow: 0 0px 3px #ff395a;
+}
+
+.padding-4 .error-msg {
+  width: 100%;
+  color: #ff395a;
+  font-size: 1.6rem;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 10rem;
+}
+
+.padding-4 .margin-top-8 {
+  margin-top: 8rem;
+}
+/*# sourceMappingURL=email-verification.component.css.map */

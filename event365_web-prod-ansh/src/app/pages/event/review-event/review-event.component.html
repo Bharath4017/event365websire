@@ -1,0 +1,391 @@
+<div class="blanK-section">
+  <div class="review-events">
+    <mat-card>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutGap.md="20px"
+        fxLayoutGap.xs="10px" fxLayoutGap="30px" class="swiper_mob">
+        <div fxFlex="55" fxFlex.md="50" fxFlex.sm="100" class="w-100">
+          <div fxLayout="column" fxLayoutGap="20px">
+
+            <div fxFlex="100" fxFlex.xs="100" fxLayoutAlign.xs="center center">
+              <div class="img-cus">
+                <img class="img-fluid" id='eventImage' src="{{imagePreview}}" alt="">
+              </div>
+            </div>
+
+            <div fxFlex="100" fxFlex.xs="100">
+              <div class="event-image">
+                <swiper class="swiper-container event-image-slider" [config]="configreview" [disabled]="disabled">
+                  <div *ngFor="let image of reviewEventDetails?.createEvent.images">
+                    <img class="swiper-slide obj-img" src={{image?.eventImage}}
+                      (click)=thumbnailImageOnClick(image?.eventImage) alt="">
+                  </div>
+                </swiper>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <div fxFlex="45" fxFlex.md="50" fxFlex.sm="100" class="w-100">
+          <div class="current-event-details">
+            <div fxLayout="column">
+              <div fxFlex="100" class="mt-3">
+                <h1>{{ reviewEventDetails?.createEvent.name | titlecase}}</h1>
+              </div>
+
+              <div fxFlex="100">
+                <div fxLayout="row" class="event-frequency mb-3">
+                  <p class="event-code mr-5">
+                    {{ reviewEventDetails?.createEvent.eventType === 0 ? '( Public Event )' : '(
+                                        Private Event )' }}
+                  </p>
+                  <p class="event-code">{{STRINGS.createTicket.frequency}} :
+                    {{ reviewEventDetails?.createEvent.eventOccurrenceType === 'monthly' ?
+                                        'Selected Days': reviewEventDetails?.createEvent.eventOccurrenceType }}</p>
+
+                </div>
+
+
+              </div>
+              <div fxFlex="100">
+                <div class="event-frequency mar-2">
+                  <mat-chip-list>
+                    <mat-chip #chip="matChip" *ngFor="let w of occurredOnName" [selected]="true" [value]="w">
+                      {{w}}
+                    </mat-chip>
+                  </mat-chip-list>
+
+                </div>
+              </div>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayout.md="column" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutGap.md="0px"
+                  fxLayoutGap.lt-md="10px">
+                  <div fxFlex="65" fxFlex.md="100">
+                    <div class="event-start-end">
+
+                      <div fxLayout="row">
+                        <div fxFlex="40">
+
+                          <p>{{STRINGS.favorite.eventStart}}</p>
+                          <h4>{{ reviewEventDetails?.createEvent.start | date : 'dd MMM' }}
+                          </h4>
+                          <small>{{ reviewEventDetails?.createEvent.startTime | date : 'h:mm
+                                                        a' }}
+                            - {{ reviewEventDetails?.createEvent.endTime | date : 'h:mm a'
+                                                        }}
+                          </small>
+                        </div>
+                        <div fxFlex="20" fxLayoutAlign="center center"><span class="devider"></span></div>
+                        <div fxFlex="40" fxLayoutAlign="end center">
+                          <div>
+                            <p>{{STRINGS.favorite.eventEnd}}</p>
+                            <h4>{{ reviewEventDetails?.createEvent.end | date : 'dd MMM' }}
+                            </h4>
+                            <small>{{ reviewEventDetails?.createEvent.startTime | date :
+                                                            'h:mm a' }}
+                              - {{ reviewEventDetails?.createEvent.endTime | date : 'h:mm
+                                                            a' }}
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div fxFlex="35" fxFlex.md="100">
+                    <div class="share-event">
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayout.md="column" fxLayoutAlign.lt-sm="start start" fxLayout.lt-sm="column"
+                fxLayoutGap="20px" fxLayoutGap.md="10px" class="catogory" fxLayoutAlign="end center"
+                fxLayoutAlign.md="start start">
+                <div fxFlex="20" fxFlex.lt-md="25">
+                  <h4>Category :</h4>
+                </div>
+                <div fxFlex="80" f fxFlex.lt-md="75">
+                  <button matRipple>{{ reviewEventDetails?.createEvent.categoryName }}</button>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayoutGap="10px" class="tags">
+                <div fxFlex="100">
+                  <h4>Tags :</h4>
+                </div>
+                <div fxFlex="100">
+                  <mat-chip-list class="tag-list">
+                    <mat-chip *ngFor="let sub of reviewEventDetails?.createEvent.subCategoryName;">
+                      {{ sub.subCategoryName }}</mat-chip>
+                  </mat-chip-list>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutGap="20px" class="venue-details-wrapper">
+
+                <div class="venue-details">
+                  <p class="venue">{{STRINGS.createTicket.venueName}}</p>
+                  <p class="venue venue-fw">
+                    {{reviewEventDetails?.createEvent.venueDetails?.venueName}}</p>
+                </div>
+                <div class="venue-details venue-55">
+                  <p class="venue">{{STRINGS.createTicket.venueImage}}</p>
+                  <div class="venue-img-wrapper">
+                    <img src="{{reviewEventDetails?.createEvent.venueDetails?.venueImages[0]?.venueImages}}" alt="Image"
+                      class="venue-img" />
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <div class="lower-section-wrapper" flex="100" fxLayout="column" fxLayoutGap="20%">
+      <div class="wrapper_details mt-3" style=" cursor: unset;">
+        <div fxLayout="column" fxLayoutGap="15px" class="mb-5 description">
+          <div fxFlex="100" fxLayoutAlign="start start">
+            <h3>{{STRINGS.createTicket.description}}</h3>
+          </div>
+          <div fxFlex="100">
+            <quill-view-html [content]="reviewEventDetails?.createEvent?.description" theme="snow"></quill-view-html>
+            <!-- <p>
+              {{reviewEventDetails?.createEvent?.description}}
+            </p> -->
+
+            <!-- <p *ngIf="!descClicked">
+                            {{(reviewEventDetails?.createEvent?.description?.length>120)?(reviewEventDetails?.createEvent?.description
+                            | slice:0:120)+'...':(reviewEventDetails?.createEvent?.description)}}
+
+
+                        </p>
+                        <p *ngIf="descClicked">
+                            {{reviewEventDetails?.createEvent?.description}}
+                        </p>
+                        <div fxLayoutAlign="end end" class="read-more">
+                            <p (click)="showDesc()"
+                                *ngIf="reviewEventDetails?.createEvent?.description?.length >= 120"
+                                class="read-more-btn cursor_pointer text-right">Read more  </p>
+                        </div> -->
+          </div>
+        </div>
+
+        <div *ngIf="reviewEventDetails?.createEvent?.telentImages?.length != 0" class="talent-events w-100">
+          <div fxLayout="row">
+            <div fxFlex="100" fxLayoutAlign="space-between start">
+              <h3 *ngIf="reviewEventDetails?.createEvent?.telentImages?.length == 1">Talent</h3>
+              <h3 *ngIf="reviewEventDetails?.createEvent?.telentImages?.length > 1">Talent(s)</h3>
+            </div>
+          </div>
+          <div class="slider_section" >
+            <div fxFlex="90" fxFlex.xs="100" class="m-auto">
+              <div fxLayout="row" fxLayoutGap="20px" class="w-100">
+                <div fxFlex="100" class="w-100 related-events_overlay ">
+                  <swiper *ngIf="reviewEventDetails?.createEvent?.telentImages?.length > 0" class="swiper-container "
+                    [config]="TalentHorizontal"  [disabled]="disabled" style="width: 100%">
+                    <div class="swiper-slide" *ngFor="let talents of reviewEventDetails?.createEvent?.telentImages;">
+                      <mat-card class="mat-event" matRipple >
+                        <div class="related-event-img">
+                          <img src={{talents?.eventImage}} alt="">
+                        </div>
+                      </mat-card>
+                    </div>
+                  </swiper>
+                  <button class="swiper-button-prev swiper-cus" id="button-prev-swiper"></button>
+                  <button class="swiper-button-next swiper-cus" id="button-next-swiper"> </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponser-events width-100"  *ngIf="reviewEventDetails?.createEvent?.sponserImages?.length != 0">
+          <div fxLayout="row">
+            <div fxFlex="100" fxLayoutAlign="space-between start">
+              <h3 *ngIf = "reviewEventDetails?.createEvent?.sponserImages?.length == 1">Sponsor</h3>
+              <h3 *ngIf = "reviewEventDetails?.createEvent?.sponserImages?.length > 1">Sponsors</h3>
+            </div>
+          </div>
+              <div fxLayout="row wrap" class="inner">
+    
+              <div fxFlex="10" fxFlex.xs="28" fxFlex.sm="22" fxLayoutAlign="space-between start" *ngFor="let sponser of reviewEventDetails?.createEvent?.sponserImages;">
+                <div class="sponser">
+                  <img class="img-fluid" src={{sponser.eventImage}} alt="">
+                </div>
+                </div>
+              </div>
+             
+              </div>
+
+        <div fxLayout="column" class="description">
+          <div fxFlex="100" fxLayoutAlign="start start">
+            <h3 class="mb-3"> {{STRINGS.createTicket.tickets}}</h3>
+          </div>
+          <div fxFlex="100">
+            <div class="card-block" *ngIf="reviewEventDetails !== null ">
+              ​
+              <div class="card-box" *ngFor="let ticket of reviewEventDetails?.ticketDetails let i = index">
+                <div class="card-top-box">
+                  <h2 class="ticket-header">{{ ticket?.ticketType }} Ticket</h2>
+                  ​
+                </div>
+                <h2 class="ticket-type" *ngIf="ticket.ticketType !== 'Tables & Seatings'">{{
+                                    ticket.ticketName
+                                    }}
+                  <span class="Disc" *ngIf="ticket.discount > 0"> ( {{ ticket.discount }} % Discount Added ) </span>
+                </h2>
+                <h2 class="ticket-type" *ngIf="ticket.ticketType === 'Tables & Seatings'">{{
+                                    ticket.categoryName
+                                    }}
+                  <span class="Disc" *ngIf="ticket.discount > 0"> ( {{ ticket.discount }} % Discount Added ) </span>
+                </h2>
+                <p class="ticket-details" matTooltip="{{ ticket?.ticketDescription }}" matTooltipPosition="above">{{ (ticket?.ticketDescription?.length>30)?(ticket?.ticketDescription
+                                        | slice:0:30)+'...':(ticket?.ticketDescription) }}</p>
+                <p class="caution" *ngIf="ticket.ticketType !== 'Free' && ticket.ticketType !=='RSVP'">(
+                  Cancellation charge : {{ ticket.cancellationCharge }} % ) </p>
+                <div flex="100" fxLayout="row" class="price-quan-box">
+                  <p class="ticket-price" *ngIf="ticket.ticketType !== 'Tables & Seatings'">$ {{
+                                        ticket.ticketPrice === null ? '00.00' : (ticket.ticketPrice?.length>3)?(ticket?.ticketPrice
+                                        | slice:0:3)+'...':(ticket?.ticketPrice)}} / Ticket
+                  </p>
+                  <p class="ticket-price " *ngIf="ticket.ticketType === 'Tables & Seatings'">$ {{
+                                        ticket.ticketPrice === null ? '00.00' : (ticket.ticketPrice?.length>3)?(ticket?.ticketPrice
+                                        | slice:0:3)+'...':(ticket?.ticketPrice)}} / table
+                  </p>
+                  <p *ngIf="ticket.ticketType !== 'Tables & Seatings'" class="ticket-price text-right">
+                    {{ STRINGS.editEventTicket.ticketQuantity }} : {{ (ticket.ticketQuantity?.length>3)?(ticket?.ticketQuantity
+                                            | slice:0:3)+'...':(ticket?.ticketQuantity) }}</p>
+                  <p *ngIf="ticket.ticketType === 'Tables & Seatings'" class="ticket-price ">
+                    {{ STRINGS.editEventTicket.tableQuantity }} : {{  (ticket.tables?.length>3)?(ticket.tables
+                                            | slice:0:3)+'...':(ticket.tables)}}</p>
+                </div>
+                <div class="date-wrapper" *ngIf="ticket?.ticketType === 'Tables & Seatings'">
+                  <div class="date">{{ STRINGS.createTicket.person }}: {{ (ticket?.persons?.length>3)?(ticket?.persons
+                                        | slice:0:3)+'...':(ticket?.persons) }}</div>
+                  <!-- <p class="date fw-600"></p> -->
+                </div>
+                <div fxLayout="row" *ngIf="ticket?.ticketStartDate !== null">
+                  <div class="date color_fade mr-4">{{ STRINGS.createTicket.date }}</div>
+                  <div class="date">
+                    <span class="date ">{{ ticket?.ticketStartDate | date : 'MM/dd/yyyy' }}</span>
+                    <span class="date mx-3">to</span>
+                    <span class="date">{{ ticket?.ticketEndDate | date : 'MM/dd/yyyy' }}</span>
+                  </div>
+                </div>
+                <div fxLayout="row" *ngIf="ticket?.ticketStartTime !== null">
+                  <div class="date color_fade mr-4">{{ STRINGS.createTicket.time }}</div>
+                  <div class="date ">
+                    <span class="date ">{{ ticket?.ticketStartTime | date : 'h:mm a' }}</span>
+                    <span class="date mx-3">to</span>
+                    <span class="date">{{ ticket?.ticketEndTime | date : 'h:mm a' }}</span>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div fxLayout="row" fxLayoutGap="20px" class="mb-5 description">
+          <div fxFlex="100" fxLayoutAlign="start start">
+            <h3> Coupon Code</h3> <span class="coupan-code">ABC123</span>
+          </div>
+        </div> -->
+        <div fxLayout="column" fxLayoutGap="20px" class="mb-5 description">
+          <div fxFlex="100" fxLayoutAlign="start start">
+            <h3> Tickets Preview</h3>
+          </div>
+          <div fxFlex="100" fxLayout.xs="column" fxLayoutGap.xs="20px" class="btn-flex">
+            <div fxFlex="30" fxFlex.sm="60" fxFlex.md="50" fxFlex.xs="100" class="ticket-preview-wrapper">
+              <div class="ticket-preview-img" id="generated-ticket">
+                <!--.......div for corners........ -->
+                <div class="corner-radius top-left"></div>
+                <div class="corner-radius top-right"></div>
+                <div class="corner-radius bottom-right"></div>
+                <div class="corner-radius bottom-left"></div>
+                <!--.......div for corners........ -->
+                <div class="overlay-ticket">
+                  <p class="event-name">{{ reviewEventDetails?.createEvent.name }}</p>
+                  <p class="event-code text-white mb-3">Event code : XXXXX
+                    <!-- <span class="event-code">#543567</span> -->
+                  </p>
+
+                  <div class="datetimeticket">
+                    <div class="ticket-icon">
+                      <img class="mr-3" src="../../../../assets/img/time_white.svg" width="14rem" />
+                    </div>
+                    <div class="datetime">
+                      <span>{{ reviewEventDetails?.createEvent.start | date : 'MMMM dd, YYYY'}}</span>
+                      <span class="mx-3"> | </span>
+                      <span>{{ reviewEventDetails?.createEvent.startTime | date :
+                                                    'hh:mm a' }} - {{ reviewEventDetails?.createEvent.endTime | date : 'hh:mm a'
+                                                    }}
+                      </span>
+                    </div>
+
+                  </div>
+
+
+                  ​
+                  <div class="event-details-wrapper remove-center-align datetimeticket">
+                    <div class="ticket-icon">
+                      <img class="mr-3" src="../../../../assets/img/location_white.svg" width="12rem" />
+                    </div>
+                    <span>
+                      {{reviewEventDetails?.createEvent.venueDetails?.venueAddress}}</span>
+                  </div>
+                  ​
+                  <div fxLayout="column" class="event-details-wrapper">
+                    <!-- <div class="ticket-icon">
+                                    <img src="../../../../assets/img/vip_tag.svg" width="100%" />
+                                </div>
+                                <p class="event-details w-100">VIP Ticket - ${{}}</p> -->
+
+                    ​
+                    <!-- <div class="purchase-details">Purchased in a group | <span class="purchase-details">Ticket 1 of 3</span>
+                            </div> -->
+                    <!-- <p class="ticket-description" matTooltip="{{ reviewEventDetails?.createEvent.description }}"
+                      matTooltipPosition="above">{{ (reviewEventDetails?.createEvent.description
+                                            | slice:0:20)+'...' }}</p> -->
+                    ​
+                    <div class="quill-custom-css">
+                      <quill-view-html [content]="reviewEventDetails?.createEvent?.description" theme="snow"></quill-view-html>
+                    </div>
+                  
+
+                    <div fxLayoutGap="10%" fxLayoutGap.xs="10px" class="qr-details">
+                      <div class="qr-box">
+                        <img src="../../../../assets/img/qr-code.png" width="100%" />
+                      </div>
+                      <p class="event-code pt-4">XXXXXXXX</p>
+                      <div class="share-box">
+                        <img src="../../../../assets/img/share.svg" width="100%" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div fxFlex="50">
+
+            </div>
+            <div fxFlex="50" fxFlex.sm="40" fxLayoutAlign.xs="center center" fxLayoutAlign="end end"
+              class="form-group form-row">
+              <button class="button-primary" (click)="submitEvent()">
+                {{ STRINGS.buttons.submitevent }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  ​
+
+  ​

@@ -1,0 +1,30 @@
+<div  class="upload_modal" >
+<div fxLayout="row" fxLayoutGap="40px">
+    <div fxFlex="100" fxLayoutAlign="end center">
+        <button type="button" class="mat-dialog-close" [mat-dialog-close]="data">×</button>
+      </div>
+      </div>
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="40px" class="px-3">
+    <div fxFlex="50" fxFlex.lt-md="100" fxLayoutAlign="end center" fxLayoutAlign.lt-md="center center">
+        <div class="dragdropbox" (click)="ImageFIle.click()">
+            <div  class="filepreview" appDnd (fileDropped)="onFileDropped($event)">
+                <input type='file'  #ImageFIle id="ImageFIle" accept="image/*" (change)="onSelectFile($event)" multiple>
+                <div class="cloud-image">
+                  <img src="{{ alertimg }}">
+                </div>
+            </div>
+            <h6 class="text-label">Drag and Drop Image files to upload</h6>
+          </div>
+     </div>
+    <div fxFlex="50" fxFlex.lt-md="100" fxLayoutAlign="center center" mat-dialog-alert class="flex-column">
+        <p class="or">or</p>
+        <p>Select a file from your computer</p>
+        <div mat-dialog-actions (click)="ImageFIle.click()">
+            <button mat-button ngClass.lt-md="mb-4"> Select Files </button>
+          </div>
+     </div>
+    
+  </div>
+
+  <!-- <h6  *ngIf="fileToUpload!=null" class="mb-0 mt-2 text-primary">{{fileToUpload.name }}</h6> -->
+</div>

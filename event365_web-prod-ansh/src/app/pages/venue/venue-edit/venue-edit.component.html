@@ -1,0 +1,326 @@
+
+<div class="create_venue">
+    <mat-card class="mb-3">
+        <form [formGroup]="VenueForm" class="venue-creation">
+
+            <div fxLayout="row"  class="my-5">
+                <div fxFlex="100"  fxFlex.xs="100"> 
+                <mat-slide-toggle formControlName="isVenueAvailableToOtherHosts" labelPosition="before">
+                    <mat-label>{{ STRINGS.createVenue.Availability}}</mat-label>
+                </mat-slide-toggle>
+                </div>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayoutGap="50px">
+
+
+                <div fxLayout="column" fxFlex="50%">
+
+                    <div fxLayout="column" class="mb-5" fxLayoutGap="10px">
+                        <div fxFlex="100">
+                            <mat-label>{{ STRINGS.createVenue.Name }}</mat-label>
+                        </div>
+                        <div fxFlex="100">
+                            <mat-form-field appearance="standard" class="matinput-space">
+                                <input type="text" matInput #name formControlName="name"
+                                    placeholder="{{ STRINGS.createVenue.NamePlaceholder }}" autocomplete="off" />
+
+                            </mat-form-field>
+                            <mat-error *ngIf="VenueForm.get('name')?.errors?.required && submit">
+                                Name is required
+                            </mat-error>
+                            <mat-error *ngIf="VenueForm.get('name')?.errors?.maxlength && submit">
+                                Name is not more than 50 words
+                            </mat-error>
+                            <mat-error *ngIf="VenueForm.get('name')?.errors?.pattern && submit">
+                                Name only should be characters
+                            </mat-error>
+
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" class="mb-5" fxLayoutGap="10px">
+                        <div fxFlex="100">
+                            <mat-label>{{ STRINGS.createVenue.address }}</mat-label>
+                        </div>
+                        <div fxFlex="100">
+                            <mat-form-field appearance="standard" class="matinput-space">
+                                <input type="text" matInput #name formControlName="venueAddress" #addressTextField
+                                    placeholder="{{ STRINGS.createVenue.addressPlaceholder }}" autocomplete="off" />
+
+                            </mat-form-field>
+                            <mat-error *ngIf="VenueForm.get('venueAddress')?.errors?.required && submit">
+                                Address is required
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div fxLayout="column" class="mb-5" fxLayoutGap="10px">
+                        <div fxFlex="100">
+                            <mat-label>{{ STRINGS.createVenue.website }}</mat-label>
+                        </div>
+                        <div fxFlex="85" fxFlex.lt-md="100" fxFlex.lt-lg="70">
+                            <mat-form-field appearance="standard" class="matinput-space">
+                                <input type="text" matInput #name formControlName="websiteURL"
+                                    placeholder="{{ STRINGS.createVenue.websitePlaceholder }}" autocomplete="off" />
+
+                            </mat-form-field>
+                            <mat-error *ngIf="VenueForm.get('websiteURL')?.errors?.maxlength && submit">
+                                Website should not be more than 200 characters
+                            </mat-error>
+
+                        </div>
+                    </div>
+                    <div fxLayout="column" class="mb-5" fxLayoutGap="10px">
+                        <mat-label>{{ STRINGS.createVenue.descriptionLabel }}</mat-label>
+                        <div fxFlex="85" fxFlex.lt-md="100" fxFlex.lt-lg="70">
+                            <mat-form-field appearance="standard" class="matinput-space">
+                                <textarea matInput cdkAutosizeMinRows="5" style=" height: 103px;" formControlName="shortDescription"
+                                    placeholder="{{ STRINGS.createVenue.descriptionPlaceholder }} "></textarea>
+                                    <span *ngIf = "!VenueForm.get('shortDescription')?.value"  class="leftinput-text">{{
+                                        STRINGS.createEvent.MaxMinWords
+                                        }}</span>
+                            </mat-form-field>
+                            <mat-error *ngIf="VenueForm.get('shortDescription')?.errors?.required && submit">
+                                Description is required
+                            </mat-error>
+                           <mat-error *ngIf="VenueForm.get('shortDescription')?.errors?.minlength && submit">
+                                Description is not less than 200 words
+                            </mat-error>
+                            <mat-error *ngIf="VenueForm.get('shortDescription')?.errors?.maxlength && submit">
+                                Description is not more than 2500 words
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div fxLayout="column" class="mb-5" fxLayoutGap="10px">
+                        <div fxFlex="100">
+                            <mat-label>{{ STRINGS.createVenue.typeLabel }}</mat-label>
+                        </div>
+                       
+                            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.md="10px" fxLayoutGap.xs="10px" class="mb-2">
+                                <mat-checkbox   [checked]="venueTypes[0]"  (change)="setVenueType(0,$event.checked)">
+                                    {{ STRINGS.createVenue.indoorRadioLabel }}
+                                </mat-checkbox>
+                                <mat-checkbox   [checked]="venueTypes[1]" (change)="setVenueType(1,$event.checked)">
+                                    {{ STRINGS.createVenue.OutdoorRadioLabel }}
+                                </mat-checkbox>
+                                
+                            <!-- <mat-radio-group   fxFlex="100" 
+                             aria-label="Select an option" formControlName="venueType">
+                                <mat-radio-button fxFlex="50" class="mr-2" value="Indoor Venue">{{
+                                    STRINGS.createVenue.indoorRadioLabel }}
+                                </mat-radio-button>
+                                <mat-radio-button  fxFlex="50" fxLayoutAlign="center end" 
+                                value="Outdoor Venue">{{ STRINGS.createVenue.OutdoorRadioLabel }}
+                                </mat-radio-button>
+                            </mat-radio-group> -->
+                           
+                        </div>
+                        <mat-error *ngIf=" this.setVenueTypeArray.length === 0 ">
+                            Please Select Venue Type
+                        </mat-error>
+                    </div>
+                    <div fxLayout="column" class="mb-3" fxLayoutGap="12px">
+                        <div fxFlex="100">
+                            <mat-label>{{ STRINGS.createVenue.capcityLabel }}</mat-label>
+                        </div>
+                        <div fxFlex="85" fxFlex.lt-md="100" fxFlex.lt-lg="70">
+                            <mat-form-field appearance="standard" class="matinput-space">
+                                <input type="number" matInput #name formControlName="venueCapacity"
+                                 (keypress)="integerOnly($event)" onCopy="return false"
+                                onDrag="return false" onDrop="return false" onPaste="return false" 
+                                    placeholder="{{ STRINGS.createVenue.capcityPlaceholder }}" autocomplete="off" />
+
+                            </mat-form-field>
+                            <mat-error *ngIf="VenueForm.get('venueCapacity')?.errors?.required && submit">
+                                Capacity is required
+                            </mat-error>
+                            <mat-error *ngIf="VenueForm.get('venueCapacity')?.errors?.pattern && submit">
+                                Capacity only number
+                            </mat-error>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div fxLayout="column" fxFlex="50%">
+                    <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="12px">
+                        <div fxLayoutAlign="start">
+                            <mat-label>{{ STRINGS.createVenue.operationLabel }}</mat-label>
+                        </div>
+                        <div formArrayName="daysAvailable">
+                            <div>
+                                <div *ngFor="let week of  daysAvailable.controls;  let i = index">
+
+                                    <div  fxFlex="100%"  [formGroupName]="i" fxLayout="row" class="check-box-hour mb-3">
+                                        <div fxLayout="row" fxFlex="30%" fxFlex.lt-sm="50%">
+                                            <mat-checkbox   [checked]="daysAvailableCheckBox[i]" (change)="setWeekDay(i,$event.checked)">
+                                                {{weekData[i].name}}
+                                            </mat-checkbox>
+                                        </div>
+
+
+                                        <div fxLayout="row" fxFlex="50%" fxFlex.lt-sm="65%" fxLayoutGap="8px">
+                                            <mat-label>From</mat-label>
+                                            <mat-select  formControlName="fromTime"  [disabled]="disableData[i]" panelClass="scrollbarcustom" (selectionChange)="onFromTimeChange(i,$event)">
+                                                <mat-option *ngFor="let fromTime of timeArray" [value]="fromTime">
+                                                    {{fromTime}}
+                                                </mat-option>
+                                            </mat-select>
+
+                                            <mat-label>to</mat-label>
+
+                                            <mat-select   panelClass="scrollbarcustom"  [disabled]="disableData[i]" formControlName="toTime" (selectionChange)="onToTimeChange(i,$event)">
+                                                <mat-option *ngFor="let toTime of toTimeArray[i]" [value]="toTime">
+                                                    {{toTime}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row">
+
+
+
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start center" class="pt-3">
+                        <div fxFlex="100">
+                            <div fxLayout="row" fxLayoutAlign="start center" class="pt-3" fxLayoutGap="25px">
+                                <div fxFlex="100">
+                                    <mat-label>{{ STRINGS.createVenue.uploadPicture }}</mat-label>
+                                    <input type="text" class="d-none" style="display: none"
+                                        formControlName="venueImages" />
+                                        <div class="filesinput" fxLayoutAlign="start center" fxLayout.lt-lg="row wrap">
+                                            <!-- comment becuase Drag and drop need desabled-->
+                                    <!-- <div class="filesinput" fxLayoutAlign="start center" fxLayout.lt-lg="row wrap"
+                                        cdkDropList (cdkDropListDropped)="drop($event)"> -->
+                                        <!-- <div class="filepreviewadd" *ngFor="let eventImage of images; let i = index"
+                                            cdkDrag> -->
+                                            <div class="filepreviewadd" *ngFor="let venueImage of images; let i = index">
+                                            <div class="example-handle">
+                                                <!-- <div class="circle drag">
+                                                    <svg width="18px" fill="#fff" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                                                        </path>
+                                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                                    </svg>
+                                                </div> -->
+                                                <div class="circle cancel">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                        viewBox="0 0 14.14 14.14" (click)="removeImage(i, venueImage)">
+                                                        <path fill="#fff" stroke="#bbbcc2"
+                                                            d="M10240.721 6513.574l-.579-.579-5.785 5.785-5.784-5.785-.577.579 5.783 5.784-5.783 5.784.577.579 5.784-5.784 5.785 5.784.579-.579-5.785-5.784z"
+                                                            transform="translate(-10227.288 -6512.287)" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            
+                                            <img *ngIf="venueImage.eventImage" src="{{ venueImage.eventImage }}" />
+                                            <img *ngIf="venueImage.venueImages" src="{{venueImage.venueImages}}">
+                                        </div>
+                                        <div class="filepreview" (click)="imageupload()" fxLayoutAlign="center center">
+                                            <img class="add" src="{{ addImage }}" />
+                                        </div>
+                                    </div>
+                                    <mat-error *ngIf="VenueForm.get('venueImages')?.errors?.required && submit">
+                                        Venue Image is required (atleast one image)
+                                    </mat-error>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- <div style="position: absolute;">
+                <div fxFlex="50%" *ngIf="showInformation">
+                    <span>{{STRINGS.createVenue.optionalNote}}</span>
+                   <img src="../../../assets/img/up-arrow.svg" class="up-arrow" >
+                </div>
+            </div> -->
+
+            <div fxLayout="row wrap"  class="mb-5">
+                <div fxLayoutGap="12px" fxLayoutAlign="flex-start">
+                    <mat-checkbox  [checked]="subVenueAvailable" (change)="showAddButton()">
+                        <mat-label>{{STRINGS.createVenue.checkBoxLabel}}</mat-label>
+                    </mat-checkbox>
+                    <mat-icon class="mat-error-icon" matTooltip="{{STRINGS.createVenue.optionalNote}}"
+                        matTooltipPosition="above">error
+                    </mat-icon>
+                </div>
+            </div>
+            <div fxLayout="column" class="mb-3">
+                <div fxLayout="row wrap" fxLayout.lt-sm="column" formArrayName="subVenues">
+                    <div fxFlex="50" *ngFor="let sub of venue.controls; let i=index">
+
+                        <div fxLayout="column" fxLayoutGap="10px">
+                            <div fxFlex="100" fxLayout="row">
+                                <mat-label>{{ STRINGS.createVenue.subFormName }} {{i+1}}</mat-label>
+                                <button class="delete-btn" (click)="removeSubVenue(i)">
+                                    <mat-icon>delete_forever</mat-icon>
+                                </button>
+                            </div>
+                            <div class="mt-2" fxFlex="100">
+                                <div fxLayout="column" fxLayoutGap="20px" [formGroupName]="i">
+                                    <mat-form-field appearance="standard" class="matinput-space">
+                                        <input matInput #venueName type="text"
+                                            placeholder="{{ STRINGS.createVenue.subVenueNamePlaceholder }}"
+                                            formControlName="subVenueName">
+                                    </mat-form-field>
+                                    <mat-error *ngIf="venue.controls[i].get('subVenueName')?.errors?.required && submit">
+                                        Name is required 
+                                      </mat-error>
+                                      <mat-error *ngIf=" venue.controls[i].get('subVenueName')?.errors?.pattern  && submit">
+                                        Name only should be characters
+                                    </mat-error>
+                                    <mat-form-field appearance="standard" class="matinput-space">
+                                        <input matInput name="subVenueCapacity{{i}}"  type="text" (keypress)="integerOnly($event)" onCopy="return false"
+                                        onDrag="return false" onDrop="return false" onPaste="return false"  autocomplete="new-password"
+                                            placeholder="{{ STRINGS.createVenue.subVenueCapcityPlaceholder }}"
+                                            formControlName="subVenueCapacity">
+                                    </mat-form-field>
+                                    <mat-error *ngIf="venue.controls[i].get('subVenueCapacity')?.errors?.required && submit">
+                                      capacity is required 
+                                    </mat-error>
+                                </div>
+
+                            </div>
+
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div fxLayout="row wrap" style="margin-right: 8%" *ngIf="addbtnSubVenue"
+                    fxLayoutAlign="end">
+                    <button fxLayout="row" fxLayoutAlign="center center" class="add-btn" type="button"
+                        (click)="addnewSubVenue()">
+                        <mat-icon>add</mat-icon><span class="btn-add-more ml-3">Add More</span>
+                    </button>
+                </div>
+            </div>
+
+
+
+            <div fxLayoutAlign="center" fxLayoutGap="10px">
+                <button fxLayout="row" fxLayoutAlign="center center" class="cancel-btn" type="button"
+                    (click)="cancelVenue()">Cancel</button>
+                <button fxLayout="row" fxLayoutAlign="center center" class="sub-btn" type="button"
+                    (click)="updateVenue()">Update</button>
+            </div>
+
+        </form>
+    </mat-card>
+</div>

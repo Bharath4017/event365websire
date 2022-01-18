@@ -1,0 +1,42 @@
+
+
+.footer-main-wrap{
+  width: 100%;
+  background-color: #231e42;
+  height: calc(36rem - 11.2rem);
+  .footer-wrapper{
+    width: calc(100% - 20%);
+    margin: 0 auto;
+    height: calc(36rem - 11.2rem);
+    .footer-logo{
+      .logo-footer{
+
+        display: flex;
+        align-items: center;
+      }
+    }
+    .footer-content {
+      font-size: 1.4rem;
+      font-weight: 100;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+  }
+    .footer-inner{
+      height: 18.7rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .copyright-wrapper {
+      height: 6rem;     
+      P{
+        font-size: 1.4rem;
+        font-weight: 100;
+        letter-spacing: 1px;
+        color:#ffffff;
+
+      }
+  }
+  }
+}
+
+

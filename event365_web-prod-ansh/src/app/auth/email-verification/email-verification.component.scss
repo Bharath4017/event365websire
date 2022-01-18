@@ -1,0 +1,99 @@
+
+.email-varification{
+    background-color: #fff;
+    width: calc(100% - 20%);
+    margin: 0  auto;
+    .ng_inner{
+        padding: 5rem;
+        margin-top: -12rem;
+        box-shadow: unset;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+}
+
+
+
+
+.middle-section
+{
+    padding: 0rem;
+    margin-bottom: 8rem;
+    // height: auto;
+}
+.form-illustration-box
+{
+    // padding: 0rem;
+    width: 70%;
+    flex-direction: column;
+    margin-top: -11px;
+    margin-left: 3rem;
+}
+.form-block {
+    height: 61rem;
+}
+
+
+.padding-10 {
+
+    .input-error-wrapper {
+        margin: 2rem auto 3rem;
+        .otp-field-wrapper {
+            width: 28rem;
+            margin:0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .otp-input {
+                width: 4.6rem;
+                height: 4.6rem;
+                min-width: 4.6rem;
+                margin: 0rem 2rem 0 0;
+                border: 1px solid #e1e1e1;
+                border-radius: 4px;
+                background-color: #fff;
+                color:#4b4b4b;
+                font-size: 1.8rem;
+                font-weight: 600;
+                text-align: center;
+
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+
+                &[type=number] {
+                    -moz-appearance: textfield;
+                }
+            }
+            .border-error {
+                border: 1px solid rgb(255, 57, 90, .4);
+                box-shadow: 0 0px 3px rgb(255, 57, 90, .4);
+            }   
+        }
+    }
+    .error-msg {
+        width: 100%;
+        color: #ff395a;
+        margin-top: 8rem;
+    }
+    .error-msg-span
+    {
+        display: block;
+        font-weight: 500;
+        font-size: 1.6rem;
+    }
+
+}
+@media only screen and (max-width: 500px) {
+    .middle-section
+    {
+        margin-bottom: 12rem;
+    }
+    
+    .padding-10 {
+        padding-left: 0;
+    }
+}

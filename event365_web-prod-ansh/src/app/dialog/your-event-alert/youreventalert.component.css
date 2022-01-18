@@ -1,0 +1,77 @@
+/*for button*/
+/*for font styling*/
+.eventalrt_modal [mat-dialog-close] {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+}
+
+.eventalrt_modal .circle-right {
+  width: 72px;
+  height: 72px;
+  background-color: #715ff2;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.eventalrt_modal [mat-button] {
+  height: 40px;
+  background-color: #7966fe;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: caros;
+  width: 18.8rem;
+  height: 4.8rem;
+  text-transform: capitalize;
+  margin: 2rem  0 4rem;
+}
+
+.eventalrt_modal h1, .eventalrt_modal h2, .eventalrt_modal p {
+  margin-top: 20px !important;
+}
+
+.eventalrt_modal h1 {
+  font-family: Caros;
+  font-size: 22px;
+  letter-spacing: normal;
+  text-align: center;
+  color: #484849;
+}
+
+.eventalrt_modal h2 {
+  font-family: Caros;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: var(--charcoal-grey);
+}
+
+.eventalrt_modal p {
+  font-family: Caros;
+  font-size: 15px;
+  color: var(--charcoal-grey);
+}
+
+.eventalrt_modal h1.beforeh {
+  font-family: Caros;
+  font-size: 17px;
+  font-weight: normal;
+  letter-spacing: normal;
+  color: var(--charcoal-grey);
+}
+/*# sourceMappingURL=youreventalert.component.css.map */

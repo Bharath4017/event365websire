@@ -1,0 +1,10 @@
+<main>
+    <app-header></app-header>
+    <div *ngIf="isLoaderData" class="overlay">
+        <div class="loader-box"></div>
+    </div>
+   
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+    <app-model></app-model>
+</main>

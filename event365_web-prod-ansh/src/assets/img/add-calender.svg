@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.73" height="14.73" viewBox="0 0 14.73 14.73">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #715ff2;
+      }
+    </style>
+  </defs>
+  <g id="Group_28470" data-name="Group 28470" transform="translate(-187 -798)">
+    <circle id="Ellipse_2068" data-name="Ellipse 2068" class="cls-1" cx="6" cy="6" r="6" transform="translate(188 799)"/>
+    <path id="Icon_ionic-ios-add-circle" data-name="Icon ionic-ios-add-circle" class="cls-2" d="M10.74,3.375a7.365,7.365,0,1,0,7.365,7.365A7.364,7.364,0,0,0,10.74,3.375Zm3.2,7.932H11.307v2.638a.567.567,0,0,1-1.133,0V11.307H7.536a.567.567,0,0,1,0-1.133h2.638V7.536a.567.567,0,0,1,1.133,0v2.638h2.638a.567.567,0,0,1,0,1.133Z" transform="translate(183.625 794.625)"/>
+  </g>
+</svg>

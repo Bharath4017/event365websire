@@ -1,0 +1,68 @@
+<div class="middle-section">
+    <section class="form-block width-80">
+        <div class="form-illustration-box">
+            <h2 class="form-heading form-heading-min mb-5">{{ STRINGS.submitInfo.accountCreation }}</h2>
+            <img src="../../../assets/img/account-creation.svg" class="form-illustration" />
+        </div>
+
+        <div class="form-box">
+            <h2 class="form-heading form-heading-min" style="text-align: center;">{{ STRINGS.submitInfo.into }}</h2>
+            <p class="form-heading-sub">{{ STRINGS.submitInfo.prefrenceSubText }}</p>
+
+            <div class="white-box">
+                <!--.............. for bubbles...............-->
+                <div class="bubble-box">
+                    <img src="../../../../assets/img/submit-preference.png"/>
+
+                    <!-- <p class="bubble">
+                        <span class="bubble-text">Arts</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p>
+
+                    <p class="bubble">
+                        <span class="bubble-text">Food & Drinks</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p>
+
+                    <p class="bubble">
+                        <img src="../../../../../assets/img/bubble_live@2x.png" class="bubble-icon" />
+                    </p>
+
+                    <p class="bubble">
+                        <span class="bubble-text">School</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p>
+
+                    <p class="bubble">
+                        <span class="bubble-text">Party</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p>
+
+                    <p class="bubble">
+                        <span class="bubble-text">Sports</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p>
+
+                    <p class="bubble">
+                        <span class="bubble-text">Music</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p>
+
+                    <p class="bubble">
+                        <span class="bubble-text">Fashion Events</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p> -->
+                </div>
+
+                <div style="text-align: center">
+                    <button class="skip-btn primary-btn mar-null" (click)="skipPreference()">
+                        {{STRINGS.buttons.skip}}
+                    </button>
+                    <button class="primary-btn mar-null" routerLink="/user/add-preferences/new-user">
+                        {{STRINGS.buttons.gotoPreference}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

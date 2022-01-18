@@ -1,0 +1,82 @@
+/*for button*/
+/*for font styling*/
+.upload_modal .mat-dialog-close {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+}
+
+.upload_modal [mat-button] {
+  height: 40px;
+  background-color: #7966fe;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: caros;
+  width: 18.8rem;
+  height: 4.8rem;
+  margin-top: 8px;
+}
+
+.upload_modal [mat-button] .mat-button-wrapper {
+  font-weight: 100;
+  font-family: Caros;
+  font-size: 14px;
+}
+
+.upload_modal p {
+  opacity: 0.74;
+  font-family: Caros;
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--charcoal-grey);
+}
+
+.upload_modal p:nth-child(2) {
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+.upload_modal .dragdropbox .filepreview {
+  width: 332px;
+  height: 265px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: dashed 1px #707070;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: dashed 1px #707070;
+}
+
+.upload_modal .dragdropbox .filepreview input {
+  display: none;
+}
+
+.upload_modal .dragdropbox .text-label {
+  opacity: 0.74;
+  font-family: Caros;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.75;
+  color: var(--charcoal-grey);
+  text-align: center;
+}
+
+.upload_modal .dragdropbox .flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+/*# sourceMappingURL=imageupload.component.css.map */

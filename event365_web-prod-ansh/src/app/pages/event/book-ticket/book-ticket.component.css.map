@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "book-ticket.component.scss"
+    ],
+    "names": [],
+    "file": "book-ticket.component.css"
+}

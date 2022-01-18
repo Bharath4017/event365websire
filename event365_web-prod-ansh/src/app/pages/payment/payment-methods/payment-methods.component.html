@@ -1,0 +1,91 @@
+<div class="payment-main-wrapper width-80">
+  <div class="section-top">
+    <h2 class="section-heading">
+      {{ STRINGS.paymentMethods.pageHeadding }}
+    </h2>
+  </div>
+
+  <!-- START: RADIO BUTTON -->
+  <div #paymentTypes id="paymentTypes" fxLayout="row" fxLayoutGap="40">
+    <mat-radio-group [(ngModel)]="showCardType">
+      <mat-radio-button [value]="STRINGS.paymentTypes.stripe">
+        <img src="../../../../assets/img/stripe@2x.png" />
+      </mat-radio-button>
+      <mat-radio-button [value]="STRINGS.paymentTypes.paypal">
+        <img src="../../../../assets/img/payment_type_paypal.png" />
+      </mat-radio-button>
+      <!-- <mat-radio-button [value]="STRINGS.paymentTypes.applePay">
+        <img src="../../../../assets/img/payment_type_applepay.png" />
+      </mat-radio-button> -->
+    </mat-radio-group>
+  </div>
+  <!-- END: RADIO BUTTON -->
+
+  <!-- Saved Card list start -->
+  <!-- <div class="method-row" [ngStyle]="{'cursor': 'pointer'}" *ngFor="let cards of cardList" (click)="instantPay(cards.id , 'payBySavedCards')">
+    <div class="method-name-row">
+      <p class="method-details f-w-600">{{STRINGS.paymentMethods.payNow}}</p>
+      <p class="method-icon f-w-600">
+        <img src="../../../../assets/img/stripe@2x.png" width="100%" />
+      </p>
+    </div>
+    <div class="method-name-row">
+      <p class="method-details">{{cards.brand}} ending in {{cards.last4}}</p>
+    </div>
+  </div> -->
+  <!-- Saved Card list end -->
+
+  <div [hidden]="showCardType !== STRINGS.paymentTypes.stripe">
+    <h2 style="margin-bottom: 2rem;">Set up a new payment method</h2>
+    <div style="margin-top: 3rem;margin-bottom: 3rem; width: 100%;"
+      [ngStyle]="{'border-bottom': stripeTest.get('name')?.errors && stripeCardValid ? '1px solid rgba(255, 57, 90, 0.4)' : '1px solid rgba(150, 151, 181, 0.4)'}"
+      [formGroup]="stripeTest">
+      <input type="text" class="input-text" placeholder="Name on card" name="card-name" formControlName="name">
+    </div>
+    <div
+      style="border-radius: 10px;width: 100%; border-radius: 4px;border: 2px solid rgba(150, 151, 181, .4);box-shadow: 0 0px 3px rgba(150, 151, 181, .4);padding: 2rem 2rem 2rem 2rem;margin-bottom: 2.3rem;">
+      <ngx-stripe-card #StripeCardNumberComponent [options]="cardOptions" (change)="onChange($event)"
+        [elementsOptions]="elementsOptions">
+      </ngx-stripe-card>
+    </div>
+    <section class="margin-right">
+      <mat-checkbox color="primary" style="transform: scale(1.5)"></mat-checkbox>
+      <span class="select">Save this card for future payments</span>
+    </section>
+    <button *ngIf="eventAmount" type="submit" class="primary-btn btn-margin-decrease pay-btn"
+      (click)="createPaymentMethod()" [disabled]="!stripeTest.valid || !stripeCardValid"
+      [ngClass]="{'button-disable': !stripeTest.valid || !stripeCardValid}">
+      PAY ${{eventAmount | number:'1.2-2'}}
+    </button>
+    <button *ngIf="ticketAmount" type="submit" class="primary-btn btn-margin-decrease pay-btn"
+      (click)="createPaymentMethod()" [disabled]="!stripeTest.valid || !stripeCardValid"
+      [ngClass]="{'button-disable': !stripeTest.valid || !stripeCardValid}">
+      PAY ${{ticketAmount | number:'1.2-2'}}
+    </button>
+  </div>
+  <div [hidden]="showCardType !== STRINGS.paymentTypes.paypal">
+    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+  </div>
+  <div [hidden]="showCardType !== STRINGS.paymentTypes.applePay">
+    <apple-pay-button id="ckoApplePay" (click)="payApple()" buttonstyle="black" type="buy" locale="en"></apple-pay-button>
+  </div>
+
+</div>
+<!-- <div class="container mt-5">
+    <h2>Stripe Checkout</h2>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <button (click)="pay(20)" class="btn btn-primary btn-block">Pay $20</button>
+        </div>
+        <div class="col-md-4">
+            <button (click)="pay(30)" class="btn btn-success btn-block">Pay $30</button>
+        </div>
+        <div class="col-md-4">
+            <button (click)="pay(50)" class="btn btn-info btn-block">Pay $50</button>
+        </div>
+    </div>
+    <p class="mt-5">
+        Try it out using the test card number <b>4242 4242 4242 4242</b>, a random three-digit CVC number, any expiration date in the future, and a random five-digit U.S. ZIP code.
+    </p>
+</div> -->
+

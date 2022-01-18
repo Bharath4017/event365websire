@@ -1,0 +1,85 @@
+<div fxFlex="100">
+    <div fxLayoutAlign="end end">
+        <button type="button" mat-dialog-close>×</button>
+    </div> 
+    <div  class="login-dialog-wraper">
+        <h1 class="form-heading text-center">{{ STRINGS.register.loggedin }}</h1>
+        <div  fxLayout="row"  class="social pt-3" fxLayoutGap="8px">
+            <div fxFlex="33">
+                <button fxLayoutAlign="center center" matRipple (click)="signInWithGoogle()" class="ng_google">
+                    <img  [src]="socialgoogle" />
+                    <p class="social-desk">{{ STRINGS.register.google }}</p>
+                    <p class="social-mob"> google</p>
+                </button>
+            </div>
+            <div fxFlex="33">
+                <button fxLayoutAlign="center center" matRipple (click)="signInWithFB()" class="ng_google">
+                    <img [src]="socialfb" />
+                    <p class="social-desk">{{ STRINGS.register.facebook }}</p>
+                    <p class="social-mob"> facebook</p>
+                </button>
+            </div>
+            <div fxFlex="33">
+                <button fxLayoutAlign="center center" matRipple class="ng_google">
+                    <img [src]="socialiphone" />
+                    <p class="social-desk">{{ STRINGS.register.apple }}</p>
+                    <p class="social-mob"> Apple</p>
+                </button>
+            </div>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && submitForm()">
+            <div fxLayoutAlign="center center">
+                <mat-spinner *ngIf="matSpinner"></mat-spinner>
+            </div>
+            <div *ngIf="!matSpinner" fxLayout="column" class="social pt-2">
+                <div fxFlex="100">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>{{STRINGS.login.emailId}}</mat-label>
+                        <input type="email" matInput #email formControlName="email" placeholder="{{STRINGS.placeholder.placeholderEmail}}"
+                            autocomplete="off" />
+                        <mat-error *ngIf="
+                        loginForm.controls['email'].hasError('required') &&
+                        (loginForm.controls['email'].dirty ||
+                        loginForm.controls['email'].touched)
+                    ">
+                            {{ STRINGS.validations.email }}
+                        </mat-error>
+                        <mat-error *ngIf="
+                        loginForm.controls['email'].hasError('email') &&
+                        (loginForm.controls['email'].dirty ||
+                        loginForm.controls['email'].touched)
+                    ">
+                            {{ STRINGS.validations.validEmail }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>{{STRINGS.labels.password}}</mat-label>
+                        <div class="passeye">
+                            <input [type]="fieldTextType ? 'text' : 'password'" #password formControlName="password"
+                                matInput placeholder="{{STRINGS.placeholder.placeholderPassword}}" autocomplete="off" />
+                            <img src="../../../assets/img/visibility.svg" *ngIf="fieldTextType" class="input-icon"
+                                (click)="showpassword()" />
+                            <img src="../../../assets/img/visibility-hidden.svg" *ngIf="!fieldTextType"
+                                class="input-icon" (click)="showpassword()" />
+                        </div>
+                        <mat-error>
+                            {{ STRINGS.validations.password }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxLayoutAlign="end end">
+                    <a routerLink="/auth/forgot-password" class="forgot-link" mat-dialog-close>Forgot Password?</a>
+                </div>
+                <div fxFlex="100" fxLayoutAlign="center center">
+                    <button class="login-btn" type="submit"  mat-dialog-close>Login</button>
+                </div>
+                <div fxFlex="100" fxLayoutAlign="center center" class="ng_account pt-4">
+                    Don't have an account?
+                    <a routerLink="/auth/register" class="login-in pl-2" mat-dialog-close>Register</a>
+                </div>
+            </div>
+        </form>
+    </div>
+ </div> 

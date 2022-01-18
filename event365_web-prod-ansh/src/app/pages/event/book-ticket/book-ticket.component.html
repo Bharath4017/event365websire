@@ -1,0 +1,330 @@
+<div class="bookticket">
+  <mat-card class="bg-transparent main_mat">
+    <div fxLayout="row">
+      <div fxFlex="100" class="cus_note my-4">
+        {{STRINGS.bookTicket.noteLabel}}
+      </div>
+    </div>
+    <div fxLayout="row " fxLayout.lt-lg="column " fxLayout.lt-md="column" class="mt-2"
+      fxLayoutAlign="space-between space-between">
+      <div fxFlex="62%" fxFlex.lt-sm="100" fxFlex.lt-md="50" fxFlex.lt-lg="60">
+        <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign="space-between space-between">
+          <div fxFlex="49%" fxFlex.lt-sm="100" *ngFor="let ticket of getTicketData.freeTicket" class="mb-4">
+            <mat-card class="cus_card">
+              <mat-card-title class="text-center">{{ ticket.ticketName}}</mat-card-title>
+              <mat-card-subtitle>Basic {{ ticket.ticketName}} </mat-card-subtitle>
+              <mat-card-content>{{ ticket.description}}</mat-card-content>
+              <mat-card-actions class="m-0"> $ 00.00 </mat-card-actions>
+              <mat-card-footer class="m-0">
+                <p> {{ ticket.TicketTotal | number:'1.2-2'}}</p>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxFlex="56%" fxFlex.xs="60%" class="total">
+                    {{STRINGS.bookTicket.totaltickets}}
+                  </div>
+                  <div *ngIf="ticket.totalQuantity>1; else availableTicket" fxFlex="40%" fxFlex.xs="40%"
+                    fxLayoutAlign="end center">
+                    <mat-select disableRipple placeholder="0" panelClass="scrollbarcustom">
+                      <mat-option
+                        *ngFor="let no of numSequence(ticket.totalQuantity)| slice:ticket.totalQuantity-1;let i = index;"
+                        [value]="i"
+                        (click)="freeTicketCountChange(i, ticket.pricePerTicket, ticket.id, ticket.events.users.id)">
+                        {{i}}</mat-option>
+                    </mat-select>
+                  </div>
+                  <ng-template #availableTicket>
+                    <mat-select disableRipple placeholder="0" panelClass="scrollbarcustom">
+                      <mat-option
+                        *ngFor="let no of numSequence(ticket.totalQuantity)| slice:ticket.totalQuantity-1;let i = index;"
+                        [value]="i"
+                        (click)="freeTicketCountChange(i, ticket.pricePerTicket, ticket.id, ticket.events.users.id)">
+                        {{i}}</mat-option>
+                    </mat-select>
+                  </ng-template>
+                </div>
+              </mat-card-footer>
+            </mat-card>
+          </div>
+
+          <div fxFlex="49%" fxFlex.lt-sm="100" *ngFor="let ticket of getTicketData.regularPaid" class="mb-4">
+            <mat-card class="cus_card">
+              <mat-card-title class="text-center">{{ ticket.ticketName}}</mat-card-title>
+              <mat-card-subtitle>{{ ticket.ticketName}} </mat-card-subtitle>
+              <mat-card-content>{{ ticket.description}}</mat-card-content>
+              <mat-card-actions class="m-0"> $ {{ ticket.pricePerTicket | number:'1.2-2'}} </mat-card-actions>
+              <mat-card-footer class="m-0">
+                <p> {{ ticket.TicketTotal}}</p>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxFlex="56%" class="total">
+                    {{STRINGS.bookTicket.totaltickets}}
+                  </div>
+                  <div fxFlex="40%" fxLayoutAlign="end center">
+                    <mat-select *ngIf="ticket.totalQuantity>10; else availableTicket" disableRipple placeholder="0"
+                      panelClass="scrollbarcustom">
+                      <mat-option
+                        *ngFor="let no of numSequence(ticket.totalQuantity) | slice:ticket.totalQuantity-10;let i = index;"
+                        [value]="i"
+                        (click)="regularPaidTicketCountChange(i, ticket.pricePerTicket, ticket.id, ticket.discount, ticket.events.users.id)">
+                        {{i}}</mat-option>
+                    </mat-select>
+                    <ng-template #availableTicket>
+                      <mat-select disableRipple placeholder="0" panelClass="scrollbarcustom">
+                        <mat-option *ngFor="let no of numSequence(ticket.totalQuantity);let i = index;" [value]="i"
+                          (click)="regularPaidTicketCountChange(i, ticket.pricePerTicket, ticket.id, ticket.discount, ticket.events.users.id)">
+                          {{i}}</mat-option>
+                      </mat-select>
+                    </ng-template>
+                  </div>
+                </div>
+              </mat-card-footer>
+            </mat-card>
+          </div>
+
+          <div fxFlex="49%" fxFlex.lt-sm="100" *ngFor="let ticket of getvipTicket.vipTicketInfo" class="mb-4">
+            <mat-card class="cus_card">
+              <mat-card-title class="text-center">{{ ticket.ticketName}}</mat-card-title>
+              <mat-card-subtitle>{{ ticket.ticketName}} </mat-card-subtitle>
+              <mat-card-content>{{ ticket.description}}</mat-card-content>
+              <mat-card-actions class="m-0">$ {{ ticket.pricePerTicket | number:'1.2-2'}}
+              </mat-card-actions>
+              <mat-card-footer class="m-0">
+                <p> {{ ticket.TicketTotal}}</p>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxFlex="56%" class="total">
+                    {{STRINGS.bookTicket.totaltickets}}
+                  </div>
+                  <div fxFlex="40%" fxLayoutAlign="end center">
+                    <mat-select *ngIf="ticket.totalQuantity>10; else elseBlock" disableRipple placeholder="0"
+                      panelClass="scrollbarcustom">
+                      <mat-option
+                        *ngFor="let no of numSequence(ticket.totalQuantity) | slice:ticket.totalQuantity-10;let i = index;"
+                        [value]="i"
+                        (click)="vipTicketCountChange(i, ticket.pricePerTicket, ticket.id, ticket.discount, ticket.events.users.id)">
+                        {{i}}</mat-option>
+                    </mat-select>
+                    <ng-template #elseBlock>
+                      <mat-select disableRipple placeholder="0" panelClass="scrollbarcustom">
+                        <mat-option *ngFor="let no of numSequence(ticket.totalQuantity);let i = index;" [value]="i"
+                          (click)="vipTicketCountChange(i, ticket.pricePerTicket, ticket.id, ticket.discount, ticket.events.users.id)">
+                          {{i}}</mat-option>
+                      </mat-select>
+                    </ng-template>
+                  </div>
+                </div>
+              </mat-card-footer>
+            </mat-card>
+          </div>
+
+          <div fxFlex="49%" fxFlex.lt-sm="100" *ngFor="let ticket of getTableAndSeating" class="mb-4">
+            <mat-card class="cus_card">
+              <mat-card-title class="text-center">{{ ticket.ticketName}}</mat-card-title>
+              <mat-card-subtitle>{{ ticket.ticketName}} </mat-card-subtitle>
+              <mat-card-content>{{ ticket.description}}</mat-card-content>
+              <mat-card-actions class="m-0">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxFlex="56%">
+                    <p> $ {{ ticket.pricePerTicket | number:'1.2-2'}}</p>
+                  </div>
+                  <div fxFlex="40%" fxLayoutAlign="end center">
+                    <span class="mr-2">
+                      <img width="20px" height="20px" src="../../../../assets/img/tablesitting.svg" alt="">
+                    </span>
+                    <p class="count"> <span>X</span>{{ticket.parsonPerTable}}</p>
+                  </div>
+                </div>
+              </mat-card-actions>
+              <mat-card-footer class="m-0">
+                <p> {{ ticket.TicketTotal}}</p>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxFlex="56%" class="total">
+                    {{STRINGS.bookTicket.totaltickets}}
+                  </div>
+                  <div fxFlex="40%" fxLayoutAlign="end center">
+                    <mat-select *ngIf="ticket.totalQuantity>5; else availableTicket" disableRipple placeholder="0"
+                      panelClass="scrollbarcustom">
+                      <mat-option
+                        *ngFor="let no of numSequence(ticket.totalQuantity) | slice:ticket.totalQuantity-5;let i = index;"
+                        [value]="i"
+                        (click)="tableAndSeatingTicketCountChange(i, ticket.pricePerTicket, ticket.id, ticket.discount, ticket.events.users.id, ticket.parsonPerTable)">
+                        {{i}}</mat-option>
+                    </mat-select>
+                    <ng-template #availableTicket>
+                      <mat-select disableRipple placeholder="0" panelClass="scrollbarcustom">
+                        <mat-option *ngFor="let no of numSequence(ticket.totalQuantity);let i = index;" [value]="i"
+                          (click)="tableAndSeatingTicketCountChange(i, ticket.pricePerTicket, ticket.id, ticket.discount, ticket.events.users.id, ticket.parsonPerTable)">
+                          {{i}}</mat-option>
+                      </mat-select>
+                    </ng-template>
+                  </div>
+                </div>
+
+              </mat-card-footer>
+            </mat-card>
+          </div>
+        </div>
+
+        <div fxlayout="row" *ngIf="datanothere" class="w-100">
+          <p class="datanotFound">Ticket is not available </p>
+        </div>
+      </div>
+      <div fxFlex="34%" fxFlex.lt-sm="100" fxFlex.lt-md="50" fxFlex.lt-lg="40">
+        <mat-card class="card-ticket">
+          <mat-card-title class="mb-4">{{eventDetail?.name}}</mat-card-title>
+          <mat-list role="list" class="">
+            <mat-list-item role="listitem">
+              <span class="icon_ticket">
+                <img width="14.9" height="14.9" [src]="clock" />
+              </span>
+              <div class="content">
+                {{ eventDetail?.start | date: "dd MMM, YYYY" }} <span class="cus_pipe"> </span> {{ eventDetail?.start |
+                  date: "hh:mm" }} - {{ eventDetail?.end | date: "hh:mm a" }}
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <span class="icon_ticket">
+                <img width="14.9" height="15.8" src="../../../../assets/img/location.svg" alt="">
+              </span>
+              <div class="content">
+                {{eventDetail?.address[0].venueAddress}}
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem" *ngIf="freeTicketCount > 0">
+              <div fxLayout="row" class="w-100">
+                <div fxFlex="80" fxFlex.xs="70" class="mat-list-item-content">
+                  <span class="icon_ticket">
+                    <img width="14.9px" height="16.1px" src="../../../../assets/img/ticket.svg" alt="">
+                  </span>
+                  <div class="content">
+                    {{freeTicketCount}} free ticket
+                  </div>
+                </div>
+                <div fxFlex="20" fxFlex.xs="30" class="mat-list-item-content">
+                  <div class="content">
+                    ${{freeTicketAmount | number:'1.2-2'}}
+                  </div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem" *ngIf="regularPaidTicketCount > 0">
+              <div fxLayout="row" class="w-100">
+                <div fxFlex="80" fxFlex.xs="70" class="mat-list-item-content">
+                  <span class="icon_ticket">
+                    <img width="14.9px" height="16.1px" src="../../../../assets/img/ticket.svg" alt="">
+                  </span>
+                  <div class="content">
+                    {{regularPaidTicketCount}} regular ticket
+                  </div>
+                </div>
+                <div fxFlex="20" fxFlex.xs="30" class="mat-list-item-content">
+                  <div class="content">
+                    ${{regularPaidTicketAmount | number:'1.2-2'}}
+                  </div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem" *ngIf="vipTicketCount > 0">
+              <div fxLayout="row" class="w-100">
+                <div fxFlex="80" fxFlex.xs="70" class="mat-list-item-content">
+                  <span class="icon_ticket">
+                    <img width="14.9px" height="16.1px" src="../../../../assets/img/ticket.svg" alt="">
+                  </span>
+                  <div class="content">
+                    {{vipTicketCount}} vip ticket
+                  </div>
+                </div>
+                <div fxFlex="20" fxFlex.xs="30" class="mat-list-item-content">
+                  ${{vipTicketAmount | number:'1.2-2'}}
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem" *ngIf="tableAndSeatingTicketCount > 0">
+              <div fxLayout="row" class="w-100">
+                <div fxFlex="80" fxFlex.xs="70" class="mat-list-item-content">
+                  <span class="icon_ticket">
+                    <img width="14.9px" height="16.1px" src="../../../../assets/img/ticket.svg" alt="">
+                  </span>
+                  <div class="content">
+                    {{tableAndSeatingTicketCount}} table seating
+                  </div>
+                </div>
+                <div fxFlex="20" fxFlex.xs="30" class="mat-list-item-content">
+                  <div class="content">
+                    ${{ tableAndSeatingTicketAmount | number:'1.2-2' }}
+                  </div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem" class="h-auto">
+              <mat-divider></mat-divider>
+              <div fxLayout="column" class="w-100">
+                <div fxLayout="row" class="w-100 mt-3 mb-4">
+                  <div fxFlex="80" fxFlex.xs="70" class="mat-list-item-content">
+                    <div class="input-group">
+                      <input type="text" [(ngModel)]="couponCode" placeholder="Enter Coupon Code"
+                        (blur)="verifyCouponCode()">
+                      <div class="input-group-append">
+                        <span class="input-group-text check-bg" *ngIf="isCodeVeified">
+                          <mat-icon>check</mat-icon>
+                        </span>
+                      </div>
+                    </div>
+                    <!-- <p class="pl-5 coupon">
+                      <input type="text" [(ngModel)]="couponCode" placeholder="Enter Coupon Code"
+                      (blur)="verifyCouponCode()">
+                      Coupon <span class="coupon-clr">"ABC123"</span>  Applied 
+                    </p> -->
+
+                  </div>
+                  <div fxFlex="20" fxFlex.xs="30" fxLayoutAlign="center" class="mat-list-item-content">
+                    <span class="delete-bg">
+                      <mat-icon (click)="removeDiscount()">delete</mat-icon>
+                    </span>
+                  </div>
+                </div>
+
+                <div fxLayout="row" class="w-100 mt-3">
+                  <div fxFlex="80" fxFlex.xs="70" class="mat-list-item-content">
+                    <span class="pr-5">
+                    </span>
+                    Discount
+                  </div>
+                  <div fxFlex="20" fxFlex.xs="30" class="mat-list-item-content">
+                    ${{totalDiscount | number:'1.2-2'}}
+                  </div>
+                </div>
+
+                <div fxLayout="row" class="w-100 py-2">
+                  <div fxFlex="80" fxFlex.xs="70" class="mat-list-item-content">
+                    <span class="pr-5">
+                    </span>
+                    Fees
+                  </div>
+                  <div fxFlex="20" fxFlex.xs="30" class="mat-list-item-content">
+                    ${{fees | number:'1.2-2'}}
+                  </div>
+                </div>
+
+              </div>
+            </mat-list-item>
+
+            <mat-list-item role="listitem">
+              <div fxLayout="row" class="w-100">
+                <div fxFlex="80" fxFlex.xs="70" class="mat-list-item-content font-weight-bold">
+                  <span class="pr-5">
+                  </span>
+                  Total price
+                </div>
+                <div fxFlex="20" fxFlex.xs="30" class="mat-list-item-content font-weight-bold">
+                  ${{totalPrice | number:'1.2-2'}}
+                </div>
+              </div>
+            </mat-list-item>
+
+          </mat-list>
+          <div fxLayout="row" class="w-100 my-5" fxLayoutAlign="center center">
+            <button mat-button type="button" (click)="checkout()"> Checkout </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card>
+</div>

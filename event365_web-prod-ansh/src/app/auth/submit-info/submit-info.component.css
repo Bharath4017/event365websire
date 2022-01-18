@@ -1,0 +1,43 @@
+.textarea-height {
+  margin-top: 4rem;
+  height: auto;
+}
+
+.input-error-wrapper .otp-field-wrapper {
+  width: 28rem;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.input-error-wrapper .otp-field-wrapper .otp-input {
+  width: 4.6rem;
+  height: 4.6rem;
+  min-width: 4.6rem;
+  margin: 0rem 2rem 0 0;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #4b4b4b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.margin-top-8 {
+  margin-top: 8rem;
+}
+/*# sourceMappingURL=submit-info.component.css.map */

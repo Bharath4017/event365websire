@@ -1,0 +1,383 @@
+@import "./mixin";
+@import "./variable";
+
+
+
+* {
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'HelveticaNeueLTPro-Md';
+}
+    
+/*..........default classes..........*/
+p, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+}
+a:hover {
+    text-decoration: none;
+}
+a:focus,
+input:focus,
+button:focus {
+    outline: none;
+}
+button {
+    border:none;
+}
+.form-control:focus {
+    box-shadow: none;
+}
+
+/*..........all pages.......*/
+main {
+    width: 100%;
+    background-color: $background_color;    
+    max-width: 1920px;
+    margin: 0 auto;
+}
+.primary-btn {
+    width: $primary_btn_width;
+    background-color: $primary_btn_color;
+    height: $primary_btn_height;
+    color: $primary_btn_text;
+    font-size: $primary_btn_font;
+    border-radius: $btn_border-radius;
+    text-transform: capitalize;
+    margin: 4.5rem auto;
+}
+.primary-btn:hover {
+    box-shadow: $primary_btn_hover_effect;
+}
+/*............logo.......*/
+
+.logo {
+    width: $logo_font_width;
+    margin-right: .8rem;
+}
+.partlogo {
+    width: 72px;
+}
+.logo-text {
+    font-size: $logo_font_size;
+    color:$logo_font_color;
+} 
+/*............Section..........*/
+.middle-section {
+    width: 100%;
+    height: 49rem;
+    background-color:$background_color;
+    display: flex;
+    justify-content: center;
+}
+
+
+/*...........form block............  */
+.form-block {
+    height: 68rem;
+    background: $form_bg;
+    border-radius: $form_border_radius;
+    padding: $form_padding;
+    box-shadow: $form_shadow;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 18rem;
+}
+// .form-illustration-box {
+//     width: $form-illustration-width;
+//     display: flex;
+// }
+// .form-illustration {
+//     width: 100%;
+// }
+// .form-box {
+//     width: 50%;
+// }g359
+.form-heading {
+    color:$form_heading_color;
+    font-size: $form_heading_font;
+    // font-weight: $form_heading_weight;
+    font-weight: 700;
+    font-family: $secondary_font;
+    letter-spacing: .1rem;
+}
+.tabs-wrapper {
+    width: 10rem;
+    margin-top: 1rem;
+    height: 7rem;
+}
+.tab-lable {
+    font-size: 1.3rem;
+    color:#bfbfbf;
+}
+.tab-list {
+    height: 8rem;
+    margin-top: 1rem;
+    width: 100%;
+    border-bottom: 1px solid #dbdbde;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2rem;
+}
+.tab-icon {
+    width: 6.4rem;
+    margin-right: 2.5rem;
+}
+.tick-icon {
+    width: 2rem;
+    margin-right: 2rem;
+}
+.tab-list-item {
+    font-size: 1.6rem;
+    color: #5d6269;
+    text-transform: capitalize;
+}
+.tab-list-item.active {
+    color: #343a43;
+    font-weight: 600;
+}
+.form-sub-text {
+    color:#9697b5;
+    font-size: 1.4rem;
+    margin: 1.5rem 0;
+}
+/* ...........partner form input...... */
+.form-group-custom {
+    height: 7rem;
+}
+.form-input {
+    height: 4rem;
+    border-radius: 4px;
+    border:1px solid #e1e1e1;
+    font-size: 1.4rem;
+    color:#4b4b4b;
+    font-weight: 400;
+}
+.form-input::placeholder {
+    color:#9697b5;
+}
+.position-relative {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    .input-icon {
+        position: absolute;
+        right: 1rem;
+        width: 2rem;
+        cursor: pointer;
+    }
+}
+.error-msg {
+    color:#ff395a;
+    font-size: 1rem;
+}
+.border-error {
+    border: $input-error-border;
+    box-shadow: $input-error-shadow;
+}
+.forgot-link {
+   // width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: #343a43;
+}
+.input-label {
+    font-size: 1.4rem;
+    color: #715ff2;
+}
+.form-control:focus {
+    border: 1px solid #715ff2;
+}
+.bottom-txt {
+    color:#9697b5;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    font-family: 'HelveticaNeueLTPro-Md';
+}
+.login-in {
+    color:#715ff2;
+    font-size: 1.6rem;
+    text-align: center;
+}
+.btn-margin-decrease {
+    margin: 2rem auto;
+} 
+/*........footer/download............  */
+
+.download-wrapper {
+    width: 100%;
+    background-image: url(../img/download_bg.svg);
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-color: #5961e6;
+}
+.download-inner {
+    height: 11.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+.download-text {
+    width: 30.9rem;
+    color:#ffffff;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.download-btn-wrapper {
+    width: 48.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.download-btn {
+    width: 22.2rem;
+    height: 5.8rem;
+    background-color: #030606;
+    border-radius: 4.1rem;
+    padding: 0 2rem;
+    color:#ffffff;
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.btn-sm-text {
+    font-size: 1rem;
+}
+.btn-xl-text {
+    font-size: 2rem;
+}
+
+/*.............footer/footer main..........  */
+
+
+s
+
+.footer-content:hover {
+    color: #fff;
+    // font-weight: 400;
+}
+.footer-head {
+    height: 6rem;
+    font-size: 1.6rem;
+    font-weight: 200;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.border-none {
+    border-bottom: none;
+}
+
+.flex-footer {
+    display: flex;
+}
+
+//............footer end........... 
+.width-80 {
+    width: 80%;    /* width: 1088px; */
+    margin: 0 auto;
+    // max-width: 108.8rem;
+}
+
+.direct-login-btn {
+    width:32%;
+    padding: 0 16px;
+    height: 3.8rem;
+    border: 1px solid #e1e1e1;
+    font-size: 1rem;
+    color:#4b4b4b;
+    border-radius: 4px;
+    background-color: transparent;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-align: left;
+}
+.direct-login-btn:hover {
+    box-shadow: 0 0 3px #00000029;
+}
+.width-100 {
+    width: 100%;
+}
+.btn-icon {
+    width: 2rem;
+    margin-right: 1.4rem;
+}
+.input-error-wrapper {
+    height: 8rem;
+}
+// .height-auto {
+//     height: auto;
+// }
+@media only screen and (min-width: 1920px) {
+    * {
+        font-size: 14px;
+    }
+    // .form-box {
+    //     width: 45%;
+    // }
+    // .direct-login-btn {
+    //     width: 12.5rem;
+    // }
+}
+  
+// @media only screen and (min-width: 1441px) {
+//     * {
+//         font-size: 12px;
+//     }
+// }
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .form-illustration-box {
+        display: none;
+    }
+    .form-box {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    // .width-80 {
+    //     width: 95%;
+    // }
+    .form-heading-min {
+        font-size: 2.2rem;
+    }
+    .create-ticket-custom{
+        .form-block {
+            padding: 4rem 2rem !important;
+        }
+    }
+    .form-block {
+        padding: 5rem 3rem;
+        top: 25rem;
+    } 
+}
+
+.card-user-image{
+    .avatar-container{
+        width: 7.5rem;
+        height: 7.6rem;
+    }
+}
+
+

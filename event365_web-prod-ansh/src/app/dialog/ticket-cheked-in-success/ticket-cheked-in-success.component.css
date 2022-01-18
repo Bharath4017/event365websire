@@ -1,0 +1,77 @@
+/*for button*/
+/*for font styling*/
+.ticket_checked [mat-dialog-close] {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.ticket_checked .success {
+  width: 75px;
+  height: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #7966fe;
+  border-radius: 50%;
+}
+
+.ticket_checked .success mat-icon {
+  color: #fff;
+  font-size: 36px;
+  height: 36px;
+  width: 36px;
+}
+
+.ticket_checked h1 {
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.76px;
+  color: var(--charcoal-grey);
+}
+
+.ticket_checked .mat-dialog-content {
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 2.75;
+  color: var(--charcoal-grey);
+}
+
+.ticket_checked [mat-button] {
+  height: 40px;
+  background-color: #7966fe;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: caros;
+  width: 150px;
+  height: 50px;
+}
+
+.ticket_checked [mat-button] .mat-button-wrapper {
+  font-size: 17px;
+  font-weight: 100;
+  letter-spacing: 1.7px;
+  line-height: normal;
+}
+
+.ticket_checked .mat-dialog-actions {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=ticket-cheked-in-success.component.css.map */

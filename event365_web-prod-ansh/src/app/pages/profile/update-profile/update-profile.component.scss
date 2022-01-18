@@ -1,0 +1,30 @@
+.profile_wrapper {
+  // @extend.cus_wrapper;
+  .profile_inner {
+    margin-top: -16rem;
+  }
+} 
+.error-msg {
+  margin-bottom: -12px;
+  color: #FF395A;
+  font-size: 1rem;
+}
+.ngx-customise-position
+{
+  position: relative;
+.ngx-customise{
+  .iti input, .iti input[type=text], .iti input[type=tel]{
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    margin-top: 22px !important;
+    font-size: 14px;
+  }
+
+  .iti--allow-dropdown{
+    width: 100%;
+    display: block !important;
+  }
+}
+}
+

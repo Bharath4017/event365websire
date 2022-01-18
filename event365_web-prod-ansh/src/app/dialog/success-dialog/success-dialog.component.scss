@@ -1,0 +1,53 @@
+@import '../../../assets/css/mixin.scss';
+@import '../.././../assets/css/variable.scss';
+
+.ticket_checked{
+    [mat-dialog-close]{
+        font-size: 3rem;
+        color: #9697b5;
+        height: 30px;
+        line-height: 30px;
+        background-color: transparent;
+        font-weight: bold ;
+    }
+    .success{
+        @include replacewidthheight(75px , 75px);
+        @include center_align();
+        background-color: $primary_color;
+        border-radius: 50%;
+        mat-icon{
+            color: #fff;
+            font-size: 42px;
+            height: 42px;
+            width: 42px;
+        }
+    }
+    .error{
+        .mat-icon{
+            color: #f25555;
+            font-size: 32px;
+            height: 32px;
+            width: 32px;
+        }
+      
+    }
+    h1{
+        @include replaceFontStyle(25px, 500, normal, 1.76px, var(--charcoal-grey));
+    }
+    .mat-dialog-content{
+        @include replaceFontStyle(16px, normal, normal,2.75, var(--charcoal-grey));
+    }
+    [mat-button]{
+        @include replacewidth(150px);
+        height: 50px;
+        .mat-button-wrapper{
+            @include replaceFontStyle(17px, 100, 1.7px, normal, inherit);
+           
+        }
+    }
+    .mat-dialog-actions{
+        margin-bottom: 0;
+    }
+}
+
+

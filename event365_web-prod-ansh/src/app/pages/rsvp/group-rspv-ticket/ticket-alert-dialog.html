@@ -1,0 +1,20 @@
+<div fxLayout="column"  class="ticket-alert px-2">
+    <div fxFlex="100" fxLayoutAlign="end center">
+       <button type="button" mat-dialog-close>×</button>
+     </div>
+    <div fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert>
+          <mat-icon>error</mat-icon>
+          <h1>Alert!</h1>
+     </div>
+  
+  <div mat-dialog-content fxFlex="100" fxLayoutAlign="center center">Upon cancelling the ticket, you'll incur
+    cancellation charges. Are you sure you
+    want to cancel this ticket?
+    </div>
+  <div mat-dialog-actions fxFlex="100" fxLayoutAlign="center center">
+    <button mat-button (click)="ticketCancel()"> yes </button>
+    <button mat-button class="ml-2" mat-dialog-close> no</button>
+  </div>
+  
+  </div>
+  

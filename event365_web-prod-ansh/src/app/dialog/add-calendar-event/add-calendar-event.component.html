@@ -1,0 +1,69 @@
+<div fxLayout="column" class="calendar-event">
+    <div fxFlex="100" fxLayoutAlign="end center">
+        <button type="button" mat-dialog-close>×</button>
+    </div>
+    <div fxFlex="100" fxLayout="column" fxLayoutAlign="center center" mat-dialog-alert>
+        <h1> Add to Calendar</h1>
+    </div>
+
+    <div mat-dialog-content fxFlex="100" fxLayoutAlign="space-evenly center" class="my-3">
+
+
+        <div width="40px" height="40px">
+            <img width="40px" height="40px" matTooltip="Google Calendar" matTooltipPosition="above" class="img-fluid"
+                (click)="googleCalendar()" src="../../../assets/img/calender_icon/Google_Calendar_icon.png">
+        </div>
+        <div width="77px" height="23px">
+            <img width="77px" height="23px" matTooltip="Yahoo Calendar" matTooltipPosition="above" class="img-fluid"
+                (click)="yahooCalendar()" src="../../../assets/img/calender_icon/yahoo-svgrepo-com.png">
+        </div>
+
+
+        <div width="52px" height="52px">
+            <img width="52px" height="52px" matTooltip="Outlook Web Calendar" matTooltipPosition="above"
+                class="img-fluid" (click)="outlookCalendar()"
+                src="../../../assets/img/calender_icon/microsoft-outlook.png">
+        </div>
+
+        
+        <!-- <div width="60px" height="60px">
+            <img width="60px" height="60px" matTooltip="Apple Calendar" matTooltipPosition="above" class="img-fluid"
+                src="../../../assets/img/calender_icon/ICloud_logo.png">
+        </div> -->
+
+    </div>
+    <div class="mb-2" fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+        <h1 >or</h1>
+        </div>
+    <div class="my-3" fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+        <span class="text-lowercase" fxLayoutAlign="center center" >
+            <mat-icon class="ml-2"> insert_drive_file</mat-icon>{{eventName}}.ics</span>
+        <!-- <p>
+            <mat-icon> insert_drive_file</mat-icon>
+            invite.ics
+        </p> -->
+        <a class="ml-4" (click)="downloadIcsFile()">Download</a>
+    </div>
+    <div style="margin-top: 8%;" mat-dialog-actions fxFlex="100" fxLayoutAlign="center center">
+        <button mat-button [mat-dialog-close]="true"> Close </button>
+    </div>
+
+</div>
+
+
+
+
+
+<!-- <div fxLayout="column"  class="calendar-event">
+    <div fxFlex="100" fxLayoutAlign="end center">
+    <button type="button" mat-dialog-close>×</button>
+    </div>
+    <div fxFlex="100" fxLayoutAlign="center center">
+        <p class="pb-4"></p>
+    </div>
+    <div fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          
+        </div>
+</div>
+</div> -->

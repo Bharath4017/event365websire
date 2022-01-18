@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22.061" height="22.061" viewBox="0 0 22.061 22.061">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.951" y1="1.25" x2="0.049" y2="-0.25" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5961e6"/>
+      <stop offset="1" stop-color="#b382f5"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_29074" data-name="Group 29074" transform="translate(-15.185 -241.655)">
+    <circle id="Rectangle_1152" data-name="Rectangle 1152" class="cls-1" cx="11.031" cy="11.031" r="11.031" transform="translate(15.185 241.655)"/>
+    <path id="Shape_1" data-name="Shape 1" class="cls-2" d="M1812.194,5346a4.239,4.239,0,0,0-4.195,4.273c0,2.924,3.754,7.216,3.914,7.4a.373.373,0,0,0,.562,0c.16-.181,3.914-4.474,3.914-7.4A4.239,4.239,0,0,0,1812.194,5346Zm0,6.422a2.15,2.15,0,1,1,2.11-2.149A2.133,2.133,0,0,1,1812.194,5352.422Z" transform="translate(-1785.979 -5099.063)"/>
+  </g>
+</svg>

@@ -1,0 +1,147 @@
+/*for button*/
+/*for font styling*/
+.alert_event {
+  display: block !important;
+  padding: 0 28px;
+}
+
+.alert_event [mat-dialog-close] {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+}
+
+.alert_event [mat-dialog-alert] {
+  min-height: 3rem;
+  color: #343a43;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.alert_event [mat-button] {
+  height: 40px;
+  background-color: #7966fe;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: 'HelveticaNeueLTPro-Md';
+  width: 188px;
+  height: 48px;
+  text-transform: capitalize;
+  margin-bottom: 3rem;
+  font-weight: 100;
+  letter-spacing: 1.4px;
+}
+
+.alert_event [matprefix] {
+  font-size: 16px;
+  width: 96px;
+  color: #818181;
+  position: relative;
+  font-family: var(--font-Caros);
+}
+
+.alert_event [matprefix]:after {
+  content: "";
+  height: 42px;
+  width: 1px;
+  background-color: #9f9f9f;
+  position: absolute;
+  top: -13px;
+  z-index: 999999999;
+  right: 0;
+  opacity: 0.29;
+}
+
+.alert_event .mobileinput.mat-input-element {
+  padding-left: 26px;
+}
+
+.alert_event .mat-dialog-content .circle-error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Caros;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: normal;
+  color: var(--charcoal-grey);
+}
+
+.alert_event .mat-dialog-content .circle-error .mat-icon {
+  color: #f25555;
+}
+
+.alert_event .mat-dialog-content .paragraph {
+  opacity: 0.74;
+  font-family: Caros;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: var(--charcoal-grey);
+}
+
+.alert_event .mat-dialog-content p {
+  opacity: 0.74;
+  font-family: Caros;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: var(--charcoal-grey);
+}
+
+.alert_event .mat-dialog-content .con-det {
+  opacity: 0.82;
+  font-family: Caros;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.25;
+  letter-spacing: 0.32px;
+  color: var(--black);
+}
+
+.alert_event .mat-dialog-content .mat-form-field-wrapper {
+  padding: 0;
+  margin-top: 18px;
+}
+
+.alert_event .mat-dialog-content .mat-form-field-wrapper .mat-form-field-underline {
+  display: none;
+}
+
+.alert_event .mat-dialog-content .mat-form-field-wrapper .mat-form-field-flex {
+  border-radius: 4px;
+  border: solid 1px #e1e1e1;
+  padding: 13px 12px 11px 15px;
+}
+
+.alert_event .mat-dialog-content .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+  border: unset;
+  padding: 0;
+}
+
+.alert_event .mat-dialog-content .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-input-element {
+  font-size: 14px;
+  opacity: 0.6;
+  height: 18px;
+  color: var(--charcoal-grey);
+  font-family: var(--font-Caros);
+}
+
+.alert_event .mat-dialog-content .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-input-element:focus {
+  opacity: 1;
+}
+/*# sourceMappingURL=alertevent.component.css.map */

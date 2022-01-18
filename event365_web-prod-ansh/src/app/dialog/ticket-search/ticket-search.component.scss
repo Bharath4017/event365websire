@@ -1,0 +1,41 @@
+@import '../../../assets/css/mixin.scss';
+.ticket-search{
+    [mat-dialog-close]{
+        font-size: 3rem;
+        color: #9697b5;
+        height: 30px;
+        line-height: 30px;
+        background: transparent;
+        font-weight: bold;
+    }
+    h2{
+        @include replaceFontStyle(20px, bold, 0.42px, normal, var(--charcoal-grey));
+    }
+    p{
+        @include replaceFontStyle(16px, normal, normal, normal, var(--charcoal-grey));
+    }
+
+    input.mat-input-element{
+        @include replaceFontStyle(18px, normal, 0.99px, 1.44, var(--charcoal-grey));
+    }
+   .cancel{
+    @include replacewidth(150px);
+    background-color: #9697b5;
+    height: 50px;
+    .mat-button-wrapper{
+        @include replaceFontStyle(17px, 100, 1.7px, normal, inherit);
+    }
+   } 
+   .submit{
+    @include replacewidth(150px);
+    height: 50px;
+    .mat-button-wrapper{
+        @include replaceFontStyle(17px, 100, 1.7px, normal, inherit);
+       
+    }
+   }
+
+}  
+
+ 
+

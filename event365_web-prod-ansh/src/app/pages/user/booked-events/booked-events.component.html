@@ -1,0 +1,71 @@
+<div class="height-auto booked-event-card">
+  <div class="width-80">
+    <div class="Favourte-top-section mt-5">
+      <div class="favourte-tabs mb-4">
+        <button class="invite-tabs-btn" [ngClass]="{'active': selectedEventType === 1}" (click)="upcomingEvent()">
+          {{ STRINGS.eventInfo.coming }}
+        </button>
+        <button class="invite-tabs-btn" [ngClass]="{'active': selectedEventType === 2 }" (click)="attendedEvent()">
+          {{ STRINGS.bookedEvent.attended }}
+        </button>
+      </div>
+      <!-- --------------Cards-------------->
+      <div class="card-row mt-5" *ngIf="selectedEventType === 1">
+        <div class="card-box" *ngFor="let events of upcomingBookedEvents" (click)="redirect(events.id)">
+          <div class="card-image" [ngStyle]="{'background-image': events.eventImages[0]?.eventImage
+                    ? 'url(' + events.eventImages[0]?.eventImage + ')'
+                    : ''
+                }">
+            <div class="calender">
+              <p class="date">
+                {{ events?.start | date: "dd" }}
+                <span class="month">{{ events?.start | date: "MMM" }}</span>
+              </p>
+            </div>
+          </div>
+          <div class="card-details">
+            <h1 class="event-name">{{events?.name}}</h1>
+            <div fxLayout="row">
+              <p class="card-detail-p1" fxFlex="50"><img src="../../../../assets/img/clock.svg"
+                  class="mr-3">{{ events?.start | date: "hh:mm a" }}</p>
+              <p class="card-detail-p-blue" fxFlex="50" fxLayoutAlign="end end">
+                {{ events.daysToGo }} days to go
+              </p>
+            </div>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-row mt-5" *ngIf="selectedEventType === 2">
+        <div class="card-box" *ngFor="let events of attendedBookedEvents" (click)="redirect(events.id)">
+          <div class="card-image" [ngStyle]="{
+            'background-image': events.eventImages[0]?.eventImage
+                ? 'url(' + events.eventImages[0]?.eventImage + ')'
+                : ''
+            }">
+            <div class="calender">
+              <p class="date">
+                {{ events?.start | date: "dd" }}
+                <span class="month">{{ events?.start | date: "MMM" }}</span>
+              </p>
+            </div>
+          </div>
+          <div class="card-details">
+            <h1 class="event-name">{{events?.name}}</h1>
+            <div fxLayout="row">
+              <p class="card-detail-p1" fxFlex="50">
+                <img src="../../../../assets/img/clock.svg" width="17.8px" height="17.8px"
+                  class="mr-3">{{ events?.start | date: "hh:mm a" }}
+              </p>
+              <p class="card-detail-p-blue" fxFlex="50" fxLayoutAlign="end end"  >
+                {{ todayDateComparision(events?.end ) }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxlayout="row" *ngIf="dataNotFound" class="w-100">
+        <p class="datanotFound px-2">{{STRINGS.dataNotFound.dataNfound}}</p>
+      </div>
+    </div>

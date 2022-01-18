@@ -1,0 +1,29 @@
+<div fxLayout="column" class="call_us" fxLayoutGap="8px">
+    <div fxFlex="100" fxLayoutAlign="end center"> 
+        <button type="button" mat-dialog-close>×</button>
+    </div>
+    <div mat-dialog-content fxFlex="100" fxLayoutAlign="center center">{{STRINGS.contactUs.callMsg}}</div>
+    <div class="contact-info" fxLayout="column" fxLayoutGap="14px">
+        <div mat-dialog-actions fxFlex="100" >
+            <mat-icon class="succes">phone</mat-icon>
+            <div  fxLayout="column" >
+                <p class="phone font-weight-normal">{{STRINGS.contactUs.customerSupport}}</p>
+                <p class="phone">{{STRINGS.contactUs.customerSupportNumber}}</p>
+            </div>
+        </div>
+        <div mat-dialog-actions fxFlex="100" >
+            <mat-icon class="succes">phone</mat-icon>
+            <div class="phone" fxLayout="column" >
+                <p class="phone font-weight-normal">{{STRINGS.contactUs.hostPromoter}}</p>
+                <p class="phone">{{STRINGS.contactUs.hostPromoterNumber}}</p>
+            </div>
+        </div>
+        <div class="social-icon mb-3" mat-dialog-actions fxFlex="100" >
+           <p class="phone ml-sm-5">{{STRINGS.contactUs.reachVia}} :  </p>
+           <a href="https://www.instagram.com/365liveapp/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram instagram"></i></a> 
+           <a href= "https://www.facebook.com/365liveapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f facebook"></i></a> 
+           <a href="https://twitter.com/365liveapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter twitter"></i></a> 
+        </div>
+    </div>
+  
+</div>

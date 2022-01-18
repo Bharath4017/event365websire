@@ -1,0 +1,218 @@
+<div class="rspvdialog" *ngIf="!checkedIn">
+  <div fxLayout="column">
+    <div fxFlex="100" fxLayoutAlign="end center">
+      <button type="button" mat-dialog-close>×</button>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.lt-md="column" class="p-4" fxLayoutGap="60px"
+    *ngFor="let data of UserDetails; let i = index">
+    <mat-spinner diameter="60" *ngIf="loading"></mat-spinner>
+    <div fxFlex="40" fxFlex.xs="100" fxLayoutAlign="start start" fxLayout="column">
+      <div fxLayout="row">
+        <img src="{{ DefoultImageSrc }}" [src]="data?.users.profilePic ? data?.users.profilePic : DefoultImageSrc"
+          class="mr-3 rounded-lg" width="140" height="140" />
+        <p class="p-3 mt-3 name">{{ data.users.name }}</p>
+      </div>
+      <mat-list role="list" class="pt-4">
+        <mat-list-item role="listitem" class="pt-4">
+          <span>
+            <img width="32" height="32" [src]="mail" class="pr-3" />
+          </span>
+          {{ data.users.email }}
+        </mat-list-item>
+        <mat-list-item role="listitem" class="pt-4">
+          <span>
+            <img width="34" height="34" [src]="phonecall" class="pr-3" />
+          </span>
+          {{ data.users.phoneNo }}
+        </mat-list-item>
+        <mat-list-item role="listitem" class="pt-4">
+          <span>
+            <img [src]="locationon" class="pr-3" width="32" height="32" />
+          </span>
+          {{ data.users.address }}
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div fxFlex="60" mat-dialog-alert class="mr-md-5">
+      <div class="cus_wrapper_swiper">
+        <h1 class="group_ticket_h">{{ STRINGS.groupTicket.labelGroup }}</h1>
+        <swiper class="swiper-container event-image-slider" [config]="config">
+          <div fxLayout="column" class="ticket_info" *ngFor="let ticket_info of data.ticket_number_booked_rel"
+            [ngStyle]="{
+           'background-image': data.events.eventImages[0]?.eventImage
+           ? 'url(' + data.events.eventImages[0]?.eventImage + ')' : ''}">
+            <div fxLayout="row" class="innerTicket">
+              <div fxFlex="50">
+                <img width="77.99px" height="77.99px" src="../../../../assets/img/qr-code.png">
+              </div>
+              <div fxFlex="50" fxLayout="column" fxLayoutAlign="start start" class="pt-3">
+                <img class="img-fluid mb-3" src="../../../../assets/img/blurtext.png" alt="">
+              </div>
+            </div>
+
+            <div class="manage-content">
+              <h2>{{data.events.name}}</h2>
+              <h3>Event Code : #{{data.events.eventCode}}</h3>
+              <mat-list role="list" class="">
+                <mat-list-item role="listitem">
+                  <span class="pr-3">
+                    <img width="20" height="20" [src]="clock" />
+                  </span>
+                  {{data.events.start | date:'dd MMM,yyyy'}} <span class="px-2 px-sm-4"> | </span>
+                  {{data.events.start | date:'shortTime'}} - {{data.events.end | date:'shortTime' }}
+                </mat-list-item>
+                <mat-list-item role="listitem" *ngFor="let dataaddress of data.events.venueEvents" class="listaddress">
+                  <span class="pr-3">
+                    <img width="20" height="20" src="../../../../assets/img/location.svg" alt="">
+                  </span>
+                  {{ dataaddress.venueAddress }}
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                  <span class="pr-3">
+                    <img width="20" height="20" src="../../../../assets/img/ticket.svg" alt="">
+                  </span>
+                  {{data.ticketType}} - {{ data.pricePerTicket | currency:''}}
+                </mat-list-item>
+              </mat-list>
+
+              <div class="code_gene">
+                <!-- <quill-view-html class="mt-4" [content]="data.events.description" theme="snow"></quill-view-html> -->
+                <p class="mt-2 listdsc">{{  data.ticket_info[0].description }}</p>
+                <p class="mt-4"> Ticket is masked & will be allowed
+                  to scanned at entry</p>
+                <div  fxLayoutAlign="center center" class="rsvp-btn-div">
+                  <button class="bg-success cursor-not-allowed"
+                    *ngIf='ticket_info?.status == "checkedIn"'>CheckedIn</button>
+                  <button class="cursor-not-allowed rsvp-cancel-btn" *ngIf='ticket_info?.status == "cancelled"'>cancelled!</button>
+                  <button class="rsvp-cancel-btn" *ngIf='ticket_info?.status == "booked" || ticket_info?.status == "notCheckedIn"'
+                    (click)="cancelTicket(data?.id, ticket_info?.id, data?.QRkey)">cancel</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </swiper>
+        <button class="button-prev swiper-cus" id="button-prev-swiper">
+          <img src="../../../assets/img/btn-prev.png" alt="">
+        </button>
+        <button class="button-next swiper-cus" id="button-next-swiper">
+          <img src="../../../assets/img/btn-next.png" alt="">
+        </button>
+      </div>
+      <!--  -->
+    </div>
+  </div>
+</div>
+<div class="rspvdialog" *ngIf="checkedIn">
+  <div fxLayout="column">
+    <div fxFlex="100" fxLayoutAlign="end center">
+      <button type="button" mat-dialog-close>×</button>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.lt-md="column" class="p-sm-4" fxLayoutGap="60px">
+    <div fxFlex="40">
+      <mat-spinner diameter="60" *ngIf="loading"></mat-spinner>
+      <span *ngFor="let data of UserDetails; let i = index">
+        <div fxLayout="row">
+          <img src="{{ DefoultImageSrc }}" [src]="data?.users.profilePic ? data?.users.profilePic : DefoultImageSrc"
+            class="mr-3 rounded-lg" width="140" height="140" />
+          <p class="p-3 mt-3 name">{{ data.users.name }}</p>
+        </div>
+        <mat-list role="list" class="pt-4">
+          <mat-list-item role="listitem" class="pt-4">
+            <span>
+              <img width="32" height="32" [src]="mail" class="pr-3" />
+            </span>
+            {{ data.users.email }}
+          </mat-list-item>
+          <mat-list-item role="listitem" class="pt-4">
+            <span>
+              <img width="34" height="34" [src]="phonecall" class="pr-3" />
+            </span>
+            <span *ngIf="data.users.phoneNo == '' || data.users.phoneNo ==  'null'">
+              Na
+            </span>
+            {{ data.users.phoneNo }}
+          </mat-list-item>
+          <mat-list-item role="listitem" class="pt-4 listaddress">
+            <span>
+              <img [src]="locationon" class="pr-3" width="32" height="32" />
+            </span>
+            {{ data.users.address }}
+
+          </mat-list-item>
+        </mat-list>
+      </span>
+    </div>
+    <div fxFlex="60" mat-dialog-alert class="mr-md-5">
+      <div class="cus_wrapper_swiper">
+        <h1 class="group_ticket_h">{{ STRINGS.groupTicket.labelGroup }}</h1>
+        <swiper class="swiper-container event-image-slider" [config]="config">
+          <div fxLayout="column" class="ticket_info" [ngStyle]="{
+            'background-image': UserInfo.events.eventImages[0]?.eventImage
+            ? 'url(' + UserInfo.events.eventImages[0]?.eventImage + ')' : ''}"
+            *ngFor="let tickets of UserInfo.ticket_number_booked_rel">
+            <div class="manage-content">
+              <h2>{{UserInfo.events.name}}</h2>
+              <h3>Event Code : #{{UserInfo.events.eventCode}}</h3>
+              <mat-list role="list" class="">
+                <mat-list-item role="listitem">
+                  <span class="pr-3">
+                    <img width="20" height="20" [src]="clock" />
+                  </span>
+                  {{UserInfo.events.start | date:'dd MMM,yyyy'}} <span class="px-4"> | </span>
+                  {{UserInfo.events.start | date:'shortTime'}} - {{UserInfo.events.end | date:'shortTime' }}
+                </mat-list-item>
+                <mat-list-item role="listitem" *ngFor="let dataaddress of UserInfo.events.venueEvents"
+                  class="listaddress">
+                  <span class="pr-3">
+                    <img width="20" height="20" src="../../../../assets/img/location.svg" alt="">
+                  </span>
+                  <span>
+                  </span>
+                  {{ dataaddress.venueAddress }}
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                  <span class="pr-3">
+                    <img width="20" height="20" src="../../../../assets/img/ticket.svg" alt="">
+                  </span>
+                  {{UserInfo.ticketType}} - {{ UserInfo.pricePerTicket | currency:''}}
+                </mat-list-item>
+              </mat-list>
+              <span  *ngFor="let tick of UserInfo.ticket_info"> 
+              <p class="mb-2 listaddress listdsc">{{  tick.description}}</p>
+
+            </span>
+              <div fxLayout="row" class="innerTicket"
+                *ngIf='tickets.status == "booked" || tickets.status == "notCheckedIn"'>
+                <div fxFlex="50">
+                  <img width="77.99px" height="77.99px" src="../../../../assets/img/qr-code.png">
+                </div>
+                <div fxFlex="50" fxLayout="column" fxLayoutAlign="start start" class="pt-3">
+                  <img class="img-fluid mb-3" src="../../../../assets/img/blurtext.png" alt="">
+                </div>
+              </div>
+              <div fxLayout="row" class="innerTicketRel" fxLayoutGap="10px"
+                *ngIf='tickets.status == "checkedIn" || tickets.status == "cancelled"'>
+                <div fxFlex="50">
+                  <ngx-qrcode cssClass="Custom_qr" [value]="tickets.QRCode"> </ngx-qrcode>
+                </div>
+                <div fxFlex="50" fxLayout="column" fxLayoutAlign="start start" class="pt-3">
+                  <p>{{ tickets.ticketNumber}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </swiper>
+        <button class="button-prev swiper-cus" id="button-prev-swiper">
+          <img src="../../../assets/img/btn-prev.png" alt="">
+        </button>
+        <button class="button-next swiper-cus" id="button-next-swiper">
+          <img src="../../../assets/img/btn-next.png" alt="">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="payment-main-wrapper">
+    <div class="section-top">
+        <h2 class="section-heading">
+            {{ STRINGS.paymentMethods.addNewCard }}
+        </h2>
+    </div>
+    <form [formGroup]="paymentForm" class="form-wrapper">
+        <div class="form-group form-row">
+            <label class="card-input-lable">
+                {{ STRINGS.paymentMethods.cardNumber }}
+            </label>
+            <div class="card-input-box">
+                <input type="text" class="form-control" formControlName="cardnumber" id="cardNumber"
+                    placeholder="{{ STRINGS.paymentMethods.placeHolder }}" name="card-number">
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <label class="card-input-lable">
+                {{ STRINGS.paymentMethods.expDate }}
+            </label>
+            <div class="card-input-box">
+                <input type="text" class="form-control" formControlName="expDate" id="expDate" name="exp-date">
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <label class="card-input-lable">
+                {{ STRINGS.paymentMethods.cvv }}
+            </label>
+            <div class="card-input-box">
+                <input type="text" class="form-control" formControlName="cvv" id="cvv" name="cvv">
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <label class="card-input-lable">
+                {{ STRINGS.paymentMethods.billingAddress }}
+            </label>
+            <div class="card-input-box textarea-height">
+                <textarea class="form-control" rows="3" id="comment"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group form-row textarea-height">
+            <label class="card-input-lable hide">
+            </label>
+            <button type="submit" class="primary-btn" (click)="onsubmit()">
+                {{ STRINGS.buttons.process }}
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- <h2>Payment Request Button</h2>
+<ngx-stripe-payment-request-button
+  [paymentOptions]="paymentRequestOptions"
+  (paymentMethod)="onPaymentMethod($event)"
+  (shippingaddresschange)="onShippingAddressChange($event)"
+  (notavailable)="onNotAvailable()"
+></ngx-stripe-payment-request-button> -->
+
+<h2>Create Token Example</h2>
+<ngx-stripe-card
+  [options]="cardOptions"
+  [elementsOptions]="elementsOptions"
+></ngx-stripe-card>
+<button type="submit" (click)="createToken()">
+  CREATE TOKEN
+</button>

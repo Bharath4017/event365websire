@@ -1,0 +1,10 @@
+.login_wrapper .mat-card {
+    margin-bottom: 8rem;
+}
+
+@media only screen and (max-width: 500px) {
+    .login_wrapper .mat-card {
+        margin-top: -15rem!important;
+    }
+    
+}

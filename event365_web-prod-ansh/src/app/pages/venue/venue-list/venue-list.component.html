@@ -1,0 +1,133 @@
+<div class="blanK-section d-block mb-4">
+  <div class="venue-list-wrapper">
+    <mat-card class="event-detail-card width-80">
+      <div *ngIf="venueOwner" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="right center">
+        <div class="header" fxFlex="80" fxFlex.lt-md="100" fxFlex.lt-sm="100" ngClass.lt-sm="mb-4">
+          <mat-form-field class="matinput-space cus-seach" floatLabel="never" appearance="standard">
+            <input matInput (click)="nevigateSearch()" type="text" placeholder="Search nearby venue">
+            <button type="button" mat-button mat-icon-button aria-label="input-search">
+              <mat-icon fxLayoutAlign="end end">search</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div fxFlex="20" fxFlex.lt-md="50" fxFlex.lt-sm="100" fxLayoutAlign="start center">
+          <button class="create-btn" routerLink="/venue/create">+ Create Venue</button>
+        </div>
+      </div>
+      <div *ngIf="!venueOwner" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="right center">
+        <div class="header" fxFlex="100" fxFlex.lt-md="50" fxFlex.lt-sm="100" ngClass.lt-sm="mb-4">
+          <div class="mat-form-field matinput-space cus-seach" floatLabel="never" appearance="standard">
+            <input fxFlex="100" matInput (click)="nevigateSearch()" type="text" placeholder="Search nearby venue">
+            <button type="button" mat-button mat-icon-button aria-label="input-search">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="100">
+          <h1>Previously Used</h1>
+        </div>
+      </div>
+      <div fxLayout="row wrap" class="booked-cards">
+        <div fxFlex="32" fxFlex.xs="100"  fxFlex.sm="100" fxFlex.md="48" class="mb-5"
+          *ngFor="let venue of venueList?.previouslyUsed" class="cursor_pointer booked-event-card-custom">
+          <div routerLink="../detail/{{venue.id}}" class="card-image" [ngStyle]="{
+                        'background-image': venue.venueImages[0]?.venueImages
+                          ? 'url(' + venue.venueImages[0]?.venueImages + ')'
+                          : ''
+                      }">
+                      <span class="no-image" *ngIf = "venue?.venueImages?.length ==0"><p>No Image</p></span>
+          </div>
+          <div class="event-name-time">
+            <h4>{{(venue.venueName.length>30)?(venue.venueName | slice:0:29)+'...':(venue.venueName)}}</h4>
+            <div class="event-time">
+              <mat-icon> location_on</mat-icon>
+              <p>{{(venue.venueAddress.length>30)?(venue.venueAddress | slice:0:29)+'...':(venue.venueAddress) }}</p>
+            </div>
+            <div class="select-button" fxLayoutGap="20px" fxLayout="row">
+              <div fxFlex="50">
+                <a routerLink="../detail/{{venue.id}}" mat-flat-button> View Detail</a>
+              </div>
+              <div fxFlex="50">
+                <button (click)="getVenueDetail(venue.id)" class="venue-select-button">Select</button>
+              </div>
+            </div>
+          </div>
+          <div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="venueOwner">
+        <div fxLayout="row">
+          <div fxFlex="100">
+            <h1>My Venues</h1>
+          </div>
+        </div>
+        <div fxLayout="row wrap" class="booked-cards">
+          <div fxFlex="32" fxFlex.xs="100" routerLink="../detail/{{venue.id}}" fxFlex.sm="47" fxFlex.md="31"
+            class="mb-5" *ngFor="let venue of venueList.myVenues" class="cursor_pointer booked-event-card-custom">
+            <div class="card-image" [ngStyle]="{
+                            'background-image': venue.venueImages[0]?.venueImages
+                              ? 'url(' + venue.venueImages[0]?.venueImages + ')'
+                              : ''
+                          }">
+                          <span class="no-image" *ngIf = "venue?.venueImages?.length ==0"><p>No Image</p></span>
+            </div>
+            <div class="event-name-time">
+              <h4>{{(venue.venueName.length>30)?(venue.venueName | slice:0:29)+'...':(venue.venueName)}}</h4>
+              <div class="event-time">
+                <mat-icon> location_on</mat-icon>
+                <p>{{(venue.venueAddress.length>30)?(venue.venueAddress | slice:0:29)+'...':(venue.venueAddress) }}</p>
+              </div>
+              <!-- <a routerLink="../detail/{{venue.id}}" mat-flat-button> View Detail</a> -->
+              <div class="select-button" fxLayoutGap="20px" fxLayout="row">
+                <div fxFlex="50">
+                  <a routerLink="../detail/{{venue.id}}" mat-flat-button> View Detail</a>
+                </div>
+                <div fxFlex="50">
+                  <button (click)="getVenueDetail(venue.id)" class="venue-select-button">Select</button>
+                </div>
+              </div>
+            </div>
+            <div>
+            </div>
+          </div>
+        </div>
+        <div class="width-80" fxLayout="column" fxLayoutAlign="center center"
+          *ngIf="venueList?.myVenues?.length === 0 ">
+          <div>
+            <h4>No Venue Available</h4>
+          </div>
+        </div>
+        <!-- <h1>My Venue</h1>
+            <div class="row">
+                <div style="margin-top: 2%;" class="col-sm-4" >
+                    <mat-card  routerLink="../detail/{{venue.id}}" class="mat-event" matRipple>
+                        <h2 *ngIf="venue?.venueImages?.length == 0"  fxLayoutAlign="center center" style="object-fit: fill;  color: white;" class="related-event-img">No image</h2>
+                        <span style="object-fit: fill;"  *ngFor="let img of venue.venueImages">
+                            <img  style="object-fit: fill;" class="related-event-img" src={{img.venueImages}} alt="">
+                            </span>
+                        <div class="event-name-time">
+                            <h4>{{(venue.venueName.length>30)?(venue.venueName | slice:0:29)+'...':(venue.venueName)}}</h4>
+                            <div class="event-time">
+                                <mat-icon> location_on</mat-icon>
+                                <p>{{(venue.venueAddress.length>30)?(venue.venueAddress | slice:0:29)+'...':(venue.venueAddress) }}</p>
+                            </div>
+                            <a  routerLink="../detail/{{venue.id}}" mat-flat-button> View Detail</a>
+                        </div>
+                    </mat-card>
+                </div>
+                <div  class="width-80" fxLayout="column" fxLayoutAlign="center center"
+                 *ngIf="venueList?.myVenues?.length === 0 ">
+                    <div >
+                        <h4>No Venue Available</h4>
+                    </div>
+            </div>
+            </div>
+                </div> -->
+      </div>
+    </mat-card>
+  </div>
+</div>
+<!-- share button-->

@@ -1,0 +1,165 @@
+.main-div {
+  position: relative;
+  width: 421.5px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+
+.main-div .close-btn {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  cursor: pointer;
+}
+
+.disabled {
+  color: #b0b2b5 !important;
+}
+
+.header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 12px;
+}
+
+.header .alert-icon {
+  color: #f25555;
+}
+
+.header h4 {
+  font-family: 'Caros';
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 2.2;
+  color: #343a43;
+}
+
+.modal-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+
+.modal-body h4 {
+  font-family: 'Caros';
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 0.5;
+  letter-spacing: 1px;
+  color: #343a43;
+}
+
+.modal-body .checkbox {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+}
+
+.modal-body .checkbox input {
+  margin-left: 60px;
+  width: 25px;
+  height: 25px;
+}
+
+.modal-body .checkbox p {
+  font-family: 'Caros';
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.88;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343a43;
+}
+
+.modal-body .hint-msg {
+  padding-left: 40px;
+}
+
+.modal-body p {
+  width: 100%;
+  text-align: left;
+  font-family: 'Caros';
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  color: #ff607a;
+}
+
+.modal-venue-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 28px;
+}
+
+.modal-venue-footer button {
+  width: 154.8px;
+  height: 49.5px;
+  border-radius: 75.8px;
+  font-family: 'Caros';
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 1.8px;
+}
+
+.modal-venue-footer button:nth-child(1) {
+  background: rgba(160, 152, 221, 0.3);
+  color: #343a43;
+}
+
+.modal-venue-footer button:nth-child(2) {
+  background: #7966fe;
+  color: #fff;
+}
+/*# sourceMappingURL=sub-venue-avaliable-alert.component.css.map */

@@ -1,0 +1,49 @@
+<section  *ngIf="!showSubCategory" class="middle-section addprefences width-80">
+    <h2 class="section-heading">
+        {{ STRINGS.preferences.sectionHeading }}
+    </h2>
+    <div class="tag-wrapper">
+        <div class="tab-box" *ngFor="let item of selectedCategory; let i = index">
+            {{ item.categoryName }}
+<img src="../../../../../assets/img/cancel@2x.png" class="cancel-icon" (click)="deletePreference(i)" />
+        </div>
+    </div>
+    <div class="white-box">
+        <!--.............. for bubbles...............-->
+        <div class="bubble-box">
+            <p id="dynamic_{{i}}" class="bubble" *ngFor="let item of categoryList; let i = index" (click)="selectCategory(item)" [ngClass]="{ 'opacity-min': selectedCategory.includes(item) }">
+                <span class="bubble-text">{{ item.categoryName | preferenceCategory}}</span>
+                <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+            </p>
+        </div>
+
+    <div style="text-align: center">
+      <button (click) = "fetchsubCategory()" class="primary-btn" [class.diableNext]="selectedCategory.length <= 0" [disabled]="selectedCategory.length <= 0">{{ STRINGS.buttons.next }}</button>
+    </div>
+    </div>
+</section>
+
+<section  *ngIf="showSubCategory" class="middle-section width-80">
+    <h2 class="section-heading">
+        <!-- {{ STRINGS.preferences.sectionHeading }} --> Select Sub Category
+    </h2>
+    <div class="tag-wrapper">
+        <div class="tab-box" *ngFor="let item of selectedsubCategory; let i = index">
+            {{ item.subCategoryName }}
+            <img src="../../../../../assets/img/cancel@2x.png" class="cancel-icon" (click)="deletesubCategory(i)"  />
+        </div>
+    </div>
+    <div class="white-box">
+        <!--.............. for bubbles...............-->
+        <div class="bubble-box">
+            <p id="dynamic_{{i}}" class="bubble" *ngFor="let item of subCategory; let i = index" (click)="selectsubCategory(item)" [ngClass]="{ 'opacity-min': selectedsubCategory.includes(item) }">
+                <span class="bubble-text">{{ item.subCategoryName | preferenceCategory}}</span>
+                <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+            </p>
+        </div>
+
+    <div style="text-align: center">
+      <button  (click) = "submitPreference()" class="primary-btn">{{ STRINGS.buttons.submit }}</button>
+    </div>
+    </div>
+</section>

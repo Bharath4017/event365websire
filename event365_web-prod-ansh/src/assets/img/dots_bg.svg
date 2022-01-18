@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1367" height="598" viewBox="0 0 1367 598">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        opacity: 0.57;
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" width="1367" height="598"/>
+    </clipPath>
+    <image id="image" width="175" height="175" xlink:href="data:image/png;base64,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"/>
+  </defs>
+  <g id="Dot_icon" data-name="Dot icon" class="cls-2">
+    <g transform="translate(0 -800)">
+      <use id="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(175 -800)">
+      <use id="img-dot-bg-2" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(350 -800)">
+      <use id="img-dot-bg-3" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(525 -800)">
+      <use id="img-dot-bg-4" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(700 -800)">
+      <use id="img-dot-bg-5" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(875 -800)">
+      <use id="img-dot-bg-6" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(1050 -800)">
+      <use id="img-dot-bg-7" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(1225 -800)">
+      <use id="img-dot-bg-8" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(0 -625)">
+      <use id="img-dot-bg-9" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(175 -625)">
+      <use id="img-dot-bg-10" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(350 -625)">
+      <use id="img-dot-bg-11" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(525 -625)">
+      <use id="img-dot-bg-12" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(700 -625)">
+      <use id="img-dot-bg-13" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(875 -625)">
+      <use id="img-dot-bg-14" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(1050 -625)">
+      <use id="img-dot-bg-15" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(1225 -625)">
+      <use id="img-dot-bg-16" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(0 -450)">
+      <use id="img-dot-bg-17" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(175 -450)">
+      <use id="img-dot-bg-18" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(350 -450)">
+      <use id="img-dot-bg-19" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(525 -450)">
+      <use id="img-dot-bg-20" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(700 -450)">
+      <use id="img-dot-bg-21" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(875 -450)">
+      <use id="img-dot-bg-22" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(1050 -450)">
+      <use id="img-dot-bg-23" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(1225 -450)">
+      <use id="img-dot-bg-24" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(0 -275)">
+      <use id="img-dot-bg-25" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(175 -275)">
+      <use id="img-dot-bg-26" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(350 -275)">
+      <use id="img-dot-bg-27" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(525 -275)">
+      <use id="img-dot-bg-28" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(700 -275)">
+      <use id="img-dot-bg-29" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(875 -275)">
+      <use id="img-dot-bg-30" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(1050 -275)">
+      <use id="img-dot-bg-31" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+    <g transform="translate(1225 -275)">
+      <use id="img-dot-bg-32" data-name="img-dot-bg" transform="translate(0 800)" xlink:href="#image"/>
+    </g>
+  </g>
+</svg>

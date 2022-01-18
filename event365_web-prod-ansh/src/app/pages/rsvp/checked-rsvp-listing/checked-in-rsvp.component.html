@@ -1,0 +1,64 @@
+<div class="rspv_wrapper">
+    <mat-card>
+       <div fxLayout="row"  fxLayoutAlign="start center" fxLayoutGap.lt-md="10px" fxLayoutGap="24px">
+           <div fxFlex="60"   fxFlex.lt-sm="50" fxFlex.lt-md="50" fxFlex.lt-lg="60">
+            <div fxLayout="row wrap"  fxLayoutAlign.md="start center"> 
+                <mat-checkbox [checked]="allChecked" (change)="checkedAll($event.checked)">
+                    {{checkboxLabel.name}}
+               </mat-checkbox>
+               <span *ngFor="let checkbox of checkboxLabel.Label">  
+                <mat-checkbox [checked]="checkbox.isChecked"   [value]="checkbox.value"   [(ngModel)]="checkbox.isChecked" (change)="applyFilter()">
+                    {{checkbox.name}}
+                </mat-checkbox>
+               </span>
+            </div>
+           </div>
+           <div fxFlex="40"  fxFlex.lt-md="50"  fxFlex.lt-sm="50">
+               <mat-form-field  class="matinput-space cus-seach" floatLabel="never" appearance="standard">
+                     <input  matInput  placeholder="Search" #filter_name name="filter_name" (keyup)="applyinputFilter($event)">
+                     <button type="button" mat-button mat-icon-button aria-label="input-search">
+                       <img src="{{searchImage }}">
+                    </button>
+                 </mat-form-field>
+           </div>
+       </div>
+       <div fxLayout="row"  fxLayoutAlign="center center">
+           <div fxFlex="100" fxLayoutAlign="end center">
+                   <button mat-button class="ticket-btn" (click)="serachTicket()">{{STRINGS.RspvCheckbox.searchLabel}}</button>
+           </div>
+   
+       </div>
+       <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between space-between" class="mt-4" >
+        <div  fxFlex="49%" fxFlex.xs="100"  fxFlex.lt-md="100"  class="rspvlisting"   *ngFor="let data of getCheckedList;">
+          <mat-card fxLayoutAlign="start center" class="shadow-none mb-4 justify-content-between list_card" (click)="rspvDialog(data.ticket_number_booked_rel, data)" >
+            <div class="avtar-name" fxLayoutAlign="center center" fxLayout.xs="column">
+              <img mat-card-sm-image [src]="data.users.profilePic ? data.users.profilePic : defoultAvtar "
+                class="mr-3 rounded-lg">
+              <mat-card-title ngClass.lt-sm="mt-2">{{data.users.name}} </mat-card-title>
+            </div>
+            <mat-card-content fxLayout.xs="column">
+               
+              <div class="priceTicket">
+                <img mat-card-sm-image src="{{ ticketImage }}" class="pr-2">{{data.pricePerTicket}}
+              </div>
+               <div class="ticketcount" >
+                  <mat-icon>close</mat-icon>
+                  {{data.ticket_number_booked_rel.length}}
+                </div>
+            </mat-card-content>
+  
+          </mat-card>
+        </div>
+      </div>
+  
+      <div fxlayout="row" *ngIf="getCheckedList?.length == 0 || datanothere" class="w-100">
+        <p class="datanotFound">{{STRINGS.dataNotFound.dataNfound}}</p>
+      </div>
+      <mat-paginator  [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[10]" [pageIndex]="pageIndex"
+        (page)="handlePageEvent($event)">
+      </mat-paginator>
+   </mat-card>
+   </div>
+   
+   
+   <!-- [src]="list.users.profilePic ? "  -->              

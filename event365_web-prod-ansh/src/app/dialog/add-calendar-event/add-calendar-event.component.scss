@@ -1,0 +1,56 @@
+@import "../../../assets/css/mixin.scss";
+.calendar-event {
+  [mat-dialog-close] {
+    font-size: 3rem;
+    color: #9697b5;
+    height: 30px;
+    line-height: 30px;
+  }
+  [mat-dialog-alert] {
+    min-height: 3rem;
+    color: #343a43;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+  // .img_rounded {
+  //   border-radius: 5px;
+  //   box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
+  //   padding: 4px;
+  // }
+
+  [mat-button] {
+    @include replacewidth(154px);
+    height: 49.5px;
+    text-transform: capitalize;
+    margin-bottom: 3rem;
+  }
+  .mat-button-wrapper {
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: 1.8px;
+    text-align: center;
+    color: var(--charcoal-grey);
+  }
+  h1 {
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--charcoal-grey);
+  }
+  span{
+    font-family: 'HelveticaNeueLTPro-Md'; 
+  }
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+    color: #307fda;
+  }
+  a{
+    cursor: grab;;
+  }
+}

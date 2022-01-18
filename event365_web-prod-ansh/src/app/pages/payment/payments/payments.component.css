@@ -1,0 +1,295 @@
+.rspv_wrapper .mat-checkbox .mat-checkbox-label {
+  font-size: 1.6rem;
+}
+
+.rspv_wrapper .input-width {
+  width: 100%;
+  padding-right: 5rem;
+}
+
+.rspv_wrapper .cus-seach button {
+  right: .6rem;
+}
+
+.rspv_wrapper .mat-checkbox .mat-checkbox-label {
+  font-size: 1.6rem;
+}
+
+.flex-class {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.height-5 {
+  height: 5.5rem;
+}
+
+.width-45 {
+  width: 40%;
+}
+
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: auto;
+}
+
+.card-width {
+  width: 49%;
+}
+
+.card-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.card-user-image {
+  width: 7.5rem;
+  height: 7.6rem;
+  border-radius: 1.4rem;
+  background-color: turquoise;
+  margin-right: 1.5rem;
+}
+
+.card-user-image .card-profile {
+  width: 100%;
+  border-radius: 1.4rem;
+}
+
+.paid {
+  width: 4rem;
+  color: #715ff2;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.paid-model-width {
+  width: 55.5rem;
+  max-height: 50rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.paid-model-content {
+  padding: 4rem 4rem;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+  position: relative;
+}
+
+.paid-modal-heading {
+  width: 100%;
+  color: #343a43;
+  font-size: 2.2rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.event-details-wrapper {
+  width: 85%;
+  height: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-details {
+  width: 38%;
+  font-size: 1.4rem;
+  color: #343a43;
+}
+
+.divider {
+  width: .2rem;
+  height: 1.4rem;
+  background-color: #343a43;
+}
+
+.ticket-icon {
+  width: 1.8rem;
+  margin-right: 1.2rem;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.account-details {
+  width: 100%;
+  background-color: #F7F5FF;
+  padding: 1rem 2rem;
+  margin: 1rem auto 4rem;
+  border-radius: 1.1rem;
+}
+
+.account {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: .5rem;
+}
+
+.account-holder-name {
+  color: #343a43;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.ticket-amount {
+  color: #715ff2;
+}
+
+.account-number {
+  text-transform: capitalize;
+  color: #9697b5;
+  font-size: 1.6rem;
+}
+
+.ticket-details {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.ticket-sellar-head {
+  color: #343a43;
+  font-size: 1.6rem;
+  margin-bottom: .5rem;
+}
+
+.qr-code {
+  width: 8.9rem;
+  height: 8.9rem;
+}
+
+.btn-sm {
+  width: 15rem;
+  height: 3.9rem;
+  margin: 2rem;
+}
+
+.btn-red {
+  background-color: #ff535e;
+}
+
+#paid-modal .close {
+  font-size: 3.5rem;
+  font-weight: 500;
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+}
+
+#paid-modal .modal-dialog.modal-mar {
+  margin-right: 2rem auto 0;
+}
+
+.modal-pr {
+  padding-right: 0 !important;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 990px) {
+  .flex-class {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: auto;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .width-45 {
+    width: 60%;
+  }
+  .flex-wrap,
+  .flex-class-res {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .rspv_wrapper .input-width {
+    height: 4rem;
+    margin: 2rem 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .rspv_wrapper .input-width {
+    height: 4rem;
+    margin: 2rem 0;
+  }
+  .flex-wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .card-width {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .width-45,
+  .rspv_wrapper {
+    width: 95%;
+  }
+  .paid-model-width {
+    width: 95%;
+  }
+  .paid-model-content {
+    padding: 4rem 1rem;
+  }
+}
+/*# sourceMappingURL=payments.component.css.map */

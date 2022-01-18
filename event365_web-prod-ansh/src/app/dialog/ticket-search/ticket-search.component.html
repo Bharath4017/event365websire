@@ -1,0 +1,28 @@
+<div fxLayout="column"  class="ticket-search">
+    <div fxFlex="100" fxLayoutAlign="end center">
+    <button type="button" mat-dialog-close>×</button>
+    </div>
+    <form  fxLayout="column" [formGroup]="TicketSearchForm" (ngSubmit)="TicketSearchForm.valid && TicketSearchSubmit()">   
+    <div fxFlex="100" class="text-center">
+             
+        <h2 class="pb-4">{{STRINGS.SearchTicket.searchLabel}}</h2>
+        <p>{{STRINGS.SearchTicket.ticketNumber}}</p>
+        <mat-form-field  class="ticket-search w-75 text-center" floatLabel="never" appearance="standard">
+            <input  matInput  type="text"  formControlName="searchInput"  #searchInput placeholder="{{STRINGS.SearchTicket.searchTicket}}">
+            <!-- <mat-error *ngIf="TicketSearchForm.controls['searchInput'].hasError('required') && !ticketNotFound
+          ">{{ STRINGS.validations.TicketNumber }}
+        </mat-error> -->
+        </mat-form-field> 
+     
+        <mat-error *ngIf="ticketNotFound" style="line-height: 0;">
+            Please Enter Valid Ticket Number
+        </mat-error>
+    </div>
+    <div fxFlex="100" class="text-center pt-3 pb-4">
+        <div fxLayout="row"  class="ticket-search" fxLayoutAlign="center center">
+                <button mat-button class="cancel mr-3"  mat-dialog-close>Cancel</button>
+                <button mat-button type="submit" class="submit" >Submit</button>
+        </div>
+    </div>
+</form>
+</div>

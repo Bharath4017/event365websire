@@ -1,0 +1,88 @@
+<div class="middle-section email-varification">
+
+
+
+  <mat-card class="ng_inner" >
+    <div fxLayout="row" fxLayoutGap="40"> 
+      <div  fxFlex="60%" fxHide.xs fxHide.sm fxLayoutAlign.sm="center center">
+        <div class="form-illustration-box">
+          <img src="../../../assets/img/Email-verify-img.svg" class="img-fluid" />
+        </div>
+      </div>
+      <div  fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="100%">
+        <div class="form-box padding-10">
+          <h2 class="form-heading">
+            {{ STRINGS.verification.verificationHeading }}
+          </h2>
+          <p class="form-sub-text">{{ STRINGS.verification.subText }}</p>
+          <form [formGroup]="verifyForm">
+            <p class="error-msg">
+              <span *ngIf="
+                  isSubmitted &&
+                  (verifyForm.get('input1')?.errors?.required ||
+                    verifyForm.get('input2')?.errors?.required ||
+                    verifyForm.get('input3')?.errors?.required ||
+                    verifyForm.get('input4')?.errors?.required)
+                " class="error-msg-span">{{ STRINGS.validations.otpRequired }}</span>
+              <span *ngIf="
+                  isSubmitted &&
+                  (verifyForm.get('input1')?.errors?.pattern ||
+                    verifyForm.get('input2')?.errors?.pattern ||
+                    verifyForm.get('input3')?.errors?.pattern ||
+                    verifyForm.get('input4')?.errors?.pattern)
+                " class="error-msg-span">{{ STRINGS.validations.validOtp }}</span>
+              <span *ngIf="showErrorMessage" class="error-msg-span">{{
+                STRINGS.validations.wrongOtp
+                }}</span>
+            </p>
+    
+            <div class="form-group input-error-wrapper">
+              <div class="otp-field-wrapper">
+                <input #formRow type="text" formControlName="input1" class="form-control otp-input" autocomplete="off" [ngClass]="{
+                    'border-error':
+                      (isSubmitted && verifyForm.get('input1')?.errors) ||
+                      showErrorMessage
+                  }" (keyup)="keyUpEvent($event, 0)" (input)="handleChange($event)"/>
+                <input #formRow type="text" maxlength="1" formControlName="input2" class="form-control otp-input" autocomplete="off" [ngClass]="{
+                    'border-error':
+                      (isSubmitted && verifyForm.get('input2')?.errors) ||
+                      showErrorMessage
+                  }" (keyup)="keyUpEvent($event, 1)" />
+                <input #formRow type="text" maxlength="1" formControlName="input3" class="form-control otp-input" autocomplete="off" [ngClass]="{
+                    'border-error':
+                      (isSubmitted && verifyForm.get('input3')?.errors) ||
+                      showErrorMessage
+                  }" (keyup)="keyUpEvent($event, 2)" />
+                <input #formRow type="text" maxlength="1" formControlName="input4" class="form-control otp-input" autocomplete="off" [ngClass]="{
+                    'border-error':
+                      (isSubmitted && verifyForm.get('input4')?.errors) ||
+                      showErrorMessage
+                  }" (keyup)="keyUpEvent($event, 3)" />
+              </div>
+            </div>
+    
+        
+            <div style="text-align: center">
+              <p class="bottom-txt">
+                {{ STRINGS.verification.resendCode }}
+                <span *ngIf="!showResendCode" class="login-in">00:{{ timer }}</span>
+                <span *ngIf="showResendCode" class="login-in" style="cursor: pointer;" (click)="resendOtp()">{{
+                  STRINGS.verification.clickToResend
+                  }}</span>
+              </p>
+
+              <button class="primary-btn margin-top-8" (click)="verfiyOtp()">
+                {{ STRINGS.buttons.verify }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div  fxFlex="10%" fxHide.xs fxHide.sm>
+        
+      </div>
+      </div>
+      </mat-card>
+
+
+</div>

@@ -1,0 +1,74 @@
+
+.bookticket{
+    .input-group {
+        margin-left: 25px;
+        border-bottom: 0.5px solid black;
+
+        input {
+            border: none;
+            width: calc(100% - 60px);
+            font-size: 14px;
+        }
+        .check-bg{
+            background: none;
+            border: none;
+            .mat-icon{
+                font-size: 20px; 
+                width: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #027c02;
+            }
+        }
+    }
+
+    .check-bg{
+        background: #eaffe9;
+        display:inline-flex;
+        border-radius: 50%;
+        font-size: 20px;
+        vertical-align: middle;
+        margin-left: 2px;
+        .mat-icon{
+            font-size: 20px; 
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60ff60;
+        }
+    }
+    .delete-bg{
+        background: #ffe9e9;
+        display:inline-flex;
+        border-radius: 50%;
+        font-size: 20px;
+        vertical-align: middle;
+        margin: 4px;
+        .mat-icon{
+            font-size: 20px; 
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6084;
+        }
+    }
+    .coupon, .coupon-clr{
+        font-size: 14px;
+        font-weight: normal;
+        letter-spacing: 0.36px;
+        line-height: 1.5;
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-stretch: normal;
+        font-style: normal;
+        color: #343a43;
+        .coupon-clr{
+            color: #7966fe !important;
+
+        }
+    }
+}

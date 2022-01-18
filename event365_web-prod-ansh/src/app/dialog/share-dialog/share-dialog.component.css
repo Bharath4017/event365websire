@@ -1,0 +1,50 @@
+/*for button*/
+/*for font styling*/
+.Social-share [mat-dialog-close] {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+  background: transparent;
+}
+
+.Social-share p {
+  font-family: Caros;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--charcoal-grey);
+}
+
+.Social-share .sb-wrapper {
+  width: 47px;
+  height: 47px;
+  margin: 0 12px 16px;
+  border-radius: 50%;
+}
+
+.Social-share .sb-wrapper .sb-text {
+  display: none;
+}
+
+.Social-share .sb-wrapper .ng-fa-icon {
+  font-size: 20px;
+  color: #fff;
+}
+
+.Social-share .sb-email .sb-icon {
+  background-color: #2f75ec;
+}
+
+.Social-share .sb-facebook .sb-icon {
+  background-color: #3d5a96;
+}
+
+.Social-share .sb-twitter .sb-icon {
+  background-color: #2aa3ef;
+}
+/*# sourceMappingURL=share-dialog.component.css.map */

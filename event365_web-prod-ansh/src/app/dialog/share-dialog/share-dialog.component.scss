@@ -1,0 +1,52 @@
+@import '../../../assets/css/mixin.scss';
+.Social-share{
+    [mat-dialog-close]{
+        font-size: 3rem;
+        color: #9697b5;
+        height: 30px;
+        line-height: 30px;
+        background: transparent;
+    }
+    p{
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-size: 20px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.2;
+        letter-spacing: normal;
+        text-align: left;
+        color: var(--charcoal-grey);
+    }
+    .sb-wrapper{
+        width: 47px;
+        height: 47px;
+        margin: 0 12px 16px;
+        border-radius: 50%;
+ 
+        .sb-text {
+            display: none;
+        }
+    
+        .ng-fa-icon{
+            font-size: 20px;
+            color: #fff;
+        }
+    }
+    .sb-email .sb-icon{
+        background-color: #2f75ec;
+
+    }
+    .sb-facebook .sb-icon{
+        background-color: #3d5a96;
+
+    }
+
+    .sb-twitter .sb-icon{
+        background-color: #2aa3ef;
+
+    }
+
+}
+ 
+

@@ -1,0 +1,424 @@
+.homesection {
+  height: auto;
+  background-image: url(../../../../assets/img/dots_bg.svg);
+  background-size: 100%;
+  .disable-admin{
+    background: red;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 4px 0;
+    p{
+      font-size: 14px;
+    letter-spacing: 0.4px;
+    }
+  }
+  .event-venue-place{
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .card-row{
+    .click-empty-div{
+      width: 100%; 
+      height: 12rem;
+    }
+  }
+  .card-catogory{
+    width: 100%;
+    button{
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.28px;
+      line-height: 1.36;
+      font-family: 'HelveticaNeueLTPro-Md';
+      font-stretch: normal;
+      font-style: normal;
+      color: rgba(52, 58, 67, 0.9);
+      border-radius: 32.5px;
+      box-shadow: 0 0 21px 0 rgb(70 80 105 / 14%);
+      border: solid 1px #9697b5;
+      height: 2.5rem;
+      padding: 0 14px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 100%;
+      white-space: nowrap;
+      background-color: #fff;
+    }
+
+  }
+  .hostname{
+    font-size: 13px;
+    width: 100%;
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #7966fe;
+  }
+ 
+  .image-box{
+    img{
+     border-radius: 5pt;
+    }
+  }
+  .card-main-box {
+    margin-top: 12rem;
+    position: relative;
+  }
+    .tabs-filter {
+      width: 100%;
+      margin-top: -30rem;
+      .welcome-text-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+        .welcome-text {
+          font-size: 3rem;
+          font-weight: 500;
+          color: #ffffff;
+        }
+        .card-calender {
+          width: 4.5rem;
+          height: 4.5rem;
+          border-radius: 50%;
+          background-color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .create-btn {
+          width: 19rem;
+          height: 4.5rem;
+          background-color: #7966fe;
+          border-radius: 2.5rem;
+          color: #ffffff;
+          font-size: 1.4rem;
+          margin-left: 1.5rem;
+        }
+      }
+
+      .tabs-box {
+        width: 100%;
+        max-width: 100%;
+        height: 5.8rem;
+        margin: 3rem auto 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        //.........partner card.......
+        .top-card-box {
+          // width: 33%;
+          // height: 17.2rem;
+          width: 32.3rem;
+          //min-width: 32.3rem;
+          height: 16.39rem;
+          //min-height: 16.39rem;
+          border-radius: 1rem;
+          // box-shadow: 0 0 6px #7966fe33;
+          background-image: url(../../../../assets/img/guest-list@2x.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin: 0 2.5rem;
+          cursor: pointer;
+
+          .event-number {
+            color: #343a43;
+            font-size: 3rem;
+            font-weight: 500;
+            margin: 4rem auto 3rem;
+          }
+          .event-card-name {
+            font-size: 2rem;
+            margin: 0;
+          }
+        }
+        .top-card-box-past {
+          background-image: url(../../../../assets/img/past-event@2x.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .top-card-box-upcoming {
+          background-image: url(../../../../assets/img/upcoming-event@2x.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .tabs-item {
+          color: #dbdbee;
+          font-size: 1.4rem;
+
+          &.active {
+            padding: 1.4rem 3rem;
+            border-radius: 4rem;
+            background: #7966fe;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+
+            .pointer {
+              width: 3rem;
+              position: absolute;
+              bottom: -2rem;
+              // left: 35%;
+            }
+          }
+        }
+      }
+      .auto-h {
+        height: auto;
+        margin: 0;
+      }
+      .filter-box {
+        width: 100%;
+        height: 19rem;
+        border-radius: 1.5rem;
+        background-color: #fff;
+        box-shadow: 0 0 12px #10055d17;
+        padding: 2rem 4rem;
+        .reset-wrapper {
+          width: 100%;
+          text-align: right;
+          margin-bottom: 2rem;
+          .reset-filter-btn {
+            font-size: 1.4rem;
+            color: #9697b5;
+            background: transparent;
+            font-weight: 400;
+          }
+        }
+        .filter-wrapper {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .slider-bar {
+            width: 30%;
+
+            .slider-head {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              // margin: 1.5rem 0;
+
+              .slider-level {
+                font-size: 1.6rem;
+                color: #343a43;
+                font-weight: 500;
+                text-transform: capitalize;
+              }
+              .slider-value {
+                font-size: 1.2rem;
+                color: #808080;
+              }
+            }
+          }
+
+          .category {
+            width: 28%;
+
+            .dropdown-category {
+              width: 100%;
+              .category-drop-btn {
+                width: 100%;
+                height: 5rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: transparent;
+                color: #343a43;
+                font-size: 1.4rem;
+                font-weight: 500;
+              }
+              .dropdown-menu-category {
+                width: 100%;
+                box-shadow: 0 0 8px #00000030;
+                border-radius: 7px;
+                border: none;
+
+                .category-item {
+                  font-size: 1.2rem;
+                  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+                }
+                .category-item.active {
+                  background-color: #7966fe;
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //...card css
+    .card-section-heading {
+      font-size: 2.7rem;
+      color: #343a43;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+      margin: 6rem 0 1rem 0;
+    }
+    .heading-underline {
+      width: 5rem;
+      height: 0.2rem;
+      // background-color: $primary_btn_color;
+      background-color: #7966fe;
+      margin-bottom: 2rem;
+    }
+   
+ 
+}
+::ng-deep mat-form-field {
+  width: 100%;
+}
+
+// ::ng-deep .mat-calendar-body-cell.selected > .mat-calendar-body-cell-content,
+// ::ng-deep .mat-calendar-body-cell.selected:hover > .mat-calendar-body-cell-content,
+// ::ng-deep .mat-calendar-body-cell.selected > .mat-calendar-body-cell-content:hover {
+//   background-color: #673ab7 !important;
+//   color: #fff !important;
+// }
+
+::ng-deep .mat-calendar-body-cell.upcomingSelected > .mat-calendar-body-cell-content,
+::ng-deep .mat-calendar-body-cell.upcomingSelected:hover > .mat-calendar-body-cell-content,
+::ng-deep .mat-calendar-body-cell.upcomingSelected > .mat-calendar-body-cell-content:hover {
+  background-color: #7966fe !important;
+  color: #fff !important;
+}
+::ng-deep .mat-calendar-body-cell.pastSelected > .mat-calendar-body-cell-content,
+::ng-deep .mat-calendar-body-cell.pastSelected:hover > .mat-calendar-body-cell-content,
+::ng-deep .mat-calendar-body-cell.pastSelected > .mat-calendar-body-cell-content:hover {
+  background-color: gray !important;
+  color: #fff !important;
+}
+::ng-deep .mat-calendar-body-cell.todaySelected > .mat-calendar-body-cell-content,
+::ng-deep .mat-calendar-body-cell.todaySelected:hover > .mat-calendar-body-cell-content,
+::ng-deep .mat-calendar-body-cell.todaySelected > .mat-calendar-body-cell-content:hover {
+  background-color: red !important;
+  color: #fff !important;
+}
+
+.dropdown-menu-category {
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
+}
+.no-data {
+  margin-bottom: 2rem;
+}
+
+// @media screen and (max-width: 1921px) and (min-width: 1440px) {
+@media only screen and (min-width: 1441px) {
+  .height-auto {
+    .card-main-box {
+      .tabs-filter {
+        .tabs-box {
+          .top-card-box {
+            margin: 0 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+@media only screen and (max-width: 959px) {
+  .height-auto {
+    .card-main-box {
+      .heading-underline {
+        margin: 0 auto 2rem auto;
+      }
+    
+      .tabs-filter {
+        margin-top: -10rem;
+        //margin-top: -32rem;
+        .tabs-box {
+          .tabs-item {
+            white-space: nowrap;
+            text-align: center;
+            margin-right: 2.6rem;
+          }
+          .tabs-item.active {
+            padding: 1rem;
+          }
+          .top-card-box {
+            height: 16.39rem;
+            margin: 0 0.5rem;
+          }
+        }
+   
+        .auto-h {
+          width: 100%;
+          overflow-y: hidden;
+          overflow-x: auto;
+          height: auto;
+          margin: 0 !important;
+        }
+ 
+        .welcome-text-wrapper {
+          flex-direction: column  ;
+          //          align-items: flex-start;
+          margin-bottom: 2rem;
+          .welcome-text {
+            margin-top: -12rem;
+            font-size: 2.7rem  !important;
+            margin-bottom: 3rem;
+          }
+        }
+      }
+    }
+  }
+  .no-data {
+    text-align: center;
+  }
+}
+
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .homesection{
+    .card-box{
+      width: 47.33% !important;
+    }
+    .event-card-name{
+      font-size: 1.5rem !important;
+    }
+  }
+
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 900px) {
+  .homesection{
+    .event-venue-space{
+      flex-direction: row !important;
+    }
+  }
+}
+
+
+
+
+
+.dropdown-menu-sub-category{
+  display: none;
+}

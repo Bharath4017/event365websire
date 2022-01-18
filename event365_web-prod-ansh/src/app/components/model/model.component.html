@@ -1,0 +1,159 @@
+<!-- model for alert messages -->
+<div class="modal fade" id="alert-modal" *ngIf="!doneButton">
+    <div class="modal-dialog modal-dialog-centered alert-model-width">
+        <div class="modal-content alert-model-content">
+            <button type="button" class="close close-custom" data-dismiss="modal">&times;</button>
+            <div class="modal-body text-center">
+                <div class="alert-heading-wrapper">
+                    <img src="../../../assets/img/alert.svg" />
+                    <span class="alert-heading">
+                        {{STRINGS.alert.alertHeading}}
+                    </span>
+                </div>
+                <p class="alert-content">
+                    {{content}}
+                </p>
+                <button *ngIf="!confirmationButtons" class="primary-btn btn-sm" data-toggle="modal" data-dismiss="modal"
+                    (click)="selectConfirmation(true)">
+                    {{STRINGS.buttons.return}}
+                </button>
+                <div *ngIf="confirmationButtons" class="d-flex">
+                    <button class="primary-btn btn-sm" data-toggle="modal" data-dismiss="modal"
+                        (click)="selectConfirmation(true)">
+                        {{STRINGS.buttons.Yes}}
+                    </button>
+                    <button class="primary-btn btn-sm" data-toggle="modal" data-dismiss="modal">
+                        {{STRINGS.buttons.No}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="success-modal">
+    <div class="modal-dialog modal-dialog-centered alert-model-width">
+        <div class="modal-content alert-model-content">
+            <button type="button" class="close close-custom" data-dismiss="modal"
+                (click)="goBack()">&times;</button>
+            <div class="modal-body text-center">
+                <div style="display: flex; width: 100%; justify-content: center;">
+                    <img src="../../../assets/img/invite.svg" width="17%" />
+                </div>
+                <p class="alert-content">
+                    {{content}}
+                </p>
+                <button *ngIf="!doneButton" class="primary-btn btn-sm" data-toggle="modal" data-dismiss="modal"
+                (click)="goBack()">
+                    {{STRINGS.buttons.close}}
+                </button>
+                <button *ngIf="doneButton" class="primary-btn btn-sm" data-toggle="modal" data-dismiss="modal"
+                    (click)="afterClick()">
+                    {{STRINGS.buttons.done}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="success-invitend">
+    <div class="modal-dialog modal-dialog-centered alert-model-width">
+        <div class="modal-content alert-model-content">
+            <button type="button" class="close close-custom" data-dismiss="modal"
+                (click)="afterClickSameUrl()">&times;</button>
+            <div class="modal-body text-center">
+                <div style="display: flex; width: 100%; justify-content: center;">
+                    <img src="../../../assets/img/invite.svg" width="17%" />
+                </div>
+                <p class="alert-content">
+                    {{content}}
+                </p>
+                <button *ngIf="!doneButton" class="primary-btn btn-sm" data-toggle="modal" data-dismiss="modal"
+                (click)="afterClickSameUrl()">
+                    {{STRINGS.buttons.close}}
+                </button>
+                <button *ngIf="doneButton" class="primary-btn btn-sm" data-toggle="modal" data-dismiss="modal"
+                    ((click)="afterClickSameUrl()">
+                    {{STRINGS.buttons.done}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="mobile-verification">
+    <div class="modal-dialog modal-dialog-centered alert-model-width">
+        <div class="modal-content alert-model-content">
+            <button type="button" class="close close-custom" data-dismiss="modal">&times;</button>
+            <div class="modal-body text-center">
+                <div class="alert-heading-wrapper">
+                    <span class="alert-heading mob-verification-heading">
+                        {{STRINGS.alert.mobVerification}}
+                    </span>
+                </div>
+                <p class="alert-content mob-verification-content">
+                    {{STRINGS.alert.mobContent}}
+                </p>
+                <p class="form-sub-text">{{ STRINGS.alert.mobOTPMsg }} XXXXXX {{contactNumber}}</p>
+                <form [formGroup]="verifyForm">
+                    <p class="error-msg">
+                        <span class="error-msg-span" *ngIf="responseMessage">{{responseMessage }}</span>
+                        <span *ngIf="
+                  isSubmitted &&
+                  (verifyForm.get('input1')?.errors?.required ||
+                    verifyForm.get('input2')?.errors?.required ||
+                    verifyForm.get('input3')?.errors?.required ||
+                    verifyForm.get('input4')?.errors?.required)
+                 " class="error-msg-span">{{ STRINGS.validations.otpRequired }}</span>
+                        <span *ngIf="
+                  isSubmitted &&
+                  (verifyForm.get('input1')?.errors?.pattern ||
+                    verifyForm.get('input2')?.errors?.pattern ||
+                    verifyForm.get('input3')?.errors?.pattern ||
+                    verifyForm.get('input4')?.errors?.pattern)
+                " class="error-msg-span">{{ STRINGS.validations.validOtp }}</span>
+                        <span *ngIf="showErrorMessage" class="error-msg-span">{{
+                            STRINGS.validations.wrongOtp
+                            }}</span>
+                    </p>
+                    <div class="form-group input-error-wrapper">
+                        <div class="otp-field-wrapper">
+                            <input #formRow type="text" formControlName="input1" class="form-control otp-input"
+                                [ngClass]="{
+                'border-error':
+                  (isSubmitted && verifyForm.get('input1')?.errors) ||
+                  showErrorMessage
+              }" (keyup)="keyUpEvent($event, 0)" (input)="handleChange($event)" />
+                            <input #formRow type="text" maxlength="1" formControlName="input2"
+                                class="form-control otp-input" [ngClass]="{
+                'border-error':
+                  (isSubmitted && verifyForm.get('input2')?.errors) ||
+                  showErrorMessage
+              }" (keyup)="keyUpEvent($event, 1)" />
+                            <input #formRow type="text" maxlength="1" formControlName="input3"
+                                class="form-control otp-input" [ngClass]="{
+                'border-error':
+                  (isSubmitted && verifyForm.get('input3')?.errors) ||
+                  showErrorMessage
+              }" (keyup)="keyUpEvent($event, 2)" />
+                            <input #formRow type="text" maxlength="1" formControlName="input4"
+                                class="form-control otp-input" [ngClass]="{
+                'border-error':
+                  (isSubmitted && verifyForm.get('input4')?.errors) ||
+                  showErrorMessage
+              }" (keyup)="keyUpEvent($event, 3)" />
+                        </div>
+                    </div>
+                    <p class="bottom-txt">
+                        {{ STRINGS.verification.resendCode }}
+                        <span *ngIf="!showResendCode" class="login-in">00:{{ timer }}</span>
+                        <span *ngIf="showResendCode" class="login-in" style="cursor: pointer;" (click)="resendOtp()">{{
+                            STRINGS.verification.clickToResend
+                            }}</span>
+                    </p>
+                    <button (click)="verfiyOtp()" *ngIf="!confirmationButtons" class="primary-btn mob-btn-sm">
+                        {{STRINGS.buttons.verify}}
+                    </button>
+                    <p class="error-msg">{{ STRINGS.alert.Note }}</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div fxLayout="column"  class="cus_modal">
+  <div fxFlex="100" fxLayoutAlign="end center">
+     <button type="button" mat-dialog-close>×</button>
+   </div>
+  <div fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert>
+        <img [src]="alertimg" class="pr-3"/>
+        {{ STRINGS.alert.alertHeading }}
+   </div>
+
+<div mat-dialog-content fxFlex="100" fxLayoutAlign="center center">{{ messageerror.name }}</div>
+<div mat-dialog-actions fxFlex="100" fxLayoutAlign="center center">
+  <button mat-button > Return </button>
+</div>
+
+</div>

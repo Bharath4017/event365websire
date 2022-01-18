@@ -1,0 +1,77 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 4153160, 2021-08-23T01:09:36-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: HelveticaNeueLTPro-Lt by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-helvetica/pro-45-light-189172/
+ * 
+ * Webfont: HelveticaNeueLTPro-LtIt by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-helvetica/46-light-italic/
+ * 
+ * Webfont: HelveticaNeueLTPro-It by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-helvetica/pro-56-italic/
+ * 
+ * Webfont: HelveticaNeueLTPro-Md by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-helvetica/pro-65-medium/
+ * 
+ * Webfont: HelveticaNeueLTPro-Bd by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-helvetica/pro-75-bold/
+ * 
+ * Webfont: HelveticaNeueLTPro-BdIt by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-helvetica/pro-76-bold-italic/
+ * 
+ * Webfont: HelveticaNeueLTPro-Hv by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-helvetica/pro-85-heavy/
+ * 
+ * Webfont: HelveticaNeueLTPro-Blk by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-helvetica/pro-95-black/
+ * 
+ * 
+ * Webfonts copyright: Copyright &amp;#x00A9; 2014 Monotype Imaging Inc. All rights reserved.
+ * 
+ * © 2021 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/3f5f48");
+  
+@font-face {
+  font-family: "HelveticaNeueLTPro-Blk";
+  src: url('webFonts/HelveticaNeueLTProBlk/font.woff2') format('woff2'), url('webFonts/HelveticaNeueLTProBlk/font.woff') format('woff');
+}
+@font-face {
+  font-family: "HelveticaNeueLTPro-Bd";
+  src: url('webFonts/HelveticaNeueLTProBd/font.woff2') format('woff2'), url('webFonts/HelveticaNeueLTProBd/font.woff') format('woff');
+}
+@font-face {
+  font-family: "HelveticaNeueLTPro-Lt";
+  src: url('webFonts/HelveticaNeueLTProLt/font.woff2') format('woff2'), url('webFonts/HelveticaNeueLTProLt/font.woff') format('woff');
+}
+@font-face {
+  font-family: "HelveticaNeueLTPro-BdIt";
+  src: url('webFonts/HelveticaNeueLTProBdIt/font.woff2') format('woff2'), url('webFonts/HelveticaNeueLTProBdIt/font.woff') format('woff');
+}
+@font-face {
+  font-family: "HelveticaNeueLTPro-Hv";
+  src: url('webFonts/HelveticaNeueLTProHv/font.woff2') format('woff2'), url('webFonts/HelveticaNeueLTProHv/font.woff') format('woff');
+}
+@font-face {
+  font-family: "HelveticaNeueLTPro-LtIt";
+  src: url('webFonts/HelveticaNeueLTProLtIt/font.woff2') format('woff2'), url('webFonts/HelveticaNeueLTProLtIt/font.woff') format('woff');
+}
+@font-face {
+  font-family: "HelveticaNeueLTPro-Md";
+  src: url('webFonts/HelveticaNeueLTProMd/font.woff2') format('woff2'), url('webFonts/HelveticaNeueLTProMd/font.woff') format('woff');
+}
+@font-face {
+  font-family: "HelveticaNeueLTPro-It";
+  src: url('webFonts/HelveticaNeueLTProIt/font.woff2') format('woff2'), url('webFonts/HelveticaNeueLTProIt/font.woff') format('woff');
+}
+

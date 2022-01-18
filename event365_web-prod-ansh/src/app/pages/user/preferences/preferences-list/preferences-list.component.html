@@ -1,0 +1,46 @@
+<div class="prefrence_wrapper width-80" >
+    <mat-card class="prefrence_inner  mb-5 shadow-none bg-transparent">
+        <div fxLayout="row " class="mb-2 mt-3 prefrence-custom " >
+            <div fxFlex="50">
+                <button mat-button [disableRipple]="true" class="pl-0 reset-btn"  (click)="deletAllPreferense()">Reset Preferences</button> 
+            </div>
+            <div fxFlex="50" fxLayoutAlign="end center">
+                <button mat-button [disableRipple]="true" class="add-more" routerLink="../add-preferences" ><span class="add-icon">+</span>Add More</button> 
+            </div>
+        </div>
+        <div>
+            <h5 fxFlex="100" fxLayoutAlign="start center">Category</h5>
+        </div>
+        <div *ngIf = "!categoryList.length"  fxLayoutAlign="center center" class="datanotFound mt-3">
+            <p>{{STRINGS.dataNotFound.dataNfound}} </p>
+        </div>
+        <div fxLayout="row wrap" fxLayout.xs="column"  #refdiv fxLayoutAlign="space-between space-between" class="prefrence-custom-row">
+            <div fxFlex="49%" *ngFor="let label of categoryList; let i = index"  class=" pt-4 prefrence-custom-card">
+                <mat-card fxLayoutAlign="start center"   class="shadow-none mb-4 justify-content-between">
+                   <span>{{label.categoryName}} </span> 
+                    <div class="ng_delete" fxLayoutAlign="center center">
+                     <mat-icon style="cursor: pointer;" (click)="deleteCategoryPreference(label.id)">delete</mat-icon>     
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+        <div>
+            <h5 fxFlex="100" fxLayoutAlign="start center" class="mt-4">Sub Category</h5>
+        </div>
+        <div *ngIf = "!subCategoryList.length" fxLayoutAlign="center center" class="datanotFound mt-3">
+            <p>{{STRINGS.dataNotFound.dataNfound}} </p>
+        </div>
+        <div fxLayout="row wrap"  fxLayout.xs="column"  fxLayoutAlign="space-between space-between" #refdiv class="prefrence-custom-row">
+            <div fxFlex="49%" *ngFor="let label of subCategoryList; let i = index"  class="pt-4 prefrence-custom-card">
+                <mat-card fxLayoutAlign="start center"   class="shadow-none mb-4 justify-content-between">
+                    <span>{{label.subCategoryName}} </span>
+                    <div class="ng_delete" fxLayoutAlign="center center">
+                        <mat-icon style="cursor: pointer;" (click)="deleteSubCategoryPreference(label.categoryId, label.id)">delete</mat-icon>
+                    </div>
+                </mat-card>
+                </div>
+        </div>
+    </mat-card>
+  </div>
+  
+  

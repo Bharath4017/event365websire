@@ -1,0 +1,108 @@
+<div class="middle-section submit-info">
+  <mat-card>
+    <div fxLayout="row" fxLayoutGap="30px"> 
+      <div  fxFlex="50%" fxHide.xs fxHide.sm>
+        <div class="form-illustration-box">
+          <img src="../../../assets/img/login.svg" class="form-illustration img-fluid" />
+        </div>
+      </div>
+      <div  fxFlex="40%"  fxFlex.md="50%"  fxFlex.xs="100%" fxFlex.sm="100%">
+
+        <div class="form-box">
+          <h2 class="form-heading">{{ STRINGS.submitInfo.submitInfoHeading }}</h2>
+          <form [formGroup]="infoForm">
+            <div class="form-group input-error-wrapper textarea-height">
+              <label class="input-label">{{ STRINGS.labels.address }}</label>
+              <textarea  #searchTextField  placeholder="{{ STRINGS.placeholder.placeholderAddress }}" [ngClass]="{
+                'border-error': isSubmitted && infoForm.get('address')?.errors
+              }" formControlName="address" class="form-control form-input custextarea scrollbarcustom m-0"></textarea>
+              <!-- <input type="text" x /> -->
+              <p class="error-msg" *ngIf="infoForm.get('address')?.errors?.required && isSubmitted">
+                {{ STRINGS.validations.address }}
+              </p>
+              <p class="error-msg" *ngIf="infoForm.get('address')?.errors?.maxlength && isSubmitted">
+                {{ STRINGS.validations.characterExceed }}
+              </p>
+            </div>
+            <div class="form-group input-error-wrapper">
+              <label for="name" class="input-label">{{
+                STRINGS.labels.city
+                }}</label>
+              <input type="text" class="form-control form-input" placeholder="{{ STRINGS.placeholder.placeholderForCity }}"
+                [ngClass]="{
+                  'border-error': isSubmitted && infoForm.get('city')?.errors
+                }" formControlName="city" name="city" />
+              <p class="error-msg" *ngIf="infoForm.get('city')?.errors?.required && isSubmitted">
+                {{ STRINGS.validations.city }}
+              </p>
+              <p class="error-msg" *ngIf="infoForm.get('city')?.errors?.maxlength && isSubmitted">
+                {{ STRINGS.validations.validMaxLength2 }}
+              </p>
+              <!-- <p class="error-msg" *ngIf="infoForm.get('city')?.errors?.pattern && isSubmitted">
+                {{ STRINGS.validations.cityOnlyCharacter }}
+              </p> -->
+            </div>
+            <div class="form-group input-error-wrapper">
+              <label for="name" class="input-label">{{
+                STRINGS.labels.state
+                }}</label>
+              <input type="text" class="form-control form-input" placeholder="{{ STRINGS.placeholder.placeholderForState }}"
+                [ngClass]="{
+                  'border-error': isSubmitted && infoForm.get('state')?.errors
+                }" formControlName="state" name="state" />
+              <p class="error-msg" *ngIf="infoForm.get('state')?.errors?.required && isSubmitted">
+                {{ STRINGS.validations.state }}
+              </p>
+              <p class="error-msg" *ngIf="infoForm.get('state')?.errors?.maxlength && isSubmitted">
+                {{ STRINGS.validations.validMaxLength2 }}
+              </p>
+              <!-- <p class="error-msg" *ngIf="infoForm.get('state')?.errors?.pattern && isSubmitted">
+                {{ STRINGS.validations.cityOnlyCharacter }}
+              </p> -->
+            </div>
+            <div class="form-group input-error-wrapper">
+              <label for="zip" class="input-label">{{ STRINGS.labels.zip }}</label>
+              <input type="text" class="form-control form-input" (keypress)="integerOnly($event)" formControlName="zip"
+                placeholder="{{ STRINGS.placeholder.placeholderZip }}" [ngClass]="{
+                  'border-error': isSubmitted && infoForm.get('zip')?.errors
+                }" name="zip" />
+              <p class="error-msg" *ngIf="infoForm.get('zip')?.errors?.required && isSubmitted">
+                {{ STRINGS.validations.zip }}
+              </p>
+              <p class="error-msg" *ngIf="
+                  (infoForm.get('zip')?.errors?.maxlength ||
+                    infoForm.get('zip')?.errors?.minlength) &&
+                  isSubmitted
+                ">
+                {{ STRINGS.validations.validZip }}
+              </p>
+              <p class="error-msg" *ngIf="infoForm.get('zip')?.errors?.pattern && isSubmitted">
+                {{ STRINGS.validations.onlyDigits }}
+              </p>
+            </div>
+          </form>
+
+          <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="center center"> 
+            <div  fxFlex="50%">
+              <button *ngIf="userType == 'customer'" class="skip-btn primary-btn" (click)="skipSubmitInfo()">
+                {{STRINGS.buttons.skip}}
+              </button>
+              </div>
+            <div  fxFlex="50%">
+              <button class="primary-btn mar-null" (click)="submitDetails()">
+                {{ STRINGS.buttons.submit }}
+              </button>
+              </div>
+              </div>
+
+
+        </div>
+      </div>
+      <div  fxFlex="10%" fxHide.xs fxHide.sm fxHide.md>
+
+      </div>
+      </div>
+
+
+</mat-card>
+</div>

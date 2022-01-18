@@ -1,0 +1,22 @@
+<div fxLayout="column"  class="eventalrt_modal">
+        <div fxFlex="100" fxLayoutAlign="end center">
+        <button type="button" mat-dialog-close>×</button>
+        </div>
+        <div fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert>
+            <div class="circle-right">
+                <img src="{{ alertimg }}" alt="" srcset="">
+            </div>
+        </div>
+        <div fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert>
+            <mat-card-content fxLayoutAlign="center center" fxLayout="column" >
+                <h1>365Live Partner</h1>
+                <h2>{{ eventName }}</h2>
+                <p *ngIf="eventCode">Event Code : {{ eventCode }}</p>
+                <h1 class="beforeh">{{ alertMsg }}</h1>
+            </mat-card-content>
+        </div>
+        <div mat-dialog-actions fxFlex="100" fxLayoutAlign="center center">
+            <button mat-button [mat-dialog-close]="true" > Done </button>
+        </div>
+
+  </div>

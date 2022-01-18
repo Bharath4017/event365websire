@@ -1,0 +1,79 @@
+<div class="login_wrapper">
+  <mat-card >
+    <div fxLayout="row" fxLayoutGap="40px" fxLayoutGap.lt-md="0" fxLayoutGap.lt-lg="20">
+      <div fxFlex="50"  ngClass.lt-md="d-none" fxLayoutAlign="center center">
+        <img class="img-fluid" src="../../../assets/img/login.svg" />
+      </div>
+      <div fxFlex="50"  fxFlex.lt-md="100" [ngClass.lt-lg]="'pr-0'" [ngClass.lt-xl]="{'pr-5': true}">
+        <h1 class="form-heading">{{ STRINGS.register.loggedin }}</h1>
+        <div fxLayout="row" fxLayout="row" class="social pt-3" fxLayoutGap="20px" fxLayoutGap.lt-md="5px">
+          <div fxFlex="33">
+            <button (click)="signInWithGoogle()" class="social_button">
+              <img src="{{ socialgoogle }}" />
+              <span ngClass.lt-sm="d-none">{{ STRINGS.register.google }}</span>
+            </button>
+          </div>
+          <div fxFlex="33">
+            <button (click)="signInWithFB()" class="social_button">
+              <img src="{{ socialfb }}" />
+              <span ngClass.lt-sm="d-none">{{ STRINGS.register.facebook }}</span>
+            </button>
+          </div>
+          <div fxFlex="33">
+            <button class="social_button">
+              <img src="{{ socialiphone }}" />
+              <span ngClass.lt-sm="d-none">{{ STRINGS.register.apple }}</span>
+            </button>
+          </div>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && submitForm()">
+          <div fxLayout="column" class="social pt-2">
+            <div fxFlex="100">
+              <mat-form-field appearance="standard" floatLabel="always" class="matinput-space">
+                <mat-label>{{STRINGS.login.emailId}}</mat-label>
+                <input type="email" matInput #email formControlName="email" placeholder="{{STRINGS.placeholder.placeholderEmail}}" autocomplete="off" />
+                <mat-error *ngIf="
+                    loginForm.controls['email'].hasError('required')
+                  ">
+                  {{ STRINGS.validations.email }}
+                </mat-error>
+                <mat-error *ngIf="
+                    loginForm.controls['email'].hasError('email') &&
+                    (loginForm.controls['email'].dirty ||
+                      loginForm.controls['email'].touched)
+                  ">
+                  {{ STRINGS.validations.validEmail }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="100">
+              <mat-form-field appearance="standard" floatLabel="always" class="matinput-space">
+                <mat-label>{{STRINGS.labels.password}}</mat-label>
+                  <input [type]="fieldTextType ? 'text' : 'password'" #password formControlName="password" matInput
+                    placeholder="{{STRINGS.placeholder.placeholderPassword}}" autocomplete="off" />
+                  <img src="../../../assets/img/visibility.svg" *ngIf="fieldTextType" class="passeye"
+                    (click)="showpassword()" />
+                  <img src="../../../assets/img/visibility-hidden.svg" *ngIf="!fieldTextType" class="passeye"
+                    (click)="showpassword()" />
+
+                <mat-error>
+                  {{ STRINGS.validations.password }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="100" fxLayoutAlign="end end">
+              <span><a routerLink="/auth/forgot-password" class="forgot-link">{{STRINGS.register.forgotPassword}}</a></span>
+            </div>
+            <div fxFlex="100" fxLayoutAlign="center center">
+              <button type="submit" class="login-btn">{{STRINGS.login.login}}</button>
+            </div>
+            <div fxFlex="100" fxLayoutAlign="center center" class="bottom-text">
+              {{STRINGS.login.notHavingAcc}}
+              <a routerLink="/auth/register" class="login-in pl-2">{{STRINGS.login.register}}</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-card>
+</div>

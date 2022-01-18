@@ -1,0 +1,87 @@
+.rspvdialog {
+  padding-bottom: 20px;
+}
+
+.rspvdialog p.name {
+  font-size: 25px !important;
+  font-weight: 800 !important;
+}
+
+.rspvdialog .mat-list-item-content, .rspvdialog p.name {
+  font-family: Caros;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: 0.28px;
+  text-align: left;
+  color: var(--charcoal-grey);
+}
+
+.rspvdialog [mat-dialog-close] {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+}
+
+.rspvdialog p {
+  font-family: Caros;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.rspvdialog h2 {
+  font-family: Caros;
+  font-size: 19px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.32;
+  letter-spacing: 0.38px;
+}
+
+.rspvdialog h3 {
+  opacity: 0.88;
+  font-family: Caros;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 3;
+  letter-spacing: normal;
+}
+
+.rspvdialog .ticket_info {
+  background-image: url(../../../assets/img/ticketbg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 17px 25px;
+  position: relative;
+  height: 400px;
+  width: 300px;
+}
+
+.rspvdialog .ticket_info .mat-list-item-content {
+  font-family: Caros;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  color: #fff;
+}
+
+.rspvdialog .ticket_info .manage-content {
+  color: #fff;
+}
+
+.rspvdialog .ticket_info .mat-list-item {
+  height: 30px;
+}
+/*# sourceMappingURL=rspv-dialog.component.css.map */

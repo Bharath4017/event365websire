@@ -1,0 +1,111 @@
+@import '../../../../assets/css/mixin.scss';
+.contact_us{
+  background-color: #fff;
+  width: calc(100% - 20%);
+  margin: 0 auto;
+  form{
+    width: 700px;
+    margin: 0 auto
+  }
+  [mat-button]{
+    @include replacewidth(320px);
+    height: 49.5px;
+    text-transform: capitalize;
+    margin-bottom: 3rem;
+    .mat-button-wrapper{
+      font-family: 'HelveticaNeueLTPro-Md';
+      font-size: 14px;
+      font-weight: 100;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.57;
+      letter-spacing: 1.4px;
+      text-align: center;
+      color: #f4f2ff;
+    }
+}
+  .mat-card {
+    background-color: #ffffff;
+    box-shadow: 0 0 3px #00000029;
+    margin-top: -14.75rem;
+    border-radius: 1rem;
+    padding: 5.3rem 5rem;
+    margin-bottom: 3rem;
+    mat-label {
+      font-size: 16px;
+      color: #343a43 ;
+      font-weight: 500;
+      letter-spacing: 0.32px;
+    }
+  
+    .mat-form-field-wrapper {
+      padding: 0;
+
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      .mat-form-field-flex {
+        border-radius: 4px;
+        border: solid 1px #e1e1e1;
+        padding: 13px 12px 11px 15px;
+        width: 400px;
+        height: 40px;
+        .mat-form-field-infix {
+          border: unset;
+          padding: 0;
+          width: 100%;
+          .mat-input-element,
+          .leftinput-text {
+            font-size: 14px;
+            color: #343a43;
+
+            &:focus {
+              opacity: 1;
+            }
+          }
+
+          .leftinput-text {
+            position: absolute;
+            right: 0;
+            opacity: 0.23;
+          }
+        }
+      }
+
+      .mat-select-arrow {
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid #dbdbde;
+        border-left: 2px solid #dbdbde;
+        transform: rotate(226deg);
+        border-right: 0;
+        margin: -8px 4px;
+      }
+      .mat-select-min-line {
+        @include replaceFontStyle(14px, normal, 0.48px, auto, #343a43);
+      }
+
+    }
+    .cus_teatarea_min{
+      .mat-form-field-flex {
+        width: 100% !important;
+        height: 130px !important;
+      } 
+    }
+
+  }
+  .heading-underline{
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.32px;
+    text-align: left;
+    color: #715ff2;
+    border-bottom: 1px solid #715ff2;
+    cursor: pointer;
+  }
+}

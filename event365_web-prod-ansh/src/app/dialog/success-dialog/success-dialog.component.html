@@ -1,0 +1,19 @@
+<div fxLayout="column"  class="ticket_checked">
+    <div fxFlex="100" fxLayoutAlign="end center">
+       <button type="button" mat-dialog-close>×</button>
+     </div>
+    <div fxFlex="100"fxLayout="column" fxLayoutAlign="center center" mat-dialog-alert>
+      <div class="error mb-2" *ngIf="errorget"> 
+         <mat-icon >error</mat-icon>
+        </div>
+        <div class="success mb-4" *ngIf="!errorget"> 
+          <mat-icon >done</mat-icon>
+         </div>
+          <h1 class="my-5">{{"Success"}}</h1>
+     </div>
+     <div mat-dialog-content fxFlex="100" fxLayoutAlign="center center" class="text-center"> {{ this.messageerror }}</div>
+  <div mat-dialog-actions fxFlex="100" fxLayoutAlign="center center">
+    <button mat-button mat-dialog-close class="my-4">OK</button>
+  </div>
+  </div>
+  

@@ -1,0 +1,11 @@
+.account_wrapper{
+    margin-top: -15rem;
+    margin-bottom: 5rem;
+    .mat-card{
+        border-radius: 12px;
+        width: calc(100% - 20%);
+        margin: 0 auto;
+        padding: 5rem;
+        box-shadow: unset;
+    }
+}

@@ -1,0 +1,111 @@
+<footer>
+ 
+  <div fxLayout="row"  class="download-wrapper">
+    <div fxFlex="100">
+        <div class="download-inner">
+            <button class="download-btn" (click)="downloadStore('https://apps.apple.com/in/app/365live/id1492460553')">
+              <img src="../../../assets/img/download_apple.svg" />
+            </button>
+            <button class="download-btn"
+              (click)="downloadStore('https://play.google.com/store/apps/details?id=com.ebabu.event365live')">
+              <img src="../../../assets/img/download_playstore.svg" />
+            </button>
+        </div>
+    </div>
+    </div>
+    <div class="footer-main-wrap">
+      <div class="footer-wrapper">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column" class="footer-inner" >
+      <div fxFlex="40"  fxFlex.md="30" >
+        <div class="footer-logo">
+          <a href="javaScript: void(0)" class=" logo-footer" routerLink="/home">
+            <img *ngIf="!partnerSideLogo" src="../../../assets/img/Logo_365 Live - Blue_1.2 copy 2@2x.png" class="logo" />
+  
+            <img *ngIf="partnerSideLogo" src="../../../assets/img/partnerlogo.png"  class="partlogo" />
+            <span class="logo-text">{{ STRINGS.name.live365 }}</span>
+          </a>
+          <div class="mt-sm-3">
+            <p class="footer-content">{{ STRINGS.footer.footerContent }}</p>
+          </div>
+        </div>
+   
+        </div>
+      <div fxFlex="60" fxFlex.md="70">
+
+          <div fxLayout="row"  fxLayout.lt-md	="row wrap"  class="w-100" >
+            <div fxFlex="25" fxFlex.lt-md	="48" fxFlex.md="22" class="cus-bottom">
+              <h6 class="footer-head">{{ STRINGS.footer.company }}</h6>
+              <p>
+                <a href="javaScript: void(0)" routerLink="/user/about-us" class="footer-content">{{
+                  STRINGS.footer.aboutUs
+                  }}</a>
+              </p>
+              <p>
+                <a href="javaScript: void(0)" routerLink="/user/contact-us" class="footer-content">{{
+                  STRINGS.footer.contactUs
+                  }}</a>
+              </p>
+            </div>
+  
+            <div fxFlex="25" fxFlex.lt-md	="48" class="cus-bottom">
+              <h6 class="footer-head">{{ STRINGS.footer.forYou }}</h6>
+              <p>
+                <a href="javaScript: void(0)" (click)="becomePartnerClick()" class="footer-content">{{
+                  STRINGS.footer.becomePartner
+                  }}</a>
+              </p>
+              <p>
+                <a href="javaScript: void(0)" (click)="browseEventClick()" class="footer-content">{{
+                  STRINGS.footer.browserEvent
+                  }}</a>
+              </p>
+            </div>
+
+            <div fxFlex="25" fxFlex.lt-md	="48" fxFlex.md="30" class="cus-bottom">
+              <h6 class="footer-head">{{ STRINGS.footer.legal }}</h6>
+              <p>
+                <a href="javaScript: void(0)" routerLink="/profile/terms-and-conditions" class="footer-content">{{
+                  STRINGS.footer.trmCondition
+                  }}</a>
+              </p>
+              <p>
+                <a href="javaScript: void(0)" routerLink="/profile/privacy-policy" class="footer-content">{{
+                  STRINGS.footer.privacyPolicy
+                  }}</a>
+              </p>
+            </div>
+  
+            <div fxFlex="25" fxFlex.lt-md="48" fxFlex.md="23" class="cus-bottom">
+              <h6 class="footer-head">{{ STRINGS.footer.more }}</h6>
+              <p>
+                <a href="javaScript: void(0)"  routerLink="/user/contact-us"  class="footer-content">{{
+                  STRINGS.footer.helpSupport
+                  }}</a>
+              </p>
+              <p>
+                <a href="javaScript: void(0)" routerLink="/profile/faq" class="footer-content">{{
+                  STRINGS.footer.faq
+                  }}</a>
+              </p>
+            </div>
+
+  
+     
+        </div>
+        </div>
+        </div>
+
+        <div fxLayout="row"  class="copyright-wrapper">
+          <div fxFlex="100" fxLayoutAlign="start center">
+            <p>
+              {{ STRINGS.footer.copyright1 }} {{year}} {{ STRINGS.footer.copyright2 }}
+            </p>
+
+            </div>
+            </div>
+
+        </div>
+        
+  </div>
+
+</footer>

@@ -1,0 +1,815 @@
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZsz-29RYfsMydC3n2Gd_IU4_6X1Ybr7k&libraries=places" async defer>
+
+</script> -->
+<div class="middle-section height-auto homesection">
+    <div class="card-main-box width-80">
+        <!--..............................partner card..............................  -->
+        <div class="tabs-filter" *ngIf="
+        userType === STRINGS.userType.lowerCaseVenuer ||
+        userType === STRINGS.userType.lowerCasePromoter ||
+        userType === STRINGS.userType.lowerCaseHost ||
+        userType === STRINGS.userType.member
+    ">
+    
+            <div class="welcome-text-wrapper">
+                <h2 class="welcome-text">
+                    {{ STRINGS.home.welcome }} {{ partnerDetails?.user?.name | titlecase }}!
+                </h2>
+                <div  class="d-flex" *ngIf="superUser?.userType == 'member' || !rolesManageUser ? false : true">
+                    <input matInput [matDatepicker]="homepicker" style="width: 0; visibility: hidden" />
+                    <mat-datepicker #homepicker [dateClass]="dateClass" [calendarHeaderComponent]="customHeader">
+                    </mat-datepicker>
+                    <div class="card-calender" style="cursor: pointer;" (click)="homepicker.open()" >
+                        <img src="../../../../assets/img/calendar.svg" />
+                    </div>
+                    <button class="create-btn" routerLink="/event/create-event" >+ {{ STRINGS.home.createEvent
+                        }}</button>
+                </div>
+            </div>
+            
+            <div class="tabs-box auto-h">
+                <div class="top-card-box top-card-box-past ml-0" (click)="pastEvent()">
+                    <h2 class="event-number">{{ partnerDetails?.countPastEvent }}</h2>
+                    <p class="event-number event-card-name">{{ STRINGS.home.pastEvent }}</p>
+                </div>
+
+                <div class="top-card-box cursor-not-allowed" >
+                    <!-- routerLink="/rsvp/rspv-listing" -->
+                    <h2 class="event-number">{{ partnerDetails?.countRSVP }}</h2>
+                    <p class="event-number event-card-name">{{ STRINGS.home.rsvpGuestList }}</p>
+                </div>
+
+                <div class="top-card-box top-card-box-upcoming mr-0" (click)="upcomingEvent()">
+                    <h2 class="event-number">{{ partnerDetails?.countUpcomingEvent }}</h2>
+                    <p class="event-number event-card-name">{{ STRINGS.home.upcomingEvent }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div [ngClass.lt-md]="filtervalue ? 'd-block' : 'd-none'"
+ class="tabs-filter cus-tabs-filter" *ngIf="
+        userType !== STRINGS.userType.lowerCaseVenuer &&
+        userType !== STRINGS.userType.lowerCasePromoter &&
+        userType !== STRINGS.userType.lowerCaseHost &&
+        userType !== STRINGS.userType.member">
+            <div class="tabs-box">
+             <a href="javascript:void(0);" class="tabs-item" [ngClass]="{
+            active: selectedCategory === ''
+        }" (click)="selectAllCategory()">All Categories
+                    <img *ngIf="selectedCategory === ''" src="../../../../assets/img/pointer.svg"
+                        class="pointer" />
+                </a>
+                <a *ngFor="let category of featuredCategories | slice:0:maxArrayFeaturedCategory"
+                    href="javascript:void(0);" class="tabs-item" [ngClass]="{
+            active: selectedCategory?.id === category.id
+        }" (click)="selectCategory(category)">{{ category.categoryName }}
+                    <img *ngIf="selectedCategory?.id === category.id" src="../../../../assets/img/pointer.svg"
+                        class="pointer" />
+                </a>
+            </div>
+            <div class="filter-box">
+                <div class="reset-wrapper">
+                    <button class="reset-filter-btn" (click)="resetFilterValues()">
+                        {{ STRINGS.home.resetFilter }}
+                    </button>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="slider-bar filter-order-1">
+                        <div class="slider-head">
+                            <h3 class="slider-level">{{ STRINGS.home.distance }}</h3>
+                            <span class="slider-value">{{ milesValue }} {{ STRINGS.home.miles }}</span>
+                        </div>
+                        <mat-slider min="0" max="500" step="1" [value]="milesValue" class="slider-custom"
+                            (change)="milesValueChange($event)"></mat-slider>
+                        <div class="slider-head">
+                            <span class="slider-value">0</span>
+                            <span class="slider-value">{{milesValue*1.60934 | number : '1.0-0'}} km</span>
+                        </div>
+                    </div>
+                    <div class="category filter-order-3"  >
+                        <div class="dropdown dropdown-category">
+                            <mat-select disableRipple class="homescrollbarcustom" placeholder=" {{ selectedCategory ? selectedCategory.name
+                                : 'Category'
+                                }}">
+                                <mat-option (click)="selectAllCategory()" value="All Catogory">
+                                    All Catogory
+                                </mat-option>
+                                <mat-option (click)="selectCategory(items)" *ngFor="let items of categoryList" [value]="items.value">
+                                    {{ items.categoryName }}
+                                </mat-option>
+                              </mat-select>
+
+                            <!-- <button type="button" class="category-drop-btn" data-toggle="dropdown">
+                                {{
+                                selectedCategory
+                                ? selectedCategory.name
+                                : 'Category'
+                                }}
+                                <img src="../../../../assets/img/angle_down_arrow.svg" />
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-category">
+
+                             
+
+
+                                <a href="javascript:void(0);" class="dropdown-item category-item" (click)="selectAllCategory(items)">
+                                    All Category
+                                </a>
+                                <a *ngFor="let items of categoryList" class="dropdown-item category-item"
+                                    href="javascript:void(0);" (click)="selectCategory(items)"
+                                    [ngClass]="{ active : selectedCategory?.id === items.id} ">
+                                    </a>
+                            </div> -->
+                        </div>
+                        <div class="dropdown dropdown-category">
+                            <button type="button" class="category-drop-btn" data-toggle="dropdown">
+                                {{ selectedSubCategory ? selectedSubCategory.name : 'Sub-Category' }}
+                                <img src="../../../../assets/img/angle_down_arrow.svg" />
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-category">
+                                <a *ngFor="let items of subCategoryList" class="dropdown-item category-item"
+                                    href="javascript:void(0);"
+                                    [ngClass]="{ active : selectedSubCategory?.id === items.id} "
+                                    (click)="selectSubCategory(items)">{{
+                                    items.subCategoryName }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-bar filter-order-2" >
+                        <div class="slider-head">
+                            <h3 class="slider-level">{{ STRINGS.home.admissionCost }}</h3>
+                            <!-- <span class="slider-value">$ {{ costValue }}</span> -->
+                        </div>
+                        <mat-slider min="0" [max]="maxValue" step="1" [value]="costValue" class="slider-custom"
+                            (change)="costValueChange($event)"></mat-slider>
+                        <div class="slider-head">
+                            <span class="slider-value">{{ STRINGS.home.free }}</span>
+                            <!-- <span class="slider-value">$ {{ maxValue }}</span> -->
+                            <span class="slider-value">$ {{ costValue }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h1 *ngIf="
+        userType === STRINGS.userType.lowerCaseVenuer ||
+        userType === STRINGS.userType.lowerCasePromoter ||
+        userType === STRINGS.userType.lowerCaseHost ||
+        userType === STRINGS.userType.member
+        " class="card-section-heading">
+                {{ isUpcomingEvent ? STRINGS.home.upComingEvents : STRINGS.home.pastEvents }}
+            </h1>
+
+            <h1 *ngIf="
+        userType !== STRINGS.userType.lowerCaseVenuer &&
+        userType !== STRINGS.userType.lowerCasePromoter &&
+        userType !== STRINGS.userType.lowerCaseHost && 
+        userType !== STRINGS.userType.member
+        " class="card-section-heading">
+                {{ STRINGS.home.nearByEvents }}
+            </h1>
+
+            <div class="heading-underline"></div>
+
+            <!-- ............card for pastEvents.................... -->
+
+            <div class="card-row" *ngIf="
+                !isUpcomingEvent &&
+                (userType === STRINGS.userType.lowerCaseVenuer ||
+                userType === STRINGS.userType.lowerCasePromoter ||
+                userType === STRINGS.userType.lowerCaseHost || userType === STRINGS.userType.member)
+                ">
+                <div *ngIf="partnerPastEvents.length === 0 && !isUpcomingEvent">
+                    <h3 class="no-data">{{STRINGS.home.PastEventNotAvailable}}</h3>
+                </div>
+                <div class="card-box card-box-height"
+                    *ngFor="let event of partnerPastEvents | slice:0:maxArrayPastEvents"
+                    >
+                    <div (click)="navigateEventDetail(event?.id , event?.eventUrl ? event?.eventUrl  : '', true)" class="card-image" [ngStyle]="{
+                    'background-image': event.eventImages[0]?.eventImage
+                    ? 'url(' + event.eventImages[0]?.eventImage + ')'
+                    : ''            }">
+                        <div class="calender">
+                                <p class="date">
+                                    <!-- {{ event.start | date: "dd" }} -->
+                                    {{convertDateUTC(event.start)}}
+                                    <span class="month">{{ event.start | date: "LLL" }}</span>
+                                </p>
+                           
+                            <a href="javascript: void(0)">
+                                <div class="calender-add">
+                                    <img src="../../../../assets/img/add-calender.svg " />
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <h1 (click)="navigateEventDetail(event?.id , event?.eventUrl ? event?.eventUrl  : '', true)" class="event-name">{{ event?.name }}</h1>
+                        <div class="event-venue event-venue-space">
+                            <div class="flex mr-2">
+                                <img src="../../../../assets/img/time.svg" width="17px" />
+                                <p class="event-venue-place font-14">{{ event?.start | date:'shortTime' }}
+                                </p> 
+                            </div>
+                            <p class="reminder-time">{{ event?.start | upcomingDuration }} days to go </p>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" class="w-100">
+                    <div fxFlex="100" fxLayoutAlign="end end" class="view-all-btn mt-3 mb-5 w-100">
+                        <a *ngIf="partnerPastEvents.length > maxArrayPastEvents" href="javascript:void(0) "
+                            (click)="viewAll('maxArrayPastEvents', 'partnerPastEvents')">{{ STRINGS.home.viewAll }}</a>
+                    </div>
+                  </div>
+
+                
+            </div>
+
+            <!-- .........................card for upcomingEvents.........................   -->
+
+            <div class="card-row" *ngIf="
+                isUpcomingEvent &&
+               ( userType === STRINGS.userType.lowerCaseVenuer ||
+                userType === STRINGS.userType.lowerCasePromoter ||
+                userType === STRINGS.userType.lowerCaseHost ||
+                userType === STRINGS.userType.member )
+                ">
+                <div *ngIf="partnerUpcomingEvents.length === 0 && isUpcomingEvent">
+                    <h3 class="no-data">{{STRINGS.home.UpcommingEventNotAvailble}}</h3>
+                </div>
+                <div class="card-box" *ngFor="let event of partnerUpcomingEvents | slice:0:maxArrayUpcomingEvents"
+                    >
+                    <div  class="card-image" [ngStyle]="{
+                            'background-image':event.eventImages[0]?.eventImage
+                            ? 'url(' + event.eventImages[0]?.eventImage + ')'
+                            : ''
+                        }">
+                        <div class="calender">
+                            <p class="date">
+                                <!-- {{ event.start | date: "dd" }} -->
+                                {{convertDateUTC(event.start)}}
+                                <span class="month">{{ event.start | date: "LLL" }}</span>
+                            </p>
+                            <a href="javascript: void(0) ">
+                                <div class="calender-add">
+                                    <img src="../../../../assets/img/add-calender.svg " />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="click-empty-div" (click)="navigateEventDetail(event?.id , event?.eventUrl ? event?.eventUrl  : '' , false)">
+
+                        </div>
+                        <div class="card-image-bottom">
+                            <div class="width-10 flex-start">
+                                <div class="participants-main" *ngIf="event.guestcount !== '0'">
+                                    <div class="participants-imgs" *ngIf="event?.ticketBooked[0]">
+                                        <ng-container
+                                            *ngIf="!event?.ticketBooked[0]?.users?.profilePic; else elseBlock">
+                                            <div class="profile">
+                                                <ngx-avatar size="18" name="{{event?.ticketBooked[0]?.users?.name}}">
+                                                </ngx-avatar>
+                                            </div>
+                                        </ng-container>
+                                        <ng-template #elseBlock>
+                                            <img [src]="event?.ticketBooked[0]?.users?.profilePic" alt="">
+                                        </ng-template>
+                                    </div>
+                                    <div class="participants-imgs participants-mar" *ngIf="event?.ticketBooked[1]">
+                                        <ng-container
+                                            *ngIf="!event?.ticketBooked[1]?.users?.profilePic; else elseBlock">
+                                            <div class="profile">
+                                                <ngx-avatar size="18" name="{{event?.ticketBooked[1]?.users?.name}}">
+                                                </ngx-avatar>
+                                            </div>
+                                        </ng-container>
+                                        <ng-template #elseBlock>
+                                            <img [src]="event?.ticketBooked[1]?.users?.profilePic" alt="">
+                                        </ng-template>
+                                    </div>
+                                    <div class="participants-imgs participants-mar" *ngIf="event?.ticketBooked[2]">
+                                        <ng-container
+                                            *ngIf="!event?.ticketBooked[2]?.users?.profilePic; else elseBlock">
+                                            <div class="profile">
+                                                <ngx-avatar size="18" name="{{event?.ticketBooked[2]?.users?.name}}">
+                                                </ngx-avatar>
+                                            </div>
+                                        </ng-container>
+                                        <ng-template #elseBlock>
+                                            <img [src]="event?.ticketBooked[2]?.users?.profilePic" alt="">
+                                        </ng-template>
+                                    </div>
+                                </div>
+                                <div class="participants-number">
+                                    {{ event.guestcount === '0' ? event.guestcount : event.guestcount + '+ Going' }}
+                                </div>
+                            </div>
+                            <!-- <div class="width-10 like-dislike">
+                                <div class="like"  >
+                                    <img src="../../../../assets/img/thumbsup.svg " class="like-icon" />
+                                    <span class="like-count">{{ event.currentLikeCount === null ? 0 :
+                                        event.currentLikeCount}}</span>
+                                </div>
+                                <div class="like" >
+                                    <img src="../../../../assets/img/thumbsdown.svg " class="like-icon" />
+                                    <span class="like-count">{{
+                                        event.currentDisLikeCount === null ? 0 : event.currentDisLikeCount
+                                        }}</span>
+                                </div>
+                            </div> -->
+                        </div>
+                      
+                        <div class="disable-admin" *ngIf="event.archivedBy == 'admin'">
+                             <p>{{ STRINGS.home.disableAdmin}}</p> 
+                        </div> 
+                    </div>
+                   
+                    <div class="card-details">
+                        <h1 (click)="navigateEventDetail(event?.id , event?.eventUrl ? event?.eventUrl  : '', false)" class="event-name">{{ event?.name }}</h1>
+
+                        <div fxLayout="row" fxLayoutGap="10px"> 
+                            <div  fxFlex="50" fxLayoutAlign="start center">
+                                <div class="event-venue-icon mr-3">
+                                    <img src="../../../../assets/img/card-location.svg " />
+                                </div>
+                                <p class="event-venue-place  address-height">
+                                    {{ (event.venueEvents[0]?.city)?(event.venueEvents[0]?.city):'' }}{{ (event.venueEvents[0]?.state) ? ','+(event.venueEvents[0]?.state): '' }}
+                                </p>
+                                </div>
+                        <div  fxFlex="50" fxLayoutAlign="end center">
+                            <!-- <div class="card-catogory">
+                                <button matRipple>{{'eventdetail.categoryName'}}</button>
+                            </div> -->
+                        </div>
+                        </div>
+ 
+                        <div fxLayout="row" fxLayoutGap="10px" class="mt-3" fxLayoutGap.md="0"> 
+                            <div  fxFlex="50" fxLayoutAlign="start center">
+                                <div class="event-venue-icon mr-3">
+                                    <img src="../../../../assets/img/distance.svg " />
+                                </div>
+                                <p class="event-venue-place pr-1">{{ event.venueEvents[0]?.distance === null ? 0 : event.venueEvents[0]?.distance | number :
+                                    '1.2-2'}} Miles
+                                </p>
+                                </div>
+                                <div  fxFlex="50" fxLayoutAlign="end center">
+                                    <div class="event-time">
+                                        <div class="watch-imgs">
+                                            <img src="../../../../assets/img/timer.svg" />
+                                        </div>
+                                        <p class="time">
+                                            {{ getFormattedDate(event.start)  }} to {{ getFormattedDate(event.end) }}
+                                        </p>
+                                        </div>
+                                </div>
+
+                                </div>
+
+
+                        <div>
+                            <hr class="divider" />
+
+                            <div fxLayout="row" fxLayoutGap="10px" class="mt-3"> 
+                                <div  fxFlex="50" fxLayoutAlign="start center">
+                                    <div class="social-share">
+                                        <div class="event-venue-place">{{ STRINGS.home.share }}:</div>
+                                        <div class="social-platform-icon">
+                                            <a href="mailto:?subject={{ event?.name }} Event&body=Check out event on that link {{baseUrl+'/event/detail/'+event?.id}}" target="_blank">
+                                                <img src="../../../../assets/img/awesome-mail.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                        <div class="social-platform-icon">
+                                            <a href="http://www.facebook.com/sharer/sharer.php?u={{baseUrl+'/event/detail/'+event?.id}}&title={{ event?.name }} Event" target="_blank">
+                                                 <img src="../../../../assets/img/awesome-facebook-f.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                        <div class="social-platform-icon">
+                                            <a href="http://twitter.com/intent/tweet?original_referer={{baseUrl+'/event/detail/'+event?.id}}&text={{ event?.name }} Event&url={{baseUrl+'/event/detail/'+event?.id}}" target="_blank">
+                                                <img src="../../../../assets/img/awesome-twitter.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div  fxFlex="50" fxLayoutAlign="end center">
+                                        <!-- {{ items?.host.name }} -->
+
+                                    </div>
+    
+                                    </div>
+
+
+                   
+                        </div>
+                    </div>
+                </div>
+
+                <div fxLayout="row" class="w-100">
+                    <div fxFlex="100" fxLayoutAlign="end end" class="view-all-btn mt-3 w-100">
+                               
+                <a *ngIf="partnerUpcomingEvents.length > maxArrayUpcomingEvents" href="javascript:void(0)"
+                    class="view-all-btn mb-5" (click)="viewAll('maxArrayUpcomingEvents', 'partnerUpcomingEvents')">{{
+                    STRINGS.home.viewAll }}</a>
+                    </div>
+                  </div>
+
+           
+            </div>
+
+            <!--.............................Near By Events................-->
+
+            <div class="card-row" *ngIf="
+                    userType !== STRINGS.userType.lowerCaseVenuer &&
+                    userType !== STRINGS.userType.lowerCasePromoter &&
+                    userType !== STRINGS.userType.lowerCaseHost &&
+                    userType !== STRINGS.userType.member
+                ">
+                <div class="w-100" *ngIf="eventsListNearBy.length === 0">
+                    <h3 class="no-data">{{STRINGS.home.notAvailable}}</h3>
+                </div>
+                <div class="card-box" *ngFor="let items of eventsListNearBy | slice:0:maxArrayNearByEvents"
+                    >
+                    <div  class="card-image" [ngStyle]="{
+                            'background-image': items.eventImages[0]?.eventImage
+                                ? 'url(' + items.eventImages[0]?.eventImage + ')'
+                                : ''
+                            }">
+                        <div class="calender">
+                            <ng-container  *ngIf="items.recuringDate != ''; else startDateBlock">
+                                <p class="date">
+                                    <!-- {{ items.start | date: "dd" }} -->
+                                    {{convertDateUTC(items.recuringDate)}}
+                                    <span class="month">{{ items.recuringDate | date: "LLL" }}</span>
+                                  
+                                </p>
+                            </ng-container>
+                            
+                            <ng-template #startDateBlock>
+                                <p class="date">
+                                    <!-- {{ items.start | date: "dd" }} -->
+                                    {{convertDateUTC(items.start)}}
+                                    <span class="month">{{ items.start | date: "LLL" }}</span>
+                                </p>
+                            </ng-template>
+                          
+                            <a href="javascript: void(0) ">
+                                <div class="calender-add">
+                                    <img src="../../../../assets/img/add-calender.svg " />
+                                </div>
+                            </a>
+                        </div>
+                        <div *ngIf="userType === STRINGS.userType.lowercaseUser" class="wishlist"
+                            (click)="markFavorites(items)">
+
+                            <img [src]="items?.favorite?.isFavorite === true ? '../../../../assets/img/favorite-blue.svg' : '../../../../assets/img/favorite.svg'"
+                                    class="heart-icon liked-heart-icon">
+                        </div>
+                        <div class="click-empty-div" (click)="navigateEventDetail(items?.id , items?.eventUrl ? items?.eventUrl  : '', false, items)">
+
+                        </div>
+                        <div class="card-image-bottom">
+                            <div class="width-10 flex-start">
+                                <div class="participants-main" *ngIf="items.guestCount[0].count !== '0'">
+                                    <div class="participants-imgs" *ngIf="items?.GuestData[0]">
+                                        <ng-container
+                                            *ngIf="!items?.GuestData[0]?.guestUser?.profilePic; else elseBlock">
+                                            <div class="profile">
+                                                <ngx-avatar size="18" name="{{items?.GuestData[0]?.guestUser?.name}}">
+                                                </ngx-avatar>
+                                            </div>
+                                        </ng-container>
+                                        <ng-template #elseBlock>
+                                            <img [src]="items?.GuestData[0]?.guestUser?.profilePic" alt="">
+                                        </ng-template>
+                                    </div>
+                                    <div class="participants-imgs participants-mar" *ngIf="items?.GuestData[1]">
+                                        <ng-container
+                                            *ngIf="!items?.GuestData[1]?.guestUser?.profilePic; else elseBlock">
+                                            <div class="profile">
+                                                <ngx-avatar size="18" name="{{items?.GuestData[1]?.guestUser?.name}}">
+                                                </ngx-avatar>
+                                            </div>
+                                        </ng-container>
+                                        <ng-template #elseBlock>
+                                            <img [src]="items?.GuestData[1]?.guestUser?.profilePic" alt="">
+                                        </ng-template>
+                                    </div>
+                                    <div class="participants-imgs participants-mar" *ngIf="items?.GuestData[2]">
+                                        <ng-container
+                                            *ngIf="!items?.GuestData[2]?.guestUser?.profilePic; else elseBlock">
+                                            <div class="profile">
+                                                <ngx-avatar size="18" name="{{items?.GuestData[2]?.guestUser?.name}}">
+                                                </ngx-avatar>
+                                            </div>
+                                        </ng-container>
+                                        <ng-template #elseBlock>
+                                            <img [src]="items?.GuestData[2]?.guestUser?.profilePic" alt="">
+                                        </ng-template>
+                                    </div>
+                                </div>
+                                <div class="participants-number">{{ items.guestCount[0].count === '0' ?
+                                    items.guestCount[0].count : items.guestCount[0].count + '+ Going' }}</div>
+                            </div>
+                            <div  *ngIf="userType === STRINGS.userType.lowercaseUser" class="width-10 like-dislike">
+                                <div class="like" (click)="likeDislikeEvent(items.id,1)">
+                                    <img src="../../../../assets/img/thumbsup.svg " class="like-icon" />
+                                    <span class="like-count">{{ items.currentLikeCount === null ? 0 :
+                                        items.currentLikeCount }}</span>
+                                </div>
+                                <div class="like" (click)="likeDislikeEvent(items.id,2)">
+                                    <img src="../../../../assets/img/thumbsdown.svg " class="like-icon" />
+                                    <span class="like-count">{{
+                                        items.currentDisLikeCount === null ? 0 : items.currentDisLikeCount
+                                        }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <h1 class="event-name" (click)="navigateEventDetail(items?.id , items?.eventUrl ? items?.eventUrl  : '', false, itmes)" >{{ items.name }}</h1>
+                        <div fxLayout="row" fxLayoutGap="10px"> 
+                            <div  fxFlex="50" fxLayoutAlign="start center">
+                                <div class="event-venue-icon mr-3">
+                                    <img src="../../../../assets/img/card-location.svg " />
+                                </div>
+                                <p class="event-venue-place  address-height">
+                                    {{ (items.address[0]?.city)?(items.address[0]?.city):('') }}  {{(items.address[0]?.state) ?','+(items.address[0]?.state): ('') }}
+                                </p>
+                                </div>
+                        <div  fxFlex="50" fxLayoutAlign="end center">
+                            <div class="card-catogory">
+                                <button matRipple>{{items.eventChooseSubcategory[0]?.category[0]?.categoryName    }}</button>
+                            </div>
+                        </div>
+                        </div>
+
+
+                        <div fxLayout="row" fxLayoutGap="10px" class="mt-3"  fxLayoutGap.md="0"> 
+                            <div  fxFlex="50" fxLayoutAlign="start center">
+                                <div class="event-venue-icon mr-3">
+                                    <img src="../../../../assets/img/distance.svg " />
+                                </div>
+                                <p class="event-venue-place pr-1">{{ items.distance === null ? 0 : items.distance | number :
+                                    '1.2-2'}} Miles
+                                </p>
+                                </div>
+                                <div  fxFlex="50" fxLayoutAlign="end center">
+                                    <div class="event-time">
+                                        <div class="watch-imgs">
+                                            <img src="../../../../assets/img/timer.svg" />
+                                        </div>
+                                        <p class="time">
+                                            {{ getFormattedDate(items.start)  }} to {{ getFormattedDate(items.end) }}
+                                        </p>
+                                        </div>
+                                </div>
+
+                                </div>
+
+
+                        <div>
+
+                      
+
+
+                            <hr class="divider" />
+
+                            <div fxLayout="row" fxLayoutGap="10px" class="mt-3"> 
+                                <div  fxFlex="50" fxLayoutAlign="start center">
+                                    <div class="social-share">
+                                        <div class="event-venue-place">{{ STRINGS.home.share }}:</div>
+                                        <div class="social-platform-icon">
+                                            <a   (click)="openSocialMedia(items,'mail')">
+                                                <img src="../../../../assets/img/awesome-mail.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                        <div class="social-platform-icon">
+                                            <a (click)="openSocialMedia(items,'facebook')">
+                                                 <img src="../../../../assets/img/awesome-facebook-f.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                        <div class="social-platform-icon">
+                                            <a  (click)="openSocialMedia(items,'twitter')">
+                                                <img src="../../../../assets/img/awesome-twitter.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div  fxFlex="50" fxLayoutAlign="end center">
+                                        <p class="hostname"> @{{ items?.host.name }}</p>
+                                       
+
+                                    </div>
+    
+                                    </div>
+
+                         
+                            </div>
+                    </div>
+                </div>
+                <div fxLayout="row" class="w-100">
+                    <div fxFlex="100" fxLayoutAlign="end end" class="view-all-btn mt-3 mb-5 w-100">
+                      <a *ngIf="eventsListNearBy.length > maxArrayNearByEvents" href="javascript:void(0)"
+                        (click)="viewAll('maxArrayNearByEvents', 'eventsListNearBy')" class="view-all-btn">{{
+                        STRINGS.home.viewAll }}</a>
+                    </div>
+                  </div>
+
+                
+            </div>
+
+            <!--..........................Featured Events.........................................  -->
+            <div style="margin-bottom: 5rem;" *ngIf="
+                    userType !== STRINGS.userType.lowerCaseVenuer &&
+                    userType !== STRINGS.userType.lowerCasePromoter &&
+                    userType !== STRINGS.userType.lowerCaseHost &&
+                    userType !== STRINGS.userType.member
+                ">
+                <h1 class="card-section-heading mt-0">{{ STRINGS.home.featuredEvents }}</h1>
+                <div class="heading-underline"></div>
+                <div *ngIf="featuredEvents.length === 0">
+                    <h3 class="no-data">{{STRINGS.home.notAvailable}}</h3>
+                </div>
+                <div class="card-row">
+                    <div  class="card-box" *ngFor="let features of featuredEvents | slice:0:maxArrayNearByEvents">
+                        <div  class="card-image" [ngStyle]="{
+                                'background-image': features.eventImages[0]?.eventImage
+                                ? 'url(' + features.eventImages[0]?.eventImage + ')'
+                                : ''
+                            }">
+                            <div class="calender">
+
+                                <ng-container  *ngIf="features.recuringDate != ''; else startDateBlock">
+                                    <p class="date">
+                                        <!-- {{ items.start | date: "dd" }} -->
+                                        {{convertDateUTC(features.recuringDate)}}
+                                        <span class="month">{{ features.recuringDate | date: "LLL" }}</span>
+                                      
+                                    </p>
+                                </ng-container>
+                                
+                                <ng-template #startDateBlock>
+                                    <p class="date">
+                                        <!-- {{ features.start | date: "dd" }} -->
+                                        {{convertDateUTC(features.start)}}
+                                        <span class="month">{{ features.start | date: "LLL" }}</span>
+                                    </p>
+                                </ng-template>
+                               
+                                <a href="javascript: void(0);">
+                                    <div class="calender-add">
+                                        <img src="../../../../assets/img/add-calender.svg " />
+                                    </div>
+                                </a>
+                            </div>
+                            <div *ngIf="userType === STRINGS.userType.lowercaseUser" class="wishlist"
+                                (click)="markFavorites(features)">
+                                <img [src]="features?.favorite?.isFavorite === true ? '../../../../assets/img/favorite-blue.svg' : '../../../../assets/img/favorite.svg'"
+                                    class="heart-icon liked-heart-icon">
+                            </div>
+                            <div class="click-empty-div" (click)="navigateEventDetail(features?.id , features?.eventUrl ? features?.eventUrl  : '', false, features)">
+
+                            </div>
+                            <div class="card-image-bottom">
+                                <div class="width-10 flex-start">
+                                    <div class="participants-main" *ngIf="features.guestCount[0].count !== '0'">
+                                        <div class="participants-imgs" *ngIf="features?.GuestData[0]">
+                                            <ng-container
+                                                *ngIf="!features?.GuestData[0]?.guestUser?.profilePic; else elseBlock">
+                                                <div class="profile">
+                                                    <ngx-avatar size="18"
+                                                        name="{{features?.GuestData[0]?.guestUser?.name}}"></ngx-avatar>
+                                                </div>
+                                            </ng-container>
+                                            <ng-template #elseBlock>
+                                                <img [src]="features?.GuestData[0]?.guestUser?.profilePic" alt="">
+                                            </ng-template>
+                                        </div>
+                                        <div class="participants-imgs participants-mar" *ngIf="features?.GuestData[1]">
+                                            <ng-container
+                                                *ngIf="!features?.GuestData[1]?.guestUser?.profilePic; else elseBlock">
+                                                <div class="profile">
+                                                    <ngx-avatar size="18"
+                                                        name="{{features?.GuestData[1]?.guestUser?.name}}"></ngx-avatar>
+                                                </div>
+                                            </ng-container>
+                                            <ng-template #elseBlock>
+                                                <img [src]="features?.GuestData[1]?.guestUser?.profilePic" alt="">
+                                            </ng-template>
+                                        </div>
+                                        <div class="participants-imgs participants-mar" *ngIf="features?.GuestData[2]">
+                                            <ng-container
+                                                *ngIf="!features?.GuestData[2]?.guestUser?.profilePic; else elseBlock">
+                                                <div class="profile">
+                                                    <ngx-avatar size="18"
+                                                        name="{{features?.GuestData[2]?.guestUser?.name}}"></ngx-avatar>
+                                                </div>
+                                            </ng-container>
+                                            <ng-template #elseBlock>
+                                                <img [src]="features?.GuestData[2]?.guestUser?.profilePic" alt="">
+                                            </ng-template>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="participants-number">{{ features.guestCount[0].count === '0' ?
+                                        features.guestCount[0].count : features.guestCount[0].count + '+ Going' }}</div>
+                                </div>
+                                <div  *ngIf="userType === STRINGS.userType.lowercaseUser" class="width-10 like-dislike">
+                                    <div class="like"  (click)="likeDislikeEvent(items.id,1)">
+                                        <img src="../../../../assets/img/thumbsup.svg " class="like-icon" />
+                                        <span class="like-count">{{ features.currentLikeCount === null ? 0 :
+                                            features.currentLikeCount }}</span>
+                                    </div>
+                                    <div class="like"  (click)="likeDislikeEvent(items.id,2)">
+                                        <img src="../../../../assets/img/thumbsdown.svg " class="like-icon" />
+                                        <span class="like-count">{{
+                                            features.currentDisLikeCount === null ? 0 : features.currentDisLikeCount
+                                            }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-details">
+                            <h1 class="event-name" (click)="navigateEventDetail(features?.id , features?.eventUrl ? features?.eventUrl  : '', false, features)">{{ features.name }}</h1>
+
+                            <div fxLayout="row" fxLayoutGap="10px"> 
+                                <div  fxFlex="50" fxLayoutAlign="start center">
+                                    <div class="event-venue-icon mr-3">
+                                        <img src="../../../../assets/img/card-location.svg " />
+                                    </div>
+                                    <p class="event-venue-place  address-height">
+                                        {{ (features.address[0]?.city) ? (features.address[0]?.city):('') }}  {{ (features.address[0]?.state) ? ','+(features.address[0]?.state) : ('') }}
+                                    </p>
+                                    </div>
+                            <div  fxFlex="50" fxLayoutAlign="end center">
+                                <div class="card-catogory">
+                                    <button matRipple>{{features.eventChooseSubcategory[0]?.category[0]?.categoryName    }}</button>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div fxLayout="row" class="mt-3"> 
+                                <div  fxFlex="50" fxLayoutAlign="start center">
+                                    <div class="event-venue-icon mr-3">
+                                        <img src="../../../../assets/img/distance.svg " />
+                                    </div>
+                                    <p class="event-venue-place pr-1">{{ features.distance === null ? 0 : features.distance | number :
+                                        '1.2-2'}} Miles
+                                    </p>
+                                    </div>
+                                    <div  fxFlex="50" fxLayoutAlign="end center">
+                                        <div class="event-time">
+                                            <div class="watch-imgs">
+                                                <img src="../../../../assets/img/timer.svg" />
+                                            </div>
+                                            <p class="time">
+                                                {{ getFormattedDate(features.start)  }} to {{ getFormattedDate(features.end) }}
+                                            </p>
+                                            </div>
+                                    </div>
+    
+                                    </div>
+                            <div>
+                                <hr class="divider" />
+
+                                
+                            <div fxLayout="row" fxLayoutGap="10px" class="mt-3"> 
+                                <div  fxFlex="50" fxLayoutAlign="start center">
+                                    <div class="social-share">
+                                        <div class="event-venue-place">{{ STRINGS.home.share }}:</div>
+                                        <div class="social-platform-icon">
+                                            <a href="mailto:?subject={{ features.name }} Event&body=Check out this site I came across {{baseUrl+'/event/detail/'+features.id}}" target="_blank">
+                                                <img src="../../../../assets/img/awesome-mail.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                        <div class="social-platform-icon">
+                                            <a href="http://www.facebook.com/sharer/sharer.php?u={{baseUrl+'/event/detail/'+features.id}}&title={{ features.name }} Event" target="_blank">
+                                                 <img src="../../../../assets/img/awesome-facebook-f.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                        <div class="social-platform-icon">
+                                            <a href="http://twitter.com/intent/tweet?original_referer={{baseUrl+'/event/detail/'+features.id}}&text={{ features.name }} Event&url={{baseUrl+'/event/detail/'+features.id}}" target="_blank">
+                                                <img src="../../../../assets/img/awesome-twitter.svg " class="like-icon" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div  fxFlex="50" fxLayoutAlign="end center">
+                                       <p class="hostname">@ {{ features?.host.name }}</p>  
+
+                                    </div>
+    
+                                    </div>
+
+
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" *ngIf="featuredEvents.length > maxArrayFeatuedEvents"
+                        class="view-all-btn mb-5" (click)="viewAll('maxArrayFeatuedEvents', 'featuredEvents')">{{
+                        STRINGS.home.viewAll }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

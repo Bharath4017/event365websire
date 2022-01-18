@@ -1,0 +1,19 @@
+<div class="ng_wrapper">
+  <mat-card class="ng_inner" fxLayout="column" fxLayout.gt-sm="row"   fxLayoutGap="60px" >
+    <div fxLayout="column" fxFlex.lt-md ="50%" fxFlex.lt-sm="20%">
+      <img src="../../../assets/img/account-creation.svg"/>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center"  fxLayoutGap="60px" fxFlex.lt-md="50%">
+      <div fxLayout="column" >
+        <h2 class="form-heading">
+          {{ STRINGS.resetPassword.resetConfirmationHead }}
+        </h2>
+        <div fxLayout="column" fxFlex.lt-sm="50%" fxLayoutAlign="center center">
+        <button class="primary-btn btn-margin-decrease" (click)="nevigateLogin()">
+          {{ STRINGS.buttons.resetSucessfullLogin }}
+        </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

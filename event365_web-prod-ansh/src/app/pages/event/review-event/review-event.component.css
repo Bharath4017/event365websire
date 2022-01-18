@@ -1,0 +1,1499 @@
+agm-map {
+  height: 24.17rem;
+}
+
+.password-Reset-Successful {
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  gap: 1rem;
+  width: 100%;
+  margin: 2% 3% 1% 5%;
+}
+
+.limitTextHeight {
+  height: 7.5rem;
+  overflow: hidden;
+}
+
+.read-more {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.read-more small {
+  color: #715ff2;
+  font-size: 1.6rem;
+  font-family: 'Caros', sans-serif;
+  cursor: pointer;
+}
+
+.slection-card-btn {
+  width: 27.66rem;
+  height: 4.52rem;
+  margin: 3rem 10rem 3rem .4rem;
+  padding: 1.4rem 3.85rem 1.5rem 3.6rem;
+  border-radius: 7.5rem;
+  background-color: #7966fe;
+}
+
+.slection-card-btn-text {
+  width: 20.2rem;
+  height: 1.6rem;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: Caros;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: 1.4px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.section-Card {
+  height: auto;
+  width: 80%;
+  background: #fff;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 5rem 8rem;
+  -webkit-box-shadow: 0 0 3px #00000029;
+  box-shadow: 0 0 3px #00000029;
+}
+
+.password-Reset-Successful-text {
+  font-family: Poppins;
+  font-size: 3rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--greyish-brown);
+}
+
+.gallery-Image-event {
+  width: 43rem;
+  height: 48rem;
+}
+
+.gallery-Image-event-slider {
+  width: 8.8rem;
+  height: 9.8rem;
+  margin: 2rem 1.5rem 1.9rem 0;
+}
+
+.event-Start {
+  height: 1.5rem;
+  margin: -9px -6.5rem -6.9px 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.42;
+  letter-spacing: 0.48px;
+  text-align: left;
+  color: #696c71;
+}
+
+.button-event-upperCard {
+  width: 14.1rem;
+  height: 3.5rem;
+  margin: 0 0 0 10%;
+  padding: .39rem 2.7rem 1.52rem 1.21rem;
+  -o-object-fit: fill;
+     object-fit: fill;
+  border-radius: .8rem;
+  -webkit-box-shadow: 0 0 21px 0 rgba(70, 80, 105, 0.14);
+          box-shadow: 0 0 21px 0 rgba(70, 80, 105, 0.14);
+  background-image: linear-gradient(34deg, #5961e6 21%, #b382f5 79%);
+}
+
+.button-event-text {
+  width: 8.4rem;
+  height: 1.6rem;
+  margin: 0 0 0 1.6rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.79;
+  letter-spacing: 0.28px;
+  text-align: left;
+  color: #ffffff;
+}
+
+::ng-deep.swiper-button-next::after,
+::ng-deep.swiper-button-prev::after {
+  color: #fff;
+  background-color: #36454f;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 3.1rem;
+  border-radius: 10rem;
+  opacity: 0.73;
+  height: 4rem;
+  width: 4rem;
+  z-index: 10;
+}
+
+.trouble-text {
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.14;
+  letter-spacing: 0.56px;
+  text-align: center;
+  color: #715ff2;
+}
+
+.blanK-section {
+  margin-bottom: 7rem;
+  height: auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.event-detail-card {
+  min-height: 57.6rem;
+  height: auto;
+  padding: 5rem 3.5rem;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.event-detail-card .images {
+  width: 55%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.event-detail-card .images .event-image-slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.8rem;
+}
+
+.event-detail-card .images .event-image-slider img {
+  width: 9rem;
+  height: 9rem !important;
+}
+
+.event-detail-card .images .event-image {
+  width: 43rem;
+  height: 45rem;
+}
+
+.event-detail-card .images .event-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.event-detail-card .current-event-details {
+  width: 45%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
+.event-detail-card .current-event-details h4 {
+  color: #343a43;
+  font-family: 'Caros', sans-serif;
+  font-size: 2.7rem;
+  font-weight: 800;
+  line-height: 2.4rem;
+  letter-spacing: 0.54px;
+}
+
+.event-detail-card .current-event-details .current-event-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.8rem;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.7rem;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-frequency {
+  width: 30rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-frequency .event-code {
+  color: #343a43;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end {
+  position: relative;
+  padding: 0 1.5rem;
+  width: 100%;
+  border-radius: .8rem;
+  background: #f7f6fb;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end span {
+  position: absolute;
+  top: 56%;
+  left: 45%;
+  font-size: 4.4rem;
+  color: #7d7d7d;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0.4;
+  font-weight: 100;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end .event-start,
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end .event-end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end .event-start p,
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end .event-end p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 2.9rem;
+  letter-spacing: 0.48px;
+  text-align: left;
+  color: #696c71;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end .event-start h4,
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end .event-end h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2.6rem;
+  letter-spacing: 0.6px;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end .event-start small,
+.event-detail-card .current-event-details .current-event-info .event-info-left .event-start-end .event-end small {
+  font-size: 1rem;
+  line-height: 3rem;
+  letter-spacing: 0.4px;
+  text-align: left;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.6rem;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .favorite {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 1.3rem;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .favorite mat-icon {
+  color: rgba(150, 151, 181, 0.5);
+  cursor: pointer;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .favorite small {
+  color: #e53a3a;
+  font-family: 'Caros', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2.9rem;
+  letter-spacing: 0.4px;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .star-rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: .8rem;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .star-rating .star {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: .6rem;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .star-rating p {
+  font-family: 'Arial';
+  font-size: 1rem;
+  line-height: 2.8;
+  letter-spacing: 0.2px;
+  color: #7d7d7d;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .share-event button,
+.event-detail-card .current-event-details .current-event-info .event-info-right .share-event div,
+.event-detail-card .current-event-details .current-event-info .event-info-right .add-to-calender button,
+.event-detail-card .current-event-details .current-event-info .event-info-right .add-to-calender div {
+  width: 14rem;
+  height: 3.5rem;
+  color: #fff !important;
+  outline: none;
+  border-radius: .8px;
+  font-family: 'Caros', sans-serif !important;
+  font-size: 1.4rem;
+  line-height: 1.79;
+  letter-spacing: 0.28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 0;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .share-event button,
+.event-detail-card .current-event-details .current-event-info .event-info-right .add-to-calender button {
+  background: linear-gradient(34deg, #5961e6 21%, #b382f5 79%);
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .share-event button p,
+.event-detail-card .current-event-details .current-event-info .event-info-right .add-to-calender button p {
+  font-family: 'Caros', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.79;
+  letter-spacing: 0.28px;
+}
+
+.event-detail-card .current-event-details .current-event-info .event-info-right .share-event div,
+.event-detail-card .current-event-details .current-event-info .event-info-right .add-to-calender div {
+  background: linear-gradient(34deg, #b382f5 21%, #5961e6 79%);
+}
+
+.event-detail-card .current-event-details .category {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.7rem;
+}
+
+.event-detail-card .current-event-details .category h4 {
+  font-family: 'Caros', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.31;
+}
+
+.event-detail-card .current-event-details .category button {
+  padding: .3rem 1.6rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.24px;
+  border-radius: 3.25rem;
+  border: solid 1px #9697b5;
+  background-color: #ffffff;
+}
+
+.event-detail-card .current-event-details .tags {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+}
+
+.event-detail-card .current-event-details .tags h4 {
+  font-family: 'Caros', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.17;
+  text-align: left;
+  color: #343a43;
+}
+
+.event-detail-card .current-event-details .tags .tag-list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.event-detail-card .current-event-details .tags .tag-list mat-chip {
+  font-family: 'Caros', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 2.08;
+  letter-spacing: 0.24px;
+  color: #ffffff;
+}
+
+.event-detail-card .current-event-details .venue-details-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.event-detail-card .current-event-details .venue-details-wrapper .venue-details {
+  width: 40%;
+}
+
+.event-detail-card .current-event-details .venue-details-wrapper .venue-details .venue {
+  font-size: 1.6rem;
+  color: #343a43;
+  font-weight: 700;
+}
+
+.event-detail-card .current-event-details .venue-details-wrapper .venue-details .venue-fw {
+  font-weight: 400;
+}
+
+.event-detail-card .current-event-details .venue-details-wrapper .venue-details .venue-img-wrapper {
+  width: 12.5rem;
+  height: 10.1rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-left: .5rem;
+}
+
+.event-detail-card .current-event-details .venue-details-wrapper .venue-details .venue-img-wrapper .venue-img {
+  width: 100%;
+  height: 100%;
+}
+
+.event-detail-card .current-event-details .venue-details-wrapper .venue-55 {
+  width: 55%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.event-detail-card .current-event-details .confirm-btn {
+  margin-top: 3rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.event-detail-card .current-event-details .confirm-btn button {
+  padding: 1.5rem 3.8rem;
+  font-family: 'Caros', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.21;
+  letter-spacing: 1.4px;
+  color: #ffffff;
+  border-radius: 7.58px;
+  background-color: #7966fe;
+}
+
+.event-detail-wrapper {
+  margin-top: -20rem;
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5rem;
+}
+
+.event-detail-wrapper .mat-card .swiper-slide {
+  height: auto !important;
+}
+
+.width-80 {
+  width: 80%;
+}
+
+.width-90 {
+  width: 90%;
+}
+
+.wrapper-heading {
+  font-family: 'Caros', sans-serif;
+  font-weight: bold;
+  font-size: 2.2rem;
+  color: #343a43;
+}
+
+.wrapper-content {
+  font-size: 1.6rem;
+  line-height: 1.56;
+  color: #343a43;
+  text-align: center;
+}
+
+.paragraph {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 2rem;
+}
+
+.contact-host {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 2rem;
+}
+
+.contact-host .position-abs {
+  position: absolute;
+}
+
+.contact-host h3 {
+  margin-left: 10%;
+}
+
+.contact-host .contact-wrapper {
+  position: relative;
+  width: 100%;
+  height: 32rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.contact-host .contact-wrapper .contact-bg-left {
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 30rem;
+  opacity: 0.5;
+  background: linear-gradient(85deg, #ff9a9f 20%, #ffaba0 43%, #ffc3a1 76%);
+}
+
+.contact-host .contact-bg-right {
+  bottom: 0;
+  right: 0;
+  width: 7rem;
+  height: 30rem;
+  opacity: 0.5;
+  background-image: linear-gradient(85deg, #ff9a9f 20%, #ffaba0 43%, #ffc3a1 76%);
+}
+
+.contact-host .contact-info {
+  width: 85%;
+  height: 18rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3rem;
+  margin-left: 10%;
+  z-index: 999;
+}
+
+.contact-host .contact-info img {
+  width: 18rem;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.contact-host .contact-info .details-wrapper {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 1% 1% 1% 1%;
+}
+
+.contact-host .contact-info .details-wrapper h4 {
+  color: #343a43;
+  line-height: 0.96;
+  letter-spacing: 0.5px;
+  font-family: 'Caros';
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.contact-host .contact-info .details-wrapper .details {
+  width: 100%;
+  height: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 2.5rem;
+}
+
+.contact-host .contact-info .details-wrapper .details button {
+  width: 25rem;
+  height: 100%;
+  border-radius: 2.1rem;
+  background-color: #eeeef8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1.5rem;
+}
+
+.contact-host .contact-info .details-wrapper .details button p {
+  font-family: 'Caros', sans-serif;
+  font-size: 1.6rem;
+}
+
+.contact-host .contact-info .details-wrapper .details button mat-icon {
+  color: #715ff2;
+}
+
+.map {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 2rem;
+}
+
+.map button {
+  width: 100%;
+}
+
+.map button img {
+  width: 100%;
+  height: 24rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#review-wrapper,
+#related-event-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.reviews {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+}
+
+.reviews .add-review-btn {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  width: 15rem;
+  height: 4rem;
+  border-radius: 7.58rem;
+  border: solid 1px #343a43;
+  background: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.reviews .add-review-btn mat-icon {
+  color: #715ff2;
+}
+
+.reviews .add-review-btn span {
+  font-family: 'Caros', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.21;
+  letter-spacing: 1.4px;
+  color: #343a43;
+}
+
+.reviews .review-cards {
+  width: 100%;
+  height: 20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 2.5rem;
+}
+
+.reviews .review-cards .mat-review {
+  width: 34.5rem;
+  height: 100%;
+  bottom: 2px;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.reviews .review-cards .reviewer-name {
+  width: 100%;
+  height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.reviews .review-cards .reviewer-name img {
+  width: 3rem;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+}
+
+.reviews .review-cards .reviewer-name h4 {
+  font-family: 'Caros', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.reviews .review-cards .review-content {
+  font-family: 'Caros', sans-serif;
+  font-size: 1.4rem;
+}
+
+.reviews .review-cards .review-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.reviews .review-cards .review-date p {
+  color: #878a90;
+  font-family: 'Caros', sans-serif;
+  font-size: 1.4rem;
+}
+
+.related-event {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 2rem;
+}
+
+.related-event .event-cards {
+  width: 100%;
+}
+
+.view-all-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.view-all-btn a {
+  color: #9697b5;
+  font-family: Caros;
+  font-size: 1.4rem;
+  margin-right: 10%;
+}
+
+.events {
+  position: relative;
+  width: 25.5rem;
+  height: 27.5rem;
+  overflow: hidden;
+}
+
+.events .event-date {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  padding: 5px;
+  width: 4rem;
+  height: 4rem;
+  background: #fff;
+  border-radius: 4px;
+  z-index: 999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.events .event-date p {
+  color: #7966fe;
+  font-family: 'Caros', sans-serif;
+  font-weight: 500;
+}
+
+.events .event-date #date {
+  font-size: 1.3rem;
+  line-height: 1.08;
+  letter-spacing: -0.33px;
+}
+
+.events .event-date #month {
+  font-size: .8rem;
+  line-height: 0.63;
+  letter-spacing: -0.2px;
+}
+
+.mat-event {
+  position: absolute;
+  bottom: 2px;
+  height: 95%;
+  width: 100%;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.mat-event .related-event-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 19rem;
+}
+
+.mat-event .related-event-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+}
+
+.mat-event .event-name-time {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 1rem;
+}
+
+.mat-event .event-name-time h4 {
+  color: #343a43;
+  font-family: 'Caros', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  letter-spacing: 0.3px;
+}
+
+.mat-event .event-name-time .event-time {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 7px;
+}
+
+.mat-event .event-name-time .event-time .start-time {
+  width: 12rem;
+  height: 2.55rem;
+  text-align: center;
+  color: #fff;
+  font-family: 'Caros', sans-serif;
+  font-size: 1rem;
+  line-height: 2.2;
+  letter-spacing: 0.2px;
+  border-radius: 4rem;
+  background: linear-gradient(266deg, #5961e6 124%, #b382f5 -24%);
+}
+
+.mat-event .event-name-time .event-time .days-to-go {
+  font-family: 'Caros', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+  color: #fe5656;
+}
+
+.card-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 30rem;
+  margin-bottom: 3.8rem;
+}
+
+.card-box {
+  width: 34rem;
+  min-height: 27rem;
+  border-radius: 4px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 3px #00000020;
+          box-shadow: 0 0 3px #00000020;
+  margin: 0 .54rem 1.8rem;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.card-top-box {
+  width: 100%;
+  height: 3.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+}
+
+.ticket-header {
+  width: 100%;
+  color: #715ff2;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.img-circle {
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  background: #efeff1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  margin: 0 .5rem;
+  cursor: pointer;
+}
+
+.img-circle img {
+  width: 1.3rem;
+}
+
+.ticket-type {
+  color: #343a43;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 0 1rem;
+}
+
+.ticket-details {
+  font-size: 1.4rem;
+  color: #9697b5;
+  margin: .5rem auto;
+  padding: 0 1rem;
+}
+
+.price-quan-box {
+  width: 100%;
+  height: 3.4rem;
+  background-color: #f2f2f8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 1.3rem auto;
+  padding: 0 1rem;
+}
+
+.ticket-price {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #343a43;
+}
+
+.date-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: .5rem auto;
+  padding: 0 1rem;
+}
+
+.date {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #343a4380;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.caution {
+  font-size: 1.3rem;
+  color: #f43e3e;
+  padding: 0 1rem;
+}
+
+.ticket-preview-wrapper {
+  width: 32.8rem;
+  height: 44.1rem;
+  background-color: #fff;
+  padding: 2.2rem;
+  margin: 1.5rem 0;
+  border-radius: .5rem;
+}
+
+.ticket-preview-img {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../assets/img/ticket_back.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.overlay-ticket {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  padding: 2rem;
+}
+
+.event-name {
+  width: 80%;
+  font-size: 1.8rem;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+
+.event-code {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 1.4rem;
+  font-weight: 200;
+}
+
+.event-details-wrapper {
+  width: 100%;
+  height: 3.1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-details {
+  width: 38%;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.divider {
+  width: .2rem;
+  height: 1.4rem;
+  background-color: #fff;
+}
+
+.ticket-icon {
+  width: 1.4rem;
+  margin-right: 1.2rem;
+}
+
+.purchase-details {
+  color: #ffef0a;
+  font-size: 1.3rem;
+  margin-top: 1.2rem;
+  opacity: 0.8;
+}
+
+.ticket-description {
+  color: #ffffff;
+  margin-top: .5rem;
+  font-weight: 200;
+}
+
+.qr-details {
+  width: 100%;
+  height: 8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.qr-box {
+  width: 7.8rem;
+}
+
+.share-box {
+  width: 3.8rem;
+  cursor: pointer;
+  padding-top: 2.5rem;
+}
+
+.button-primary {
+  width: 27.2rem;
+  background-color: #7966fe;
+  height: 4.8rem;
+  color: #f4f2ff;
+  font-size: 1.4rem;
+  border-radius: 7.5rem;
+  text-transform: capitalize;
+}
+
+.btn-flex {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.corner-radius {
+  width: 35px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+}
+
+.top-left {
+  top: -16px;
+  left: -13px;
+  -webkit-box-shadow: 4px 5px 0 0 #ffffff;
+          box-shadow: 4px 5px 0 0 #ffffff;
+}
+
+.top-right {
+  top: -16px;
+  right: -13px;
+  -webkit-box-shadow: -3px 7px 0 0 #ffffff;
+          box-shadow: -3px 7px 0 0 #ffffff;
+}
+
+.bottom-left {
+  bottom: -8px;
+  left: -13px;
+  -webkit-box-shadow: 4px 0px 0 0 #ffffff;
+          box-shadow: 4px 0px 0 0 #ffffff;
+}
+
+.bottom-right {
+  bottom: -13px;
+  right: -7px;
+  -webkit-box-shadow: -1px 14px 0 0 #ffffff;
+          box-shadow: -1px 14px 0 0 #ffffff;
+}
+
+@media only screen and (min-width: 1441px) {
+  .event-detail-card .current-event-details .current-event-info .event-info-left {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .event-detail-card {
+    height: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .event-detail-card .images {
+    width: 100%;
+  }
+  .event-detail-card .images .event-image {
+    width: 100%;
+    height: 100%;
+    padding-bottom: .5rem;
+  }
+  .event-detail-card .images .event-image img {
+    width: 100%;
+    height: 100%;
+  }
+  .event-detail-card .images .event-image-slider {
+    margin: .5rem 0;
+    width: 20%;
+  }
+  .event-detail-card .images .event-image-slider img {
+    width: 100%;
+    height: 100%;
+  }
+  .event-detail-card .current-event-details {
+    width: 100%;
+  }
+  .event-detail-card .current-event-details .current-event-info {
+    width: 65%;
+  }
+  .event-detail-card .current-event-details .venue-details-wrapper {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .event-detail-card .current-event-details .current-event-info {
+    width: 100%;
+  }
+  .event-detail-card .current-event-details .current-event-info .event-info-left {
+    width: 100%;
+  }
+  .event-detail-card .current-event-details .current-event-info .event-info-left .event-frequency {
+    width: 100%;
+  }
+  .event-detail-card .current-event-details .venue-details-wrapper {
+    width: 100%;
+  }
+  .event-detail-card .current-event-details .venue-details-wrapper .venue-55 {
+    width: 50%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .event-detail-card .current-event-details .venue-details-wrapper .venue-img-wrapper {
+    margin-top: 1rem;
+  }
+  .btn-flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .card-block {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .width-80 {
+    width: 95%;
+  }
+  .paragraph {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .wrapper-heading {
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=review-event.component.css.map */

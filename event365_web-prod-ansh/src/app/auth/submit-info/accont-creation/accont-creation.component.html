@@ -1,0 +1,34 @@
+<div class="account_wrapper">
+  <mat-card>
+    <div fxLayout="row" fxLayoutGap="40px" fxLayoutGap.xs="0" >
+      <div fxFlex="50"  ngClass.xs="d-none" fxLayoutAlign="center center">
+        <img class="img-fluid" src="../../../assets/img/account-creation.svg" />
+      </div>
+      <div fxFlex="50" fxLayoutAlign="center center" fxFlex.lt-md="100" [ngClass.lt-lg]="'pr-0'" [ngClass.lt-xl]="{'pr-5': true}">
+        <div fxLayout="column">
+
+          <h1 class="form-heading mt-5 text-center">{{ STRINGS.submitInfo.accountCreation }}</h1>
+          <div class="text-center continue-account" >
+            <button class="primary-btn" (click)="continue()">
+              {{ STRINGS.buttons.continue }}
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
+  </mat-card>
+</div>
+
+
+
+<!-- <div class="middle-section">
+  <section class="form-block width-80">
+    <div class="form-illustration-box">
+      <img src="../../../assets/img/account-creation.svg" class="form-illustration" />
+    </div>
+    <div class="form-box center">
+      <h2 class="form-heading form-heading-min">{{ STRINGS.submitInfo.accountCreation }}</h2>
+     
+    </div>
+  </section>
+</div> -->

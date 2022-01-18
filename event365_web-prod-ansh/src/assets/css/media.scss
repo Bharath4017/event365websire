@@ -1,0 +1,1845 @@
+  // media query
+  @media all and (max-width: 480px) {
+    .ticket_ui_wrapper {
+      padding: 0.8rem !important;
+      overflow: hidden;
+      .ticket_content {
+        padding: 3rem 1rem !important;
+      }
+      .listaddress {
+        margin: 10px 0 !important;
+        height: 45px !important;
+      }
+      .mat-list-item-content {
+        font-size: 9px !important;
+      }
+    }
+    .event-detail-wrapper,
+    .review-events {
+      .img-cus {
+        height: 200px !important;
+      }
+    }
+    .call_us {
+      .phone {
+        font-size: 14px !important;
+      }
+      .contact-info {
+        margin-left: 1rem !important;
+      }
+      .social-icon {
+        gap: 8px;
+        i {
+          width: 23px !important;
+          height: 23px !important;
+          font-size: 10px !important;
+        }
+      }
+    }
+    .rspv_wrapper .mat-checkbox .mat-checkbox-label {
+      font-size: 12px !important;
+    }
+    .profile_list {
+        .cardstyle {
+          padding: 0 !important;
+          
+          .right .iconstyle{
+            width: 16px !important;
+                height: 16px !important;
+                margin-right: 8px !important;
+          }
+    .left .imagestyle {
+            width: 52px !important; 
+            height: 52px !important;
+        }
+  
+  }
+}
+.modal-venue-footer button{
+  width: 109.8px !important;
+}
+.Hidebannertext-xs{
+  display: block !important;
+}
+  }
+ 
+
+  @media all and (min-width: 481px) and (max-width: 599px) {
+    .event-detail-wrapper {
+      .img-cus {
+        height: 240px !important;
+      }
+    }
+    .Hidebannertext-s{
+      display: block !important;
+    }
+  }
+  @media all and (min-width: 600px) and (max-width: 759px) {
+
+    .Hidebannertext-xm{
+      display: block !important;
+    }
+  }
+
+  @media all and (min-width: 760px) and (max-width: 959px) {
+    .Hidebannertext-m{
+      display: block !important;
+    }
+  }
+  @media all and (min-width: 960px) and (max-width: 1279px) {
+    .Hidebannertext-xmd{
+      display: block !important;
+    }
+  }
+
+  @media all and (min-width: 1280px) and (max-width: 1400px) {
+    .Hidebannertext-md{
+      display: block !important;
+    }
+  }
+  @media all and (min-width: 1401px) and (max-width: 1600px) {
+    .Hidebannertext-ld{
+      display: block !important;
+    }
+  }
+
+  @media all and (min-width: 1601px) and (max-width: 1800px) {
+    .Hidebannertext-l{
+      display: block !important;
+    }
+  }
+
+  @media all and (max-width: 599px) {
+
+    .custom_rsvp_dilog{
+      .mat-dialog-container{
+        padding: 12px !important;
+      }
+    }
+    .rspvdialog {
+      p.name{
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .button-prev, .button-next {
+        display: none;
+      }
+    }
+    .header-custom {
+      .filter {
+        bottom: 6px;
+        left: 0;
+        font-size: 15px;
+        text-transform: capitalize;
+        display: flex;
+        color: #fff;
+        background: #7966fe;
+        padding: 6px 20px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        height: 3.7rem!important;
+        border-radius: .5rem!important;
+        position: absolute;
+        width: 49%;
+      }
+    }
+    .white-box{
+      padding: 1rem !important;
+    }
+    .homesection {
+      .time {
+        font-size: 9px !important;
+      }
+    }
+.group-ticket{
+  .ui_box_one{
+    margin-bottom: 5% !important;
+    margin-left: unset !important;
+  }
+}
+
+    .homesection, .recommodation, .booked-event-card, .realted-Event-Deatil-Wraper, .venue-location-wrapper{
+      .card-box{
+        width: 100% !important;
+        margin-left:0 !important ;
+        &:nth-of-type(4n+1){
+          margin-left: unset !important;
+        }
+        &:nth-of-type(3n+1){
+          margin-left: unset !important;
+        }
+      }
+      .top-card-box {
+        min-width: 100% !important;
+      }
+    }
+    .no-data{
+      text-align: center !important;
+    }
+    .homesection {
+      .card-section-heading {
+        font-size:2rem !important;
+      }
+    }
+    .header-custom {
+      .search-box-gap {
+        padding-left: 0 !important;
+        .search-header{
+          margin-right: 2% !important;
+          &:nth-of-type(2n+1){
+            margin-right: 0% !important;
+          }
+        }
+      }
+      .search-date {
+        line-height: 2;
+      }
+      .mat-autocomplete {
+        font-size: 1rem !important;
+      }
+      .search-input,
+      .mat-input-size {
+        font-size: 1rem !important;
+        &::placeholder {
+          font-size: 1rem !important;
+        }
+      }
+    }
+    .filter-box {
+      .filter-wrapper {
+        .category {
+          .dropdown-category {
+            .category-drop-btn {
+              font-size: 1rem !important;
+            }
+          }
+        }
+      }
+      .slider-level {
+        font-size: 1.1rem !important;
+      }
+    }
+    .cus-tabs-filter {
+      margin-top: -27rem !important;
+      .tabs-box {
+        margin: 0 !important;
+      }
+    }
+    .footer-head {
+      height: 4rem !important;
+    }
+    .download-wrapper {
+      .download-inner {
+        width: calc(100% - 10%) !important;
+        margin: 0 auto;
+      }
+      .download-btn {
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+      }
+      .download-btn img {
+        height: 38px !important;
+      }
+    }
+    .contact_us .mat-card {
+      padding: 2rem !important;
+    }
+    .add_update_users {
+      .mat-card {
+        padding: 3.3rem 2rem !important;
+        .mat-form-field-wrapper {
+          .mat-form-field-flex {
+            width: 300px !important;
+          }
+        }
+      }
+    }
+    .change_password .mat-card form {
+      width: 100% !important;
+    }
+    .review-events {
+      .lower-section-wrapper {
+        padding: 0rem !important;
+        .overlay-ticket {
+          padding: 2.6rem 14px !important;
+        }
+        .card-box {
+          width: 100% !important;
+          padding: 2rem 0.4rem 1rem 0.4rem !important;
+          &:nth-of-type(n+1){
+            margin-left: 0 !important;
+          }
+          &:nth-of-type(3n+1){
+            margin-left: 0 !important;
+          }
+          .ticket-price {
+            font-size: 12px !important;
+          }
+        }
+      }
+      .ticket-preview-wrapper {
+        padding: 12px !important;
+        width: 95% !important;
+        margin: 0 auto !important;
+        .share-box {
+          width: 7.8rem !important;
+          padding-top: 1.5rem !important;
+        }
+      }
+    }
+    .ratting {
+      .all-ratings {
+        width: 100% !important;
+      }
+      .flex-div {
+        flex-direction: column;
+        align-items: flex-start !important;
+      }
+      .comment-time {
+        text-align: right;
+        width: 100%;
+      }
+      .star-rating {
+        gap: 4px;
+        .mat-icon-button {
+          width: 2rem !important;
+        }
+      }
+      .star.mat-icon-button {
+        width: 1.8rem !important;
+      }
+      .star-img,
+      .star-border {
+        width: 16px !important;
+        height: 16px !important;
+        font-size: 20px !important;
+        line-height: 1 !important;
+      }
+      .thought {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .event_view {
+      .mat-card {
+        overflow: hidden;
+        .star {
+          margin-top: 1rem;
+        }
+        h1 {
+          font-size: 22px !important;
+          line-height: 1.3 !important;
+        }
+        .card {
+          height: auto !important;
+        }
+        .gradient-btn .mat-button-wrapper {
+          font-size: 13px !important;
+        }
+        .mat-list-item-content {
+          gap: 0px !important;
+        }
+        .mat-button-wrapper {
+          font-size: 12px !important;
+        }
+        .mat-button-base {
+          padding: 0 8px !important;
+        }
+        .mat-list-item-content::after {
+          width: 7px !important;
+          height: 7px !important;
+          right: 13px !important;
+          top: 44% !important;
+        }
+      }
+    }
+    .event_view {
+      .mat-slide-toggle {
+        margin-top: 12px;
+      }
+    }
+    .mat-paginator-container {
+      justify-content: space-between !important;
+    }
+    .mat-paginator-range-label {
+      margin: 0 !important;
+    }
+    .rspv_wrapper .mat-card .ticket-btn .mat-button-wrapper {
+      font-size: 12px !important;
+    }
+    .register-user {
+      .primary-btn {
+        width: 100% !important;
+      }
+      .radio-wrapper {
+        gap: 14px;
+      }
+      .form-block {
+        padding: 2rem 2rem !important;
+      }
+      .direct-login-btn {
+        width: 33% !important;
+      }
+    }
+    .alert-model-width {
+      width: 100% !important;
+    }
+    .email-varification {
+      .primary-btn {
+        width: 100% !important;
+      }
+      .error-msg {
+        margin-top: 6rem !important;
+      }
+      .otp-field-wrapper {
+        width: 100% !important;
+        margin: 0 !important;
+      }
+      .otp-input {
+        width: 3.6rem !important;
+        height: 3.6rem !important;
+        min-width: 3.6rem !important;
+        margin: 0rem 1rem 0 0 !important;
+      }
+      .margin-right-7rem {
+        margin-right: 0 !important;
+      }
+    }
+    .forgot_password {
+      .primary-btn {
+        width: 100% !important;
+      }
+      img {
+        display: none;
+      }
+      .ng_inner {
+        padding: 2rem !important;
+        margin-top: -14rem !important;
+        margin-bottom: 12px !important;
+      }
+      .text {
+        font-size: 12px !important;
+      }
+    }
+    .subvenuealert {
+      h4 {
+        font-size: 18px !important;
+      }
+      .modal-venue-footer {
+        gap: 8px !important;
+        button {
+          width: 100% !important;
+          padding: 0 18px;
+        }
+      }
+      .checkbox {
+        input {
+          margin-left: 22px !important;
+        }
+        p {
+          font-size: 14px !important;
+        }
+      }
+    }
+    .twentymin {
+      h4 {
+        font-size: 18px !important;
+      }
+      .modal-venue-footer {
+        gap: 8px !important;
+        button {
+          width: 100% !important;
+          padding: 0 18px;
+        }
+      }
+      .checkbox {
+        input {
+          margin-left: 22px !important;
+        }
+        p {
+          font-size: 14px !important;
+        }
+      }
+    }
+    .back_step {
+      top: -4rem !important;
+    }
+    .venue-list-search-wrapper {
+      .venue-list-search-card {
+        padding: 1rem !important;
+        .searchlabel {
+          margin-left: 0 !important;
+          input {
+            padding: 0 32px 0px 15px !important;
+          }
+          .cus-seach button {
+            right: 0 !important;
+          }
+        }
+      }
+      .search-container {
+        margin: 22px auto !important;
+      }
+    }
+    .create_venue {
+      .mat-input-element::placeholder {
+        font-size: 13px !important;
+      }
+      .leftinput-text {
+        display: none;
+      }
+      .mat-checkbox-inner-container {
+        margin-right: 6px !important;
+      }
+      .check-box-hour mat-label,
+      .mat-checkbox-label {
+        font-size: 12px !important;
+        line-height: 1.8;
+      }
+      .mat-checkbox-inner-container {
+        width: 18px !important;
+        height: 18px !important;
+      }
+      .mat-checkbox .mat-checkbox-ripple {
+        left: 0 !important;
+        top: calc(50% - 14px) !important;
+        height: 18px !important;
+        width: 18px !important;
+      }
+      .venue-creation {
+        width: 100% !important;
+      }
+      .mat-checkbox mat-label {
+        font-size: 12px !important;
+      }
+    }
+    .mat-checkbox-frame {
+      border-radius: 50% !important;
+    }
+    .primary-btn {
+      width: 100% !important;
+    }
+    .event_view {
+      .mat-card {
+        h1 {
+          font-size: 16px;
+        }
+      }
+    }
+    .create_event {
+      .mat-standard-chip {
+        margin: 4px !important;
+        padding: 7px 6px !important;
+        min-height: 24px !important;
+      }
+      .mat-card {
+        padding: 20px !important;
+        .mat-form-field-flex {
+          width: 100% !important;
+          min-width: 250px;
+        }
+      }
+      .leftinput-text {
+        display: none;
+      }
+      .firsruplod {
+        font-size: 11px !important;
+        height: 60px !important;
+        padding-left: 0 !important;
+      }
+    }
+    .rspv_wrapper {
+      .mat-card-content {
+        padding: 6px !important;
+      }
+    }
+    .login_wrapper .mat-card .social_button {
+      justify-content: center;
+      img {
+        margin: 0 !important;
+      }
+    }
+    .yourevent_wrapper {
+      .mat-card {
+        padding: 0;
+      }
+      .center-inner .mat-card-content {
+        padding: 12px 16px !important;
+        p>span {
+          font-size: 14px !important;
+        }
+      }
+      .mat-card-title {
+        padding-left: 22px !important;
+        font-size: 16px !important;
+      }
+    }
+    .bookticket .mat-card .card-ticket .mat-list-item {
+      height: auto !important;
+    }
+    .event-detail-wrapper{
+      .host_wrapper{
+        .avatar-container{
+          width: 80px !important;
+          height: 80px !important;
+          .avatar-content{
+            line-height: 80px !important;
+            font-size: 28px !important;
+          }
+        }
+      }
+      .sponser{
+        height: 5rem !important;
+      }
+      .talent-events{
+        .swiper-button-next,   .swiper-button-prev  {
+          width: 50px !important;
+          height: 50px !important;
+          top: 50% !important;
+          &:after{
+            width: 32px !important;
+            height: 32px !important;
+          }
+      }
+      }
+     .lower-section-wrapper .card-box {
+      width: 100% !important;
+      .ticket-price {
+        font-size: 12px !important;
+      }
+    }
+    .share-event{
+      display: flex;
+      justify-content: space-between;
+      .gradient-btn{
+        padding: 0 8px !important;
+        width: 49% !important;
+        .mat-button-wrapper{
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+     
+      }
+    }
+    }
+    .Favourte-top-section {
+      .invite-tabs-btn {
+        font-size: 1.4rem !important;
+      }
+      .card-row {
+        .card-box {
+          width: 100% !important;
+        }
+      }
+    }
+    .bookticket {
+      .card-ticket {
+        padding: 1rem;
+      }
+      .main_mat {
+        padding: 0 !important;
+      }
+      .mat-select-trigger {
+        width: 84px !important;
+      }
+      .content {
+        font-size: 14px !important;
+      }
+    }
+    .notification_wrapper {
+      .mat-chip-list {
+        overflow-x: auto;
+        overflow-y: hidden;
+        .mat-chip-list-wrapper {
+          flex-wrap: nowrap;
+          margin: 0px 0 12px 0 !important;
+        }
+      }
+      p {
+        font-size: 12px !important;
+      }
+      .prefrence_inner {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        span {
+          //margin-top: 10px !important;
+        }
+      }
+    }
+    .addprefences {
+      .primary-btn {
+        width: 100% !important;
+      }
+    }
+    .contact_us {
+      .mat-card .mat-form-field-wrapper .mat-form-field-flex {
+        width: 100% !important;
+      }
+    }
+    .custom-card-main-box {
+      .custom-card-box {
+        width: 100% !important;
+        margin-bottom: 10% !important;
+      }
+    }
+    .invite-user {
+      .margin-right {
+        margin-right: 1rem !important;
+      }
+      .invite-btn {
+        width: 9.9rem !important;
+      }
+      .filter {
+        margin: 0 0rem 0 2rem !important;
+      }
+    }
+    .submit-info {
+      .mat-card {
+        padding: 2rem !important;
+      }
+    }
+    .register-user {
+      .form-box {
+        width: 100% !important;
+      }
+    }
+    .create_event {
+      .finalbtn {
+        .mat-button {
+          width: auto !important;
+        }
+      }
+    }
+    .footer-content {
+      font-size: 1.2rem !important;
+    }
+    .register-user {
+      .bottom-txt {
+        font-size: 1.4rem !important;
+      }
+    }
+    .custom_rsvp_dilog {
+      max-width: 90vw !important;
+      .mat-dialog-container {
+        padding: 12px;
+      }
+      .rspvdialog {
+        .cus_wrapper_swiper {
+          width:290px !important;
+        }
+        .button-prev {
+          img {
+            width: 22px !important;
+          }
+          left: -34px;
+        }
+        .button-next {
+          img {
+            width: 22px !important;
+          }
+          right: -34px;
+        }
+        .ticket_info {
+          padding: 12px !important;
+          .mat-list-item-content {
+            font-size: 10px !important;
+          }
+        }
+      }
+    }
+    .venue-location-wrapper {
+      .mat-card {
+        padding: 24px !important;
+      }
+    }
+  }
+  @media all and (min-width:600px) and (max-width: 959px) {
+    .group-ticket{
+    .ticket_ui_wrapper{
+      width: 60%;
+      margin: 0 auto;
+    }
+    }
+    .recommodation{
+      .width-80{
+
+        width: 90% !important;
+      }
+    }
+    .homesection, .recommodation, .booked-event-card, .realted-Event-Deatil-Wraper, .venue-location-wrapper
+    {
+      .card-box {
+          width: 48% !important;
+          margin: 4% 0 0 4% !important;
+          &:nth-of-type(2n+1){
+            margin-left: 0 !important;
+          }
+      }
+    }
+    .cus-tabs-filter {
+      margin-top: -33rem !important;
+    }
+    .account_wrapper {
+      .form-heading {
+        font-size: 2rem !important;
+      }
+    }
+    .footer-main-wrap .footer-wrapper {
+      padding: 33px 0;
+      .footer-content {
+        font-size: 1.2rem !important;
+      }
+    }
+    .review-events {
+      .lower-section-wrapper {
+        padding: 0rem !important;
+        .overlay-ticket {
+          padding: 2.6rem 14px !important;
+        }
+        .card-box {
+          width: 48% !important;
+          padding: 2rem 0.4rem 1rem 0.4rem !important;
+          &:nth-of-type(n+1){
+            margin-left: unset !important;
+          }
+          &:nth-of-type(2n+2){
+            margin-left: 1.8rem !important;
+          }
+          .ticket-price {
+            font-size: 12px !important;
+          }
+        }
+      }
+      .ticket-preview-wrapper {
+        padding: 12px !important;
+        width: 95% !important;
+        margin: 0 auto !important;
+        .share-box {
+          width: 7.8rem !important;
+          padding-top: 1.5rem !important;
+        }
+      }
+    }
+    .register-user {
+      .form-box {
+        width: 100% !important;
+      }
+    }
+    .venue-list-search-wrapper {
+      .venue-list-search-card {
+        padding: 1rem !important;
+        .searchlabel {
+          margin-left: 0 !important;
+          input {
+            padding: 0 45px 0px 15px !important;
+          }
+          .cus-seach button {
+            right: 0 !important;
+          }
+        }
+      }
+      .search-container {
+        margin: 22px auto !important;
+      }
+    }
+    .event-detail-wrapper {
+      .img-cus {
+        height: 300px !important;
+      }
+    }
+    .create_event {
+      width: calc(100% - 10%) !important;
+      .mat-card {
+        padding: 1.5rem 2.125rem;
+        .firsruplod {
+          padding-left: 12px !important;
+          height: 54px !important;
+        }
+      }
+    }
+    .image_dilog {
+      width: 300px !important;
+    }
+    .lower-section-wrapper {
+      .price-quan-box {
+        height: auto;
+      }
+      .date {
+        font-size: 12px !important;
+      }
+    }
+    .event-detail-wrapper .lower-section-wrapper .card-box {
+      width: 48% !important;
+      .ticket-price {
+        font-size: 12px !important;
+      }
+    }
+    .Favourte-top-section {
+      .card-row {
+        gap: 1.4rem !important;
+        .card-box {
+          width: 48% !important;
+        }
+      }
+    }
+    .notification_wrapper {
+      .prefrence_inner {
+        padding: 0 !important;
+        .mat-chip {
+          font-size: 14px !important;
+          padding: 0 18px !important;
+        }
+      }
+    }
+    .contact_us {
+      .mat-card .mat-form-field-wrapper .mat-form-field-flex {
+        width: 300px !important;
+      }
+    }
+    .custom-card-main-box {
+      .custom-card-box {
+        width: 48% !important;
+        margin-bottom: 8% !important;
+      }
+    }
+    .forgot_password {
+      .primary-btn {
+        width: 100% !important;
+      }
+      img {
+        width: 100%;
+      }
+      .ng_inner {
+        padding: 2rem !important;
+        margin-top: -14rem !important;
+        margin-bottom: 12px !important;
+      }
+      .text {
+        font-size: 12px !important;
+      }
+    }
+    .recommodation {
+      .event-time {
+        width: 70%;
+        margin-top: 1rem;
+      }
+      .event-venue-space {
+        flex-direction: column;
+      }
+    }
+    .homesection {
+      .time {
+        font-size: 8px !important;
+      }
+    }
+    .realted-Event-Deatil-Wraper {
+      .time {
+        font-size: 9px !important;
+      }
+    }
+    .host_wrapper{
+      .avatar-container{
+        width: 100% !important;
+        height: 90px !important;
+        .avatar-content{
+          line-height: 90px !important;
+          font-size: 28px !important;
+        }
+      }
+    }
+  }
+  @media all and (min-width:960px) and (max-width:1279px) {
+
+    .venue-list-wrapper{
+      .booked-event-card-custom{
+        margin-left: 2%;
+    &:nth-of-type(2n+1){
+        margin-left: 0;
+      }
+    }
+    }
+    .realted-Event-Deatil-Wraper, .homesection, .recommodation{
+  .card-box{
+    width: 31% !important;
+    margin: 3.2% 0 0 3.2% !important;
+    &:nth-of-type(3n+1){
+      margin-left: 0 !important;
+    }
+    .time{
+      font-size: 9px !important;
+    }
+  }
+}
+
+    .header-custom, .recommodation {
+      .width-80 {
+        width: 90% !important;
+      }
+    }
+    .review-events {
+      .mat-card {
+        padding: 18px !important;
+      }
+      .lower-section-wrapper {
+        padding: 0rem !important;
+        .overlay-ticket {
+          padding: 2.6rem 14px !important;
+        }
+        .card-box {
+          width: 31% !important;
+          padding: 2rem 0.4rem 1rem 0.4rem !important;
+      
+          .ticket-price {
+            font-size: 11px !important;
+          }
+        }
+      }
+      .ticket-preview-wrapper {
+        .share-box {
+          width: 7.8rem !important;
+          padding-top: 1.5rem !important;
+        }
+      }
+    }
+    .event_view {
+      .mat-card {
+        h1 {
+          font-size: 16px;
+        }
+        .label_amount {
+          h3 {
+            letter-spacing: 0;
+            font-size: 13px;
+          }
+        }
+        .gradient-btn .mat-button-wrapper {
+          letter-spacing: 0;
+        }
+      }
+    }
+
+    .custom-card-main-box {
+      .custom-card-box {
+        width: 32% !important;
+        margin-bottom: 8% !important;
+      }
+    }
+    .forgot_password {
+      img {
+        width: 100%;
+      }
+    }
+    .submit-info {
+      img {
+        width: 100%;
+      }
+    }
+    .recommodation {
+      .event-venue-space {
+        flex-direction: column;
+      }
+    }
+
+  }
+  @media all and (min-width:600px) and (max-width: 1279px) {
+    .booked-card {
+      .booked-cards {
+        gap: 25px !important;
+      }
+      .card-details {
+        padding: 1rem !important;
+      }
+    }
+    .bookticket .mat-card .card-ticket .mat-list-item-content .content {
+      justify-content: unset !important;
+      margin: 0 12px;
+      .cus_pipe {
+        margin: 0 12px;
+      }
+    }
+    .event_view {
+      .mat-card .card {
+        height: auto !important;
+      }
+    }
+  }
+  @media all and (min-width:1600px) {
+    .mng-grid {
+      .ticketbg {
+        flex: 1 1 calc(25% - 40px) !important;
+        min-width: calc(25% - 40px) !important;
+        &:nth-child(4n) {
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+  @media all and (max-width:1600px) {
+    .mng-grid {
+      .ticketbg {
+        &:nth-child(3n) {
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+  @media all and (max-width: 959px) {
+    // .topheader{
+    //   a, p{
+    //     font-size: 14px !important;
+    //   }
+    // }
+    .homesection{
+      .card-section-heading{
+        text-align: center;
+      }
+    }
+    .footer-main-wrap {
+      height: auto !important;
+      .footer-wrapper {
+        width: calc(100% - 10%) !important;
+        .footer-logo {
+          margin: 32px 0;
+          .partlogo {
+            width: 60px !important;
+          }
+          .logo-text {
+            font-size: 2rem !important;
+          }
+        }
+        .cus-bottom {
+          margin-bottom: 22px;
+          text-align: center;
+        }
+      }
+      .footer-wrapper,
+      .footer-inner {
+        height: auto !important;
+      }
+      .copyright-wrapper {
+        p {
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+    .account_wrapper {
+      .mat-card {
+        padding: 2rem !important;
+      }
+    }
+    .rspv_wrapper,
+    .yourevent_wrapper,
+    .create_event,
+    .review-events .mat-card,
+    .review-events .wrapper_details,
+    .profile_wrapper,
+    .add_update_users,
+    .contact_us {
+      width: calc(100% - 10%) !important;
+    }
+    .mat-radio-label-content::after {
+      right: -28px !important;
+    }
+    .upload_modal {
+      p:nth-child(2) {
+        margin: 6px 0 !important;
+      }
+    }
+    .rspv_wrapper {
+      .rspvlisting {
+        &:last-child {
+          margin-right: 0 !important;
+        }
+      }
+    }
+    .login_wrapper {
+      width: calc(100% - 10%) !important;
+      .mat-card {
+        margin-top: -14rem !important;
+      }
+    }
+    .profile_wrapper {
+      .input-main-div .CountryNumberInput {
+        min-width: 100%;
+      }
+    }
+    .change_password .mat-card form {
+      width: 100%;
+    }
+    .prefrence_wrapper .prefrence_inner .mat-card {
+      margin-right: 0 !important;
+    }
+    .yourevent_wrapper .center-inner {
+      width: 100% !important;
+    }
+    .group__rsvp {
+      .mat-card {
+        .mat-tab-body-content {
+          .ticketbg {
+            max-width: 100%;
+            .ticket_ui {
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .mat-tab-header {
+      .mat-tab-labels {
+        .mat-tab-label {
+          min-width: 140px;
+          width: 140px !important;
+        }
+      }
+    }
+    .upload_modal {
+      padding: 16px 4px;
+      text-align: center;
+      .dragdropbox,
+      .or {
+        display: none;
+      }
+    }
+    .get-main {
+      .bank-btn {
+        width: 100% !important;
+      }
+    }
+    // .contacthost_mob {
+    //   justify-content: unset !important;
+    //   gap: 20px;
+    //   button {
+    //     padding: 0 8px !important;
+    //     width: auto !important;
+    //     span {
+    //       display: none;
+    //     }
+    //   }
+    // }
+    .contact_us {
+      form {
+        width: 100% !important;
+
+
+        .mat-button {
+          img {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  @media all and (max-width: 1280px) {
+    .realted-Event-Deatil-Wraper,
+    .homesection,
+    .venue-location-wrapper,
+    .register-user {
+      .width-80 {
+        width: 90% !important;
+      }
+    }
+    
+    .login_wrapper {
+      width: calc(100% - 10%) !important;
+      .mat-card {
+        padding: 1.6rem !important;
+        .bottom-text,
+        .login-in {
+          font-size: 14px;
+        }
+      }
+    }
+    .profile_wrapper {
+      .profile_inner {
+        padding: 2rem !important;
+        form {
+          width: 100% !important;
+        }
+      }
+    }
+    .rspv_wrapper {
+      .mat-checkbox {
+        .mat-checkbox-label {
+          padding-right: 14px;
+          font-size: 14px;
+        }
+      }
+      .mat-input-element {
+        width: 100% !important;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      // font-size: inherit !important;
+    }
+    .create_venue {
+      .mat-input-element::placeholder {
+        font-size: 13px !important;
+      }
+      .delete-btn {
+        width: unset !important
+      }
+    }
+    .profile_setting {
+      width: calc(100% - 20%) !important;
+      .mat-list-item-content {
+        justify-content: space-between !important;
+      }
+    }
+    .cus-tabs-filter {
+      .tabs-box {
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: 7.8rem !important;
+        .tabs-item {
+          white-space: nowrap;
+          text-align: center;
+          margin-right: 4rem;
+        }
+        .tabs-item.active {
+          padding: 1rem 3rem;
+        }
+        .top-card-box {
+          min-width: 20rem;
+          height: 16.39rem;
+          margin: 0 0.5rem;
+        }
+      }
+      .filter-box {
+        padding: 2rem !important;
+        .filter-wrapper {
+          margin-top: 2rem;
+          .slider-bar {
+            width: 95%;
+          }
+          .slider-level {
+            font-size: 1.4rem !important;
+          }
+        }
+      }
+    }
+  }
+  @media all and (min-width: 1280px) and (max-width: 1366px) {
+    .event-detail-wrapper {
+      .mat-card{
+        padding: 12px !important;
+      }
+      .event-start-end small {
+        font-size: 8px !important;
+      }
+    }
+    .Favourte-top-section {
+      .booked-card {
+        gap: 26px !important;
+        .booked-event-card-custom {
+          max-width: 23% !important;
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: 1367px) and (max-width: 1485px) {
+    .event-detail-wrapper {
+      .event-start-end small {
+        font-size: 8px !important;
+      }
+    }
+
+  }
+
+  @media all and (min-width: 960px) and (max-width: 1060px) {
+    .event-detail-wrapper {
+      .event-start-end small {
+        font-size: 8px !important;
+      }
+    }
+  }
+  @media all and (min-width: 1280px) and (max-width: 1520px) {
+    .event-detail-wrapper{
+      .submit-btn{
+        button{
+          .mat-button-wrapper{
+            font-size: 13px !important;
+          }
+        }
+      }
+    }
+  }
+  @media all and (max-width:960px) {
+    .notify_mob {
+      margin-right: 12px;
+      ;
+      .badge {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+    .prefrence_wrapper {
+      .prefrence_inner {
+        .mat-card {
+          span {
+            font-size: 16px !important;
+          }
+        }
+      }
+    }
+    .cus_dropdow{
+      left: -5px !important;
+    }
+  }
+  @media all and (max-width:600px) {
+    .review-cards,
+    .related-events {
+      .mat-card {
+        width: calc(100% - 28px) !important;
+        float: left;
+      }
+    }
+    .blanK-section {
+      margin-bottom: 30px !important;
+    }
+    .ratting {
+      .all-ratings {
+        width: 100% !important;
+        .star-rating {
+          gap: 4px;
+          .mat-icon-button {
+            width: 2rem !important;
+          }
+          .star-img {
+            width: 16px !important;
+            height: 16px !important;
+            font-size: 20px !important;
+            line-height: 1 !important;
+          }
+        }
+      }
+      .thought {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    // .realted-Event-Deatil-Wraper {
+    //   .card-box {
+    //     width: 100% !important;
+    //   }
+    // }
+  }
+  @media all and (min-width:601px) and (max-width:959px) {
+ 
+    .homesection, .booked-event-card, .realted-Event-Deatil-Wraper, .venue-location-wrapper {
+      .card-box {
+        width: 30% !important;
+      }
+    }
+    .realted-Event-Deatil-Wraper {
+      .card-box {
+        width: 48% !important;
+      }
+    }
+  }
+  @media all and (min-width:960px) and (max-width:1279px) {
+
+    .group-ticket{
+      .ui_box_one{
+        &:nth-of-type(2n+1){
+            margin-left: 0;
+          }
+          // &:nth-of-type(3n+1){
+          //   margin-left:1.8% !important; 
+          // }
+    }
+    }
+    .event-detail-wrapper {
+      .mat-card {
+        padding: 16px !important;
+        width: calc(100% - 10%) !important;
+      }
+      .share-event {
+        display: flex;
+        gap: 10px;
+        .gradient-btn {
+          width: 49% !important;
+          padding: 0 8px !important;
+        }
+      }
+      .submit-btn [mat-button] {
+        .mat-button-wrapper {
+          font-size: 12px !important;
+        }
+      }
+      .event-image {
+        height: 100% !important;
+        overflow: hidden;
+        .swiper-wrapper {
+          max-height: 288px !important;
+        }
+        .swiper-slide {
+          height: 100px !important;
+        }
+      }
+    }
+    .search-input {
+      text-overflow: ellipsis;
+    }
+  }
+  @media all and (min-width:768px) and (max-width:1440px) {
+    .page-heading-mb {
+      margin-bottom: 1rem !important;
+    }
+  }
+  @media all and (max-width:959px) {
+    .event-detail-wrapper,
+    .review-events {
+      .current-event-details h1 {
+        font-size: 20px !important;
+      }
+      .mat-card {
+        width: calc(100% - 10%) !important;
+        padding: 12px !important;
+        .event-image {
+          height: 80px !important;
+        }
+      }
+      .host-image {
+        //width: 100% !important;
+        margin: 2rem 0 !important;
+       // height: 100% !important;
+        img {
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+      .Contacthost {
+        h4 {
+          font-size: 18px !important;
+          margin-bottom: 12px;
+        }
+      }
+      .event-code,
+      .hosted-by,
+      .mat-button-wrapper {
+        font-size: 12px !important;
+        letter-spacing: 1px !important;
+      }
+      .event-start-end small {
+        font-size: 9px !important;
+      }
+      .related-events {
+        .mat-card {
+          padding: 0 !important;
+        }
+      }
+      .trouble-text {
+        text-align: center;
+      }
+    }
+    .venue-list-wrapper {
+      .event-detail-card {
+        padding: 2rem !important;
+      }
+      p {
+        text-align: center !important;
+      }
+      .event-time {
+        padding: 0 8px;
+      }
+    }
+    .venue-detail-wrapper {
+      .mat-card {
+        padding: 24px !important;
+        width: calc(100% - 10%) !important;
+        .text {
+          font-size: 12px !important;
+        }
+        .slider-label {
+          font-size: 10px !important
+        }
+      }
+    }
+    .rspvdialog {
+      img.rounded-lg {
+        width: 80px !important;
+        height: 80px !important;
+      }
+    }
+    .mobilesmall {
+      .header-max.header-md {
+        height: 35rem !important;
+      }
+      .header-max {
+        height: auto !important;
+        padding: 0 0 40px 0;
+      }
+    }
+    .mobilelarge {
+      .header-max {
+        height: 54.75rem !important;
+        padding: 0 0 40px 0;
+      }
+    }
+    .header-custom {
+      .width-80 {
+        width: 95% !important;
+        margin: 1rem auto 4.2rem auto !important;
+      }
+      .mat-date-range-input {
+        padding-left: 8px !important;
+      }
+      .search-header {
+        background-color: #ffffff;
+        border-radius: 0.4rem;
+        margin-bottom: 2%;
+      }
+      .search-box {
+        margin-top: 0 !important;
+        background-color: transparent !important;
+        .location,
+        .search-btn {
+          height: 3.7rem !important;
+          border-radius: 0.5rem !important;
+        }
+        .search-input {
+          width: calc(100% - 20px) !important;
+          padding: 0.9rem !important;
+          text-overflow: ellipsis;
+        }
+      }
+      .search-icon {
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+      }
+      .mat-icon-button {
+        width: 24px !important;
+      }
+    }
+    .filter-box {
+      padding: 1.65rem !important;
+      height: auto !important;
+      .filter-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        .slider-bar {
+          width: 95%;
+        }
+        .category {
+          width: 100% !important;
+          margin-top: 1.5rem;
+          display: flex;
+          justify-content: space-between;
+          .dropdown-category {
+            .category-drop-btn {
+              font-size: 1rem !important;
+              padding: 0;
+              height: 3rem !important;
+            }
+          }
+          .dropdown-category {
+            width: 48% !important;
+          }
+        }
+      }
+      .slider-bar {
+        width: 48% !important;
+        .slider-head {
+          height: 10px;
+        }
+      }
+    }
+    .filter-order-1 {
+      order: 1
+    }
+    .filter-order-2 {
+      order: 2
+    }
+    .filter-order-3 {
+      order: 3
+    }
+    .homesection {
+      .card-main-box {
+        margin-top: -1rem !important;
+      }
+    }
+    // .filter {
+    //   bottom: 0rem;
+    //   left: 0;
+    //   font-size: 15px;
+    //   text-transform: capitalize;
+    //   display: flex;
+    //   color: #fff;
+    //   background: #7966fe;
+    //   padding: 6px 20px;
+    //   text-align: center;
+    //   align-items: center;
+    //   justify-content: center;
+    //   height: 3.7rem !important;
+    //   border-radius: 0.5rem !important;
+    //   position: absolute;
+    //   width: 49%;
+    //   margin-bottom: 2%;
+    // }
+    .search-header-bg {
+      margin-bottom: 2%;
+    }
+  }
+  @media all and (max-width:756px) {
+    .event-detail-wrapper {
+      margin-top: -3rem !important;
+      .submit-btn {
+        position: fixed;
+        bottom: 0px;
+        z-index: 9999;
+        left: 0px;
+        width: 100%;
+        .mat-button {
+         
+          height: 70px !important;
+          border-radius: 0 !important;
+          width: 100% !important;
+          padding: 0 6px !important;
+          .mat-button-wrapper{
+            font-weight: 600 !important;
+          }
+        }
+      }
+    }
+  }
+  @media all and (min-width:757px) and (max-width:959px) {
+    .event-detail-wrapper {
+      margin-top: -4rem !important;
+    }
+  }
+  @media all and (min-width: 280px) and (max-width: 319px) {
+    .footer-main {
+      overflow: hidden;
+      .footer-inner {
+        p {
+          a {
+            font-size: 9px !important;
+          }
+        }
+      }
+    }
+  }
+  @media all and (min-width: 1280px) and (max-width: 1460px) {
+    .event-detail-wrapper .mat-card .share-event .gradient-btn .mat-button-wrapper,
+    .event-detail-wrapper .mat-card .share-event .gradient-btn .add {
+      font-size: 12px !important;
+    }
+  }
+
+  @media all and (min-width:600px) and (max-width:959px) {
+    .header-custom {
+      .filter {
+        bottom: -3.3rem !important;
+        right: 0 !important;
+        width: 15% !important;
+        left: unset !important;
+        margin: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #7966fe;
+        color: #ffffff;
+        font-size: 1.4rem;
+        height: 36px;
+        border-radius: 4px;
+      }
+      .search-box-gap {
+        padding-left: 0 !important;
+        .search-header{ 
+          margin-right: 1% !important;
+        }
+      }
+      .search-date {
+        line-height: 1.8;
+      }
+      .mat-autocomplete {
+        font-size: 1.3rem !important;
+      }
+      .search-input,
+      .mat-input-size {
+        font-size: 1.3rem !important;
+        &::placeholder {
+          font-size: 1.3rem !important;
+        }
+      }
+    }
+    .filter-box {
+      .filter-wrapper {
+        .category {
+          .dropdown-category {
+            .category-drop-btn {
+              font-size: 1.4rem !important;
+            }
+          }
+        }
+      }
+      .slider-level {
+        font-size: 1.3rem !important;
+      }
+    }
+    
+.date-row {
+  width:50%;
+}
+  }
+  
+  @media all and (min-width:959px) {
+    .logo-wrapper{
+      z-index: 0 !important;
+    }
+    .homesection {
+      .filter {
+        display: none !important;
+      }
+    }
+  }
+  @media all and (max-width:756px) {
+    .event-detail-wrapper,
+    .review-events {
+      .remove-border{
+        border-radius: 0px !important;
+      }
+    }
+  }
+
+  @media all and (min-width: 1280px) {
+    .create_event {
+      .mat-card {
+        .cus_teatarea {
+          .mat-form-field-flex {
+            width: 590px !important;
+          }
+        }
+        .cus_teatarea_min {
+          .mat-form-field-flex {
+            width: 590px !important;
+          }
+        }
+      }
+    }
+  }
+  @media all and (min-width:1280px) and (max-width:1366px) {
+    .realted-Event-Deatil-Wraper, .homesection, .recommodation{
+      .width-80{
+        width: 90% !important;
+      }
+    
+    }
+  }
+  @media all and (min-width:1280px) and (max-width:1700px) {
+    .realted-Event-Deatil-Wraper, .recommodation, .homesection{
+      .event-time{
+        white-space: nowrap;
+        .time{
+          font-size: 9px  !important;
+        }
+      }
+    }
+  }

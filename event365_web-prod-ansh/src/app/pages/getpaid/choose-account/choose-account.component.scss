@@ -1,0 +1,62 @@
+
+.choose-acc{
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    color: var(--charcoal-grey);
+    .header-margin{
+      margin-top: -5%;
+  }
+  .blanK-section{
+    margin-bottom: 70px;
+    height: auto;
+    width: 100%;
+    justify-content: center;
+  }
+    .add-btn {
+      background: none;
+      color: #7c6eec;
+      mat-icon {
+        color: #ffff;
+        background: -moz-linear-gradient(top, #9e7af1 20%, #7169ea 100%);
+        background: -webkit-linear-gradient(right, #9e7af1 20%, #7169ea 100%);
+        border-radius: 50%;
+      }
+    }
+    .btn-add-more {
+      font-family: 'HelveticaNeueLTPro-Md';
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.93;
+      letter-spacing: 0.28px;
+      text-align: left;
+      color: #7c6eec;
+    }
+    .mat-card-custom{
+      mat-card{
+        border-radius: 4px;
+        border: solid 1px #9697b5;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+    }
+    .delete-btn {
+      background: none;
+      display: flex;
+      align-items: flex-end;
+      mat-icon{
+        color: gray;
+      }
+    }
+    
+    @media all and (min-width: 599px) {
+      .choose-acc-matcard-margin{
+       // margin:20px 80px;
+       width: 90%;
+       margin: 0 auto;
+      }
+    }
+    
+    
+}

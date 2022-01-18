@@ -1,0 +1,68 @@
+<div class="event_view">
+    <mat-card>
+        <div fxLayout="row" fxLayout.md="column"  fxLayoutGap="60px" fxLayoutGap.md="20px" fxLayoutGap.xs="0px" fxLayout.lt-md="column">
+            <div fxFlex="50">
+                <div class="card">
+                    <img class="contain-img card-img-top h-100" [src]="img_avatar" alt="Card image">
+                </div>
+            </div>
+            <div fxFlex="50">
+                <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="end center" fxLayoutAlign.xs="start center"  class="mb-3">
+                    <mat-slide-toggle [(ngModel)]="isChecked" (change)="onChangeToggle($event.checked)"  labelPosition="before">{{ STRINGS.viewEvent.Availability}}</mat-slide-toggle>
+                </div>
+                <div fxLayout="column" fxLayoutGap="40px" fxLayoutAlign="start start">
+                    <div fxFlex="100">
+                        <h1>{{eventdetail.name}}</h1>
+                        <div class="star" fxLayoutAlign="start start" *ngIf="eventdetail">
+                                <img *ngFor="let ratingId of ratingArr;" 
+                                class="mr-2" src="../../../../assets/img/star_rating.svg" alt="">
+                                <span>{{eventdetail.ratingCount}}</span>
+                                <p *ngIf="ratingArr.length==0">No Rating</p>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" class="pt-3" *ngIf="couponCode">
+                    <div fxFlex="100" fxLayoutAlign="start center">
+                        <h3 class="coupan"> Coupon Code</h3> <span class="coupan-code">{{couponCode}}</span>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px" fxLayoutGap.md="0px" fxLayoutGap.xs="20px">
+                    <div fxFlex="33.33">
+                        <div class="label_amount">
+                            <h2>{{eventdetail.totalRSVP}}</h2>
+                            <h3 >{{ STRINGS.viewEvent.TotalRSVP}}</h3>
+                        </div>
+                    </div>
+                    <div fxFlex="33.33">
+                        <div class="label_amount">
+                            <h2>{{eventdetail.checkedInRSVP}}</h2>
+                            <h3>{{ STRINGS.viewEvent.CheckedRSVP}}</h3>
+                        </div>
+                    </div>
+                    <div fxFlex="33.33">
+                        <div class="label_amount">
+                            <h2>${{eventdetail?.totalPayment | number:'1.2-2'}}</h2>
+                            <h3> {{ STRINGS.viewEvent.Totalpayment}} </h3>                        
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px" class="mt-4" fxLayoutGap.md="10px" fxLayoutGap.xs="10px">
+                    <div fxFlex="50"> <button mat-button class="gradient-btn" (click)="NavigatoRspv()" > {{ STRINGS.viewEvent.AllRSVP}}</button> </div>
+                    <div fxFlex="50"> <button mat-button class="gradient-btn" (click)="NavigatoChekdIn()">{{ STRINGS.viewEvent.CheckedRSVPs}} </button></div>
+                </div>
+                <div fxLayout="row" fxLayoutGap="40px">
+                    <div fxFlex="100">
+                        <mat-list role="list" class="pt-5">
+                            <mat-list-item role="listitem" *ngFor="let data of AllList" [routerLink]="[data.route,id]" class="cursor_pointer">
+                                <img  src="{{data.imgSrc}}">
+                                <button mat-button [disableRipple]="true" >
+                                   {{data.heading}}
+                                </button>
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

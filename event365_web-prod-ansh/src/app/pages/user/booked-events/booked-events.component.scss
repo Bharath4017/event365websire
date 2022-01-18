@@ -1,0 +1,43 @@
+
+.booked-event-card{
+    margin-bottom: 3rem;
+    .favourte-tabs {
+        display: flex;
+        .invite-tabs-btn.active{
+            background-color: #343a43;
+            color: #fff;
+        }
+        .invite-tabs-btn {
+            width: 20.8rem;
+            height: 5rem;
+            border-radius: .9rem;
+            border: 1px solid #9697b5;
+            color: #9697b5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-right: 1.2rem;
+            background-color: initial;
+        }
+    }
+    .card-details{
+        .card-detail-p, .card-detail-p1, .card-detail-p-blue{
+            font-family: 'HelveticaNeueLTPro-Md';
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.79;
+            letter-spacing: normal;
+            margin-top: 16px;
+            color: #343a43;
+            img{
+                filter: brightness(0%);
+            }
+        }
+        .card-detail-p-blue{
+            color: #715ff2 !important;
+        }
+    }
+}

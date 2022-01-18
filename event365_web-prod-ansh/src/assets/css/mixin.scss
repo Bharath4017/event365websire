@@ -1,0 +1,70 @@
+@mixin center_align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @mixin center_align_flex($display, $align-items, $justify-content) {
+    display: $display;
+    align-items: $align-items;
+    justify-content: $justify-content;
+  }
+/*for button*/
+
+@mixin replacewidthheight($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+  @mixin replacewidth($size) {
+    @include common_button;
+    width: $size;
+  }
+
+  @mixin common_button {
+    height: 40px;
+    background-color: #7966fe;
+    border-radius: 40px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 1.4px;
+    text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+    font-family: 'HelveticaNeueLTPro-Md';
+    
+  }
+/*for font styling*/
+@mixin replaceFontStyle($size, $weight, $spacing, $lineheight,$color) {
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: $lineheight;
+  font-family: 'HelveticaNeueLTPro-Md';
+  font-stretch: normal;
+  font-style: normal;
+  color: $color;
+}
+
+@mixin font-style{
+  font-size: 16px;
+  letter-spacing: 0.36px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+}
+
+  @mixin add-icon{
+    width: 20px;
+    height: 20px;
+    background: rgb(0, 0, 0, 0.1);
+    position: absolute;
+    left: 18px;
+    font-size: 16px;
+    line-height: 19.7px;
+    top: 10px;
+    border-radius: 50%;
+    padding-left: 2px;
+  }

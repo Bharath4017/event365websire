@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28.132" height="28.132" viewBox="0 0 28.132 28.132">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path id="Icon_material-message" data-name="Icon material-message" class="cls-1" d="M28.319,3H5.813a2.809,2.809,0,0,0-2.8,2.813L3,31.132l5.626-5.626H28.319a2.822,2.822,0,0,0,2.813-2.813V5.813A2.822,2.822,0,0,0,28.319,3ZM25.506,19.879H8.626V17.066H25.506Zm0-4.22H8.626V12.846H25.506Zm0-4.22H8.626V8.626H25.506Z" transform="translate(-3 -3)"/>
+</svg>

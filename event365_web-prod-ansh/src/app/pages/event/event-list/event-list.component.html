@@ -1,0 +1,106 @@
+<div class="middle-section height-auto up-past-event">
+  <div style="margin-bottom: 3rem;" class="width-80">
+    <div class="Favourte-top-section">
+      <div class="favourte-tabs">
+        <button class="invite-tabs-btn" [ngClass]="{'active': selectedFavType}" (click)="upcomingEvent()">
+          {{ STRINGS.eventInfo.coming }}
+        </button>
+        <button class="invite-tabs-btn" [ngClass]="{'active': !selectedFavType }" (click)="pastEvent()">
+          {{ STRINGS.eventInfo.past }}
+        </button>
+      </div>
+      <div class="invite-tabs-search">
+        <mat-form-field appearance="standard" floatLabel="always" class="matinput-space" *ngIf="selectedFavType">
+          <input type="text" matInput placeholder="{{STRINGS.eventInfo.search}}" autocomplete="off"
+            class="invite-search" (keyup)="applyUpcomingFilter($event)" />
+          <img src="../../../assets/img/search@2x.png" class="search-icon" />
+        </mat-form-field>
+        <mat-form-field appearance="standard" floatLabel="always" class="matinput-space" *ngIf="!selectedFavType">
+          <input type="text" matInput placeholder="{{STRINGS.eventInfo.search}}" autocomplete="off"
+            class="invite-search" (keyup)="applyPastFilter($event)" />
+          <img src="../../../assets/img/search@2x.png" class="search-icon" />
+        </mat-form-field>
+        <button class="primary-btn invite-btn" (click)="navCreateEvent()" *ngIf="superUser?.userType == 'member' || !rolesManageUser ? false : true">
+          + {{ STRINGS.home.createEvent }}
+        </button>
+      </div>
+      <!-- --------------Cards-------------->
+      <div class="card-row" *ngIf="selectedFavType">
+        <!-- <div *ngIf="partnerUpcomingEvents.length === 0"><br>
+          <h3 class="no-data">{{STRINGS.home.notAvailable}}</h3>
+        </div> -->
+        <div class="card-box" *ngFor="let upcomongvalue of partnerUpcomingEvents | slice:0:maxArrayUpcomingEvents" (click)="redirect(upcomongvalue.id)">
+          <div class="card-image" [ngStyle]="{
+                        'background-image': upcomongvalue.eventImages[0]?.eventImage
+                        ? 'url(' + upcomongvalue.eventImages[0]?.eventImage + ')'
+                        : ''            }">
+            <div class="calender">
+              <p class="date">
+                {{ upcomongvalue.start | date: "dd" }}
+                <span class="month">{{ upcomongvalue.start | date: "LLL" }}</span>
+              </p>
+            </div>
+            <div class="card-top-box">
+              <div class="img-circle" routerLink="">
+                <img src="../../../../assets/img/eye.svg"  (click)="navEditEvent(upcomongvalue.id)" />
+              </div>
+              <div class="img-circle" *ngIf="superUser?.userType == 'member' || !rolesManageUser ? false : true">
+                <img src="../../../../assets/img/edit.svg"  (click)="navEventDetails(upcomongvalue.id)"/>
+              </div>
+            </div>
+          </div>
+          <div class="card-details">
+            <h1 class="event-name">{{upcomongvalue.name}}</h1>
+            <p class="card-detail-p1">(ongoing)</p>
+            <p class="card-detail-p">
+              <quill-view-html [content]="upcomongvalue.description" theme="snow"></quill-view-html>
+                <!-- {{upcomongvalue.description}} -->
+            </p>
+            <div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row " fxLayoutAlign="end center" class="w-100">
+          <a *ngIf="partnerUpcomingEvents.length > maxArrayUpcomingEvents" href="javascript:void(0)"
+            class="view-all-btn" (click)="viewAll('maxArrayUpcomingEvents', 'partnerUpcomingEvents')">{{
+                        STRINGS.home.viewAll }}</a>
+        </div>
+      </div>
+      <div class="card-row" *ngIf="!selectedFavType" >
+        <!-- <div *ngIf="partnerPastEvents.length === 0"><br>
+          <h3 class="no-data">{{STRINGS.home.notAvailable}}</h3>
+        </div> -->
+        <div class="card-box" *ngFor="let pastvalue of partnerPastEvents | slice:0:maxArrayPastEvents">
+          <div class="card-image" (click)="redirect(pastvalue.id)" [ngStyle]="{
+                    'background-image': pastvalue.eventImages[0]?.eventImage
+                    ? 'url(' + pastvalue.eventImages[0]?.eventImage + ')'
+                    : ''            }">
+            <div class="calender">
+              <p class="date">
+                {{ pastvalue.start | date: "dd" }}
+                <span class="month">{{ pastvalue.start | date: "LLL" }}</span>
+              </p>
+            </div>
+          </div>
+          <div class="card-details">
+            <h1 class="event-name">{{ pastvalue.name }}</h1>
+            <p class="card-detail-p">
+              <quill-view-html [content]="pastvalue.description" theme="snow"></quill-view-html>
+                <!-- {{pastvalue.description}} -->
+            </p>
+          </div>
+          <div>
+          </div>
+        </div>
+        <div fxLayout="row " fxLayoutAlign="end center" class="w-100">
+          <a *ngIf="partnerPastEvents.length > maxArrayPastEvents" href="javascript:void(0)" class="view-all-btn d-inline"
+            (click)="viewAll('maxArrayPastEvents', 'partnerPastEvents')">{{
+                    STRINGS.home.viewAll }}</a>
+        </div>
+      </div>
+      <div fxlayout="row" *ngIf="datanotFound" class="w-100">
+        <p class="datanotFound px-2">{{STRINGS.dataNotFound.dataNfound}}</p>
+      </div>
+    </div>
+  </div>
+</div>

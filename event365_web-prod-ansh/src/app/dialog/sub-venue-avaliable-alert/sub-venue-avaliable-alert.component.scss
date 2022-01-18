@@ -1,0 +1,111 @@
+.main-div{
+    position: relative;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .close-btn{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        cursor: pointer;
+        font-size: 2rem;
+        color: #9697b5;
+        height: 30px;
+        line-height: 30px;
+        font-weight: 600;
+    }
+}
+.disabled {
+    color: #b0b2b5 !important;
+  }
+.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .alert-icon{
+        color: #f25555;
+    }
+    h4{
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 2.2;
+        color: #343a43;
+    }
+}
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h4{
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 0.5;
+        letter-spacing: 1px;
+        color: #343a43;
+    }
+    .checkbox{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        input{
+            margin-left: 60px;
+            width: 25px;
+            height: 25px;
+        }
+        p{
+            font-family: 'HelveticaNeueLTPro-Md';
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.88;
+            letter-spacing: normal;
+            text-align: left;
+            color: #343a43;
+        }
+    }
+    .hint-msg{
+        padding-left: 40px;
+    }
+    p{
+        width: 100%;
+        text-align: left;
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.67;
+        letter-spacing: normal;
+        color: #ff607a;
+    }
+}
+.modal-venue-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button{
+        width: 154.8px;
+        height: 49.5px;
+        border-radius: 75.8px;
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-size: 18px;
+        line-height: 1.22;
+        letter-spacing: 1.8px;
+        &:nth-child(1){
+            background: rgba(160, 152, 221, 0.3);
+            color: #343a43;
+        }
+        &:nth-child(2){
+            background: #7966fe;
+            color: #fff;
+        }
+    }
+}

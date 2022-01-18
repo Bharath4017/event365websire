@@ -1,0 +1,455 @@
+.up-past-event{
+  .ql-editor{
+    padding: 0;
+    margin-top: 10px;
+  }
+  .height-auto
+  {
+    height:auto;
+  }
+  .Favourte-top-section
+  {
+    width: 100%;
+    padding: 3rem 0;
+  }
+  
+  .favourte-tabs
+  {
+      display: flex;
+  }
+  
+  .invite-tabs-search {
+      width: 100%;
+      height: 7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .invite-search {
+      border: 1px solid #9697b5;
+      width: 100%;
+      height: 5.1rem;
+      border-radius: 1rem;
+      padding: 0 2rem;
+      // margin: 1.6rem 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2rem;
+      font-size: 1.6rem;
+    }
+    .matinput-space {
+      position: relative;
+      width: 43.9rem;
+    }
+    .search-icon {
+      position: absolute;
+      width: 2rem;
+      top: 4rem;
+      right: 0;
+    }
+    .invite-btn {
+      width: 19.6rem;
+      height: 4.2rem;
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    
+    
+  .invite-tabs-btn {
+    width: 20.8rem;
+    height: 5rem;
+    border-radius: 0.9rem;
+    border: 1px solid #9697b5;
+    color: #9697b5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-right: 1.2rem;
+    background-color: transparent;
+  
+    &.active {
+      background-color: #343a43;
+      color: #ffffff;
+    }
+  }
+  
+  
+  // ----------Card -------------
+  
+  .card-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    // max-height: auto;
+    .card-box {
+      height: auto;
+      width: 47%;
+  
+      border-radius: 1rem;
+      background-color: #ffffff;
+      box-shadow: 0 0 6px rgba(121, 102, 254, 0.2);
+      margin: 2rem 0rem 2rem 0;
+      position: relative;
+      cursor: pointer;
+      .card-image {
+        width: 100%;
+        height: 19.2rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #e0c4c4a4;
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+  
+      }
+  
+      .card-details {
+        width: 100%;
+        padding: 2rem;
+  
+        .card-detail-p1{
+            font-size: 1.3rem;
+            color: #343a43;
+            line-height: 1.62;
+            letter-spacing: 0.26px;
+        }
+        .event-name {
+          color: #343a43;
+          font-size: 1.9rem;
+          text-transform: capitalize;
+          margin-bottom: 0.5rem;
+        }      
+  
+      }
+    }
+  
+    
+  }
+  
+  
+  // ------------Calender tempe---------
+  .calender {
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 0.4rem;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    left: 1rem;
+    top: -1rem;
+    .date {
+      font-size: 1.3rem;
+      color: #7966fe;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1;
+      .month {
+        text-transform: uppercase;
+        color: #7966fe;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  .card-top-box {
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .img-circle {
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    background: ghostwhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 .5rem;
+    cursor: pointer;
+  }
+  
+  .img-circle img {
+    width: 1.5rem;
+  }
+  
+  .card-detail-p
+  {
+    font-size: 1.4rem;
+    color: #343a43;
+    line-height: 1.79;
+    letter-spacing: 0.28px;
+    word-break: break-all;
+    max-height: 120px;
+    overflow: hidden;
+
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+  
+    .invite-tabs-search {
+        // flex-direction: column;
+        // justify-content: flex-start;
+        display: block;
+        height: auto;
+      }
+      .matinput-space {
+        width: 87%;
+        // margin-right: 5rem;
+      }
+      .invite-btn {
+        margin-top: 2rem;
+    }
+  
+  
+    }
+  
+  @media only screen and (max-width: 500px) {
+  
+        .card-row {
+        .card-box{
+            width: 98%;
+        }
+      }
+  
+  }
+  
+  
+  
+  
+}
+.height-auto
+{
+  height:auto;
+}
+.Favourte-top-section
+{
+  width: 100%;
+  padding: 3rem 0;
+}
+
+.favourte-tabs
+{
+    display: flex;
+}
+
+.invite-tabs-search {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .invite-search {
+    border: 1px solid #9697b5;
+    width: 100%;
+    height: 5.1rem;
+    border-radius: 1rem;
+    padding: 0 2rem;
+    // margin: 1.6rem 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    font-size: 1.6rem;
+  }
+  .matinput-space {
+    position: relative;
+    width: 43.9rem;
+  }
+  .search-icon {
+    position: absolute;
+    width: 2rem;
+    top: 4rem;
+    right: 1rem;
+  }
+  .invite-btn {
+    width: 19.6rem;
+    height: 4.2rem;
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  
+  
+.invite-tabs-btn {
+  width: 20.8rem;
+  height: 5rem;
+  border-radius: 0.9rem;
+  border: 1px solid #9697b5;
+  color: #9697b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-right: 1.2rem;
+  background-color: transparent;
+
+  &.active {
+    background-color: #343a43;
+    color: #ffffff;
+  }
+}
+
+
+// ----------Card -------------
+
+.card-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  // max-height: auto;
+  .card-box {
+    height: auto;
+    width: 47%;
+
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 6px rgba(121, 102, 254, 0.2);
+    margin: 2rem 0rem 2rem 0;
+    position: relative;
+    cursor: pointer;
+    .card-image {
+      width: 100%;
+      height: 19.2rem;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      background-color: #e0c4c4a4;
+      position: relative;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 50% 50%;
+
+    }
+
+    .card-details {
+      width: 100%;
+      padding: 2rem;
+
+      .card-detail-p1{
+          font-size: 1.3rem;
+          color: #343a43;
+          line-height: 1.62;
+          letter-spacing: 0.26px;
+      }
+      .event-name {
+        color: #343a43;
+        font-size: 1.9rem;
+        text-transform: capitalize;
+        margin-bottom: 0.5rem;
+      }      
+
+    }
+  }
+
+  
+}
+
+
+// ------------Calender tempe---------
+.calender {
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 0.4rem;
+  background-color: #fff;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  left: 1rem;
+  top: -1rem;
+  .date {
+    font-size: 1.3rem;
+    color: #7966fe;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1;
+    .month {
+      text-transform: uppercase;
+      color: #7966fe;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+  }
+}
+
+.card-top-box {
+  display: flex;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.img-circle {
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  background: ghostwhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 .5rem;
+  cursor: pointer;
+}
+
+.img-circle img {
+  width: 1.5rem;
+}
+
+.card-detail-p
+{
+  font-size: 1.4rem;
+  color: #343a43;
+  line-height: 1.79;
+  letter-spacing: 0.28px;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .invite-tabs-search {
+      // flex-direction: column;
+      // justify-content: flex-start;
+      display: block;
+      height: auto;
+    }
+    .matinput-space {
+      width: 87%;
+      // margin-right: 5rem;
+    }
+    .invite-btn {
+      margin-top: 2rem;
+  }
+
+
+  }
+
+@media only screen and (max-width: 500px) {
+
+      .card-row {
+      .card-box{
+          width: 98%;
+      }
+    }
+
+}
+
+
+

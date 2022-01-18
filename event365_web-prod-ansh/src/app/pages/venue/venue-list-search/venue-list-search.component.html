@@ -1,0 +1,91 @@
+<div class="blanK-section d-block mb-4">
+    <div class="venue-list-search-wrapper">
+        <mat-card class="venue-list-search-card width-80">
+            <div  fxLayout="row" fxLayout.lt-sm="column"  fxLayoutAlign.lt-md="center center"  fxLayoutAlign.lt-sm="space-between"  >
+                <div fxFlex="100"  class="searchlabel">
+                    <mat-form-field class="matinput-space cus-seach" floatLabel="never" appearance="standard">
+                        <mat-icon class="near-position"> near_me</mat-icon>
+                        <input [disabled]="locationInput" value={{CurrentLocation}} [ngClass]="locationInput ? 'border-0':''"  matInput type="text" #searchTextField placeholder="{{ STRINGS.searchVenue.placholder }}"  autofocus/>
+                        <button (click)="editVenueLocation()"  *ngIf="editCheckBtn" type="button" mat-button mat-icon-button aria-label="input-search">
+                            <mat-icon >edit</mat-icon>
+                        </button>
+                        <button  style="font-size: 30px;" (click)="searchVenueLocation()"  *ngIf="!editCheckBtn" type="button" mat-button mat-icon-button aria-label="input-search">
+                            <mat-icon >check</mat-icon>
+                        </button>
+                       </mat-form-field>
+                </div>
+                <div fxFlex="50"></div>
+            </div>
+                <div class="col p-0">
+                   
+                    <div class="searchlabel mb-3">
+                       
+                    </div>
+
+                </div>
+                <div fxLayout="row" fxLayout.xs="column" class="header" fxLayoutGap="40px">
+                    <div fxFlex="70" fxFlex.sm="60">
+                        <mat-form-field class="matinput-space cus-seach" floatLabel="never" appearance="standard">
+                            <input matInput type="text" value="" (keyup)="searchVenueByInput($event)" (keydown.enter)="searchVenueByInput($event)"
+                                placeholder="{{ STRINGS.searchVenue.searchPlacholder}}">
+                            <button (click)="searchVenueByInput($event)" type="button" mat-button mat-icon-button aria-label="input-search">
+                                <mat-icon >search</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="30" fxFlex.sm="40">
+                        <div class="slider-bar">
+                            <div class="slider-head">
+                                <h3 class="slider-level">Distance</h3>
+                                <span class="slider-value">{{costValue}} {{ STRINGS.searchVenue.distance }} </span>
+                            </div>
+                            <mat-slider class="slider-custom" min="0" [max]="maxValue" step="1" [value]="costValue"
+                                (change)="costValueChange($event)"></mat-slider>
+                            <div class="slider-head">
+                                <span class="slider-value">0</span>
+                                <span class="slider-value">{{maxValue}}M</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+        </mat-card>
+
+
+        <div *ngIf="venueSearchResult != null" class="search-container width-80 row">
+            <div class="col-md-6  col-lg-6 col-sm-12 " *ngFor="let venue of venueSearchResult">
+                <mat-card (click)="nevigateVenueDetail(venue.id)" class="mb-5">
+                   
+                        <div fxLayout="row" fxLayout="column" fxLayoutGap="20px" fxLayoutGap.xs="10px" >
+                            <div  fxFlex="60" fxFlex.xs="100">
+                                <h2>{{venue.venueName}}</h2>
+                            </div>
+                            <div  fxFlex="40" fxFlex.xs="100" fxLayoutAlign=" end end" class="subvenue">
+                                &nbsp;
+                                <p class="text-right w-100 " *ngIf="venue.subVenues.length != 0">{{venue.subVenues.length}} {{ STRINGS.searchVenue.Subvenues }}
+                                </p>
+                            </div>
+                           
+                            
+                    </div>
+                    <div class="mt-1">
+                        <span class="small-text">({{venue.distance}} {{ STRINGS.searchVenue.miles }}) </span>
+                    </div>
+                    <div class="mt-3">
+                        <p class="shortdesc">{{(venue.shortDescription?.length>70)?(venue.shortDescription |
+                            slice:0:50)+'...':(venue.shortDescription) }}</p>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+        <div *ngIf="venueSearchResult == null">
+            <mat-card class="search-container width-80 row">
+                <p>No Venue Found</p>
+            </mat-card>
+        </div>
+
+
+    </div>
+</div>

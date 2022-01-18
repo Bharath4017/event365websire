@@ -1,0 +1,140 @@
+<div class="middle-section height-auto ratting">
+    <div class="width-80">
+        <h3 class="review-heading">{{eventDetails?.name}}</h3>
+
+        <!--....all rating wrapper....  -->
+        <div class="all-rating-wrapper">
+            <div class="all-ratings">
+                <div class="star-rating">
+                    <ng-container *ngFor="let ratingId of ratingArr  let i = index">
+                        <button mat-icon-button [color]="color" class="star" disabled>
+                            <!-- <mat-icon>
+                                {{showStarIcon(i,eventDetails?.rating,'topReview')}}
+                            </mat-icon> -->
+                            <div>{{showStarIcon(i,eventDetails?.rating,'topReview')}}</div>
+                         <mat-icon class="star-img" *ngIf="!borderColor">star</mat-icon>
+                        <mat-icon class="star-border" *ngIf="borderColor">star_border</mat-icon></button>
+                    </ng-container>
+                    <p class="text-rating ml-3 mt-2">{{eventDetails?.rating}} {{ STRINGS.customerReview.outOf }}</p>
+                </div>
+                <div class="text-rating">
+                    Overall {{eventDetails?.ratingCount}} Rating
+                </div>
+            </div>
+            <form style="display: flex; align-items: center; height: 100%;">
+                <p class="user-name-rating mr-4">Sort by</p>
+                <mat-form-field class="ratingsSelect ratingsSelect-custom" floatLabel='never'>
+                    <mat-label class="ratingsSelect-Text" >Select</mat-label>
+                    <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
+                    <mat-select [(ngModel)]="selectedRatings" name="stars" disableOptionCentering (selectionChange)="sortByRating(selectedRatings)" panelClass="mat-select-dropDown-option ratingsSelect-custom" >
+                        <mat-option *ngFor="let stars of ratings" [value]="stars.value">
+                            {{stars.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+
+        <!--.....write a review......  -->
+        <div class="mb-4 thought">
+            <span class="user-name-rating">{{STRINGS.customerReview.shareThoughts}}</span>
+            <button type="submit" class="ml-sm-5 primary-btn btn-small" (click)="writeReview('open')">
+            {{STRINGS.buttons.review}}
+         </button>
+        </div>
+
+        <!--......add Your Review.....  -->
+
+        <div class="user-comment-card" *ngIf="writeReviewArea">
+            <div class="user-profile">
+                <div>
+                    <!-- <img class mr-1" style="height:64px; width: 64px; border-radius: 50%; background-color: aqua;" [src]="currentUserProFilePic.profilePic" alt=""> -->
+
+                    <ng-container *ngIf="!currentUserProFilePic.profilePic; else elseBlock">
+                        <ngx-avatar name="{{currentUserProFilePic.name}}" class="avatar-container avatar-custom avatar-custom-size" size="64" [round]="true">
+                        </ngx-avatar>
+                    </ng-container>
+                    <ng-template #elseBlock>
+                        <!-- <div > -->
+                        <img [src]="currentUserProFilePic.profilePic" class="card-profile">
+                        <!-- </div> -->
+                    </ng-template>
+                </div>
+                <div class="star-rating star-rating-mr ml-3">
+                    <button mat-icon-button *ngFor="let ratingId of ratingArr ;index as i" (click)="onClick(i+1)">
+                        <div>{{showIcon(i)}}
+                        </div>
+                        <!-- <mat-icon [ngClass]= "borderColor ? 'star_border-color' : 'star-border'" >{{showIcon(i+1)}}</mat-icon> -->
+                        <mat-icon class="star-img" *ngIf="!borderColor">star</mat-icon>
+                        <mat-icon class="star-border" *ngIf="borderColor">star_border</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <form>
+                <div class="form-group comment-area-mar">
+                    <textarea class="form-control comment-area" id="comment" [(ngModel)]="reviews" name="text" placeholder="{{STRINGS.customerReview.placeHolder}}"></textarea>
+                    <mat-error *ngIf="isSubmitted && reviews.trim() === ''">{{ STRINGS.validations.addReview }}</mat-error>
+                </div>
+                <div class="btn-wrapper">
+                    <button type="submit" class="primary-btn btn-small" (click)="createUserReviews()">
+                       {{STRINGS.buttons.submit}}
+                    </button>
+                    <button type="submit" class="primary-btn btn-small btn-small-cancel" (click)="writeReview('close')">
+                        {{STRINGS.buttons.cancel}}
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!--......all comments.....  -->
+        <div class="all-comments-wrapper">
+
+            <div class="user-comment-card margin-top-null" *ngIf="allUserReviews.length < 1">
+
+                <div class="flex-div" style="justify-content: center">
+                    <!-- <h3>No review found!</h3> -->
+                </div>
+            </div>
+            <div class="user-comment-card margin-top-null" *ngFor="let review of allUserReviews">
+
+                <div class="flex-div">
+                    <div class="user-profile">
+                        <div>
+                            <!-- <img class="mr-3" style="height:64px; width: 64px; border-radius: 50%; background-color: aqua;" [src]="review?.reviewer?.profilePic" alt=""> -->
+
+                            <ng-container *ngIf="!review?.reviewer?.profilePic; else elseBlock">
+                                <ngx-avatar name="{{review?.reviewer?.name}}" class=" avatar-container avatar-custom avatar-custom-size " size="64" [round]="true" cornerRadius="14">
+                                </ngx-avatar>
+                            </ng-container>
+                            <ng-template #elseBlock>
+                                <img [src]="review?.reviewer?.profilePic" class="card-profile">
+                            </ng-template>
+                        </div>
+                        <div>
+                            <div class="ratingi-name">
+                                <div class="user-name-rating mb-2 pl-2">
+                                    {{review?.reviewer?.name}}
+                                </div>
+                                <div class="star-rating star-rating-mr">
+                                    <button mat-icon-button [color]="color" class="star" *ngFor="let ratingId of ratingArr let i = index" disabled>
+                                    <!-- <mat-icon>
+                                    {{showStarIcon(i,review.reviewStar,'customerReview')}}
+                                    </mat-icon> -->
+                                    <div>{{showStarIcon(i,review.reviewStar,'customerReview')}}</div>
+                                    <mat-icon class="star-img" *ngIf="!borderColor">star</mat-icon>
+                                   <mat-icon class="star-border" *ngIf="borderColor">star_border</mat-icon>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-time">{{reviewpostedAt(review?.updated_at)}}</div>
+                </div>
+
+                <p class="comment">
+                    {{review?.reviewText}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

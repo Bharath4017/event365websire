@@ -1,0 +1,28 @@
+<div  class="postevent_modal" >
+    <div fxLayout="row" fxLayoutGap="40px">
+        <div fxFlex="100" fxLayoutAlign="end center">
+            <button type="button" mat-dialog-close>×</button>
+          </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutGap="40px">
+            <div fxFlex="100" fxLayoutAlign="center center">
+                <h3>Is this a free event?</h3>
+              </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="center center" class="my-4">
+            <div fxFlex="100" class="mb-2" fxLayoutAlign="center center">
+              <mat-radio-group class="pr-5" #eventradio  [(ngModel)]="selection">
+                <mat-radio-button [value]="0" class="mr-3" >Yes</mat-radio-button>
+                <mat-radio-button [value]="1">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+      <div fxLayout="row" fxLayoutGap="40px" class="pb-4">
+        <div  fxFlex="100" mat-dialog-actions fxLayoutAlign="center center">
+            <button mat-button  (click)="Proceed()">Proceed </button>
+          </div>
+      </div>
+    </div>

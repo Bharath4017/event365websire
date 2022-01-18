@@ -1,0 +1,56 @@
+.alert-model-width {
+  margin: auto;
+  height: 20.82rem;
+  width: 42.15rem;
+}
+
+.alert-model-width .alert-model-content {
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.alert-model-width .alert-model-content .close-custom {
+  font-size: 3rem;
+  color: #9697b5;
+  opacity: 1;
+  text-align: right;
+  font-weight: 400;
+  text-align: right;
+}
+
+.alert-model-width .alert-model-content .text-center {
+  text-align: center;
+}
+
+.alert-model-width .alert-model-content .text-center .alert-heading-wrapper {
+  width: 100%;
+  min-height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.alert-model-width .alert-model-content .text-center .alert-heading-wrapper .alert-heading {
+  color: #343a43;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-left: 1.2rem;
+}
+
+.alert-model-width .alert-model-content .text-center .alert-content {
+  font-size: 1.8rem;
+  color: #343a43;
+  margin: 5rem auto 0;
+  font-weight: 500;
+}
+
+.alert-model-width .alert-model-content .text-center .btn-sm {
+  width: 16.5rem;
+}
+/*# sourceMappingURL=model.component.css.map */

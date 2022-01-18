@@ -1,0 +1,33 @@
+.overlay {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 4;
+    .loader-box {
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: loader-move 2s linear infinite;
+    }
+    @keyframes loader-move {
+        0% {
+            transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg)
+        }
+        50% {
+            transform: translate(-50%, -50%) rotateX(180deg) rotateY(0deg)
+        }
+        100% {
+            transform: translate(-50%, -50%) rotateX(180deg) rotateY(180deg)
+        }
+    }
+}

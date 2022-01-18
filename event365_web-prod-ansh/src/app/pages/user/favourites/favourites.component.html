@@ -1,0 +1,195 @@
+
+        <div class="Favourte-top-section width-80">
+            <div class="favourte-tabs">
+                <button class="invite-tabs-btn" [ngClass]="{ active: selectedFavType === 1 }" (click)="pastFavourite()">
+                    {{ STRINGS.favorite.past }}
+                </button>
+                <button class="invite-tabs-btn" [ngClass]="{ active: selectedFavType === 2 }"
+                    (click)="comingFavourite()">
+                    {{ STRINGS.favorite.coming }}
+                </button>
+            </div>
+
+            <!-- --------------Cards-------------->
+            <div class="card-row">
+                <ng-container *ngIf="!isComing">
+                    <div class="card-box" *ngFor="let events of pastFavouriteEvents">
+                        <div (click)="navigateEventDetail(events?.id)" class="card-image" [ngStyle]="{
+                'background-image': events.eventImages[0]?.eventImage
+                  ? 'url(' + events.eventImages[0]?.eventImage + ')'
+                  : ''
+              }">
+                            <div class="wishlist" (click)="markFavorites(events.id)">
+                                <img src="../../../../assets/img/favorite-blue.svg " class="like-icon" />
+                            </div>
+                        </div>
+
+                        <div class="card-details">
+                            <h1 class="event-name">{{ events?.name }}</h1>
+                            <h1> {{events.recuringStartDate}}</h1>
+                            <div class="event-venue">
+                                <div class="event-venue-icon">
+                                    <img src="../../../../assets/img/card-location.svg " />
+                                </div>
+                                <p class="event-venue-place address-height">
+                                    {{ events?.address[0]?.venueAddress }}
+                                </p>
+                            </div>
+                            <div class="event-start-end">
+                               
+                                <ng-container *ngIf="events.recuringStartDate !== ''; else startDateBlock">
+                                    <div class="event-start">
+                                        <p>{{STRINGS.favorite.eventStart}}</p>
+                                        <h4>{{ events?.recuringStartDate | date: "dd MMM" }}</h4>
+                                        <small>{{ events?.start | date: "hh:mm a" }} -
+                                            {{
+                                            events?.end
+                                            | date: "hh:mm a"
+                                            }}</small>
+                                    </div>
+                                </ng-container>
+                                <ng-template #startDateBlock>
+                                    <div class="event-start">
+                                        <p>{{STRINGS.favorite.eventStart}}</p>
+                                        <h4>{{ events?.start | date: "dd MMM" }}</h4>
+                                        <small>{{ events?.start | date: "hh:mm a" }} -
+                                            {{
+                                            events?.end
+                                            | date: "hh:mm a"
+                                            }}</small>
+                                    </div>
+                                </ng-template>
+                                <!-- <div class="event-start">
+                                    <p>{{STRINGS.favorite.eventStart}}</p>
+                                    <h4>{{ events?.start | date: "dd MMM" }}</h4>
+                                    <small>{{ events?.start | date: "hh:mm a" }} -
+                                        {{
+                                        events?.end
+                                        | date: "hh:mm a"
+                                        }}</small>
+                                </div> -->
+                                <span>/</span>
+                                <ng-container *ngIf="events.recuringEndDate !== ''; else endFavDateBlock">
+                                    <div class="event-start">
+                                        <p>{{STRINGS.favorite.eventStart}}</p>
+                                        <h4>{{ events?.recuringEndDate | date: "dd MMM" }}</h4>
+                                        <small>{{ events?.start | date: "hh:mm a" }} -
+                                            {{
+                                            events?.end
+                                            | date: "hh:mm a"
+                                            }}</small>
+                                    </div>
+                                </ng-container>
+                                <ng-template #endFavDateBlock>
+                                    <div class="event-end">
+                                        <p>{{STRINGS.favorite.eventEnd}}</p>
+                                        <h4>{{ events?.end | date: "dd MMM" }}</h4>
+                                        <small>{{ events?.start | date: "hh:mm a" }} -
+                                            {{
+                                            events?.end
+                                            | date: "hh:mm a"
+                                            }}</small>
+                                    </div>
+                                </ng-template>
+                              
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxlayout="row"  *ngIf="pastFavouriteEvents.length == 0" class="w-100">
+                        <p class="datanotFound px-2">{{STRINGS.dataNotFound.dataNfound}}</p>
+                      </div>
+
+
+                </ng-container>
+
+                <ng-container *ngIf="isComing">
+                    <div class="card-box" *ngFor="let events of comingSoonFavouriteEvents">
+                        <div (click)="navigateEventDetail(events?.id)" class="card-image" [ngStyle]="{
+                'background-image': events.eventImages[0]?.eventImage
+                  ? 'url(' + events.eventImages[0]?.eventImage + ')'
+                  : ''
+              }">
+                            <div class="wishlist" (click)="markFavorites(events.id)">
+                                <img src="../../../../assets/img/favorite-blue.svg " class="like-icon" />
+                            </div>
+                        </div>
+
+                        <div class="card-details">
+                            <h1 class="event-name">{{ events?.name }}</h1>
+                            <div class="event-venue">
+                                <div class="event-venue-icon">
+                                    <img src="../../../../assets/img/card-location.svg " />
+                                </div>
+                                <p class="event-venue-place address-height">
+                                    {{ events?.address[0]?.venueAddress }}
+                                </p>
+                            </div>
+                            <div class="event-start-end">
+                                <ng-container *ngIf="events.recuringStartDate !== ''; else startDateBlock">
+                                    <div class="event-start">
+                                        <p>{{STRINGS.favorite.eventStart}}</p>
+                                        <h4>{{ events?.recuringStartDate | date: "dd MMM" }}</h4>
+                                        <small>{{ events?.start | date: "hh:mm a" }} -
+                                            {{
+                                            events?.end
+                                            | date: "hh:mm a"
+                                            }}</small>
+                                    </div>
+                                </ng-container>
+                                <ng-template #startDateBlock>
+                                    <div class="event-start">
+                                        <p>{{STRINGS.favorite.eventStart}}</p>
+                                        <h4>{{ events?.start | date: "dd MMM" }}</h4>
+                                        <small>{{ events?.start | date: "hh:mm a" }} -
+                                            {{
+                                            events?.end
+                                            | date: "hh:mm a"
+                                            }}</small>
+                                    </div>
+                                </ng-template>
+                                <!-- <div class="event-start">
+                                    <p>{{STRINGS.favorite.eventStart}}</p>
+                                    <h4>{{ events?.start | date: "dd MMM" }}</h4>
+                                    <small>{{ events?.start | date: "hh:mm a" }} -
+                                        {{
+                                        events?.end
+                                        | date: "hh:mm a"
+                                        }}</small>
+                                </div> -->
+                                <span>/</span>
+                                <ng-container *ngIf="events.recuringEndDate !== ''; else endFavDateBlock">
+                                    <div class="event-start">
+                                        <p>{{STRINGS.favorite.eventStart}}</p>
+                                        <h4>{{ events?.recuringEndDate | date: "dd MMM" }}</h4>
+                                        <small>{{ events?.start | date: "hh:mm a" }} -
+                                            {{
+                                            events?.end
+                                            | date: "hh:mm a"
+                                            }}</small>
+                                    </div>
+                                </ng-container>
+                                <ng-template #endFavDateBlock>
+                                    <div class="event-end">
+                                        <p>{{STRINGS.favorite.eventEnd}}</p>
+                                        <h4>{{ events?.end | date: "dd MMM" }}</h4>
+                                        <small>{{ events?.start | date: "hh:mm a" }} -
+                                            {{
+                                            events?.end
+                                            | date: "hh:mm a"
+                                            }}</small>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxlayout="row" *ngIf="comingSoonFavouriteEvents.length == 0" class="w-100">
+                        <p class="datanotFound px-2">{{STRINGS.dataNotFound.dataNfound}}</p>
+                      </div>
+                </ng-container>
+
+               
+
+
+            </div>
+        </div>

@@ -1,0 +1,176 @@
+<div class="profile_wrapper">
+    <mat-card class="profile_inner mb-5">
+        <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
+            <div fxLayout="row" fxLayoutGap="60px">
+                <div fxFlex="100" fxLayoutAlign="center center">
+                    <label class="profile_edit" for="fileInput">
+                        <div [hidden]="!isProfileImageExist">
+                            <img class="img-fluid" #previewImg
+                            [attr.src]="profileDetails?.profilePic ? profileDetails?.profilePic : '../../assets/img/profile_defoult.png'">
+                        </div>
+                        <div [hidden]="isProfileImageExist">
+                            <ngx-avatar class="my-avatar" name="{{profileDetails?.name}}"></ngx-avatar>
+                        </div>
+                        <div class="fileinput">
+                            <mat-icon fxLayoutAlign="center center" class="ng-pos-right">edit</mat-icon>
+                        </div>
+                    </label>
+                    <input id="fileInput" type='file' (change)="OnImageSelect($event)">
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px" fxLayoutGap="20px" class="pt-5 mt-5">
+                <div fxFlex="50">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput #name formControlName="name" placeholder="Enter Name" autocomplete="off">
+                        <mat-error class="error-message" *ngIf="(updateProfileForm.get('name')?.invalid && updateProfileForm.get('name')?.touched) || updateProfileForm.get('name')?.dirty">
+                            <div *ngIf="updateProfileForm.get('name')?.errors?.required && isSubmitted">{{ STRINGS.validations.name }}
+                            </div>
+                            <div *ngIf="updateProfileForm.get('name')?.errors?.minlength && isSubmitted">{{STRINGS.validations.nameMinLength}}</div>
+                            <div *ngIf="updateProfileForm.get('name')?.errors?.maxlength && isSubmitted">{{STRINGS.validations.nameMaxLength}}</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>Email ID</mat-label>
+                        <input type="email" matInput #email formControlName="email" placeholder="JohnDoe@gmail.com" autocomplete="off">
+                        <img class="varifyimg" src="{{ verifyemail }}" />
+                        <mat-error class="error-message" *ngIf="updateProfileForm.controls['email'].hasError('required') && updateProfileForm.controls['email'].dirty || updateProfileForm.controls['email'].touched">
+                            {{ STRINGS.validations.email }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px">
+                <div fxFlex="50">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>Mobile Number</mat-label>
+                         <input type="text" hidden="true" matInput> 
+                        <!-- <intl-input-phone [ConfigurationOption]="configOption1" id="phoneIntl" formControlName="phoneNo"
+                         class="ng_country" [(NumberTextValue)]="NumberModel"  (OnIsRequiredChange)="onMobileChange()" 
+                         (OnNumberChange)="onNumberChange($event); onMobileChange()">
+                        </intl-input-phone> -->
+                        <div class="ngx-customise-position">
+                        <ngx-intl-tel-input  class="ngx-customise" [preferredCountries]="preferredCountries"
+                        [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                        [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+                        [selectedCountryISO]="selectedCountry" 
+                        [customPlaceholder]="'Enter Mobile'"
+                        [phoneValidation]="true" [separateDialCode]="separateDialCode"
+                        [numberFormat]="PhoneNumberFormat.National" (input)="onMobileChange()" (ngModelChange)="onMobileChange()" name="phone" formControlName="phoneNo">
+                    </ngx-intl-tel-input>
+                        <button *ngIf="profileDetails?.isPhoneVerified === 0" mat-button type="button" class="varifybtn" (click)="verifyMobile()">verify</button>
+                    </div>
+                        <img *ngIf="profileDetails?.isPhoneVerified === 1" class="varifyimg" src="{{ verifyemail }}" />
+
+
+                        <p style="color: #f44336;" *ngIf="showErrorMessage  && updateProfileForm.get('phoneNo')?.status != 'INVALID'">
+                            {{ errorMessage }}
+                        </p>
+                      
+                        <p style="color: #f44336;"  *ngIf="showErrorMessage && updateProfileForm.get('phoneNo')?.status == 'INVALID' ">
+                            invalid Number
+                        </p>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50">
+                    <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.xs="6px">
+                        <div fxFlex="50">
+                            <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                                <mat-label>City</mat-label>
+                                <input type="city" matInput #city formControlName="city" name="city" placeholder="Enter City" autocomplete="off">
+                                <mat-error class="error-message" *ngIf="(updateProfileForm.get('city')?.invalid && updateProfileForm.get('city')?.touched) || updateProfileForm.get('city')?.dirty">
+                                    <div *ngIf="updateProfileForm.get('city')?.errors?.required && isSubmitted"> {{ STRINGS.validations.city }}
+                                    </div>
+                                    <div *ngIf="updateProfileForm.get('city')?.errors?.pattern && isSubmitted">{{STRINGS.validations.onlyCharacter}}</div>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50">
+                            <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                                <mat-label>State</mat-label>
+                                <input type="text" matInput #state formControlName="state" name="state" placeholder="Enter State" autocomplete="off">
+                                <mat-error class="error-message" *ngIf="(updateProfileForm.get('state')?.invalid && updateProfileForm.get('state')?.touched) || updateProfileForm.get('state')?.dirty">
+                                    <div *ngIf="updateProfileForm.get('state')?.errors?.required && isSubmitted"> {{ STRINGS.validations.state }}
+                                    </div>
+                                    <div *ngIf="updateProfileForm.get('state')?.errors?.pattern && isSubmitted">{{STRINGS.validations.onlyCharacter}}</div>
+                                </mat-error>
+                                <!-- <mat-error class="error-message"
+                                    *ngIf="updateProfileForm.controls['state'].hasError('required') && updateProfileForm.controls['state'].dirty || updateProfileForm.controls['state'].touched">
+                                    {{ STRINGS.validations.state }}
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.xs="6px">
+                <div fxFlex="50">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>Zip code</mat-label>
+                        <input type="text" matInput #countryCode formControlName="zip" name="zip" placeholder="12345" autocomplete="on">
+                        <mat-error class="error-message" *ngIf="(updateProfileForm.get('zip')?.invalid && updateProfileForm.get('zip')?.touched) || updateProfileForm.get('zip')?.dirty">
+                            <div *ngIf="updateProfileForm.get('zip')?.errors?.required && isSubmitted"> {{ STRINGS.validations.zip }}
+                            </div>
+                            <div *ngIf="updateProfileForm.get('zip')?.errors?.pattern && isSubmitted">{{STRINGS.validations.onlyDigits}}
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>URL</mat-label>
+                        <input type="text" matInput #URL formControlName="URL" placeholder="www.domain.com" autocomplete="off">
+                        <mat-error class="error-message" *ngIf="(updateProfileForm.get('URL')?.invalid && updateProfileForm.get('URL')?.touched) || updateProfileForm.get('URL')?.dirty">
+                            <div *ngIf="updateProfileForm.get('URL')?.errors?.pattern && isSubmitted">{{STRINGS.validations.validUrl}}
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="column">
+                <div fxFlex="100">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>Short info</mat-label>
+                        <textarea formControlName="shortInfo" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" placeholder="Write Here"></textarea>
+
+                        <mat-error class="error-message" *ngIf="(updateProfileForm.get('shortInfo')?.invalid && updateProfileForm.get('shortInfo')?.touched) || updateProfileForm.get('shortInfo')?.dirty">
+                            <div *ngIf="updateProfileForm.get('shortInfo')?.errors?.minlength && isSubmitted">{{STRINGS.validations.validMinLength}}</div>
+                            <div *ngIf="updateProfileForm.get('shortInfo')?.errors?.maxlength && isSubmitted">{{STRINGS.validations.validMaxLength}}</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+                        <mat-label>Address</mat-label>
+                        <textarea #searchTextField formControlName="address" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" placeholder="Write Here"></textarea>
+                        <mat-error class="error-message" *ngIf="(updateProfileForm.get('address')?.invalid && updateProfileForm.get('address')?.touched) || updateProfileForm.get('address')?.dirty">
+                            <div *ngIf="updateProfileForm.get('address')?.errors?.minlength && isSubmitted">{{STRINGS.validations.validMinLength}}</div>
+                            <div *ngIf="updateProfileForm.get('address')?.errors?.maxlength && isSubmitted">{{STRINGS.validations.validMaxLength}}</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100">
+                    <mat-form-field appearance="standard" floatLabel="always" class="d-block" [ngClass.lt-sm]="'w-100'" [ngClass.gt-sm]="{'w-50': true}">
+                        <input hidden matInput />
+                        <mat-slide-toggle labelPosition="before" *ngIf="userType !== 'customer'" formControlName="isContactVia" [(ngModel)]="isContactViaChecked">Allow guest to contact you?
+                        </mat-slide-toggle>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" *ngIf="userType !== 'customer' && isContactViaChecked">
+                    <span class="content-label d-flex pb-3">Guest can contact you via:</span>
+                    <span *ngFor="let checkbox of checkboxLabel">
+                        <mat-checkbox [checked]=checkbox.isChecked
+                            (change)="toggleContactViaCheckbox($event, checkbox.value)">
+                            {{checkbox.name}}
+                        </mat-checkbox>
+                    </span>
+                </div>
+                <div fxFlex="100" fxLayoutAlign="center center" class="pt-5">
+                    <button type="submit">Update</button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>

@@ -1,0 +1,428 @@
+
+<div class="middle-section create-ticket-custom height-auto">
+    <section class="width-80 postion-manage">
+        <button *ngIf="!this.id" type="button" (click)="backToEventCreate()" class="back_step">
+            <img src="../../../assets/img/left-arrow.svg" class="back-icon" />
+            {{ STRINGS.buttons.back }}
+          </button>
+        <div class="card-block" [ngStyle]="{'display': ticketInfo.length === 0 ? 'none' : 'flex'}">
+            <div class="card-box ml-0" *ngFor="let ticket of ticketInfo let i = index">
+                <div class="card-top-box">
+                    <h2 class="ticket-header">{{ ticket.ticketType }} Ticket</h2>
+                    <div class="img-circle" (click)="editTicketCard(i)" [ngClass]="{
+                        'btn-disable' : isEditable }">
+                        <img src="../../../../assets/img/edit.svg" />
+                    </div>
+                    <div class="img-circle" (click)="deleteTicketCard(i)" [ngClass]="{
+                        'btn-disable' : isEditable }">
+                        <img src="../../../../assets/img/delete.svg" />
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2 class="ticket-type" *ngIf="ticket.ticketType !== 'Tables & Seatings'">{{ ticket.ticketName }} <span class="Disc" *ngIf="ticket.discount > 0"> ( {{ ticket.discount }} % Discount Added  ) </span></h2>
+                </div>
+                
+
+
+                <h2 class="ticket-type" *ngIf="ticket.ticketType === 'Tables & Seatings'">{{ ticket.categoryName }}  <span class="Disc" *ngIf="ticket.discount > 0"> ( {{ ticket.discount }} % Discount Added  ) </span></h2>
+                <!-- <h2 class="ticket-type">{{ ticket.ticketName }}</h2> -->
+                <p class="ticket-details" matTooltip="{{ ticket?.ticketDescription }}" matTooltipPosition="above">{{ ticket.ticketDescription }}
+                </p>
+                <p class="caution" *ngIf="ticket.ticketType !== 'Free' && ticket.ticketType !=='RSVP'">( Cancellation charge : {{ ticket.cancellationCharge }} % ) </p>
+
+                <div class="price-quan-box">
+                    <p class="ticket-price" *ngIf="ticket.ticketType !== 'Tables & Seatings'">${{ ticket.ticketPrice === null ? '00.00' : ticket.ticketPrice}} / Ticket
+                    </p>
+                    <p class="ticket-price" *ngIf="ticket.ticketType === 'Tables & Seatings'">${{ ticket.ticketPrice === null ? '00.00' : ticket.ticketPrice}} / table
+                    </p>
+                    <p *ngIf="ticket.ticketType !== 'Tables & Seatings'" class="ticket-price">
+                        {{ STRINGS.editEventTicket.ticketQuantity }} : {{ ticket.ticketQuantity }}</p>
+                    <p *ngIf="ticket.ticketType === 'Tables & Seatings'" class="ticket-price">
+                        {{ STRINGS.editEventTicket.tableQuantity }} : {{ ticket.tables }}</p>
+                </div>
+                <div class="date-wrapper" *ngIf="ticket.ticketType === 'Tables & Seatings'">
+                    <p class="date mr-5">{{ STRINGS.createTicket.person }} : {{ticket.persons}}</p>
+                    <!-- <p class="date fw-600">{{ticket.persons}}</p> -->
+                </div>
+                <div class="date-wrapper" *ngIf="ticket.ticketStartDate !== null">
+                    <p class="date mr-5 color_fade">{{ STRINGS.createTicket.date }}</p>
+                    <p class="date">{{ ticket.ticketStartDate | date : 'MM/dd/yyyy' }}</p>
+                    <p class="date mr-2 ml-2">to</p>
+                    <p class="date">{{ ticket.ticketEndDate | date : 'MM/dd/yyyy' }}</p>
+                </div>
+                <div class="date-wrapper" *ngIf="ticket.ticketStartTime !== null">
+                    <p class="date mr-5 color_fade">{{ STRINGS.createTicket.time }}</p>
+                    <p class="date">{{ ticket.ticketStartTime | date : 'h:mm a' }}</p>
+                    <p class="date mr-2 ml-2">to</p>
+                    <p class="date">{{ ticket.ticketEndTime | date : 'h:mm a' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TICKET FORM  -->
+        <form [formGroup]="ticketForm" class="form-wrapper">
+            <div class="form-block form-position-remove">
+                <h5 class="card-input-lable">
+                    {{ STRINGS.createTicket.ticketType }}
+                </h5>
+                <div class="radio-div">
+                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group radio-wrapper" formControlName="ticketType">
+                        <mat-radio-button class="example-radio-button" *ngFor="let type of radioLabels let id = index" [value]="type" (click)="setTicketType(id)" [disabled]="isEditable">
+                            {{ type }}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div class="form-group form-row">
+                    <label class="card-input-lable">
+                        {{ radioId === 4 ? STRINGS.createTicket.categoryName: STRINGS.createTicket.ticketName }}
+                    </label>
+                    <div *ngIf="radioId !== 4" class="card-input-box">
+                        <input type="text" class="form-control" id="cardNumber" placeholder="{{ STRINGS.createTicket.ticketName }}                                        Max-50 Words" name="card-number" formControlName="ticketName" [ngClass]="{
+                            'border-error':
+                              isSubmitted && ticketForm.get('ticketName')?.errors
+                          }">
+                        <mat-error *ngIf="
+                        ticketForm.get('ticketName')?.errors?.required && isSubmitted
+                      ">{{ STRINGS.validations.ticketNameError }}</mat-error>
+                        <mat-error *ngIf="
+                        ticketForm.get('ticketName')?.errors?.maxlength && isSubmitted
+                      ">{{ STRINGS.validations.ticketNameLengthError }}</mat-error>
+                    </div>
+                    <!-- new div for category -->
+                    <div *ngIf="radioId === 4" class="card-input-box">
+                        <input type="text" class="form-control" id="cardNumber" placeholder="{{ STRINGS.createTicket.categoryName }}" name="card-number" formControlName="categoryName" [ngClass]="{
+                            'border-error':
+                              isSubmitted && ticketForm.get('categoryName')?.errors
+                          }">
+                        <mat-error *ngIf="
+                        ticketForm.get('categoryName')?.errors?.required && isSubmitted
+                      ">{{ STRINGS.validations.categoryNameError }}</mat-error>
+                        <mat-error *ngIf="
+                      ticketForm.get('categoryName')?.errors?.maxlength && isSubmitted
+                    ">{{ STRINGS.validations.categoryNameLengthError }}</mat-error>
+                    </div>
+                    <!-- end -->
+                </div>
+
+                <!--.......these divs will not show on all screenplease check the conditons   -->
+                <div *ngIf="radioId !==1 && radioId !==2" class="form-group form-row">
+                    <label class="card-input-lable">
+                        {{ radioId !==4 ? STRINGS.createTicket.priceTicket : STRINGS.createTicket.priceTable }}
+                    </label>
+                    <div class="card-input-box">
+                        <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" class="form-control" id="expDate" placeholder="{{ STRINGS.createTicket.priceTicketPlaceholder }}" name="exp-date" formControlName="ticketPrice"
+                            [ngClass]="{
+                                'border-error':
+                                  isSubmitted && ticketForm.get('ticketPrice')?.errors
+                              }">
+                        <mat-error class="error-msg" *ngIf="
+                        ticketForm.get('ticketPrice')?.errors?.required && isSubmitted
+                      ">{{ STRINGS.validations.priceError }}</mat-error>
+                    </div>
+                </div>
+
+
+                <!-- new field  -->
+                <div *ngIf="radioId !== 4" class="form-group form-row">
+                    <label class="card-input-lable">
+                        {{ STRINGS.createTicket.ticketQuantity }}
+                    </label>
+                    <div class="card-input-box">
+                        <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" class="form-control" id="expDate" autocomplete="off" placeholder="{{ STRINGS.createTicket.ticketQuantityPlaceholder }}" name="exp-date" formControlName="ticketQuantity"
+                            [ngClass]="{
+                                'border-error':
+                                  isSubmitted && ticketForm.get('ticketQuantity')?.errors
+                              }">
+                        <mat-error class="error-msg" *ngIf="
+                        ticketForm.get('ticketQuantity')?.errors?.required && isSubmitted
+                      ">{{ STRINGS.validations.quantityError }}
+                        </mat-error>
+                        <!-- <mat-error class="error-msg" *ngIf="
+                      ticketForm.get('ticketQuantity')?.errors?.max && isSubmitted
+                    ">{{STRINGS.validations.ticketMaxQuantity}}</mat-error> -->
+                    </div>
+                </div>
+                <!-- end -->
+
+                <div *ngIf="radioId !==0 && radioId !== 1 && radioId !==2 && radioId !==3" class="form-group form-row textarea-height">
+                    <label class="card-input-lable">
+                        {{ STRINGS.createTicket.number }}
+                    </label>
+                    <div class="quantity">
+                        <div class="quantity-minus">
+                        </div>
+                        <input name="quantity" type="text" class="quantity-input" formControlName="tables" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57">
+                        <div class="quantity-plus">
+                            <!-- <span>
+                                <img src="../../../../assets/img/plus@2x.png" width="20px"
+                                    (click)="counterIncrement('tables', 100)"
+                                    [ngClass]="{'btn-disable': this.ticketForm.controls.tables.value === 100}" />
+                            </span> -->
+                        </div>
+
+                    </div>
+                    <mat-error class="error-msg" *ngIf="
+                    ticketForm.get('tables')?.errors?.required && isSubmitted
+                  ">{{ STRINGS.validations.tablesError }}
+                    </mat-error>
+                </div>
+
+                <div *ngIf="radioId !==0 &&radioId !== 1 && radioId !==2 && radioId !==3" class="form-group form-row textarea-height">
+                    <label class="card-input-lable">
+                        {{ STRINGS.createTicket.person }}
+                    </label>
+                    <div class="quantity">
+                        <a href="javascript:void(0)" class="quantity-minus">
+                            <!-- <span>
+                                <img src="../../../../assets/img/minus@2x.png" width="20px"
+                                    (click)="counterDecrement('persons', 0)"
+                                    [ngClass]="{'btn-disable': this.ticketForm.controls.persons.value <= 0}" />
+                            </span> -->
+                        </a>
+                        <input name="quantity" type="text" class="quantity-input" formControlName="persons" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57">
+                        <a href="javascript:void(0)" class="quantity-plus">
+                            <!-- <span>
+                                <img src="../../../../assets/img/plus@2x.png" width="20px"
+                                    (click)="counterIncrement('persons', 100)"
+                                    [ngClass]="{'btn-disable': this.ticketForm.controls.persons.value === 100}" />
+                            </span> -->
+                        </a>
+
+                    </div>
+                    <mat-error class="error-msg" *ngIf="
+                        ticketForm.get('persons')?.errors?.required && isSubmitted
+                      ">{{ STRINGS.validations.personError }}
+                    </mat-error>
+                </div>
+
+                <!--........end........  -->
+                <div class="form-group form-row">
+                    <label class="card-input-lable">
+                        {{ STRINGS.createTicket.shortDescription }}
+                    </label>
+                    <div class="card-input-box textarea-height">
+                        <textarea class="form-control" rows="3" id="comment" placeholder="Description                              Min 0 - Max.200 Words" 
+                        formControlName="ticketDescription" [ngClass]="{
+                            'border-error':
+                              isSubmitted && ticketForm.get('ticketDescription')?.errors
+                          }">
+                        </textarea>
+                         
+                        <mat-error class="error-msg" *ngIf="
+                        ticketForm.get('ticketDescription')?.errors?.required && isSubmitted
+                      ">{{ STRINGS.validations.descriptionError }}</mat-error>
+                        <mat-error class="error-msg" *ngIf="
+                        ticketForm.get('ticketDescription')?.errors?.maxlength && isSubmitted
+                      ">{{ STRINGS.validations.characterExceed }}</mat-error>
+                        <mat-error class="error-msg" *ngIf="
+                        ticketForm.get('ticketDescription')?.errors?.minlength && isSubmitted
+                       ">{{ STRINGS.validations.descriptionMinLength }}</mat-error>
+                    </div>
+                </div>
+
+                <div *ngIf="radioId !== 1 && radioId !==2" class="form-group form-row textarea-height">
+                    <label class="card-input-lable">
+                        {{ STRINGS.createTicket.cancellation }}
+                        <p class="caution pl-0" style="text-transform: none;">{{ STRINGS.createTicket.mandatory }}</p>
+                    </label>
+                    <div fxLayout="column">
+                    <div class="quantity">
+                        <a href="javascript:void(0)" class="quantity-minus">
+                            <span>
+                                <img src="../../../../assets/img/minus@2x.png" width="20px"
+                                    [ngClass]="{'btn-disable': this.ticketForm.controls.cancellationCharge.value <= 10}"
+                                    (click)="counterDecrement('cancellationCharge', 10)" />
+                            </span>
+                        </a>
+                        <input name="quantity" type="text" class="quantity-input" formControlName="cancellationCharge" [ngClass]="{
+                            'border-error':
+                              isSubmitted && ticketForm.get('quantity')?.errors
+                          }" 
+                          (change)="onCancellationChargeChange('cancellationCharge', $event)" (keypress)="onCancellationChargeKeypress('cancellationCharge', $event)">
+                        <a href="javascript:void(0)" class="quantity-plus">
+                            <span>
+                                <img src="../../../../assets/img/plus@2x.png" width="20px"
+                                    [ngClass]="{'btn-disable': this.ticketForm.controls.cancellationCharge.value === 100}"
+                                    (click)="counterIncrement('cancellationCharge', 100)" />
+                            </span>
+                        </a>
+                    </div>
+                    <mat-error *ngIf="ticketForm.get('cancellationCharge')?.errors?.pattern" >
+                        Accepted only number
+                    </mat-error>
+                      <mat-error *ngIf="this.ticketForm.controls.cancellationCharge.value < 10" >
+                       {{ STRINGS.createTicket.mandatory }} 
+                    </mat-error>
+                    </div>
+                    <!-- <mat-error class="error-msg" *ngIf="
+                    cancellationCharge.value < 11
+                              ">{{ STRINGS.validations.dateError }}</mat-error> -->
+
+                </div>
+
+                <div *ngIf="radioId !== 1 && radioId !==2" class="form-group form-row">
+                    <label class="card-input-lable cursor_pointer" fxLayoutAlign="start center"  (click)="ShowDiscountBelow()" *ngIf="ShowDiscount">
+                        <img width="26" class="mr-3" src="../../../../assets/img/add-gradient@2x.png" />
+                        {{ STRINGS.createTicket.AddDiscount }}
+                    </label>
+                    </div>
+
+                <div *ngIf="radioId !== 1 && radioId !==2 && HideDiscount"  class="form-group form-row">
+                    <label class="adddiscount">
+                        {{ STRINGS.createTicket.DiscountPer }}
+                    </label>
+                    <div class="discount-input-box">
+                        <div class="deleteper">
+                            <span>
+                                <input name="discount" matInput type="text" placeholder="0" #discount formControlName="discount">
+
+                                <mat-error *ngFor="let validation of  validation_error.discount">
+                                    <mat-error class="error-message" *ngIf="ticketForm.controls['discount'].hasError(validation.type)">
+                                      {{validation.message}}
+                                    </mat-error>
+                                  </mat-error>
+
+                            </span>
+                            <span class="per"> %</span>  
+                            <span class="delete cursor_pointer" (click)="showAddDiscount()">
+                                <img src="../../../../assets/img/delete.svg" alt="" srcset="">
+                            </span> 
+                        </div>
+                     
+
+                      
+                        <!-- <mat-error class="error-msg" *ngIf="
+                      ticketForm.get('ticketQuantity')?.errors?.max && isSubmitted
+                    ">{{STRINGS.validations.ticketMaxQuantity}}</mat-error> -->
+                    </div>
+                </div>
+
+<!-- 
+                <div *ngIf="radioId !== 1 && radioId !==2" class="form-group form-row textarea-height">
+                    <label class="card-input-lable cursor_pointer" fxLayoutAlign="start center" (click)="ShowDiscount = !ShowDiscount">
+                        <img width="26" class="mr-3" src="../../../../assets/img/add-gradient@2x.png" />
+                        {{ STRINGS.createTicket.discount }}
+                    </label>
+                </div>
+                <div *ngIf="radioId !== 1 && radioId !==2 && ShowDiscount" class="form-group form-row textarea-height">
+                    <label class="card-input-lable">
+                         <p class="pl-0 discount" style="text-transform: none;">{{ STRINGS.createTicket.DiscountPer }}</p>
+                    </label>
+                    <div class="quantity">
+                        <input name="discount" matInput type="text" placeholder="0" #discount formControlName="discount">
+                        <span> %</span>  
+                        <span><mat-icon>delete</mat-icon></span>  
+                        <mat-error class="error-msg" *ngIf="
+                        ticketForm.get('discount')?.errors && isSubmitted
+                      ">requred</mat-error>
+                    </div>
+                  
+    
+
+                </div> -->
+
+
+
+
+                <div *ngIf="radioId !== 2" class="mt-5">
+                    <label class="card-input-lable mb-3">
+                        {{ STRINGS.createTicket.ticketDate }}
+                    </label>
+
+                    <div class="date-row">
+                        <div class="width-picker">
+                            <mat-label class="date-label">{{STRINGS.createEvent.StartDate}}</mat-label>
+                            <mat-form-field appearance="standard" floatLabel="always">
+                                <input matInput [(ngModel)]="eventStartDate" [matDatepicker]="startdate" placeholder="DD/MM/YYYY" #startDate formControlName="ticketStartDate" (click)="startdate.open()" class="date-input" [min]="todayDate">
+                                <mat-datepicker-toggle matPrefix [for]="startdate">
+                                    <mat-icon matDatepickerToggleIcon>
+                                        <img src="../../../../assets/img/Calendar-violet.svg" class="search-icon" style="margin-bottom: 1.5rem;" />
+                                    </mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #startdate [calendarHeaderComponent]="customHeader"></mat-datepicker>
+                                <mat-error class="error-msg" *ngIf="
+                                ticketForm.get('ticketStartDate')?.errors && isSubmitted
+                              ">{{ STRINGS.validations.dateError }}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="width-picker" *ngIf="radioId !== 2">
+                            <mat-label class="date-label">{{STRINGS.createEvent.EndDate}}</mat-label>
+                            <mat-form-field appearance="standard" floatLabel="always">
+                                <input matInput [(ngModel)]="eventEndDate" [matDatepicker]="enddate" placeholder="DD/MM/YYYY" formControlName="ticketEndDate" (click)="enddate.open()" class="date-input" [min]="todayDate">
+
+                                <mat-datepicker-toggle matPrefix [for]="enddate">
+                                    <mat-icon matDatepickerToggleIcon>
+                                        <img src="../../../../assets/img/Calendar-violet.svg" class="search-icon" style="margin-bottom: 1.5rem;" />
+                                    </mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #enddate [calendarHeaderComponent]="customHeader"></mat-datepicker>
+                                <mat-error class="error-msg" *ngIf="
+                                ticketForm.get('ticketEndDate')?.errors && isSubmitted">
+                                {{ STRINGS.validations.dateError }}</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="date-row">
+                        <div class="width-picker" *ngIf="radioId !== 2">
+                            <mat-label class="date-label">{{STRINGS.createEvent.StartTime}}</mat-label>
+                            <mat-form-field appearance="standard" floatLabel="always">
+                                <input matTimepicker mode="24h"  matInput placeholder="00:00" class="date-input"
+                                 formControlName="ticketStartTime">
+                                <mat-icon matPrefix class="violetfade search-icon">
+                                    <img src="../../../../assets/img/clock-violet.svg" class="search-icon" style="margin-bottom: 1.5rem;" />
+                                </mat-icon>
+                                <mat-error class="mt-3">
+                                    {{ STRINGS.validations.startTime }} 
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="width-picker" *ngIf="radioId !== 2">
+                            <mat-label class="date-label">{{STRINGS.createEvent.EndTime}}</mat-label>
+                            <mat-form-field appearance="standard" floatLabel="always">
+                                <input matTimepicker matInput mode="24h" placeholder="00:00" class="date-input"
+                                 formControlName="ticketEndTime" >
+                                <mat-icon matPrefix class="violetfade search-icon">
+                                    <img src="../../../../assets/img/clock-violet.svg" class="search-icon" style="margin-bottom: 1.5rem;" />
+                                </mat-icon>
+                                <mat-error class="mt-3">
+                                    {{ STRINGS.validations.endTime }}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-btn mt-5 mb-3" *ngIf="!isEditable" (click)="updateTicket()">
+                    <div class="anothertext"> 
+                        <img src="../../../../assets/img/add-gradient@2x.png" /> {{ STRINGS.createTicket.anotherTicket }}
+                    </div>
+                     <span class="beforetext"><sup class="mr-1">*</sup>{{ STRINGS.createTicket.beforeCreateTicket }}</span>
+                </div>
+
+             
+                <div class="form-group form-row justify-content-end" *ngIf="edit && !isEditable">
+                    <button class="primary-btn m-0 mt-4" (click)="submitTicket()">
+                        {{ STRINGS.buttons.submit }}
+                    </button>
+                </div>
+                <div class="form-group form-row justify-content-end" *ngIf="!isEditable && !edit">
+                    <button class="primary-btn m-0 mt-4" (click)="saveTicketDetails()">
+                        {{ STRINGS.buttons.next }}
+                    </button>
+                </div>
+
+                <!-- new button added for update -->
+                <div class="form-group form-row " *ngIf="isEditable">
+                    <button class="primary-btn m-0 mt-4" (click)="updateTicket()">
+                        {{ STRINGS.buttons.update }}
+                    </button>
+                </div>
+                <!-- end -->
+            </div>
+        </form>
+    </section>
+</div>

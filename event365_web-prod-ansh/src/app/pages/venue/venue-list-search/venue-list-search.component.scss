@@ -1,0 +1,178 @@
+@import "../../../../assets/css/mixin.scss";
+
+.blanK-section {
+    margin-bottom: 70px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.venue-list-search-wrapper {
+    margin-top: -15rem;
+    width: 100%;
+    h1 {
+        margin: 30px 0px;
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-size: 25px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.08;
+        letter-spacing: 0.5px;
+        text-align: left;
+        color: var(--charcoal-grey);
+    }
+      
+}
+.venue-list-search-card {
+    height: auto;
+    padding: 3rem 4rem;
+    border-radius: 10px;
+    margin-top: -7rem;
+    .header {
+        width: 100%;
+        position: relative;
+        //margin: 0 2%;
+        .mat-icon-search-other {
+            width: 20.6px;
+            height: 23px;
+            position: absolute;
+            right: 40px;
+            top: 15px;
+            color: #b382f5;
+        }
+        .mat-icon-search-venue-owner {
+            width: 20.6px;
+            height: 23px;
+            position: absolute;
+            right: 34%;
+            top: 20px;
+            color: #b382f5;
+        }
+        input {
+            width: 100%;
+            height: 60px;
+            border: solid 1px #9697b5;
+            border-radius: 10px;
+            padding: 0 30px;
+            background-color: rgba(150, 151, 181, 0.02);
+            font-family: 'HelveticaNeueLTPro-Md';
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: 0.32px;
+            text-align: left;
+            color: #9697b5;
+        }
+    }
+}
+
+
+.location-button {
+    background: none;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    mat-icon {
+        color: #5961e6;
+    }
+}
+
+.near-position{
+    position: absolute;
+    left:6px;
+}
+.searchlabel {
+    @include center_align;
+    margin-left: 14px;
+    margin-bottom: 20px;
+    input {
+        @include replaceFontStyle(12px, 500, 0.36px, 1.94, var(--charcoal-grey));
+        text-indent: 20px;
+    }
+    input.border-0 {
+       border: 0 !important ;
+    }
+    mat-icon {
+        display: flex;
+        color: #5961e6;
+    }
+}
+.slider-bar {   
+    margin-top: -12px;
+    mat-slider {
+        width: 100%;
+        padding: 0;
+  
+    }
+ 
+    .slider-head {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        // margin: 1.5rem 0;
+
+        .slider-level {
+            font-size: 1.6rem;
+            color: #343a43;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+        .slider-value {
+            font-size: 1.2rem;
+            color: #808080;
+        }
+    }
+}
+
+label {
+    width: 71px;
+    height: 19px;
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.32px;
+    text-align: left;
+    color: var(--charcoal-grey);
+}
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 25px 10%;
+    mat-card {
+        width: 100%;
+        //height: 129px;
+        border-radius: 10px;
+        border: solid 1px #9697b5;
+        padding: 14px;
+        .shortdesc{
+            height: 40px;
+            overflow: hidden;
+        }
+    }
+
+    p {
+        opacity: 0.78;
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: normal;
+        color: var(--charcoal-grey);
+        word-break: break-all;
+    }
+    h2 {
+        word-break: break-all;
+    }
+
+    .subvenue{
+        height: 16px;
+    }
+}

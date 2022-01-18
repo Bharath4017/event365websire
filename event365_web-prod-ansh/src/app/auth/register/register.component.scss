@@ -1,0 +1,47 @@
+.register-user{
+    .mat-card{
+        width: calc(100% - 20%);
+        margin: 0 auto;
+        padding: 4rem;
+        margin-top: -20rem;
+        box-shadow: unset;
+        border-radius: 10px;
+    }
+  
+  
+}
+
+
+.border-error {
+    border: 1px solid rgb(255, 57, 90, .4);
+    box-shadow: 0 0px 3px rgb(255, 57, 90, .4);
+}
+
+.radio-wrapper {
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+
+
+@media only screen and (max-width: 500px){
+    .middle-section
+    {
+        margin-bottom: 12rem;
+    }
+    
+    .radio-wrapper
+    {
+        width: 60%;
+    }
+    
+    .hide-text {
+        display: none;
+    }
+    .direct-login-btn {
+        text-align: center;
+    }
+}

@@ -1,0 +1,31 @@
+.host-text-show{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    bottom: 2rem;
+    button{
+        background: red;
+        color: #fff;
+        z-index: 9;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+}
+.group-ticket{
+    .ui_box_one{
+        margin: 0  0 2% 1.8%;
+        &:nth-of-type(3n+1){
+            margin-left: 0;
+          }
+    }
+}
+
+@media all and (min-width:1280px) and (max-width:1600px) {
+        .group-ticket{
+            .ticket_ui_wrapper{
+                padding: 1rem !important;
+            }
+    }
+}
+

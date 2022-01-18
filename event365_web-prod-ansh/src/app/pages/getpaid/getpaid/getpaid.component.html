@@ -1,0 +1,63 @@
+<div class="blanK-section get-main">
+    <div fxFlex="100%" fxLayout="column"  fxLayoutGap="30px">
+        <div class="header-margin width-80" fxLayout="column">
+            <mat-card  class="shadow-none" >
+                <div  fxLayout="row" fxLayoutGap.xs="15px"  fxLayout.xs="column" class="mt-3"  fxLayoutAlign="space-between center">
+                    
+                    <div fxFlex="80" fxFlex.xs="100"  fxFlex.md="70" fxFlex.sm="70" >
+                        <h1 *ngIf="getPaidDetail.currentAmounts != 0" class="span-text" style="color: var(--charcoal-grey);" >Available Balance : <span class="span-text">${{getPaidDetail?.currentAmounts}}0</span></h1>
+                        <h1 *ngIf="getPaidDetail.currentAmounts == 0" class="span-text" style="color: var(--charcoal-grey);" >Available Balance : <span class="span-text">$0.0</span></h1>
+                    </div>
+                    <div fxFlex="20" fxFlex.xs="100" fxFlex.md="30" fxFlex.sm="30" >
+                        <button routerLink="/getpaid/choose/account" class="bank-btn">Bank Account</button>
+                    </div>
+                  
+                </div>
+                <div class="mb-3 mt-2"  fxLayout="row">
+                    <p class="paragraph-text">{{STRINGS.getpaid.getPaidNote}}</p>
+                </div>
+            </mat-card>
+        </div>
+        <div   class="width-80" fxLayout="column" fxLayoutGap="10px">
+            <h2 class="mb-5">Transaction History</h2>
+            <div class="invite-tabs">
+                <button class="invite-tabs-btn" (click)="onClickPending()"  [ngClass]="{'active': pending}">
+                    Pending
+                </button>
+                <button class="invite-tabs-btn" (click)="onClickComplete()" [ngClass]="{'Completeactive': Completed}">
+                    Completed
+                </button>
+            </div>
+        </div>
+        <div class="width-80" fxLayout="column">
+            <div *ngIf="transactionList.length == 0 || transactionList.transactionHistory.length == 0" class="w-40"  fxLayout="column" fxLayoutGap="10px"  style="margin:6rem;"  fxLayoutAlign="center center" >
+                <img  src="../../../../assets/img/empty_folder.svg">
+                <p style=" opacity: 0.74;">No record Found</p>
+            </div>
+            
+            <div class="mb-3"   *ngFor="let trans of transactionList.transactionHistory">
+                <mat-card class="shadow-none"  >
+                    <div  fxLayoutGap="20px" fxLayout.xs="row wrap"  fxFlex="100" fxLayout="row" fxLayoutAlign="space-between">
+                          <div fxFlex="5" fxFlex.xs="10" fxLayoutAlign="center end">
+                            <img   src="../../../../assets/img/withdrawal (1).svg">
+                          </div>
+                       
+                          <div fxFlex="40"  fxFlex.xs="70"  fxLayout.xs="column" fxLayout="column" fxLayoutGap="10px">
+                            <h3>{{trans?.bank_details.bankName}}</h3>
+                            <h3>{{'XXXXXXXXXXXX'+(trans?.bank_details.AccountNo | slice:9:trans?.bank_details.AccountNo.length)}}</h3>
+                          </div>
+                          <div fxFlex="40" fxFlex.xs="40"  fxLayoutAlign="start end" ngClass.xs="mt-4">
+                            <h4>Date:  {{trans?.created_at | date:'YYYY/MM/dd'}}</h4>
+                          </div>
+                          <div  fxFlex="15" fxFlex.xs="40"  fxLayoutAlign="start end"  ngClass.xs="mt-4">
+                            <h4 class="amount-req">${{trans?.withdrawnAmount}}.00</h4>
+                          </div>
+                         
+                         
+                    </div>
+                </mat-card>
+         </div>
+            
+        </div>
+    </div>
+</div>

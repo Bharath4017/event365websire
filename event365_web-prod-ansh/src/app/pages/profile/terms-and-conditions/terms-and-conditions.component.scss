@@ -1,0 +1,26 @@
+@import "../../venue/venue-list-search/venue-list-search.component.scss";
+.terms-condition {
+    margin-top: -15rem;
+    .info-page-contents {
+        line-height: 30px;
+    }
+    mat-card{
+        p{
+            font-size: 16px;
+            color: #5e5e5e;
+        }
+    }
+    
+    *{
+        box-sizing: border-box;
+         font-size: 16px !important; 
+    }
+}
+
+
+
+@media all and (max-width: 959px) {
+    .terms-condition {
+        margin-top: -15rem !important;
+    }
+}

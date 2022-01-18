@@ -1,0 +1,69 @@
+<div class="contact_us">
+    <mat-card>
+        <form [formGroup]="contactUsform" (ngSubmit)="submitIssue(contactUsform.value)">
+                <div fxLayout="row"  fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap.xs="10px" fxLayoutAlign.xs="start start">
+                    <div fxFlex="20" fxFlex.xs="100" fxFlex.sm="30" >
+                        <mat-label>{{ STRINGS.contactUs.selectIssue }}</mat-label>
+                    </div>
+                    <div fxFlex="80" fxFlex.sm="70" class="w-100" >
+                        <mat-form-field appearance="standard" class="d-block">
+                            <mat-select panelClass="scrollbarcustomwithpaadding" placeholder="{{  STRINGS.contactUs.selectIssue }}" formControlName="issueId">
+                                <mat-option *ngFor="let issue of issueList" [value]="issue.id">
+                                    {{ issue.heading }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div
+                            *ngIf="(contactUsform.get('issueId')?.invalid && contactUsform.get('issueId')?.touched) || contactUsform.get('issueId')?.dirty">
+                            <div *ngIf="contactUsform.get('issueId')?.errors?.required" class="text-danger">{{STRINGS.contactUs.issueIdRequired}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5"  *ngIf="userType  == 'guestUser'" fxLayout="row"  fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap.xs="10px" fxLayoutAlign.xs="start start">
+                    <div fxFlex="20" fxFlex.xs="100" fxFlex.sm="30" >
+                        <mat-label>{{ STRINGS.labels.email }}</mat-label>
+                    </div>
+                    <div fxFlex="80" fxFlex.sm="70" class="w-100">
+                        <mat-form-field appearance="standard" class="d-block">
+                            <input matInput type="text" placeholder="{{  STRINGS.placeholder.placeholderEmail }}" formControlName="email">
+                        </mat-form-field>
+                        <div
+                            *ngIf="(contactUsform.get('email')?.invalid && contactUsform.get('email')?.touched) || contactUsform.get('email')?.dirty">
+                            <div *ngIf="contactUsform.get('email')?.errors?.required" class="text-danger">{{STRINGS.validations.email}}</div>
+                            <div *ngIf="contactUsform.get('email')?.errors?.email" class="text-danger">{{STRINGS.validations.validEmail}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxLayout="column" class="mt-5">
+                    <div fxFlex="100" class="mt-sm-5 mb-2">
+                        <mat-label>{{ STRINGS.contactUs.message }}</mat-label>
+                    </div>
+                    <div fxFlex="100">
+                        <mat-form-field appearance="standard" class="cus_teatarea_min">
+                            <textarea matInput rows="7" cols="100" formControlName="message"
+                                placeholder=" {{STRINGS.contactUs.messagePlaceholder}}"></textarea>
+                        </mat-form-field>
+                        <div *ngIf="(contactUsform.get('message')?.invalid && contactUsform.get('message')?.touched) || contactUsform.get('message')?.dirty">
+                            <div *ngIf="contactUsform.get('message')?.errors?.required" class="text-danger">{{STRINGS.contactUs.messagerequired}}</div>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxLayoutAlign="center center" class="pt-5">
+                        <button [disabled]="contactUsform.invalid"  mat-button type="submit">
+                            <img _ngcontent-bnc-c112="" width="8%" class="header-icon mr-4"
+                                src="../../../assets/img/message.svg">
+                            {{ STRINGS.buttons.sendMessage }}
+                        </button>
+                    </div>
+                    <div fxFlex="100" fxLayoutAlign="center center" >
+                        <p class="heading-underline" (click)="dialogopenForCall()" >{{
+                            STRINGS.contactUs.callUs }}</p>
+                    </div>
+                </div>
+              
+           
+
+        </form>
+    </mat-card>
+</div>

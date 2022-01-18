@@ -1,0 +1,244 @@
+.middle-section {
+  height: 45rem;
+}
+
+.form-block {
+  height: 55rem;
+}
+
+.form-illustration-box {
+  width: 50%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form-illustration {
+  width: 85%;
+}
+
+.center {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.acc-sub-text {
+  color: #4b4b4b;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 3rem;
+}
+
+.form-heading {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+}
+
+.form-heading-sub {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.skip-btn {
+  width: 9rem;
+  background: #cac6c6;
+  margin-right: 2rem;
+}
+
+.mar-null {
+  margin: 0 2rem;
+}
+
+.white-box {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin: 1rem auto;
+  border-radius: 1rem;
+}
+
+.white-box .bubble-box {
+  margin: 0 auto;
+  min-height: 35rem;
+  position: relative;
+  overflow: auto;
+}
+
+.white-box .bubble-box .bubble {
+  width: 6.9rem;
+  height: 6.9rem;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2rem;
+  text-transform: capitalize;
+}
+
+.white-box .bubble-box .bubble .bubble-text {
+  width: 60px;
+  font-size: .9rem;
+  font-weight: 500;
+  text-align: center;
+  color: #212121;
+  position: absolute;
+  z-index: 1;
+}
+
+.white-box .bubble-box .bubble .bubble-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.white-box .bubble-box .opacity-min {
+  opacity: 0.5;
+}
+
+.white-box .bubble-box .bubble:nth-child(1) {
+  top: 5rem;
+  left: 9rem;
+}
+
+.white-box .bubble-box .bubble:nth-child(2) {
+  top: 0rem;
+  left: 17rem;
+}
+
+.white-box .bubble-box .bubble:nth-child(3) {
+  top: 14rem;
+  left: 8rem;
+}
+
+.white-box .bubble-box .bubble:nth-child(4) {
+  top: 11rem;
+  left: 19rem;
+}
+
+.white-box .bubble-box .bubble:nth-child(5) {
+  top: 22rem;
+  left: 13rem;
+}
+
+.white-box .bubble-box .bubble:nth-child(6) {
+  top: 2rem;
+  left: 27rem;
+}
+
+.white-box .bubble-box .bubble:nth-child(7) {
+  top: 13rem;
+  left: 30rem;
+}
+
+.white-box .bubble-box .bubble:nth-child(8) {
+  top: 22rem;
+  left: 23rem;
+}
+
+@media only screen and (min-width: 1441px) {
+  .form-block {
+    padding: 5rem 3rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .primary-btn {
+    width: 21rem;
+  }
+  .skip-btn {
+    width: 9rem;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .form-block {
+    width: 90%;
+    padding: 5rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .center {
+    width: 100%;
+  }
+  .middle-section {
+    height: 75rem;
+    margin-bottom: 7rem;
+  }
+  .form-block {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: auto;
+    text-align: center;
+  }
+  .form-illustration-box {
+    display: block;
+    width: 100%;
+  }
+  .form-illustration {
+    width: 50%;
+  }
+  .form-box {
+    width: 100%;
+    margin-top: 5rem;
+  }
+  .white-box .bubble-box {
+    width: 40rem;
+  }
+  .white-box .bubble-box .bubble:nth-child(1) {
+    left: 1rem;
+  }
+  .white-box .bubble-box .bubble:nth-child(2) {
+    left: 12rem;
+  }
+  .white-box .bubble-box .bubble:nth-child(3) {
+    left: 0rem;
+  }
+  .white-box .bubble-box .bubble:nth-child(4) {
+    left: 14rem;
+  }
+  .white-box .bubble-box .bubble:nth-child(5) {
+    left: 7rem;
+  }
+  .white-box .bubble-box .bubble:nth-child(6) {
+    left: 24rem;
+  }
+  .white-box .bubble-box .bubble:nth-child(7) {
+    left: 26rem;
+  }
+  .white-box .bubble-box .bubble:nth-child(8) {
+    left: 18rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .middle-section {
+    margin-bottom: 20rem;
+  }
+  .form-block {
+    width: 95%;
+    padding: 5rem 2rem;
+  }
+}
+/*# sourceMappingURL=user-account-creation.component.css.map */

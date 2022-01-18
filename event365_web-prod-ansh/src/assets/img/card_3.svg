@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="341.623" height="181.882" viewBox="0 0 341.623 181.882">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        filter: url(#Rounded_Rectangle_9_copy_2);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.514" y1="0.625" x2="0.514" y2="1.591" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#cae3d1"/>
+    </linearGradient>
+    <filter id="Rounded_Rectangle_9_copy_2" x="0" y="0" width="341.623" height="181.882" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#7966fe" flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g class="cls-2" transform="matrix(1, 0, 0, 1, 0, 0)">
+    <rect id="Rounded_Rectangle_9_copy_2-2" data-name="Rounded Rectangle 9 copy 2" class="cls-1" width="323.623" height="163.882" rx="10" transform="translate(9 9)"/>
+  </g>
+</svg>

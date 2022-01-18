@@ -1,0 +1,540 @@
+<div class="blanK-section" >
+  <div *ngIf="eventdetail != null" class="event-detail-wrapper">
+    <mat-card>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutGap.md="20px"
+        fxLayoutGap.xs="10px" fxLayoutGap="30px" class="swiper_mob">
+        <div fxFlex="55" fxFlex.md="50" fxFlex.sm="100" class="w-100">
+          <div fxLayout="column"  fxLayoutGap="20px">
+            <div fxFlex="100" fxFlex.xs="100" fxLayoutAlign.xs="center center">
+              <div class="img-cus">
+                <img class="img-fluid" id='eventImage' src="{{img}}" alt="">
+              </div>
+            </div>
+
+            <div fxFlex="100" fxFlex.xs="100">
+              <div class="event-image">
+                <swiper class="swiper-container event-image-slider" [config]="config" [disabled]="disabled">
+                  <div *ngFor="let slide of eventdetail?.eventImages">
+                    <img class="swiper-slide obj-img" src="{{slide?.eventImage}}"
+                      (click)=thumbnailimageOnClick(slide.eventImage) alt="">
+                  </div>
+                </swiper>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div fxFlex="45" fxFlex.md="50" fxFlex.sm="100" class="w-100">
+          <div class="current-event-details">
+            <div fxLayout="column">
+              <div fxFlex="100" class="mt-3">
+                <h1>{{eventdetail.name}}</h1>
+              </div>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap.lt-md="0" fxLayoutGap="20px" fxLayoutGap.md="0px">
+                  <div fxFlex="50"  fxFlex.lt-md="65" 	 fxFlex.md="65">
+                    <p class="event-code">(Event Code : {{eventdetail.eventCode}}) </p>
+                  </div>
+                  <div fxFlex="50" fxFlex.lt-md="35"  fxFlex.md="35" fxLayoutAlign="end end">
+                    <div class="favorite">
+                      <img *ngIf="favoriteICON" (click)="markFavorites(eventdetail)"
+                        [src]="eventdetail?.isFavorite === true ? '../../../../assets/img/favorite-blue.svg' : '../../../../assets/img/favorite.svg'"
+                        class="heart-icon liked-heart-icon">
+                      <span class="ml-lg-3"> {{eventdetail.end |
+                          upcomingDuration}} Days Left</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="row">
+                <div fxFlex="60" fxFlex.lt-md="65">
+                  <div class="hosted-by"> Hosted by :
+                    <img *ngIf="hostprofilePic;" src={{hostprofilePic}} alt="">
+                    <ngx-avatar *ngIf="!hostprofilePic;" size="26" name="{{hostname}}"></ngx-avatar>
+                    <span>{{hostname}}</span>
+                  </div>
+                </div>
+                <div fxFlex="50" fxFlex.lt-md="35" fxLayoutAlign="end end">
+                  <div>
+                    <div class="star">
+                      <img *ngFor="let ratingId of ratingArr;" class="mr-2" src="../../../../assets/img/star_rating.svg"
+                        alt="">
+                      <span *ngIf="eventdetail.ratingCount">({{eventdetail.ratingCount}})</span>
+                      <!-- <p *ngIf="ratingArr.length==0">No Rating</p> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayout.md="column" fxLayout.lt-sm="column" fxLayoutGap="15px" fxLayoutGap.md="0px"
+                  fxLayoutGap.lt-md="10px">
+                  <div fxFlex="65" fxFlex.md="100">
+                    <div class="event-start-end">
+                      <div class="event-start">
+                        <div fxLayout="row">
+                          <div fxFlex="40" fxFlex.sm="45" fxFlex.xs="45">
+                            <p>Event Start</p>
+                            
+                            <ng-container *ngIf="eventdetail.recuringStartDate !== ''; else startDateBlock">
+                              
+                                <h4>{{convertDateUTC(eventdetail.recuringStartDate)}}</h4>
+                                <small>{{ getFormattedDate(eventdetail?.start) }} -
+                                  {{getFormattedDate(eventdetail?.end)}}</small>
+                            </ng-container>
+                            <ng-template #startDateBlock>
+                              <h4>{{convertDateUTC(eventdetail.start)}}</h4>
+                              <small>{{ getFormattedDate(eventdetail?.start) }} -
+                                {{getFormattedDate(eventdetail?.end)}}</small>
+                            </ng-template>
+                           
+                              <!-- <small>{{ eventdetail?.start | date:'hh:mm A'}} -
+                                {{eventdetail?.end | date:'hh:mm A'}}</small> -->
+                          </div>
+                          <div fxFlex="20" fxFlex.xs="10" fxFlex.sm="10" fxLayoutAlign="center center"><span
+                              class="devider"></span></div>
+                          <div fxFlex="40" fxFlex="45" fxFlex.sm="45" fxLayoutAlign="end center">
+                            <div>
+                              <p>Event End</p>
+                              <ng-container *ngIf="eventdetail.recuringStartDate !== ''  && eventdetail.recuringEndDate; else endDateBlock">
+                              
+                                <h4>{{convertDateUTC(eventdetail.recuringEndDate)}}</h4>
+                                <small>{{ getFormattedDate(eventdetail?.start) }} -
+                                  {{getFormattedDate(eventdetail?.end)}}</small>
+                            </ng-container>
+                            <ng-template #endDateBlock>
+                              <h4>{{convertDateUTC(eventdetail.end)}}</h4>
+                              <small>{{ getFormattedDate(eventdetail?.start) }} -
+                                {{getFormattedDate(eventdetail?.end)}}</small>
+                            </ng-template>
+                             
+                                <!-- <small>{{ eventdetail?.start | date:'hh:mm A'}} -
+                                  {{eventdetail?.end | date:'hh:mm A'}}</small> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxFlex="35" fxFlex.md="100">
+                    <div class="share-event">
+                      <button mat-button class="gradient-btn mb-4" (click)="openSharePopup()" matRipple>
+                        <mat-icon class="mr-1 mr-sm-3">share</mat-icon>
+                        Share Event
+                      </button>
+                      <button mat-button [disabled]="disabledbtn" class="gradient-btn mb-4"
+                        (click)="openAddToEventPopup()" matRipple>
+                        <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" width="15.299" height="16.611"
+                          viewBox="0 0 15.299 16.611">
+                          <path fill="snow"
+                            d="M2 16.611a1.971 1.971 0 0 1-2-1.937V3.736A1.972 1.972 0 0 1 2 1.8h.66v-.547a1.257 1.257 0 0 1 2.513 0V1.8h1.29v-.547a1.257 1.257 0 0 1 2.514 0V1.8h1.289v-.547a1.257 1.257 0 0 1 2.514 0V1.8h.52a1.972 1.972 0 0 1 2 1.937v10.937a1.972 1.972 0 0 1-2 1.937zm-.824-1.936a.811.811 0 0 0 .824.8h11.3a.811.811 0 0 0 .823-.8V4.647H1.177zm9.8-13.421v2.231a.551.551 0 1 0 1.1 0V1.253a.551.551 0 1 0-1.1 0zm-3.8 0v2.231a.551.551 0 1 0 1.1 0V1.253a.551.551 0 1 0-1.1 0zm-3.8 0v2.231a.552.552 0 1 0 1.1 0V1.253a.552.552 0 1 0-1.1 0zM10.9 13.5v-1.861h2.162V13.5zm-2.89 0v-1.861h2.164V13.5zm-2.888 0v-1.861h2.163V13.5zm-2.886 0v-1.861H4.4V13.5zm8.664-2.484V9.153h2.162v1.863zm-2.89 0V9.153h2.164v1.863zm-2.888 0V9.153h2.163v1.863zm-2.886 0V9.153H4.4v1.863zM10.9 8.528V6.665h2.162v1.863zm-2.89 0V6.665h2.164v1.863zm-2.888 0V6.665h2.163v1.863zm-2.886 0V6.665H4.4v1.863z" />
+                        </svg>
+                        Add To Calendar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="eventdetail?.eventOccurrence !== undefined && eventdetail?.eventOccurrence[0]?.eventOccurrence !== 'oneTime' && eventdetail.eventOccurrence.length>0" fxLayout="row" fxLayout.md="column" fxLayoutAlign.lt-sm="start start" fxLayout.lt-sm="column"
+                fxLayoutGap="20px" fxLayoutGap.md="10px" class="catogory" fxLayoutAlign="end center"
+                fxLayoutAlign.md="start start">
+                <div fxFlex="20" fxFlex.lt-md="28">
+                  <h4>{{eventdetail?.eventOccurrence[0]?.eventOccurrence == 'daily' ? 'Weekly' : eventdetail?.eventOccurrence[0]?.eventOccurrence | titlecase}} :</h4>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="80" f fxFlex.lt-md="72">
+                  <div *ngFor="let occurred of eventdetail.eventOccurrence">
+                    <button class="mr-1 mb-1 custom-w" *ngIf="occurred.eventOccurrence == 'daily'  && occurred?.occurredOn != 0 || occurred.eventOccurrence == 'weekly'  && occurred?.occurredOn != 0" matRipple>
+                      {{occurred.occurredOn == 1 ? 'Monday' : occurred.occurredOn == 2 ? 'Tuesday' : 
+                      occurred.occurredOn == 3 ? 'Wednesday': occurred.occurredOn == 4 ? 'Thursday':
+                      occurred.occurredOn == 5 ? 'Friday':  occurred.occurredOn == 6 ? 'Saturday':
+                      occurred.occurredOn == 7 ? 'Sunday':''}}
+                    </button>
+                    <button class="mr-1 mb-1 rounded-circle custom-m" *ngIf="occurred?.eventOccurrence == 'monthly' && occurred?.occurredOn != 0" matRipple>{{occurred?.occurredOn }}</button>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayout.md="column" fxLayoutAlign.lt-sm="start start" fxLayout.lt-sm="column"
+                fxLayoutGap="20px" fxLayoutGap.md="10px" class="catogory" fxLayoutAlign="end center"
+                fxLayoutAlign.md="start start">
+                <!-- <div fxFlex="20" fxFlex.lt-md="25">
+                  <h4>Category :</h4>
+                </div> -->
+                <div fxFlex="100" f fxFlex.lt-md="75">
+                  <button matRipple>{{eventdetail.categoryName}}</button>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayoutGap="10px" class="tags">
+                <!-- <div fxFlex="100">
+                  <h4>Tags :</h4>
+                </div> -->
+                <div fxFlex="100">
+                  <mat-chip-list class="tag-list">
+                    <mat-chip *ngFor="let subCategories of eventdetail.subCategories">
+                      {{subCategories.subCategoryName}}</mat-chip>
+                  </mat-chip-list>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutGap="20px" class="submit-btn" fxLayoutAlign="center center">
+                <div fxFlex="100" fxLayoutAlign="center center">
+                  <button *ngIf="contactHostBtn && userType" mat-button matRipple
+                    (click)="navigateToSection('contacthost')">{{ STRINGS.eventDetailPage.contacthost}}</button>
+                  <button mat-button *ngIf="interestedBtn && userType" (click)="navigatoBookTicket()"
+                    matRipple>{{(eventdetail?.ticket_info?.MinValue)?'$'+(eventdetail?.ticket_info?.MinValue)+' - ':('')}}  {{(eventdetail?.ticket_info?.maxValue)?'$'+(eventdetail?.ticket_info?.maxValue):('')}}
+                    Interested? Let's Do
+                    it</button>
+                    <button *ngIf="ticketWebsiteUrl && userType" class="remove-border" (click)="openExternalLink()" mat-button matRipple>
+                      {{ STRINGS.eventDetailPage.websiteUrlButton}}<i class="fa fa-external-link"></i></button> 
+                      <button *ngIf="bookingRsvpBtn && userType" class="remove-border" (click)="openExternalLink()" mat-button matRipple>
+                        Continue for Booking / RSVP<i class="fa fa-external-link"></i></button>
+
+
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutGap="20px" class="links" fxLayoutAlign="end center">
+                <div fxFlex="100" fxLayoutAlign="center center">
+                  <a *ngIf="interestedBtn && userType" routerLink="/user/contact-us"
+                    class="trouble-text">{{STRINGS.eventDetailPage.havingTroubletext}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <div class="wrapper_details mt-5">
+      <div fxLayout="column" fxLayoutGap="15px" class="mb-5 description">
+        <div fxFlex="100" fxLayoutAlign="start start">
+          <h3>Description</h3>
+        </div>
+        <div fxFlex="100">
+          <!-- <p *ngIf="descClicked">
+            {{(eventdetail?.description?.length>500)?(eventdetail?.description | slice:0:500)+'...':(eventdetail?.description)}}
+          </p> -->
+        <!--  <p  [innerHTML]="eventdetail.description">
+             {{eventdetail.description}} 
+          </p>-->
+          
+            <quill-view-html [content]="eventdetail.description" theme="snow"></quill-view-html>
+        
+          
+          <!-- <div fxLayoutAlign="end end" class="read-more" *ngIf="eventdetail?.description?.length>500" >
+            <p (click)="showDesc()" *ngIf="readBtn" class="read-more-btn text-right">Read more</p>
+          </div> -->
+        </div>
+      </div>
+      <div fxLayout="column" fxLayoutGap="20px" class="mb-5 information" *ngIf="eventdetail.additional_info?.length > 0">
+        <div fxFlex="100" fxLayoutAlign="start start">
+          <h3>Additional Information</h3>
+        </div>
+        <div fxLayout="column" fxFlex="100">
+          <p class="red-color-text" >
+            {{eventdetail.additional_info}}
+          </p>
+        </div>
+      </div>  
+<!----------------------Talents----------------------------->
+      <div *ngIf="userType && eventdetail?.telentImages?.length != 0" class="talent-events w-100">
+        <div fxLayout="row">
+          <div fxFlex="100" fxLayoutAlign="space-between start">
+            <h3 *ngIf="eventdetail?.telentImages?.length == 1">Talent</h3>
+            <h3 *ngIf="eventdetail?.telentImages?.length > 1">Talent(s)</h3>
+          </div>
+        </div>
+        <div class="slider_section">
+          <div fxFlex="90" fxFlex.xs="100" class="m-auto">
+            <div fxLayout="row" fxLayoutGap="20px" class="w-100">
+              <div fxFlex="100" class="w-100 related-events_overlay ">
+                <swiper *ngIf="eventdetail?.telentImages?.length > 0" class="swiper-container "
+                  [config]="TalentHorizontal" (slideChange)="onTalentSlideChange()" [disabled]="disabled" style="width: 100%">
+                  <div class="swiper-slide" *ngFor="let talents of eventdetail?.telentImages;">
+                    <mat-card class="mat-event" matRipple >
+                      <div class="related-event-img">
+                        <img src={{talents?.eventImage}} alt="">
+                      </div>
+                    </mat-card>
+                  </div>
+                </swiper>
+                <button class="swiper-button-prev swiper-cus" id="button-prev-swiper"></button>
+                <button class="swiper-button-next swiper-cus" id="button-next-swiper"> </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngIf="userType" id="contacthost" fxLayout="column" fxLayoutGap="25px" class="mb-5 Contacthost">
+        <div fxFlex="100" fxLayoutAlign="start start">
+          <h3>Contact Host</h3>
+        </div>
+        <div fxFlex="100" class="host_wrapper" fxLayoutGap="20px">
+          <div fxLayout="row"  fxLayoutGap="30px" fxLayoutGap.xs="20px"
+            fxLayoutAlign="center center">
+            <div fxFlex="20" fxFlex.xs="30" fxFlex.sm="15" fxLayoutAlign="center center">
+              <div class="host-image">
+                <ng-container *ngIf="!hostprofilePic; else elseAvatarBlock">
+                  <ngx-avatar size="100"  name="{{hostname}}"></ngx-avatar>
+                </ng-container>
+                <ng-template #elseAvatarBlock>
+                  <img src={{hostprofilePic}} alt="host image">
+                </ng-template>
+              </div>
+            </div>
+            <div fxFlex="80" fxFlex.xs="70" fxFlex.sm="85">
+              <div fxLayout="column">
+                <div fxFlex="100">
+                  <h4 class="mb-sm-5">{{hostname}}</h4>
+                </div>
+                <div fxFlex="100" class="button contacthost_mob">
+                  
+                  <ng-container *ngIf="eventdetail.hostAddress; else elseEmailBlock">
+                    <button (click)="mailAppOpen(eventdetail.hostAddress)" matRipple>
+                      <mat-icon>email</mat-icon>
+                      <span>{{eventdetail.hostAddress}}</span>
+                    </button>
+                  </ng-container>
+                  <ng-template #elseEmailBlock>
+                    <button (click)="mailAppOpen(eventdetail.host?.email)" matRipple>
+                      <mat-icon>email</mat-icon>
+                      <span  *ngIf='email'>{{eventdetail.host?.email}}</span>
+                    </button>
+                  </ng-template>
+                  <ng-container *ngIf="eventdetail.hostMobile; else elsephoneBlock">
+                    <button (click)="openDailer(eventdetail.countryCode+eventdetail.hostMobile)" [cdkCopyToClipboard]="eventdetail.countryCode+eventdetail.hostMobile" matRipple>
+                      <mat-icon>phone</mat-icon>
+                        <span>{{eventdetail.countryCode?eventdetail.countryCode:''}}<span>{{eventdetail.hostMobile}}</span></span>
+                    </button>
+                  </ng-container>
+                    <ng-template #elsephoneBlock>
+                      <button (click)="openDailer(eventdetail.host?.phoneNo)" [cdkCopyToClipboard]="eventdetail.countryCode+eventdetail.hostMobile" matRipple>
+                        <mat-icon>phone</mat-icon>
+                        <span *ngIf='phonecalls' >{{eventdetail.countryCode?eventdetail.countryCode:''}}<span>{{eventdetail.host?.phoneNo}}</span></span>
+                      </button>
+                    </ng-template>
+                    <ng-container *ngIf="eventdetail.websiteUrl; else elsewebsiteBlock">
+                      <button [cdkCopyToClipboard]=eventdetail.websiteUrl (click)="openHostLink(eventdetail.websiteUrl)">
+                        <mat-icon>language</mat-icon>
+                        <span>{{eventdetail.websiteUrl}}</span>
+                      </button>
+                    </ng-container>
+                    <ng-template #elsewebsiteBlock>
+                      <button [cdkCopyToClipboard]=eventdetail?.host?.URL (click)="openHostLink(eventdetail?.host?.URL )">
+                        <mat-icon>language</mat-icon>
+                        <span>{{eventdetail?.host?.URL }}</span>
+                      </button>
+                    </ng-template>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="userType" fxLayout="column" fxLayoutGap="20px" class="mb-5 mt-3 map">
+        <div fxFlex="100" fxLayoutAlign="start start">
+          <h3>Venue Name</h3>
+        </div>
+        <div fxFlex="100" fxLayoutAlign="start start" class="w-100">
+          <p>
+            {{venueName}}
+          </p>
+        </div>
+      </div>
+      <div *ngIf="userType" fxLayout="column" fxLayoutGap="20px" class="mb-5 mt-3 map">
+        <div fxFlex="100" fxLayoutAlign="start start">
+          <h3>Location</h3>
+        </div>
+        <div fxFlex="100" fxLayoutAlign="start start" class="w-100">
+          <p>
+            {{veneueAdress}}
+          </p>
+        </div>
+        <div fxFlex="100" fxLayoutAlign="start start" class="w-100">
+          <agm-map style="width: 100%; height: 241px;" [latitude]='lat' [longitude]='long'>
+            <agm-marker [latitude]='lat' [longitude]='long' [label]="'E'">
+            </agm-marker>
+          </agm-map>
+        </div>
+      </div>
+    </div>
+    <!----------------------SPONSER----------------------------->
+     <div *ngIf="userType && eventdetail?.sponserImages?.length != 0" class="sponser-events width-80-cus">
+      <div fxLayout="row">
+        <div fxFlex="100" fxLayoutAlign="space-between start">
+          <h3 *ngIf = "eventdetail?.sponserImages?.length == 1">Sponsor</h3>
+          <h3 *ngIf = "eventdetail?.sponserImages?.length > 1">Sponsors</h3>
+        </div>
+      </div>
+          <div fxLayout="row wrap" class="inner">
+
+          <div fxFlex="10" fxFlex.xs="28" fxFlex.sm="22" fxLayoutAlign="space-between start" *ngFor="let sponser of eventdetail?.sponserImages;">
+            <div class="sponser">
+              <img class="img-fluid" src={{sponser.eventImage}} alt="">
+            </div>
+            </div>
+          </div>
+         
+          </div>
+    <div  class="reviews w-100">
+      <div fxLayout="row" class="width-80-cus">
+        <div fxFlex="100" fxLayoutAlign="space-between start" class=" mb-4">
+          <h3>Reviews</h3>
+          <button *ngIf="userType" (click)="nevigateReview()" matRipple class="add-review-btn">
+            <mat-icon>add_circle</mat-icon><span>Add a Review</span>
+          </button>
+        </div>
+      </div>
+      <div class="slider_section">
+        <div fxFlex="100" class="w-100">
+          <div fxLayout="row" fxLayoutGap="20px" class="w-100">
+            <div fxFlex="100" class="w-100 related-events_overlay">
+              <swiper *ngIf="eventdetail?.reviews?.length != 0" class="swiper-container" [config]="configHorizontal2"
+                [disabled]="disabled" style="width: 100%">
+                <div class="swiper-slide review-cards opacity-last-slide" *ngFor="let review of allUserReviews;">
+                  <mat-card>
+                    <div fxLayout="column">
+                      <div fxFlex="100">
+                        <div fxLayout="row">
+                          <img class="reviewsImg mr-3" *ngIf="review?.reviewer?.profilePic;"
+                            src={{review?.reviewer?.profilePic}} alt="">
+                          <ngx-avatar class="reviewsImg mr-3" *ngIf="!review?.reviewer?.profilePic;" size="26"
+                            name="{{review?.reviewer?.name}}"></ngx-avatar>
+                          <div class="reviewer-name">
+                            <h4>{{review?.reviewer?.name}}</h4>
+                          </div>
+                        </div>
+                      </div>
+                      <div fxFlex="100" class="py-3">
+                        <p class="review-content">{{review?.reviewText}}</p>
+                      </div>
+                      <div fxFlex="100">
+                        <div class="review-date d-flex">
+                          <p class="mr-2">{{review?.updated_at | date:'MM-dd-YYYY'}}</p>
+                          <p>{{getFormattedDate(review?.updated_at )}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card>
+                </div>
+              </swiper>
+              <!-- <h6 *ngIf="eventdetail?.reviews?.length == 0"> No Reviews </h6> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" class="width-80-cus">
+        <div *ngIf="eventdetail?.reviews?.length != 0" fxFlex="100" fxLayoutAlign="end end" class="view-all-btn mt-3">
+          <a class="cursor_pointer" (click)="nevigateCustomerReview()">View All</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="userType" class="related-events w-100">
+      <div fxLayout="row" class="width-80-cus">
+        <div fxFlex="100" fxLayoutAlign="space-between start">
+          <h3>Related Events</h3>
+        </div>
+      </div>
+      <div class="slider_section">
+        <div fxFlex="100" class="w-100">
+          <div fxLayout="row" fxLayoutGap="20px" class="w-100">
+            <div fxFlex="100" class="w-100 related-events_overlay">
+              <h6 *ngIf="eventdetail?.relatedEvents?.length == 0"> No Related Event </h6>
+              <swiper *ngIf="eventdetail?.relatedEvents?.length > 0" class="swiper-container related-events"
+                [config]="configHorizontal" [disabled]="disabled" style="width: 100%">
+                <div class="swiper-slide" *ngFor="let relatedEvent of realtedEventDeatil;">
+                  <mat-card class="mat-event" matRipple (click)="eventDetailRealted(relatedEvent.id)">
+                    <div class="event-date">
+                      <ng-container  *ngIf="relatedEvent.recuringDate != ''; else startDateBlock">
+                        <p id="date">
+                          <!-- {{relatedEvent?.start | date:'dd'}} -->
+                          {{ convertRelatedDateUTC(relatedEvent?.recuringDate)}}
+                        </p>
+                        <p id="month">{{relatedEvent?.recuringDate | date:'MMM'}}</p>
+                    </ng-container>
+                    
+                    <ng-template #startDateBlock>
+                      <p id="date">
+                        <!-- {{relatedEvent?.start | date:'dd'}} -->
+                        {{ convertRelatedDateUTC(relatedEvent?.start)}}
+                      </p>
+                      <p id="month">{{relatedEvent?.start | date:'MMM'}}</p>
+                    </ng-template>
+                    
+                    </div>
+                    <div class="related-event-img">
+                      <img src={{relatedEvent.eventImages[0]?.eventImage}} alt="">
+                    </div>
+                    <div class="rel-name-date">
+                    <div fxLayout="row" fxLayoutGap="10px" class="mt-3" fxLayoutGap.md="0">
+                      <div  fxFlex="70" fxLayoutAlign="start center">
+                        <h1 class="rel-name">{{ relatedEvent?.name }}</h1>
+                      </div>
+                      <div  fxFlex="30" fxLayoutAlign="end start">
+                          <p class="date orange-colur">
+                            {{todayAndYesterday(relatedEvent.start) ? todayAndYesterday(relatedEvent.start) : relatedEvent.start | date: "MM/dd/YYYY" }} </p> 
+                      </div>
+                     </div>
+
+                     <div class="event-venue">
+                      <div class="event-venue-icon">
+                        <img src="../../../../assets/img/card-location.svg " />
+                      </div>
+                      <p class="event-venue-place address-height">
+                       
+                        {{ (relatedEvent.venueEvents[0]?.city)?(relatedEvent.venueEvents[0]?.city):''}}
+                        {{ (relatedEvent.venueEvents[0]?.state)? ','+(relatedEvent.venueEvents[0]?.state):''}}
+                      </p>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="10px"  fxLayoutGap.md="0"> 
+                      <div  fxFlex="50" fxLayoutAlign="start center">
+                          <div class="event-venue-icon mr-3">
+                              <img src="../../../../assets/img/distance.svg " />
+                          </div>
+                          <p class="event-venue-place pr-1">{{getDistance(relatedEvent.distance) }} Miles
+                          </p>
+                          </div>
+                          <div  fxFlex="50" fxLayoutAlign="end center">
+                              <div class="event-time">
+                                  <div class="watch-imgs">
+                                      <img class="mr-1" src="../../../../assets/img/timer.svg" />
+                                  </div>
+                                  <p class="time">
+                                      {{ getFormattedDate(relatedEvent.start)  }} to {{ getFormattedDate(relatedEvent.end) }}
+                                  </p>
+                                  </div>
+                          </div>
+        
+                          </div>
+                        </div>
+
+                    <!-- <div class="event-name-time">
+                      <a routerLink="/event/detail/{{relatedEvent.id}}">
+                        <h4>
+                          {{(relatedEvent?.name.length>50)?(relatedEvent?.name | slice:0:50)+'...':(relatedEvent?.name) }}
+                        </h4>
+                      </a>
+                      <div class="event-time">
+                        <span class="start-time">
+                          Start Time - {{getFormattedDate(relatedEvent?.start )}}
+                        </span>
+                        <p class="days-to-go"> {{relatedEvent?.end | upcomingDuration}} Day to go</p>
+                      </div>
+                    </div> -->
+                  </mat-card>
+                </div>
+              </swiper>
+            </div>
+          </div>
+          <div  *ngIf="userType" fxLayout="row" class="width-80-cus mt-5">
+            <div fxFlex="100" fxLayoutAlign="end center" class="view-all-btn">
+              <a routerLink="/event/related-event/{{eventdetail.id}}">View All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+
+  </div>
+</div>

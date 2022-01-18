@@ -1,0 +1,335 @@
+<div class="group__rsvp">
+  <button *ngIf="!SignleTicket" type="button" (click)="backToFirstStep()" class="back_step">
+    <img src="../../../assets/img/left-arrow.svg" class="back-icon" />
+    {{ STRINGS.buttons.back }}
+  </button>
+  <mat-card>
+
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px">
+      <div fxFlex="100">
+        <mat-tab-group animationDuration="0ms"  [(selectedIndex)]="selectedIndex">
+          <!-- for pending -->
+            <mat-tab label="{{ STRINGS.groupTicket.Pending }}">
+             <ng-template mat-tab-label>
+                {{ STRINGS.groupTicket .Pending }}
+                <span *ngIf="totalCountPending > 0">
+                  <span class="chip_count" >{{totalCountPending}}</span> 
+
+                </span>
+            </ng-template> 
+        
+
+            <mat-card class="w-100 mt-5 mb-3 p-0">
+              <div fxLayout="column"  *ngFor="let data of PendingTicketDetails" class="bg-white p-4 mb-4">
+                <div fxFlex="100">
+                  <div fxLayout="row" class="tab-1">
+                    <div fxFlex="50" fxFlex.xs="70" fxLayoutAlign="start center">
+                      <div class="avtar mr-3" *ngFor="let datasender of data.sender">
+                        <ng-container *ngIf="!datasender?.profilePic; else elseBlock">
+                          <ngx-avatar name="{{ datasender?.name }}" size="48" [round]="true">
+                          </ngx-avatar>
+                        </ng-container>
+                        <ng-template #elseBlock>
+                          <img [src]="datasender?.profilePic" class="rounded-circle">
+                        </ng-template>
+                      </div>
+                      <div class="status" *ngFor="let datasender of data.sender">
+                        <h4 class="font-weight-bold">{{datasender.name}}</h4>
+                        <p>{{data.dateTime | date:'dd-MMM-YYYY' }}</p>
+                      </div>
+                    </div>
+                    <div fxFlex="50" fxFlex.xs="30" fxLayoutAlign="end center">
+                      <mat-icon class=" mr-2 cursor_pointer" (click)="moveAcceptTab(data.id)">check_circle</mat-icon>
+                      <mat-icon class="cancel cursor_pointer" (click)="CancleStatus(data.id)">cancel</mat-icon>
+                    </div>
+                  </div>
+                </div>
+                <div fxFlex="100">
+                  <p class="para my-2">
+                    {{data.msg}}
+                  </p>
+                </div>
+              </div>
+            </mat-card>
+            <div fxlayout="row" *ngIf="PendingTicketDetails.length ==0" class="w-100 mt-2">
+              <p class="datanotFound">{{STRINGS.dataNotFound.dataNfound}}</p>
+            </div>
+            <mat-paginator [length]="totalCountPending" [pageSize]="10" [pageSizeOptions]="[10]"
+              [pageIndex]="pageIndexPending" (page)="handlePageEvent($event)">
+            </mat-paginator>
+        
+          </mat-tab>
+          <!-- for accepted -->
+          <mat-tab label="{{ STRINGS.groupTicket.Accepted }}">
+            <mat-card  class="w-100 mt-5 mb-3 p-0">
+              <div fxLayout="column" class="bg-white p-4 mb-4" *ngFor="let data of AcceptedTicketDetails">
+                <div fxFlex="100">
+                  <div fxLayout="row" class="tab-1">
+                    <div fxFlex="50" fxFlex.xs="70" fxLayoutAlign="start center">
+                      <div class="avtar mr-3" *ngFor="let datasender of data.sender">
+                        <ng-container *ngIf="!datasender?.profilePic; else elseBlock">
+                          <ngx-avatar name="{{ datasender?.name }}" size="48" [round]="true">
+                          </ngx-avatar>
+                        </ng-container>
+                        <ng-template #elseBlock>
+                          <img [src]="datasender?.profilePic" class="rounded-circle">
+                        </ng-template>
+                      </div>
+                      <div class="status" *ngFor="let datasender of data.sender">
+                        <h4 class="font-weight-bold">{{datasender.name}}</h4>
+                        <p>{{data.dateTime | date:'dd-MMM-YYYY' }}</p>
+                      </div>
+                    </div>
+                    <div fxFlex="50" fxFlex.xs="30" fxLayoutAlign="end center">
+                      <mat-icon class="mr-2">check_circle</mat-icon>
+                    </div>
+                  </div>
+                </div>
+                <div fxFlex="100">
+                  <p class="para my-2">
+                    {{data.msg}}
+                  </p>
+                </div>
+              </div>
+            </mat-card>
+            <div fxlayout="row" *ngIf="AcceptedTicketDetails.length == 0" class="w-100 mt-2">
+              <p class="datanotFound">{{STRINGS.groupTicket.AcceptedRsvp}}</p>
+            </div>
+            <mat-paginator [length]="totalCountAccept" [pageSize]="10" [pageSizeOptions]="[10]"
+              [pageIndex]="pageIndexAccepted" (page)="handlePageEventAccepted($event)">
+            </mat-paginator>
+          
+          </mat-tab>
+          <!-- for ticket -->
+          <mat-tab label="{{ STRINGS.groupTicket.Tickets }}">
+            <div class="w-100 mt-5 group-ticket"  fxLayout="row wrap"   fxLayout.lt-sm="column" *ngIf="SignleTicket">
+              <div fxFlex="32%"  fxFlex.md="47%" fxFlex.sm="100%"   class="ui_box_one" *ngFor="let info of ticketInfo | slice:0:maxTicketsticket;  let indexClone = index">
+                <div class="ticket_ui_wrapper" id="mainContainer{{info.events.id}}">
+                     <!--.......div for corners........ -->
+                  <div class="ticketbg">
+                    <span  *ngFor="let ticket of info.events.ticketBooked">
+                      <span  *ngFor="let booked of ticket.ticket_number_booked_rel">
+                      <!-- <div class="voidstatus" *ngIf="booked.status == 'cancelled' ">
+                        VOID
+                      </div> -->
+                      <div class="host-text-show" *ngIf="ticket.cancelledBy == 'partner' ">
+                        <button> This event was cancelled by the host</button>
+                      </div>
+                     </span>
+                    </span>
+              
+                
+
+                    <div class="overlay-ticket"></div>
+                    <div class="corner-radius top-left"></div>
+                    <div class="corner-radius top-right"></div>
+                    <div class="corner-radius bottom-right"></div>
+                    <div class="corner-radius bottom-left"></div>
+                    <div class="ticket_ui" [ngStyle]="{
+                      'background-image': info.events?.eventImages[0]?.eventImage
+                      ? 'url(' + info.events?.eventImages[0]?.eventImage + ')' : ''}" >
+                     
+                    
+                      <!--  -->
+                      <div class="ticket_content">
+                        <h2>{{ info.events?.name }}</h2>
+                        <h3 class="mb-3"> {{ STRINGS.groupTicket.EventCode}}: #{{ info.events?.eventCode }}</h3>
+                        <mat-list role="list">
+                          <mat-list-item role="listitem">
+                            <span class="icon_ticket">
+                              <img width="14.9" height="14.9" [src]="clock" />
+                            </span>
+                            
+                            {{info.events?.start | date:'dd MMM,yyyy'}} <span class="px-3"> | </span>
+                            {{info.events?.start | date:'shortTime'}} - {{info.events?.end | date:'shortTime'}}
+                          </mat-list-item>
+                          <mat-list-item role="listitem" *ngFor="let dataaddress of info.events.address "
+                            class="listaddress">
+                            <span class="icon_ticket">
+                              <img width="14.9" height="15.8" src="../../../../assets/img/location.svg" alt="">
+                            </span>
+                            <div class="mat-list-text">
+                              {{ dataaddress.venueAddress }}
+                            </div>
+                           
+                          </mat-list-item>
+                          <mat-list-item role="listitem">
+                            <div *ngIf='info.events?.totalquantity == 1; else group_content'>
+                              <span class="icon_ticket">
+                              <img  width="14.9px" height="16.1px" src="../../../../assets/img/ticket.svg" alt="">
+                              </span>
+                              <span *ngFor="let ticket of info.events.ticketBooked">
+                                {{ticket.ticketType}} -  {{ ticket.pricePerTicket | currency:''}} 
+                              </span>
+                            </div>
+                            <ng-template #group_content>
+                              <h4 (click)="groupTicketTabs(info)" class="cursor_pointer">
+                               {{ STRINGS.groupTicket.labelGroup }} |  Total {{info.events?.totalquantity}} Tickets
+                              </h4>
+                            </ng-template>
+                          </mat-list-item>
+                        </mat-list>
+                        <span *ngIf='info.events?.totalquantity == 1 '>
+                          <p>{{ info.events.ticketBooked[0].ticket_info[0].description }}  </p>
+
+                      <!-- <p  *ngFor="let ticket of info.events.ticketBooked">
+                            {{ticket.ticket_info[0]?.description }}
+                         
+                        </p>  -->
+                      </span>
+                        <span *ngIf='info.events?.totalquantity == 1 '>
+                        <span *ngFor="let ticket of info.events.ticketBooked">
+                          <span *ngFor="let ticket_rel of ticket.ticket_number_booked_rel">
+                            <div fxLayout="row" class="code_gene"  >
+                              <span fxLayout="row" class="w-100" fxLayoutGap="10px">
+                                <div fxFlex="33.33" fxFlex.xs="30" fxFlex.lt-sm="40"   fxLayoutAlign="start end">
+                                  <ngx-qrcode cssClass="Custom_qr" [value]="ticket_rel.QRCode"
+                                    *ngIf='ticket_rel.status == "booked" || ticket_rel.status == "notCheckedIn" ; else QrDefoult_content'>
+                                  </ngx-qrcode>
+                                  <ng-template #QrDefoult_content>
+                                    <img  width="77.99px" height="77.99px" src="../../../../assets/img/qr-code.png">
+                                  </ng-template>
+                                </div>
+                                <div fxFlex="33.33" fxFlex.xs="50" fxFlex.lt-sm="35" fxLayout="column" fxLayoutAlign="center center">
+                                  <p
+                                    *ngIf='ticket_rel.status == "booked" || ticket_rel.status == "notCheckedIn" ; else TicketDefoult_content'>
+                                    {{ ticket_rel.ticketNumber}}</p>
+                                  <ng-template #TicketDefoult_content>
+                                    <img class="img-fluid mb-3" src="../../../../assets/img/blurtext.png" alt="">
+                                  </ng-template>
+                                  <div class="w-100 text-center">
+                                    <button class="bg-success cursor-not-allowed" *ngIf='ticket_rel.status == "checkedIn"'>CheckedIn</button>
+                                    <button class="cursor-not-allowed" *ngIf='ticket_rel.status == "cancelled"'>cancelled!</button>
+                                    <button *ngIf='ticket_rel.status == "booked" || ticket_rel.status == "notCheckedIn"'
+                                      (click)="cancelTicket(ticket_rel.id, ticket.id, info.QRkey, indexClone)">cancel</button>
+                                  </div>
+                                </div>
+                                <div fxFlex="33.33" fxFlex.xs="20" fxFlex.lt-sm="25" fxLayoutAlign="end end">
+                                  <img [src]="share_ticket" alt="" class="cursor_pointer" (click)="TicketDownload(i, info.events?.name)">
+                                </div>
+                              </span>
+                            </div>
+                          </span>
+                        </span>
+                      </span>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+               
+              </div>
+              <div fxlayout="row" class="w-100 mt-2" *ngIf="ticketInfo.length == 0">
+                <p class="datanotFound">{{STRINGS.groupTicket.TicketsRsvp}}</p>
+              </div>
+              <!-- <div fxLayout="row " class="w-100 mt-5">
+                <div fxFlex="100"  fxLayoutAlign="space-between center">
+                <a class="view-all-btn d-inline text-left" (click)="prevData()" *ngIf="prevdata">{{ STRINGS.home.Prev }}</a>
+                <a class="view-all-btn d-inline" *ngIf="ticketInfo.length > 8" (click)="seemore()"> {{ STRINGS.home.SeeMore }}</a>
+                </div>
+              </div>   -->
+              <div fxLayout="row " fxLayoutAlign="end center" class="w-100">
+                <a *ngIf="ticketInfo.length > maxTicketsticket" href="javascript:void(0)" class="view-all-btn d-inline"
+                  (click)="viewAllTo('maxTicketsticket', 'ticketInfo')">
+                  {{ STRINGS.home.viewAll }}
+                </a>
+              </div>
+            </div>
+
+          <span *ngIf="!SignleTicket">
+              <div fxLayout="row wrap"  class="w-100 mt-5 group-ticket" fxLayout.lt-sm="column"  >
+                <div fxFlex="32%"  fxFlex.md="47%" fxFlex.sm="100%"   class="ui_box_one"  
+                *ngFor="let info of TicketBookedClone | slice:0:maxTickets; let indexTicketClone = index">
+                 <div class="ticket_ui_wrapper" id="mainContainer{{info.id}}" >
+            
+                  <div class="ticketbg">
+                   
+                    <div class="voidstatus" *ngIf="info.status == 'cancelled' ">
+                      VOID
+                    </div>
+                    <div class="overlay-ticket"></div>
+                    <div class="corner-radius top-left"></div>
+                    <div class="corner-radius top-right"></div>
+                    <div class="corner-radius bottom-right"></div>
+                    <div class="corner-radius bottom-left"></div>
+                  <div class="ticket_ui" [ngStyle]="{
+                  'background-image': MultipleTicketinfo.events.eventImages[0]?.eventImage
+                  ? 'url(' + MultipleTicketinfo.events.eventImages[0]?.eventImage + ')' : ''}">
+                    <div class="ticket_content">
+                      <h2>{{ MultipleTicketinfo?.events.name }}</h2>
+                      <h3 > {{ STRINGS.groupTicket.EventCode}}: #{{ MultipleTicketinfo?.events.eventCode }}</h3>
+                      <mat-list role="list">
+                        <mat-list-item role="listitem">
+                          <span class="icon_ticket">
+                            <img width="14.9" height="14.9" [src]="clock" />
+                          </span>
+                          {{MultipleTicketinfo.events.start | date:'dd MMM,yyyy'}} <span class="px-4"> | </span>
+                          {{MultipleTicketinfo.events.start  | date:'shortTime'}} - {{MultipleTicketinfo.events.end |
+                            date:'shortTime'}}
+                        </mat-list-item>
+                        <mat-list-item role="listitem" *ngFor="let dataaddress of MultipleTicketinfo.events.address" class="listaddress ">
+                          <span class="icon_ticket">
+                            <img width="14.9" height="15.8" src="../../../../assets/img/location.svg" alt="">
+                          </span>
+                          {{ dataaddress.venueAddress }}
+                        </mat-list-item>
+                        <mat-list-item role="listitem">
+                          <span class="icon_ticket">
+                            <img  width="14.9px" height="16.1px" src="../../../../assets/img/ticket.svg" alt="">
+                            </span>
+                          {{info.ticketType}} -  {{ info.pricePerTicket | currency:''}} 
+                        </mat-list-item>
+                      </mat-list>
+                      <p  >
+                        {{ info.description }}
+                        <!-- <span  *ngFor="let tickets of ticket.ticket_info">
+                          {{tickets?.description }}
+                        </span> -->
+                      </p> 
+                      <!-- <p> <quill-view-html [content]="MultipleTicketinfo.events.description" theme="snow"></quill-view-html>
+                        </p> -->
+                      <div fxLayout="row" class="code_gene" fxLayoutGap="10px">
+                        <span fxLayout="row" class="w-100"    fxLayoutAlign="start end">
+                          <div fxFlex="33.33" fxFlex.xs="30" fxFlex.lt-sm="40">
+                            <ngx-qrcode cssClass="Custom_qr" [value]="info.QRCode"
+                              *ngIf='info.status == "booked" || info.status == "notCheckedIn" ; else QrDefoult_content'>
+                            </ngx-qrcode>
+                            <ng-template #QrDefoult_content>
+                              <img width="77.99px" height="77.99px" src="../../../../assets/img/qr-code.png">
+                            </ng-template>
+                          </div>
+                          <div fxFlex="33.33" fxFlex.xs="50" fxLayout="column" fxLayoutAlign="center center">
+                            <p *ngIf='info.status == "booked" || info.status == "notCheckedIn" ; else TicketDefoult_content'>
+                            {{ info.ticketNumber}}</p>
+                          <ng-template #TicketDefoult_content>
+                            <img class="img-fluid mb-3" src="../../../../assets/img/blurtext.png" alt="">
+                          </ng-template>
+                            <div class="w-100 text-center">
+                              <button  *ngIf='info.status == "notCheckedIn" || info.status == "booked"'
+                                (click)="cancelTicket(info.id, info.tickerId, MultipleTicketinfo?.QRkey, indexTicketClone)">cancel</button>
+                              <button class="bg-success cursor-not-allowed" *ngIf='info.status == "checkedIn"'>CheckedIn</button>
+                              <button class="cursor-not-allowed" *ngIf='info.status === "cancelled"' >cancelled! </button>
+                            </div>
+                          </div>
+                          <div fxFlex="33.33" fxFlex.xs="20" fxLayoutAlign="end end">
+                            <img [src]="share_ticket" alt="" class="cursor_pointer" (click)="TicketDownload(info.id, MultipleTicketinfo?.events.name); ">
+                          </div>
+                        </span>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div fxLayout="row " fxLayoutAlign="end center" class="w-100">
+                <a *ngIf="TicketBookedClone.length > maxTickets" href="javascript:void(0)" class="view-all-btn d-inline"
+                  (click)="viewAll('maxTickets', 'TicketBookedClone')">{{
+                          STRINGS.home.viewAll }}</a>
+              </div>
+            </span>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </mat-card>
+</div>

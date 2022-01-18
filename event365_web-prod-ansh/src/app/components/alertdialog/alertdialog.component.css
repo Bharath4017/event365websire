@@ -1,0 +1,45 @@
+/*for button*/
+/*for font styling*/
+.cus_modal [mat-dialog-close] {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+}
+
+.cus_modal [mat-dialog-alert] {
+  min-height: 3rem;
+  color: #343a43;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.cus_modal [mat-dialog-content] {
+  font-size: 1.8rem;
+  color: #343a43;
+  margin: 5rem auto;
+  font-weight: 500;
+}
+
+.cus_modal [mat-button] {
+  height: 40px;
+  background-color: #7966fe;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: 'HelveticaNeueLTPro-Md';
+  width: 18.8rem;
+  height: 4.8rem;
+  text-transform: capitalize;
+  margin-bottom: 4.5rem;
+}
+
+.cus_modal .mat-button-wrapper {
+  font-size: 1.4rem;
+}
+/*# sourceMappingURL=alertdialog.component.css.map */

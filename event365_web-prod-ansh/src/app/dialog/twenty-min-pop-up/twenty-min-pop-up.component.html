@@ -1,0 +1,78 @@
+<div class="main-div twentymin" *ngIf= "!deleteEventID && !update && !deleteUserID">
+    <mat-icon (click)="closePopup()" class="close-btn">close</mat-icon>
+    <div class="header">
+      <mat-icon class="alert-icon">error</mat-icon>
+      <h4>Alert !</h4>
+    </div>
+    <div class="modal-body row">
+     <p> {{STRINGS.subVenue.twenty_minutes_alert}}</p>
+    </div>
+  
+    <div class="modal-venue-footer">
+      <button (click)="closePopup()"> Cancel </button>
+      <button (click)="openSubVenue()" style=" background-color: #7966fe;  color: #f4f2ff;"> Process </button>
+    </div>
+  
+  </div>
+
+  <!-- deleteEvent -->
+<div class="main-div" *ngIf= "deleteEventID ">
+    <mat-icon (click)="closePopup()" class="close-btn">close</mat-icon>
+    <div class="header">
+      <mat-icon class="alert-icon mr-2">error</mat-icon>
+      <h4>Alert !</h4>
+    </div>
+    <div fxLayout="row" fxLayoutGap="40px">
+      <div fxFlex="100" fxLayoutAlign= "center center">
+          <h4>{{STRINGS.editEvent.deleteEventAlertMsg}}</h4>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="40px">
+      <div fxFlex="100" fxLayoutAlign= "center center">
+          <h5 fxFlex="100" xLayoutAlign= "center center" style="color:#f02828; text-align: center;">{{STRINGS.editEvent.deleteEventNote1}} <br fxLayoutGap="30px"> {{STRINGS.editEvent.deleteEventNote2}} </h5>
+        </div>
+    </div>
+    <!-- <div class="modal-body row">
+     <p> {{STRINGS.subVenue.twenty_minutes_alert}}</p>
+    </div> -->
+    <div class="modal-venue-footer row">
+      <button (click)="deleteEventProceed()" > Yes </button>
+      <button (click)="closePopup()" style=" background-color: #7966fe;  color: #f4f2ff;"> No </button>
+    </div>
+  </div>
+
+  <!-- updateEvent -->
+<div class="main-div" *ngIf= "update">
+  <mat-icon (click)="closePopup()" class="close-btn">close</mat-icon>
+  <div class="header">
+    <mat-icon class="alert-icon">error</mat-icon>
+    <h4>Alert !</h4>
+  </div>
+  <div fxLayout="row" fxLayoutGap="40px">
+    <div fxFlex="100" fxLayoutAlign= "center center">
+        <h4 class="py-4">{{STRINGS.editEvent.updateEventAlertMsg}}</h4>
+      </div>
+  </div>
+  <div class="modal-venue-footer row">
+    <button (click)="updateEvent()" class="mr-2"> Yes </button>
+    <button (click)="closePopup()" style=" background-color: #7966fe;  color: #f4f2ff;"> No </button>
+  </div>
+</div>
+
+  <!-- deleteUser -->
+<div class="main-div" *ngIf= "deleteUserID">
+  <mat-icon (click)="closePopup()" class="close-btn">close</mat-icon>
+  <div class="header">
+    <mat-icon class="alert-icon">error</mat-icon>
+    <h4>Alert !</h4>
+  </div>
+  <div fxLayout="row" fxLayoutGap="40px">
+    <div fxFlex="100" fxLayoutAlign= "center center">
+        <h4 class="py-3">{{STRINGS.manageUser.deleteUserAlertMsg}}</h4>
+      </div>
+  </div>
+  <div class="modal-venue-footer row">
+    <button (click)="deleteUserProceed()" class="mr-2"> Yes </button>
+    <button (click)="closePopup()" style=" background-color: #7966fe;  color: #f4f2ff;"> No </button>
+  </div>
+</div>

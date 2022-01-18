@@ -1,0 +1,55 @@
+<div class="choose-acc">
+    <div  fxLayout="column" class="blanK-section"  fxLayoutGap="30px">
+        <div class="header-margin width-80 mb-4" >
+            <mat-card  class="mb-5 shadow-none" >
+                     <div class="choose-acc-matcard-margin">
+                        <div fxLayout="row" fxLayoutAlign="end end" >
+                            <button fxLayout="row" *ngIf="(!bankList.accountLinkStatus && !bankList.stripeAccountStatus && bankList?.bank_details?.length != 0)" (click)="verifyAccount()" fxLayoutAlign="center center" class="add-btn" type="button">
+                                <mat-icon>check</mat-icon><span class="btn-add-more ml-3">Verify Account</span>
+                            </button>
+                            <button fxLayout="row"  (click)="addNewAccount()" fxLayoutAlign="center center" class="add-btn" type="button">
+                            <mat-icon>add</mat-icon><span class="btn-add-more ml-3">Add new Account</span>
+                        </button>
+                      
+                        </div>
+                        <div class="m-md-n3" fxLayoutGap="20px">
+                            <div *ngIf="bankList?.bank_details?.length == 0" fxLayout="column"  >
+                                <div style="height: 300px;" fxLayoutAlign="center center" >
+                                    <img   src="../../../../assets/img/empty_folder.svg">
+                                    <p class="btn-add-more" style=" opacity: 0.74; color: var(--charcoal-grey);">
+                                        No record Found</p>
+                                </div>
+                               
+                            </div>
+                             
+                            <div class="mat-card-custom" fxLayout="row wrap" fxLayoutGap="20px">
+                                   <mat-card class="shadow-none" fxFlex="50" fxLayoutAlign="center center" fxLayout="row" fxFlex.lt-md="100" fxLayoutGap.xs="20px" *ngFor="let detail of bankList.bank_details" >
+                                       
+                                               <div fxFlex="20"  routerLink="/getpaid/confirm/{{detail.bankIdKey}}">
+                                                <img  src="../../../../assets/img/bankicon.svg">
+                                               </div>
+                                           
+                                             <div fxFlex="60" fxLayoutGap="10px" fxLayout="column"  routerLink="/getpaid/confirm/{{detail.bankIdKey}}" >
+                                               <h3>{{detail.bankName}}</h3>
+                                               <h3>{{'XXXXXXXXXXXX'+(detail.AccountNo | slice:9:detail?.AccountNo.length)}}</h3>
+                                             </div>
+                                             <div fxFlex="20"  fxLayoutAlign="end center">
+                                                <button class="delete-btn" (click)="deleteBank(detail.bankIdKey)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                               </div>
+                                           
+                                      
+                                       
+                                   </mat-card>
+                            </div>
+                        </div>
+                     </div>
+                    
+                
+               
+                
+            </mat-card>
+        </div>
+    </div>
+</div>

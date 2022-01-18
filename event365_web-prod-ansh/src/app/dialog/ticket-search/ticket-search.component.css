@@ -1,0 +1,82 @@
+/*for button*/
+/*for font styling*/
+.ticket-search [mat-dialog-close] {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+  background: transparent;
+  font-weight: bold;
+}
+
+.ticket-search h2 {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.42px;
+  line-height: normal;
+  color: var(--charcoal-grey);
+}
+
+.ticket-search p {
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: normal;
+  color: var(--charcoal-grey);
+}
+
+.ticket-search input.mat-input-element {
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: 0.99px;
+  line-height: 1.44;
+  color: var(--charcoal-grey);
+}
+
+.ticket-search .cancel {
+  height: 40px;
+  background-color: #7966fe;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: caros;
+  width: 150px;
+  background-color: #9697b5;
+  height: 50px;
+}
+
+.ticket-search .cancel .mat-button-wrapper {
+  font-size: 17px;
+  font-weight: 100;
+  letter-spacing: 1.7px;
+  line-height: normal;
+}
+
+.ticket-search .submit {
+  height: 40px;
+  background-color: #7966fe;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: caros;
+  width: 150px;
+  height: 50px;
+}
+
+.ticket-search .submit .mat-button-wrapper {
+  font-size: 17px;
+  font-weight: 100;
+  letter-spacing: 1.7px;
+  line-height: normal;
+}
+/*# sourceMappingURL=ticket-search.component.css.map */

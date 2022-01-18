@@ -1,0 +1,115 @@
+<div class="alert_event">
+  <mat-card-title fxLayoutAlign="end center">
+    <button type="button" mat-dialog-close>×</button>
+  </mat-card-title>
+
+  <mat-dialog-content>
+    <div fxLayout="column" class="eventalrt_modal">
+      <div fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert class="mb-5">
+        <div class="circle-error">
+          <mat-icon class="mr-3">error</mat-icon> Alert!
+        </div>
+      </div>
+      <div fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert>
+        <div class="paragraph">
+
+          {{STRINGS.hostDetails.textMessage}}
+         
+        </div>
+      </div>
+      <div fxFlex="100" fxLayoutAlign="start center" mat-dialog-alert>
+        <p class="py-2">
+          <mat-checkbox (change)="getHostDetails($event)" class="example-margin" color="primary">{{STRINGS.hostDetails.autoFill}}</mat-checkbox>
+        </p>
+      </div>
+      <div *ngIf="this.webSiteUrlChecked == false &&  this.contactHostChecked == false" fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert>
+        <div class="paragraph text-danger">
+          {{STRINGS.hostDetails.atLeastOneCheck}}
+        </div>
+      </div>
+      <form [formGroup]="hostDetailsForm" (ngSubmit)="proceed()">
+        <div class="sectionone">
+            <mat-checkbox (change)="contactDetailsCheck($event)" [checked]="contactHostChecked" color="primary" > <div class="con-det">{{ STRINGS.hostDetails.enterContactDetails }}</div></mat-checkbox>
+          <!-- <mat-form-field appearance="standard" floatLabel="always" class="d-block"> -->
+            <div class="ngx-customise-position">
+              <ngx-intl-tel-input class="ngx-customise" [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true"
+                [enablePlaceholder]="true" [searchCountryFlag]="true"
+                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+                [selectedCountryISO]="selectedCountry" [customPlaceholder]="'Enter Mobile'" [phoneValidation]="true"
+                [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" name="mobile"
+                formControlName="hostMobile" (input)="changeValidation()" (ngModelChange)="changeValidation()">
+              </ngx-intl-tel-input>
+            </div>
+            <!-- <input type="number" formControlName="hostMobile" matInput placeholder= "{{ STRINGS.placeholder.placeholderEnterContactNumber }}" class="mobileinput" name="hostMobile"> -->
+            <!-- <mat-error *ngIf="
+                        hostDetailsForm.controls['hostMobile'].hasError('required')
+                      ">
+              {{ STRINGS.hostDetails.phoneNumber }}
+            </mat-error> -->
+            <p style="color: #f44336;"  *ngIf="hostDetailsForm.get('hostMobile')?.status == 'INVALID'">
+              invalid Number
+            </p>
+            
+        <!-- this field is used for the host email address -->
+          <!-- </mat-form-field> -->
+          <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+            <input type="text" formControlName="hostAddress" matInput placeholder= "{{ STRINGS.placeholder.placeholderEmail }}" name= "hostAddress" (keyup)="changeValidation()" >
+            <mat-error *ngIf="
+            hostDetailsForm.controls['hostAddress'].hasError('required')
+          ">
+          {{ STRINGS.validations.email }}
+        </mat-error>
+        <mat-error *ngIf="
+            hostDetailsForm.controls['hostAddress'].hasError('email') &&
+            (hostDetailsForm.controls['hostAddress'].dirty ||
+            hostDetailsForm.controls['hostAddress'].touched)
+          ">
+          {{ STRINGS.validations.validEmail }}
+        </mat-error>
+            <!-- <mat-error *ngIf="
+            hostDetailsForm.controls['hostAddress'].hasError('required')
+          ">
+          {{ STRINGS.hostDetails.address }}
+          </mat-error> -->
+
+          </mat-form-field>
+          <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+            <input type="text" formControlName="websiteUrl" matInput placeholder= "{{ STRINGS.placeholder.placeholderEnterWebsiteURL }}" name="websiteUrl" (keyup)="changeValidation()" >
+            <mat-error *ngIf="
+            hostDetailsForm.controls['websiteUrl'].hasError('pattern')
+          ">
+          {{'Please enter valid website URl' }}
+        </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="sectiontwo">
+            <mat-checkbox (change)="websiteUrlCheck($event)" [checked]="webSiteUrlChecked" color="primary"> 
+              <div class="con-det">{{ STRINGS.hostDetails.enterWebsiteDetails }}
+              <mat-icon class="ml-3" matTooltipPosition="above" matTooltip="{{STRINGS.hostDetails.enterWebsiteToolTip}}">info</mat-icon>
+            </div>
+            </mat-checkbox>
+          <mat-form-field appearance="standard" floatLabel="always" class="d-block">
+            <input type="text" formControlName="otherWebsiteUrl" matInput placeholder= "{{ STRINGS.placeholder.placeholderEnterWebsiteURL2 }}" name="otherWebsiteUrl">
+            <mat-error *ngIf="
+            hostDetailsForm.controls['otherWebsiteUrl'].hasError('required')
+          ">
+          {{ STRINGS.hostDetails.webUrl }}
+        </mat-error>
+        <mat-error *ngIf="
+            hostDetailsForm.controls['otherWebsiteUrl'].hasError('pattern')
+          ">
+          {{'Please enter valid website URl' }}
+        </mat-error>
+          </mat-form-field>
+          </div>
+      </form>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions fxFlex="100" fxLayoutAlign="center center" class="mt-5">
+    <button mat-button type="submit" (click)="proceed()"> Proceed </button>
+    <button mat-button [mat-dialog-close]="true"> cancel </button>
+  </mat-dialog-actions>
+
+
+</div>

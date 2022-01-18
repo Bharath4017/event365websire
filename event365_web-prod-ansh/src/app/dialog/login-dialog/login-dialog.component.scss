@@ -1,0 +1,151 @@
+.login-dialog-wraper {
+  width: 370px;
+  margin: 0 auto;
+  .mat-dialog-container{
+    padding: 0 !important;
+  }
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #666666; 
+}
+
+.social {
+  font-size: 10px;
+  border-radius: 4px;
+
+  .ng_account {
+    color: #9697b5;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    font-family: "HelveticaNeueLTPro-Md";
+  }
+  .ng_google {
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 1rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #4b4b4b;
+    background: transparent;
+    width: 100%;
+    height: 42px;
+
+    img {
+      width: 20px;
+      margin-right: 5px;
+      height: 20px;
+    }
+    p {
+      font-size: 10px;
+      font-weight: normal;
+      color: var(--charcoal-grey);
+    }
+  }
+  .ng_forgot {
+    font-weight: 500;
+    color: #343a43;
+    font-size: 1.2rem;
+  }
+  .mat-input-element {
+    border-radius: 4px;
+    border: solid 1px #e1e1e1;
+    height: 4rem;
+    padding: 0.375rem 0.75rem;
+    line-height: 1.5;
+    margin-top: 32px;
+    font-size: 1.4rem;
+    color: #9697b5;
+    font-weight: normal;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: var(--theme-color);
+      color: #000;
+    }
+  }
+  .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: unset;
+  }
+  .mat-form-field-subscript-wrapper {
+    margin-top: 20px;
+
+    img {
+      right: 1rem;
+      width: 2rem;
+      position: absolute;
+      right: 0.9rem;
+      bottom: 1.6rem;
+      cursor: pointer;
+    }
+  }
+  .mat-form-field-underline {
+    display: none;
+  }
+  .mat-form-field-label-wrapper:focus {
+    outline: none;
+  }
+  mat-label {
+    font-size: 1.4rem;
+    color: var(--theme-color);
+    font-family: var(--font-Caros);
+  }
+  .ng_forgot {
+    font-size: 12px;
+    font-family: var(--font-Caros);
+    color: var(--charcoal-grey);
+  }
+  .ng-pos-right {
+    top: 24px;
+  }
+}
+.input-icon {
+  position: absolute;
+  right: 0.99rem;
+  bottom: 1.4rem;
+  width: 2rem;
+  cursor: pointer;
+}
+.forgot-link {
+  font-size: 12px;
+  color: var(--charcoal-grey);
+  font-weight: normal;
+}
+.login-btn {
+  width: 27.2rem;
+  background-color: #7966fe;
+  height: 4.8rem;
+  color: #f4f2ff;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  margin: 1rem auto;
+  border-radius: 7.5rem;
+}
+.login-in {
+  font-weight: 500;
+  color: #715ff2;
+  font-size: 16px;
+  text-align: left;
+}
+}
+@media all and (min-width: 599px) {
+  .social-mob {
+    display: none;
+  }
+}
+
+@media all and (max-width: 599px) {
+  .social-desk {
+    display: none;
+  }
+  .social-mob {
+    display: block;
+  }
+  .login-dialog-wraper {
+    width: 100% !important;
+    padding: 10px;
+    .social .ng_google p{
+      font-size: 9px !important;
+    }
+}
+}

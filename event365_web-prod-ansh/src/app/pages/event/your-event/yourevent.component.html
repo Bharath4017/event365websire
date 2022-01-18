@@ -1,0 +1,39 @@
+<div class="yourevent_wrapper" >
+    <mat-card>
+        <div fxLayout="row" fxLayoutAlign="start start" >
+            <div fxFlex="100" >
+                <!-- <p class="danger-note">Note: A minimum payment of $100 is required to post any paid event.</p> -->
+                <p class="danger-note mb-4">Note: Since no tickets will be created, you will be responsible for a listing fee in order to post and share this event using our platform.
+                </p>
+            </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start" >
+                <div fxFlex="100" >
+                    <mat-card class="center-inner shadow-none">
+                        <mat-card-title>
+                            {{eventName}}
+                        </mat-card-title>
+                        <mat-card-content>
+                                <p class="d-flex align-items-center">
+                                    <span><mat-icon class="mr-4">access_time</mat-icon> </span>
+                                    <span class="mr-3">{{createEventDetails.start | date:'dd MMM, YYYY'}}</span> 
+                                    <span class="icon">|</span> 
+                                    <span class="ml-3">{{createEventDetails.startTime | date: "hh:mm"}} - {{createEventDetails.endTime | date: "hh:mm a"}}</span>
+                                </p>
+                                <p class="d-flex align-items-center">
+                                    <span><img height="22" width="24" src="{{ location }}" alt="" class="mr-4"> </span>
+                                    <span>{{createEventDetails.venueDetails.venueAddress}}</span> 
+                                </p>
+                        </mat-card-content>
+                        <mat-card-subtitle fxLayoutAlign="center center" class="mb-0">Total price : ${{amount}}</mat-card-subtitle>
+                        <div fxLayout="row" fxLayoutAlign="center center" class="mb-5 pb-5">
+                            <div fxFlex="100" fxLayoutAlign="center center">
+                                <button mat-button (click)="paymentMethod()">Checkout</button>
+                            </div>
+                            </div>
+                    </mat-card>   
+                </div>
+                </div>
+        
+       </mat-card>
+       </div>

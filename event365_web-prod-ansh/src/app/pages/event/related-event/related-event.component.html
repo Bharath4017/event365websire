@@ -1,0 +1,139 @@
+ <div class="realted-Event-Deatil-Wraper height-auto">
+   <div class="card-main-box width-80" [ngClass]="{'card-bootom-0' : realtedEventDeatil.length == '0'}">
+     
+
+    <div fxlayout="row"  class="w-100"  *ngIf="realtedEventDeatil.length === 0">
+      <h3 class="datanotFound px-2 mt-5">Data {{ STRINGS.home.notAvailable}}</h3>
+    </div>
+     <div class="card-row">
+      
+
+       <div class="card-box" *ngFor="let items of realtedEventDeatil">
+         <div class="card-image" [ngStyle]="{
+                              'background-image': items.eventImages[0]?.eventImage
+                                  ? 'url(' + items.eventImages[0]?.eventImage + ')'
+                                  : ''
+                              }">
+           <div class="calender">
+            <ng-container  *ngIf="items.recuringDate != ''; else startDateBlock">
+              <p class="date">
+                  <!-- {{ items.start | date: "dd" }} -->
+                  {{convertDateUTC(items.recuringDate)}}
+                  <span class="month">{{ items.recuringDate | date: "LLL" }}</span>
+                
+              </p>
+          </ng-container>
+          
+          <ng-template #startDateBlock>
+              <p class="date">
+                  <!-- {{ items.start | date: "dd" }} -->
+                  {{convertDateUTC(items.start)}}
+                  <span class="month">{{ items.start | date: "LLL" }}</span>
+              </p>
+          </ng-template>
+             <a href="javascript: void(0) ">
+               <div class="calender-add">
+                 <img src="../../../../assets/img/add-calender.svg " />
+               </div>
+             </a>
+           </div>
+           <div *ngIf="userType === STRINGS.userType.lowercaseUser" class="wishlist" (click)="markFavorites(items)">
+             <img
+               [src]="items?.favorite?.isFavorite === true ? '../../../../assets/img/favorite-blue.svg' : '../../../../assets/img/favorite.svg'"
+               class="heart-icon liked-heart-icon">
+           </div>
+           <div class="click-empty-div" (click)="navigateEventDetail(items?.id)">
+
+          </div>
+           <div class="card-image-bottom">
+             <div class="width-10 flex-start">
+               <div class="participants-main" *ngIf="items.guestcount !== '0'">
+               </div>
+               <div class="participants-number">
+                 {{ items.guestCount[0]?.count === '0' ? items.guestCount[0]?.count : items.guestCount[0]?.count + '+ Going' }}
+               </div>
+              </div>
+             <div class="width-10 like-dislike">
+               <div class="like" (click)="likeDislikeEvent(items.id,1)">
+                 <img src="../../../../assets/img/thumbsup.svg " class="like-icon" />
+                 <span class="like-count">{{ items.currentLikeCount === null ? 0 :
+                                          items.currentLikeCount }}</span>
+               </div>
+               <div class="like" (click)="likeDislikeEvent(items.id,2)">
+                 <img src="../../../../assets/img/thumbsdown.svg " class="like-icon" />
+                 <span class="like-count">{{
+                                          items.currentDisLikeCount === null ? 0 : items.currentDisLikeCount
+                                          }}</span>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="card-details">
+           <div (click)="navigateEventDetail(items?.id)">
+             
+             <div fxLayout="row" fxLayoutGap="10px" class="mt-3" fxLayoutGap.md="0">
+              <div  fxFlex="70" fxLayoutAlign="start center">
+                <h1 class="event-name" (click)="navigateEventDetail(items?.id)">{{ items.name }}</h1>
+              </div>
+              <div  fxFlex="30" fxLayoutAlign="end center">
+                  <p class="date orange-colur">
+                    {{todayAndYesterday(items.start) ? todayAndYesterday(items.start) : items.start | date: "MM/dd/YYYY" }} </p> 
+              </div>
+             </div>
+             <!-- {{ items.start | date: "dd/MM/YYYY" }}  -->
+             <div class="event-venue">
+               <div class="event-venue-icon">
+                 <img src="../../../../assets/img/card-location.svg " />
+               </div>
+               <p class="event-venue-place address-height">
+                 {{ (items.venueEvents[0]?.city)?(items.venueEvents[0]?.city):''}}
+                 {{ (items.venueEvents[0]?.state)? ','+(items.venueEvents[0]?.state):''}}
+               </p>
+             </div>
+
+
+             <div fxLayout="row" fxLayoutGap="10px" class="mt-3" fxLayoutGap.md="0"> 
+              <div  fxFlex="50" fxLayoutAlign="start center">
+                  <div class="event-venue-icon mr-3">
+                      <img src="../../../../assets/img/distance.svg " />
+                  </div>
+                  <p class="event-venue-place pr-1">{{getDistance(items.distance) }} Miles
+                  </p>
+                  </div>
+                  <div  fxFlex="50" fxLayoutAlign="end center">
+                      <div class="event-time">
+                          <div class="watch-imgs">
+                              <img src="../../../../assets/img/timer.svg" />
+                          </div>
+                          <p class="time">
+                              {{ getFormattedDate(items.start)  }} to {{ getFormattedDate(items.end) }}
+                          </p>
+                          </div>
+                  </div>
+
+                  </div>
+
+           </div>
+           <div>
+             <hr class="divider" />
+             <div class="social-share">
+               <div class="event-venue-place">{{ STRINGS.home.share }}:</div>
+               <div class="social-platform-icon">
+                 <a (click)="openSocialMedia(items,'mail')">
+                   <img src="../../../../assets/img/awesome-mail.svg " class="like-icon" />
+                 </a>
+               </div>
+               <div class="social-platform-icon">
+                 <a (click)="openSocialMedia(items,'facebook')">
+                   <img src="../../../../assets/img/awesome-facebook-f.svg " class="like-icon" />
+                 </a>
+               </div>
+               <div class="social-platform-icon">
+                 <a (click)="openSocialMedia(items,'twitter')">
+                   <img src="../../../../assets/img/awesome-twitter.svg " class="like-icon" />
+                 </a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>

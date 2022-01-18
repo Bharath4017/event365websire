@@ -1,0 +1,177 @@
+@import '../../../assets/css/mixin.scss';
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.mat-tooltip {
+    object-fit: cover;
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--charcoal-grey) !important;
+    box-shadow: 0 0 6px 0 rgb(121 102 254 / 20%);
+    background: #ffffff !important;
+    // &:after{
+    //     content: '';
+    //     width: 20px;
+    //     height: 20px;
+    //     padding: 15px 15px 25px;
+    //     border: 1px solid #ddd;
+    //     border-radius: 4px 4px 0 0;
+    //     position: absolute;
+    //     bottom: 0px;
+    //     left:50%;
+
+    // }
+
+  }
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.alert_event{
+    display: block !important;  
+    padding: 0 28px;
+    [mat-dialog-close]{
+        font-size: 3rem;
+        color: #9697b5;
+        height: 30px;
+        line-height: 30px;
+    }
+    [mat-dialog-alert]{
+        min-height: 3rem;
+        color: #343a43;
+        font-size: 2rem;
+        font-weight: 900;
+    }
+    
+    [mat-button]{
+        @include replacewidth(188px);
+        height: 48px;
+        text-transform: capitalize;
+        margin-bottom: 3rem;
+        font-weight: 100;
+        letter-spacing: 1.4px;
+    }
+    [matprefix]{
+        font-size: 16px;
+        width: 96px;
+        color: #818181;
+        position: relative;
+        font-family: var(--font-'HelveticaNeueLTPro-Md');
+        &:after{
+            content: "";
+            height: 42px;
+            width: 1px;
+            background-color: #9f9f9f;
+            position: absolute;
+            top: -13px;
+            z-index: 999999999;
+            right: 0;
+            opacity: 0.29;
+        }
+    }
+    // .mobileinput.mat-input-element {
+        // padding-left: 26px;
+//   }
+    .mat-dialog-content{
+        .circle-error{
+            display: flex;
+            align-items: center;
+            .mat-icon{
+                color: #f25555;
+            }
+            font-family: 'HelveticaNeueLTPro-Md';
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: normal;
+            color: var(--charcoal-grey);
+        }
+        .paragraph{
+            opacity: 0.74;
+            font-family: 'HelveticaNeueLTPro-Md';
+            font-size: 12px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.25;
+            letter-spacing: normal;
+            color: var(--charcoal-grey);
+        }
+        p{
+            opacity: 0.74;
+            font-family: 'HelveticaNeueLTPro-Md';
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: normal;
+            color: var(--charcoal-grey);
+        }
+        .con-det{
+            opacity: 0.82;
+            font-family: 'HelveticaNeueLTPro-Md';
+            font-size: 16px;
+            font-weight: 200;
+            // line-height: 1.25;
+            letter-spacing: 0.32px;
+            color: var(--black);
+            display: flex;
+        }
+        .mat-form-field-wrapper {
+            // padding: 0;
+            margin-top: 18px;
+            .mat-form-field-underline {
+              display: none;
+            }      
+        .mat-form-field-flex {
+            border-radius: 4px;
+            border: solid 1px #e1e1e1;
+            padding: 13px 12px 11px 15px;
+            .mat-form-field-infix {
+              border: unset;
+              padding: 0;
+              .mat-input-element {
+                font-size: 14px;
+                opacity: 0.6;
+                height: 18px;
+                color: var(--charcoal-grey);
+                font-family: var(--font-'HelveticaNeueLTPro-Md');
+                &:focus {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+      
+        }
+    }
+
+}
+
+.ngx-customise-position
+{
+  position: relative;
+.ngx-customise{
+  .iti input, .iti input[type=text], .iti input[type=tel]{
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    margin-top: 22px !important;
+    font-size: 14px;
+  }
+
+  .iti--allow-dropdown{
+    width: 100%;
+    display: block !important;
+  }
+}
+}
+ 
+

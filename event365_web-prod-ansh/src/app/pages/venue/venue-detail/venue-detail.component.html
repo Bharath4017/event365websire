@@ -1,0 +1,134 @@
+<div class="blanK-section d-block mb-4">
+    <div class="venue-detail-wrapper" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="start start"
+        fxLayoutGap.md="0px" fxLayoutGap="5px">
+
+        <div *ngIf="venueOwner" class="venue_detailes">
+            <div class="header-icons">
+                <!-- <button *ngIf="id" routerLink="/venue/edit/{{venueDetail?.id}}" class="mat-icon-edit">
+                    <mat-icon>edit</mat-icon>
+                </button> -->
+                <button *ngIf="venueOwner && locid" routerLink="/venue/location/edit/{{venueDetail?.id}}" class="mat-icon-edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button *ngIf="venueOwner && locid" (click)="deleteVenueAlertOpen()" class="mat-icon-delete" style="margin-left: 13px;">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <mat-card  fxLayout="column">   
+            <div *ngIf="venueDetail?.venueImages?.length == 0" fxFlex="100" style="margin-top: -110px; ">
+
+                <swiper class="swiper-container related-events" [config]="config" [disabled]="disabled">
+
+                    <div class="swiper-slide">
+                        <mat-card class="mat-event" matRipple>
+                            <div fxLayoutAlign="center center" style="object-fit: fill;  color: white;"
+                                class="related-event-img">
+                                <h2>No image</h2>
+                            </div>
+                        </mat-card>
+                    </div>
+
+                </swiper>
+
+
+            </div>
+            <div *ngIf="venueDetail?.venueImages?.length!=0" fxFlex="100" style="margin-top: -110px; ">
+
+                <swiper class="swiper-container related-events" [config]="config" [disabled]="disabled">
+
+                    <div class="swiper-slide" *ngFor="let venueImg of venueDetail?.venueImages">
+                        <mat-card class="mat-event" matRipple>
+                            <div class="related-event-img">
+                                <img src="{{venueImg.venueImages}}" alt="">
+                            </div>
+                        </mat-card>
+                    </div>
+
+                </swiper>
+
+
+            </div>
+                
+                <div fxLayout="row" fxLayout.xs="row wrap" class="header-top mt-5">
+                    <div fxFlex="33" fxFlex.xs="40">
+                            <h4 class="text mb-3">Venue Type</h4>
+                            <p class="text mb-3">{{ venueType }}</p>
+                    </div> 
+                    <div fxFlex="33" fxFlex.xs="60" *ngIf="venueDetail.venueCapacity">
+                            <h4 class="text mb-3">Total Venue Capacity</h4>
+                            <p class="text mb-3">{{venueDetail.venueCapacity}}</p>
+                    </div> 
+                    <div fxFlex="33" fxFlex.xs="100" *ngIf="venueDetail.websiteURL!= 'null' && venueDetail.websiteURL">
+                            <h4 class="text mb-3">Website</h4>
+                            <p class="text mb-3">{{venueDetail.websiteURL}}</p>
+                    </div> 
+                </div>
+
+
+                        
+                <div fxLayout="column"  class="header-top mt-5">
+                    <!-- <div fxFlex="100" >
+                        <div *ngIf="venueOwner && locid" fxLayout="row" class="mb-3">
+                            <mat-slide-toggle [disabled]='true'  [checked]="venueDetail.isVenueAvailableToOtherHosts" labelPosition="before">
+                                <mat-label class="slider-label">{{ STRINGS.createVenue.Availability}}</mat-label>
+                             </mat-slide-toggle>
+                        </div>
+                    </div>  -->
+                    <div fxFlex="100" >
+                        <h4 class="text mb-3">{{ STRINGS.createVenue.Availability}}</h4>
+                        <p class="text mb-3">{{(venueDetail.isVenueAvailableToOtherHosts) ?  'Yes' : 'No'}}</p>
+                    </div> 
+                    <div fxFlex="100" >
+                            <h4 class="text mb-3">Address</h4>
+                            <p class="text mb-3">{{venueDetail.venueAddress}}</p>
+                    </div> 
+                    <div fxFlex="100" *ngIf = "venueDetail.shortDescription">
+                            <h4 class="text mb-3">Description</h4>
+                            <p class="text mb-3"> {{venueDetail.shortDescription}}       
+                     </div> 
+                </div>
+
+
+
+        </mat-card>
+
+        <mat-card class="second-section width-80" fxLayoutGap="10px">
+            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start">
+                <div fxLayout="column" fxFlex="50" fxLayoutGap="10px">
+                    <h2 class="text mb-3">Hours of Operation</h2>
+                    <p *ngFor="let day of venueDetail.daysAvailable">
+                        <span class="text mb-3">{{day.weekDayName | weekDayName}} from {{day.fromTime | slice:0:5 }} to
+                            {{day.toTime | slice:0:5}}</span>
+                    </p>
+                    <p *ngIf="!venueDetail.daysAvailable?.length">
+                        <span style="color: red;" class="text mb-3">No Info Available</span>
+                    </p>
+                </div>
+                <div fxLayout="column" fxFlex="50">
+                    <div class="vertical-line mt-3"></div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign.lt-md="space-between start" fxLayoutGap="10px" fxFlex="50">
+                    <h2 fxLayoutAlign="start start" class="text mb-3">Sub Venues</h2>
+                    <p *ngFor="let subvenue of venueDetail.subVenues">
+                        <span class="text mb-3">{{subvenue.subVenueName}}({{subvenue.subVenueCapacity}} capacity)</span>
+                    </p>
+                    <p *ngIf="!venueDetail.subVenues?.length">
+                        <span style="color: red;" class="text mb-3">No Sub Venue Available</span>
+                    </p>
+                   
+                    <button *ngIf="id" [class.disabled]="isBooked=='Yes'" [disabled]="isBooked=='Yes'" (click)="subVenuePopup()" class="venue-select-button">Select</button>
+                </div>
+            </div>
+        </mat-card>
+
+
+    </div>
+</div>
+
+
+
+
+
+<!-- share button-->

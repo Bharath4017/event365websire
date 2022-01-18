@@ -1,0 +1,17 @@
+.ng_wrapper {
+  background-color: #fff;
+  width: calc(100% - 20%);
+  margin: 10% 10% 10% 10%;
+  .ng_inner {
+    padding: 5rem;
+    margin-top: -20rem;
+    //margin-top: -35rem !important;
+    box-shadow: unset;
+    border-radius: 10px;
+
+    button {
+      border-radius: 75.8px;
+      background-color: #7966fe;
+    }
+  }
+}

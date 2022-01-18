@@ -1,0 +1,35 @@
+<div class="middle-section">
+    <section class="form-block width-80">
+        <div class="form-illustration-box">
+            <img src="../../../assets/img/login.svg" class="form-illustration" />
+        </div>
+        <div class="form-box">
+            <h2 class="form-heading form-heading-min">{{ STRINGS.submitInfo.submitPreference }}</h2>
+
+            <div class="white-box">
+                <!--.............. for bubbles...............-->
+                <div class="bubble-box" *ngIf="!showSubCategory">
+                    <p id="dynamic_{{i}}" class="bubble" style="cursor: pointer"
+                        *ngFor="let item of categoryList; let i = index"
+                        [ngClass]="{ 'opacity-min': selectedCategory.includes(item.id) }">
+                        <span class="bubble-text">{{ item.categoryName | preferenceCategory }}</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p>
+                </div>
+                <div class="bubble-box" *ngIf="showSubCategory">
+                    <p id="dynamic_{{i}}" class="bubble" style="cursor: pointer"
+                        *ngFor="let item of subCategoryList; let i = index"
+                        [ngClass]="{ 'opacity-min': selectedSubCategoryList.includes(item.id) }">
+                        <span class="bubble-text">{{ item.subCategoryName | preferenceCategory }}</span>
+                        <img src="../../../../../assets/img/Clip@2x.png" class="bubble-icon" />
+                    </p>
+                </div>
+                <div style="text-align: center">
+                    <button class="primary-btn">
+                        {{showSubCategory ? STRINGS.buttons.submit : STRINGS.buttons.next}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,20 @@
+<div fxLayout="column"  class="cus_modal px-2">
+  <div fxFlex="100" fxLayoutAlign="end center">
+     <button type="button" mat-dialog-close>×</button>
+   </div>
+  <div fxFlex="100" fxLayoutAlign="center center" mat-dialog-alert>
+        <mat-icon class="succes" *ngIf = "successIcon">check_circle</mat-icon>
+        <mat-icon *ngIf = "errorIcon">error</mat-icon>
+        <h1>{{ STRINGS.alert.alertHeading }}</h1>
+   </div>
+
+<div mat-dialog-content fxFlex="100" fxLayoutAlign="center center">{{ messageerror.name }}</div>
+<!-- <div mat-dialog-content fxFlex="100" fxLayoutAlign="center center">{{ messageerror.name }}</div> -->
+<div *ngIf="!venueRemovedDateAndTime" mat-dialog-actions fxFlex="100" fxLayoutAlign="center center">
+  <button mat-button [mat-dialog-close]="true" *ngIf="errorBlock" > Return </button>
+  <a routerLink="/user/contact-us"><button mat-button [mat-dialog-close]="true" class="ml-2" *ngIf="!errorBlock"> Contact Us </button></a>
+</div>
+<div *ngIf="venueRemovedDateAndTime" mat-dialog-actions fxFlex="100" fxLayoutAlign="center center">
+  <button mat-button [mat-dialog-close]="true" (click) = "removeVenue()"> Return </button>
+</div>
+</div>

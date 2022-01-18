@@ -1,0 +1,14 @@
+  
+  @media all and  (max-width: 420px) {
+.prefrence_wrapper{
+    .prefrence_inner{
+      padding: 0 !important;
+    }
+    .add-more{
+        width: calc(100% - 20px) !important;
+        .add-icon{
+            display: none;
+        }
+    }
+  }
+}

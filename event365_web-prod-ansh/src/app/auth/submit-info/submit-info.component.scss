@@ -1,0 +1,95 @@
+.submit-info
+{
+    height: 100% !important;
+    margin-bottom: 5rem;
+    .mat-card{
+        background-color: #fff;
+        width: calc(100% - 20%);
+        margin: 0  auto;
+        margin-top: -12rem !important;
+        padding: 4rem;
+    }
+}
+.custextarea{
+    height: 60px;
+}
+.textarea-height {
+    margin-top: 4rem;
+    height: auto;
+}
+.skip-btn {
+    width: 100%;
+    background:#cac6c6;
+    margin-right: 2rem;
+}
+.mar-null {
+
+    width: 100%;
+}
+.input-error-wrapper {
+    .otp-field-wrapper {
+        width: 28rem;
+        margin:0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .otp-input {
+            width: 4.6rem;
+            height: 4.6rem;
+            min-width: 4.6rem;
+            margin: 0rem 2rem 0 0;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            background-color: #fff;
+            color:#4b4b4b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+       
+    }
+}
+.margin-top-8 {
+    margin-top: 8rem;
+}
+.border-error {
+    border: 1px solid rgb(255, 57, 90, .4);
+    box-shadow: 0 0px 3px rgb(255, 57, 90, .4);
+}   
+@media only screen and (max-width: 768px)
+{
+    .form-illustration-box{
+        display: none;
+    }
+    .form-box
+    {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+    }
+    .middle-section
+    {
+        margin-bottom: 5rem;
+    }
+}
+
+@media only screen and (max-width: 500px)
+{
+    .middle-section
+    {
+        margin-bottom: 12rem;
+    }
+    .form-block
+    {
+        // height: auto;
+        padding: 3rem 2rem 0rem 5rem;
+    }
+    .form-heading
+    {
+        font-size: 2.2rem;
+    }
+    // .skip-btn
+    // {
+    //     margin-bottom: 1rem;
+    // }
+}

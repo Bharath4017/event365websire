@@ -1,0 +1,401 @@
+<div [ngClass.lt-md]="filterstep1 ? 'mobilelarge' : 'mobilesmall'">
+  <div class="topheader"   [ngStyle]="{'background-color': topBannerContent.bg_color }" 
+  *ngIf="isActive">
+  <p [ngStyle]="{'color' : topBannerContent.text_color }" *ngIf="topBannerContent.url; else ElsePart">
+    <span class="Hidebannertext-xs">
+      {{(topBannerContent.text.length>20)?(topBannerContent.text | slice:0:20)+'...':(topBannerContent.text)}}
+    </span>
+    <span  class="Hidebannertext-s">
+      {{(topBannerContent.text.length>38)?(topBannerContent.text | slice:0:38)+'...':(topBannerContent.text)}}
+    </span  >
+    <span  class="Hidebannertext-xm">
+      {{(topBannerContent.text.length>56)?(topBannerContent.text | slice:0:56)+'...':(topBannerContent.text)}}
+    </span>
+    <span  class="Hidebannertext-m">
+      {{(topBannerContent.text.length>68)?(topBannerContent.text | slice:0:68)+'...':(topBannerContent.text)}}
+    </span>
+    <span  class="Hidebannertext-xmd">
+      {{(topBannerContent.text.length>90)?(topBannerContent.text | slice:0:90)+'...':(topBannerContent.text)}}
+    </span>
+    <span  class="Hidebannertext-md">
+      {{(topBannerContent.text.length>140)?(topBannerContent.text | slice:0:140)+'...':(topBannerContent.text)}}
+    </span>
+    <span  class="Hidebannertext-ld">
+      {{(topBannerContent.text.length>150)?(topBannerContent.text | slice:0:150)+'...':(topBannerContent.text)}}
+    </span>
+    <span  class="Hidebannertext-l">
+      {{(topBannerContent.text.length>170)?(topBannerContent.text | slice:0:170)+'...':(topBannerContent.text)}}
+    </span>
+    <span  class="Hidebannertext-xl">
+      {{(topBannerContent.text.length>190)?(topBannerContent.text | slice:0:190)+'...':(topBannerContent.text)}}
+    </span>
+    <a [ngStyle]="{'color' : topBannerContent.text_color }"  [href]="[topBannerContent.url]" target="_blank">
+     Click Here <i class="fas fa-external-link-alt"></i>
+    </a>
+  </p>
+    
+  <ng-template #ElsePart>
+      <p [ngStyle]="{'color' : topBannerContent.text_color }">
+        <span class="Hidebannertext-xs">
+          {{(topBannerContent.text.length>20)?(topBannerContent.text | slice:0:20)+'...':(topBannerContent.text)}}
+        </span>
+        <span  class="Hidebannertext-s">
+          {{(topBannerContent.text.length>38)?(topBannerContent.text | slice:0:38)+'...':(topBannerContent.text)}}
+        </span  >
+        <span  class="Hidebannertext-xm">
+          {{(topBannerContent.text.length>56)?(topBannerContent.text | slice:0:56)+'...':(topBannerContent.text)}}
+        </span>
+        <span  class="Hidebannertext-m">
+          {{(topBannerContent.text.length>68)?(topBannerContent.text | slice:0:68)+'...':(topBannerContent.text)}}
+        </span>
+        <span  class="Hidebannertext-xmd">
+          {{(topBannerContent.text.length>90)?(topBannerContent.text | slice:0:90)+'...':(topBannerContent.text)}}
+        </span>
+        <span  class="Hidebannertext-md">
+          {{(topBannerContent.text.length>140)?(topBannerContent.text | slice:0:140)+'...':(topBannerContent.text)}}
+        </span>
+        <span  class="Hidebannertext-ld">
+          {{(topBannerContent.text.length>150)?(topBannerContent.text | slice:0:150)+'...':(topBannerContent.text)}}
+        </span>
+        <span  class="Hidebannertext-l">
+          {{(topBannerContent.text.length>170)?(topBannerContent.text | slice:0:170)+'...':(topBannerContent.text)}}
+        </span>
+        <span  class="Hidebannertext-xl">
+          {{(topBannerContent.text.length>190)?(topBannerContent.text | slice:0:190)+'...':(topBannerContent.text)}}
+        </span>
+        <!-- <a [ngStyle]="{'color' : topBannerContent.text_color }">! Click Here 
+          <i class="fas fa-external-link-alt"></i>
+        </a> -->
+      </p>
+  </ng-template>
+  </div>
+<header class="header-custom" 
+ [ngClass]="{
+  'header-sm': headerSize === STRINGS.headerSize.small,
+  'header-max': headerSize === STRINGS.headerSize.large,
+  'header-bwt-md-sm': headerSize === STRINGS.headerSize.betMedSmall ,
+  'header-md': ((userType === STRINGS.userType.lowerCaseVenuer || userType === STRINGS.userType.lowerCasePromoter || 
+  userType === STRINGS.userType.member || userType === STRINGS.userType.lowerCaseHost) && isHome)
+}"
+>
+<div class="header-swiper" *ngIf="headerSize === STRINGS.headerSize.large">
+  <swiper class="swiper-container event-image-slider" [config]="headerconfig" >
+    <div *ngFor="let slide of HeaderImageSliders" >
+      <img class="swiper-slide obj-img" 
+      [attr.src]="slide?.image ? slide?.image : defolutHeaderImage"
+      alt="">
+      </div>
+  </swiper>
+</div>
+
+
+  <div class="inner-header width-80">
+    <a href="javascript:void(0)" class="logo-wrapper" routerLink="/home" fxLayoutAlign="center center">
+      <img *ngIf="!partnerSideLogo" src="../../../assets/img/Logo_365 Live - Blue_1.2 copy 2@2x.png" class="logo" />
+      <img *ngIf="partnerSideLogo" src="../../../assets/img/partnerlogo.png" class="partlogo" />
+      <span class="logo-text">{{ STRINGS.name.live365 }}</span>
+    </a>
+    <span class="humberger-icon" (click)="openNav()">&#9776;</span>
+    <nav class="nav-wrapper nav-hide"
+      [ngClass]="{'nav-wrapper-small':userType === STRINGS.userType.lowerCaseHost || userType === STRINGS.userType.lowerCasePromoter || userType === STRINGS.userType.member}">
+      <ng-container *ngFor="let navItems of navHeader">
+        <a *ngIf="(!navItems?.loginSignup && !navItems?.isProfile && !navItems?.isNotification && !navItems?.isRsvp)"
+          href="javascript:void(0)" class="nav-item" [ngClass]="{'active':isActiveNav === navItems.isActive}"
+          [routerLink]="[navItems.path]">
+          <img *ngIf="navItems?.icon !== ''" [src]="navItems.icon" [class]="navItems.iconClass" />
+          {{navItems?.title}}
+          <div [ngClass]="{'border-active':isActiveNav === navItems.isActive}" [routerLink]="[navItems.path]"></div>
+        </a>
+
+        <div  *ngIf="navItems?.isRsvp" class="nav-item">
+          <a 
+          href="javascript:void(0)" class="cus-nav-link" [ngClass]="{'active':isActiveNav === navItems.isActive}"
+          [routerLink]="[navItems.path]">
+          <img *ngIf="navItems?.icon !== ''" [src]="navItems.icon" [class]="navItems.iconClass" />
+          {{navItems?.title}}
+          <div [ngClass]="{'border-active':isActiveNav === navItems.isActive}" [routerLink]="[navItems.path]"></div>
+        </a>
+            <span class="rsvp-badge" *ngIf="PendingRsvpCount > 0">{{PendingRsvpCount}}</span>
+        </div>
+
+
+        <div *ngIf="navItems?.divider" class="nav-divider"></div>
+        <button *ngIf="navItems?.loginSignup" class="nav-btn"
+          [ngClass]="{'nav-btn-transparent':isHome && (userType === STRINGS.userType.guestUser || userType !== STRINGS.userType.guestUser) }"
+          routerLink="/auth/login">
+          {{ navItems.title }}
+        </button>
+        <div class="dropdown dropbottom cus_dropdow" *ngIf="navItems?.isNotification">
+          <button type="button" class="dropdown-toggle bg-transparent" data-toggle="dropdown"
+            (click)="notificationListing()">
+            <img *ngIf="navItems?.icon !== ''" [src]="navItems.icon" [class]="navItems.iconClass" />
+            <span class="badge badge-dark" *ngIf="TotalNotiCount > 0">{{ TotalNotiCount }}</span>
+          </button>
+          <div class="dropdown-menu  notification-menu">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="header">
+              <div fxFlex="50">
+                <p>{{STRINGS.notification.Notification}}</p>
+              </div>
+              <div fxFlex="50" fxLayoutAlign="end center" >
+                <span (click)="clearall($event)" class="cursor_pointer" *ngIf="clearAllString">{{STRINGS.notification.clearAll}}</span>
+              </div>
+            </div>
+            <div class="notification_wrapper">
+              <ng-container>
+                <div fxLayout="row" class="mt-3" fxLayoutAlign="space-between center"
+                  *ngFor="let notification of notificationList">
+                  <div fxFlex="15" fxLayoutAlign="center center">
+                    <div class="profile">
+                      <ng-container *ngIf="!notification?.sender[0]?.profilePic; else elseBlock">
+                        <ngx-avatar class="profle-image"
+                          name="{{notification?.sender[0]?.name ? notification?.sender[0].name : 'User Name' }}">
+                        </ngx-avatar>
+                      </ng-container>
+                      <ng-template #elseBlock>
+                        <img [src]="notification?.sender[0]?.profilePic" width="26px" height="26px"
+                          class="rounded-circle">
+                      </ng-template>
+                    </div>
+                  </div>
+                  <div fxFlex="85">
+                    <p class="message">{{notification.msg}}</p>
+                    <p>{{STRINGS.notification.About}} {{ getIimeDiff(notification.dateTime) }}
+                      {{STRINGS.notification.ago}} </p>
+                  </div>
+                </div>
+              </ng-container>
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="footer"
+                [ngClass]="{'border-0' : TotalNotiCount == 0}">
+                <div fxFlex="100">
+                  <p routerLink="notification"  class="cursor_pointer mb-2">
+                    {{STRINGS.notification.allNotification}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown" *ngIf="navItems?.isProfile">
+          <button type="button" class="profile" data-toggle="dropdown" >
+            <ng-container *ngIf="!userDetails?.profilePic; else elseBlock">
+              <div class="profile">
+                <ngx-avatar class="profle-image" name="{{userDetails?.name}}"></ngx-avatar>
+              </div>
+            </ng-container>
+            <ng-template #elseBlock>
+              <img [src]="userDetails?.profilePic" class="profle-image">
+            </ng-template>
+          </button>
+          <div class="dropdown-menu profile-menu">
+            <img src="../../../assets/img/up-arrow.svg" class="up-arrow" />  
+            <ng-container *ngFor="let element of userProfile"  >
+              <a  class="dropdown-item profile-item"  routerLink="{{element.path}}" 
+              >
+              {{element.title }}
+                <label *ngIf="element.title === this.STRINGS.header.notification" class="switch">
+                  <input type="checkbox" class="slider-input" checked>
+                  <span class="slider round"></span>
+                </label>
+              </a>
+            </ng-container>
+            <a class="dropdown-item profile-item logout-color" href="javascript: void(0)"
+              (click)="logOutBtn()">{{STRINGS.header.logout}}</a>
+          </div>
+        </div>
+      </ng-container>
+    </nav>
+  </div>
+  <div class="width-80">
+    <h1 *ngIf="headerName !== ''" class="page-heading page-heading-mb">
+      {{ headerName }}
+    </h1>
+    <a *ngIf="isBack" href="javascript:void(0)" class="nav-item navBack" (click)="backClick()">
+      <img src="../../../assets/img/left-arrow.svg" class="back-icon" /> {{ STRINGS.buttons.back }}
+    </a>
+  </div>
+  <div class="width-80"
+    *ngIf="isHome && userType !== STRINGS.userType.lowerCaseVenuer && userType !== STRINGS.userType.lowerCasePromoter && userType !== STRINGS.userType.lowerCaseHost && userType !== STRINGS.userType.member">
+    <!--...search bar......-->
+    <form [formGroup]="filterForm" class="search-box">
+      <div fxLayout="row" fxLayout.lt-md="row wrap" class="search-box-gap" fxLayoutAlign="center center" fxLayoutAlign.lt-md="end center">
+        <div fxFlex="40" fxFlex.xs="100" fxFlex.sm="32" class="search-header">
+          <div class="location ">
+            <input class="search-input" (click)="callEventApiforAutoComplete()" formControlName="search" type="text"
+              name="myCountry" placeholder="Search by Event Name/Code" [matAutocomplete]="auto" />
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+            <img src="../../../assets/img/search@2x.png" class="search-icon" />
+          </div>
+        </div>
+        <div fxFlex="20" fxFlex.xs="49" fxFlex.sm="22" class="search-header">
+          <div class="location ">
+            <!-- (click)="ngAfterViewInit()" remove for now in input -->
+            <input class="search-input" formControlName="location" #locationField type="text" name="myCountry"
+            (click)="ngAfterViewInit()" placeholder="Location" (change)="submitFilterValuesOnPlaceChange()" />
+            <img src="../../../assets/img/location-on.svg" class="search-icon" (click)="allowBrowserLocation()" />
+          </div>
+        </div>
+        <div fxFlex="25" fxFlex.xs="49" fxFlex.sm="28" class="search-header">
+          <div class="location">
+            <mat-date-range-input [rangePicker]="headerdatepicker" [min]="minCurrentDate" class="search-date">
+              <input (click)="headerdatepicker.open()" matStartDate formControlName="startDate" type="text"
+                placeholder="Start Date" class="mat-input-size" />
+              <input (click)="headerdatepicker.open()" matEndDate formControlName="endDate" type="text"
+                placeholder="End Date" class="mat-input-size" />
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="headerdatepicker">
+              <mat-icon matDatepickerToggleIcon>
+                <img src="../../../assets/img/calendar.svg" class="search-icon" style="margin-bottom: 1.5rem;" />
+              </mat-icon>
+            </mat-datepicker-toggle>
+            <mat-date-range-picker #headerdatepicker [calendarHeaderComponent]="customHeader"
+              (opened)="onOpenDatePicker()">
+            </mat-date-range-picker>
+            <div style="display: none">
+              <div class="datepicker-footer" #headerdatepickerFooter>
+                <hr class="slot-picker">
+                <button class="picker-td-class"
+                  [ngClass]="{'picker-active': selectedDateSelection ===  STRINGS.header.today}"
+                  (click)="dateSelection(STRINGS.header.today)">
+                  {{STRINGS.header.today}}
+                </button>
+                <button class="picker-tm-class"
+                  [ngClass]="{'picker-active': selectedDateSelection ===  STRINGS.header.tomorrow}"
+                  (click)="dateSelection(STRINGS.header.tomorrow)">
+                  {{STRINGS.header.tomorrow}}
+                </button>
+                <button class="picker-tw-class"
+                  [ngClass]="{'picker-active': selectedDateSelection ===  STRINGS.header.thisWeek}"
+                  (click)="dateSelection(STRINGS.header.thisWeek)">
+                  {{STRINGS.header.thisWeek}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <div fxFlex="15" fxFlex.xs="49"	class="search-header-bg">
+          <button class="search-btn" (click)="submitFilterValues(true)">{{STRINGS.buttons.submit}}</button>
+        </div>
+        
+
+        <div class="filter" (click)="FilterMobileShow()"> Filter<mat-icon class="ml-3">filter_list</mat-icon></div>
+      </div>
+             
+
+    </form>
+  </div>
+  <!--.....mobile header.....  -->
+  <div fxHide fxShow.lt-md>
+    <div id="myNav" class="overlay" *ngIf="displayNav">
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+      <div class="nav-mob-logo">
+        <a href="javascript:void(0)" class="logo-wrapper" routerLink="/home">
+          <img *ngIf="!partnerSideLogo" src="../../../assets/img/Logo_365 Live - Blue_1.2 copy 2@2x.png" class="logo" />
+          <img *ngIf="partnerSideLogo" src="../../../assets/img/partnerlogo.png" class="partlogo" />
+          <span class="logo-text">{{ STRINGS.name.live365 }}</span>
+        </a>
+        <div class="d-flex align-items-center">
+          <ng-container *ngFor="let navItems of navHeader">
+            <div class="dropdown dropbottom cus_dropdow" *ngIf="navItems?.isNotification">
+              <button type="button" class="dropdown-toggle bg-transparent" data-toggle="dropdown"
+                (click)="notificationListing()">
+                <img *ngIf="navItems?.icon !== ''" [src]="navItems.icon" [class]="navItems.iconClass" />
+                <span class="badge badge-dark" *ngIf="TotalNotiCount > 0">{{ TotalNotiCount }}</span>
+              </button>
+              <div class="dropdown-menu  notification-menu">
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="header">
+                  <div fxFlex="50">
+                    <p>{{STRINGS.notification.Notification}}</p>
+                  </div>
+                  <div fxFlex="50" fxLayoutAlign="end center" >
+                    <span (click)="clearall($event)" class="cursor_pointer" *ngIf="clearAllString">{{STRINGS.notification.clearAll}}</span>
+                  </div>
+                </div>
+                <div class="notification_wrapper">
+                  <ng-container>
+                    <div fxLayout="row" class="mt-3" fxLayoutAlign="space-between center"
+                      *ngFor="let notification of notificationList">
+                      <div fxFlex="15" fxLayoutAlign="center center">
+                        <div class="profile">
+                          <ng-container *ngIf="!notification?.sender[0]?.profilePic; else elseBlock">
+                            <ngx-avatar class="profle-image"
+                              name="{{notification?.sender[0]?.name ? notification?.sender[0].name : 'User Name' }}">
+                            </ngx-avatar>
+                          </ng-container>
+                          <ng-template #elseBlock>
+                            <img [src]="notification?.sender[0]?.profilePic" width="26px" height="26px"
+                              class="rounded-circle">
+                          </ng-template>
+                        </div>
+                      </div>
+                      <div fxFlex="85">
+                        <p class="message">{{notification.msg}}</p>
+                        <p>{{STRINGS.notification.About}} {{ getIimeDiff(notification.dateTime) }}
+                          {{STRINGS.notification.ago}} </p>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <div fxLayout="row" fxLayoutAlign="space-between center" class="footer"
+                    [ngClass]="{'border-0' : TotalNotiCount == 0}">
+                    <div fxFlex="100">
+                      <p routerLink="notification"  class="cursor_pointer mb-2" (click)="closeNav()" >
+                        {{STRINGS.notification.allNotification}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown" *ngIf="navItems?.isProfile">
+              <button type="button" class="profile" data-toggle="dropdown">
+                <ng-container *ngIf="!userDetails?.profilePic; else elseBlock">
+                  <div class="profile">
+                    <ngx-avatar class="profle-image" name="{{userDetails?.name}}"></ngx-avatar>
+                  </div>
+                </ng-container>
+                <ng-template #elseBlock>
+                  <img [src]="userDetails?.profilePic" class="profle-image">
+                </ng-template>
+              </button>
+              <div class="dropdown-menu profile-menu">
+                <img src="../../../assets/img/up-arrow.svg" class="up-arrow" />
+                <ng-container *ngFor="let element of userProfile">
+                  <!-- *ngIf="!rolesManageUser ? element.title !== STRINGS.header.manageUsers : true" -->
+                  <a class="dropdown-item profile-item" (click)="closeNav()"
+                    routerLink="{{element.path}}" >{{element.title}}
+                    <label *ngIf="element.title === this.STRINGS.header.notification" class="switch">
+                      <input type="checkbox" class="slider-input" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </a>
+                </ng-container>
+                <a class="dropdown-item profile-item logout-color" href="javascript: void(0)"
+                  (click)="logOutBtn()">{{STRINGS.header.logout}}</a>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <nav class="nav-wrapper">
+        <ng-container *ngFor="let navItems of navMobHeader">
+          <a *ngIf="(!navItems?.loginSignup && !navItems?.isProfile)" href="javascript:void(0)" class="nav-item"
+            [ngClass]="{'active':isActiveNav === navItems.isActive}" [routerLink]="[navItems.path]"
+            (click)="closeNav()">
+            <img *ngIf="navItems?.icon !== ''" [src]="navItems.icon" [class]="navItems.iconClass" />
+            {{navItems?.title}}
+            <div [ngClass]="{'border-active':isActiveNav === navItems.isActive}" [routerLink]="[navItems.path]">
+            </div>
+          </a>
+          <button *ngIf="navItems?.loginSignup" class="nav-btn"
+            [ngClass]="{'nav-btn- ':isHome && (userType === STRINGS.userType.guestUser || userType !== STRINGS.userType.guestUser) }"
+            routerLink="/auth/login" (click)="closeNav()">
+            {{ navItems.title }}
+          </button>
+        </ng-container>
+      </nav>
+    </div>
+  </div>
+</header>
+</div>

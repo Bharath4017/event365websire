@@ -1,0 +1,154 @@
+<div class="add_update_users">
+    <mat-card>
+        <form [formGroup]="adnewUserform" (ngSubmit)=" routeId ? updateUser(adnewUserform.value) : postUser(adnewUserform.value)">
+            <div class="first-step">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <div fxFlex="100">
+                        <div class="mb-3" >
+                            <mat-label>{{ STRINGS.manageUser.userType }} </mat-label>
+                        </div>
+                        <mat-radio-group [ngClass.lt-md]="'pr-3'" [ngClass.gt-sm]="{ 'pr-5': true }" [(ngModel)]="userTypeStatus" 
+                        formControlName="userType" *ngFor="let user of userType; let i = index" value="{{user.value}}" (click)="addRemoveValidation(user.value)">
+                            <mat-radio-button value="{{user.value}}">{{ user.name }}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start"
+                    fxLayoutAlign="center center" class="pt-3" fxLayoutGap="25px">
+                    <div fxFlex="25"  fxFlex.lt-lg="30" fxFlex.lt-md="30" ngClass.lt-md="mb-2">
+                        <mat-label>{{ STRINGS.manageUser.fname }} </mat-label>
+                    </div>
+                    <div fxFlex="75"   fxFlex.xs="100" fxFlex.lt-lg="70" fxFlex.lt-md="70">
+                        <mat-form-field appearance="standard" floatLabel="always">
+                            <input type="text" style="cursor: pointer;" matInput formControlName="firstName" [readonly]="readOnlyFlag"
+                                placeholder="{{ STRINGS.manageUser.fnamePholder }}" autocomplete="off" maxlength="15" />
+                                <img *ngIf="adnewUserform.get('firstName')?.valid" class="varifyimg" src="{{ verifyemail }}" />
+                        </mat-form-field>
+                        <div
+                            *ngIf="(adnewUserform.get('firstName')?.invalid && adnewUserform.get('firstName')?.touched) || adnewUserform.get('firstName')?.dirty">
+                            <div style="font-size: 14px;" *ngIf="adnewUserform.get('firstName')?.errors?.required" class="text-danger">{{STRINGS.manageUser.fnameValidate}}</div>
+                            <div style="font-size: 14px;" *ngIf="adnewUserform.get('firstName')?.errors?.pattern" class="text-danger">{{STRINGS.manageUser.validLetter}}</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start"
+                    fxLayoutAlign="center center" class="pt-3" fxLayoutGap="25px">
+                    <div fxFlex="25" fxFlex.lt-lg="30" fxFlex.lt-md="30" ngClass.lt-md="mb-2">
+                        <mat-label>{{ STRINGS.manageUser.lname }} </mat-label>
+                    </div>
+                    <div fxFlex="75" fxFlex.lt-lg="70" fxFlex.lt-md="70">
+                        <mat-form-field appearance="standard" floatLabel="always">
+                            <input type="text" style="cursor: pointer;" matInput formControlName="lastName" [readonly]="readOnlyFlag"
+                                placeholder="{{ STRINGS.manageUser.lnamePholder }}" autocomplete="off" maxlength="15" />
+                                <img *ngIf="adnewUserform.get('lastName')?.valid" class="varifyimg" src="{{ verifyemail }}" />
+                        </mat-form-field>
+                        <div
+                        *ngIf="(adnewUserform.get('lastName')?.invalid && adnewUserform.get('lastName')?.touched) || adnewUserform.get('lastName')?.dirty">
+                        <div style="font-size: 14px;" *ngIf="adnewUserform.get('lastName')?.errors?.required" class="text-danger">{{STRINGS.manageUser.lnameValidate}}</div>
+                        <div style="font-size: 14px;" *ngIf="adnewUserform.get('lastName')?.errors?.pattern" class="text-danger">{{STRINGS.manageUser.validLetter}}</div>
+
+                    </div>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start"
+                    fxLayoutAlign="center center" class="pt-3" fxLayoutGap="25px">
+                    <div fxFlex="25" fxFlex.lt-lg="30" fxFlex.lt-md="30" ngClass.lt-md="mb-2">
+                        <mat-label>{{ STRINGS.manageUser.email }} </mat-label>
+                    </div>
+                    <div fxFlex="75" fxFlex.lt-lg="70" fxFlex.lt-md="70">
+                        <mat-form-field appearance="standard" floatLabel="always">
+                            <input type="text" style="cursor: pointer;" matInput formControlName="email" [readonly]="readOnlyFlag"
+                                placeholder="{{ STRINGS.manageUser.emailPholder }}" autocomplete="off" />
+                                <img *ngIf="adnewUserform.get('email')?.valid" class="varifyimg" src="{{ verifyemail }}" />
+                        </mat-form-field>
+                        <div
+                            *ngIf="(adnewUserform.get('email')?.invalid && adnewUserform.get('email')?.touched) || adnewUserform.get('email')?.dirty">
+                            <div style="font-size: 14px;" *ngIf="adnewUserform.get('email')?.errors?.required" class="text-danger">{{STRINGS.manageUser.emailValidate}}</div>
+                            <div style="font-size: 14px;" *ngIf="adnewUserform.get('email')?.errors?.pattern" class="text-danger">{{STRINGS.manageUser.emailValidatePattern}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start"
+                    fxLayoutAlign="center center" class="pt-3" fxLayoutGap="25px">
+                    <div fxFlex="25" fxFlex.lt-lg="30" fxFlex.lt-md="30" ngClass.lt-md="mb-2">
+                        <mat-label>{{ STRINGS.manageUser.phone }} </mat-label>
+                    </div>
+                    <div fxFlex="75" fxFlex.lt-lg="70" fxFlex.lt-md="70">
+                        <mat-form-field appearance="standard" floatLabel="always">
+                            <input type="text" matInput formControlName="phoneNo" [readonly]="readOnlyFlag" placeholder="{{ STRINGS.manageUser.phonePholder }}" maxlength="10" />
+                            <img *ngIf="adnewUserform.get('phoneNo')?.valid" class="varifyimg" src="{{ verifyemail }}" />
+                            <!-- <intl-input-phone  hidden="true" matInput [ConfigurationOption]="configOption1" #phoneNo formControlName="phoneNo" class="ng_country"></intl-input-phone> -->
+                        </mat-form-field>
+                        <div
+                            *ngIf="(adnewUserform.get('phoneNo')?.invalid && adnewUserform.get('phoneNo')?.touched) || adnewUserform.get('phoneNo')?.dirty">
+                            <div style="font-size: 14px;" *ngIf="adnewUserform.get('phoneNo')?.errors?.required" class="text-danger">{{STRINGS.manageUser.phoneValidate}}</div>
+                            <div style="font-size: 14px;" *ngIf="adnewUserform.get('phoneNo')?.errors?.pattern" class="text-danger">{{STRINGS.manageUser.phoneValidatePattern}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start"
+                    fxLayoutAlign="center center" class="pt-3" fxLayoutGap="25px">
+                    <div fxFlex="25" fxFlex.lt-lg="30" fxFlex.lt-md="30" ngClass.lt-md="mb-2">
+                        <mat-label>{{ STRINGS.manageUser.password }} </mat-label>
+                    </div>
+                    <div fxFlex="75" fxFlex.lt-lg="70" fxFlex.lt-md="70">
+                        <mat-form-field appearance="standard" floatLabel="always">
+                            <input type="password" style="cursor: pointer;" matInput formControlName="password" [readonly]="readOnlyFlag"
+                                placeholder="{{ STRINGS.manageUser.passwordPholder }}" autocomplete="off" />
+                                <img *ngIf="adnewUserform.get('password')?.valid" class="varifyimg" src="{{ verifyemail }}" />
+                        </mat-form-field>
+                        <div
+                            *ngIf="(adnewUserform.get('password')?.invalid && adnewUserform.get('password')?.touched) || adnewUserform.get('password')?.dirty">
+                            <div style="font-size: 14px;" *ngIf="adnewUserform.get('password')?.errors?.required" class="text-danger">{{STRINGS.manageUser.passwordValidate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="userTypeStatus == 'member'; else SelectRole" class="mt-4" fxLayout="row" fxLayoutAlign="center start" >
+                    <div fxFlex="100">
+                        <div >
+                            <mat-label>{{STRINGS.manageUser.isMember}} </mat-label>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #SelectRole>
+
+                    <div fxLayout="row" fxLayoutAlign="center start" class="mt-4" *ngIf="userTypeStatus == 'host'; else PartnerRole">
+                        <div fxFlex="100">
+                            <div class="mb-3" >
+                                <mat-label>{{ STRINGS.manageUser.userFor }} </mat-label>
+                            </div>
+                            <mat-radio-group [ngClass.lt-md]="'pr-3'" [ngClass.gt-sm]="{ 'pr-5': true }" [(ngModel)]="userRoleStatus"
+                            formControlName="roles" value="{{userRole[0].value}}">
+                                <mat-radio-button  value="{{userRole[0].value}}" >{{ userRole[0].name }}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+
+                    <ng-template #PartnerRole>
+                    <div fxLayout="row" fxLayoutAlign="center start" class="mt-4">
+                        <div fxFlex="100">
+                            <div class="mb-3" >
+                                <mat-label>{{ STRINGS.manageUser.userFor }} </mat-label>
+                            </div>
+                            <mat-radio-group [ngClass.lt-md]="'pr-3'" [ngClass.gt-sm]="{ 'pr-5': true }" [(ngModel)]="userRoleStatus"
+                            formControlName="roles" *ngFor="let role of userRole; let i = index" value="{{role.value}}">
+                                <mat-radio-button  value="{{role.value}}">{{ role.name }}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </ng-template>
+
+                </ng-template>
+
+                <div fxLayout="row" fxLayoutAlign="start center" class="pt-3">
+                    <div fxFlex="100" fxLayoutAlign="center center" class="pt-5">
+                        <button mat-button type="submit" [disabled]="adnewUserform.invalid">
+                            {{ routeId ? STRINGS.manageUser.update : STRINGS.manageUser.save }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>

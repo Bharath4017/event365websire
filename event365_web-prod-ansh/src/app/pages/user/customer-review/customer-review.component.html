@@ -1,0 +1,88 @@
+<div class="height-auto customer_review">
+    <div class="width-80">
+        <h3 class="review-heading">{{eventDetails?.name}}</h3>
+
+        <!--....all rating wrapper....  -->
+        <div class="all-rating-wrapper">
+            <div class="all-ratings">
+                <div class="star-rating">
+                    <ng-container *ngFor="let ratingId of ratingArr  let i = index">
+                        <button mat-icon-button [color]="color" class="star" disabled>
+ 
+                            <div>{{showStarIcon(i,eventDetails?.rating,'topReview')}}</div>
+                         <!-- <mat-icon class="star-img" *ngIf="!borderColor">star</mat-icon> -->
+                         <mat-icon class="star-img" *ngIf="!borderColor">star</mat-icon>
+                         <mat-icon class="star-border" *ngIf="borderColor">star_border</mat-icon>
+                         <!-- <img *ngIf="borderColor"  width="20px" height="20px" src="../../../../assets/img/star_rating.svg" alt=""> -->
+                    </button>
+                    </ng-container>
+                    <p class="text-rating ml-3 mt-2">{{eventDetails?.rating}} {{ STRINGS.customerReview.outOf }}</p>
+                </div>
+                <div class="text-rating">
+                    Based on {{eventDetails?.ratingCount}} rating
+                </div>
+            </div>
+            <form style="display: flex; align-items: center; height: 100%;">
+                <p class="user-name-rating mr-4">Sort by</p>
+                <mat-form-field class="ratingsSelect ratingsSelect-custom" floatLabel='never'>
+                    <mat-label class="ratingsSelect-Text">Select</mat-label>
+                    <mat-select [(ngModel)]="selectedRatings" name="stars" class="cus-option" (selectionChange)="sortByRating(selectedRatings)" panelClass="mat-select-dropDown-option ratingsSelect-custom scrollbarcustom">
+                        <mat-option *ngFor="let stars of ratings" [value]="stars.value">
+                            {{stars.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+
+
+        <!--......all comments.....  -->
+        <div class="all-comments-wrapper">
+
+            <div class="user-comment-card margin-top-null" *ngIf="allUserReviews.length < 1">
+
+                <div class="flex-div" style="justify-content: center">
+                    <h3>No review found!</h3>
+                </div>
+            </div>
+            <div class="user-comment-card margin-top-null" *ngFor="let review of allUserReviews">
+                <div class="flex-div">
+                    <div class="user-profile">
+                        <div>
+                            <!-- <img class="mr-3" style="height:64px; width: 64px; border-radius: 50%; background-color: aqua;" [src]="review?.reviewer?.profilePic" alt=""> -->
+
+                            <ng-container *ngIf="!review?.reviewer?.profilePic; else elseBlock">
+                                <ngx-avatar name="{{review?.reviewer?.name}}" class=" avatar-container avatar-custom avatar-custom-size " size="64" [round]="true" cornerRadius="14">
+                                </ngx-avatar>
+                            </ng-container>
+                            <ng-template #elseBlock>
+                                <img [src]="review?.reviewer?.profilePic" class="card-profile">
+                            </ng-template>
+                        </div>
+                        <div>
+                            <div class="ratingi-name">
+                                <div class="user-name-rating mb-2 pl-2">
+                                    {{review?.reviewer?.name}}
+                                </div>
+                                <div class="star-rating star-rating-mr">
+                                    <button mat-icon-button [color]="color" class="star" *ngFor="let ratingId of ratingArr let i = index" disabled>
+                                    <!-- <mat-icon>
+                                    {{showStarIcon(i,review.reviewStar,'customerReview')}}
+                                    </mat-icon> -->
+                                    <div>{{showStarIcon(i,review.reviewStar,'customerReview')}}</div>
+                                    <mat-icon class="star-img" *ngIf="!borderColor">star</mat-icon>
+                                   <mat-icon class="star-border" *ngIf="borderColor">star_border</mat-icon>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="comment">
+                    {{review?.reviewText}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

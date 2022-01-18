@@ -1,0 +1,78 @@
+.mat-tooltip {
+  /* your own custom styles here */
+  /* e.g. */
+  object-fit: cover;
+  font-family: 'HelveticaNeueLTPro-Md';
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--charcoal-grey) !important;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+}
+.leftinput-text {
+  position: absolute;
+  right: 0;
+  opacity: 0.23;
+  top: 5px;
+}
+
+.create_venue {
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+  .mat-select-value{
+    text-align: center;
+  }
+  button{
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.57;
+    letter-spacing: 1.4px;
+    text-align: center;
+    color: #f4f2ff;
+  }
+  .mat-error-icon{
+    color: #9697b5;
+  }
+  .mat-checkbox-layout{
+    white-space: unset;
+  }
+  .btn-add-more{
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 10px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+    text-align: left;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .create_venue {
+    .mat-form-field-flex {
+      width: 100% !important;
+    }
+
+}
+
+}
+

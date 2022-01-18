@@ -1,0 +1,205 @@
+<div class="register-user">
+  <mat-card>
+    <div fxLayout="row" fxLayoutGap.xs="0"  fxLayoutGap="40px">
+      <div fxFlex="50"  ngClass.lt-md="d-none" fxLayoutAlign="center center">
+        <img *ngIf="!(partnerType && userType === 1 && isSelectPartner)" src="../../../assets/img/register.svg"
+        class="form-illustration img-fluid" />
+       <img *ngIf="partnerType && isSelectPartner && userType === 1" src="../../../assets/img/login.svg"
+        class="form-illustration img-fluid" />     
+       </div>
+      <div fxFlex="50"  fxFlex.lt-md="100" [ngClass.lt-lg]="'pr-0'" [ngClass.lt-xl]="{'pr-5': true}">
+        <h1 class="form-heading"> 
+          {{ STRINGS.register.registerAs }}
+          {{ partnerType && isSelectPartner && userType === 1 ? partnerTypeValue[partnerType] : "" }}
+        </h1>
+        <div class="radio-div">
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group radio-wrapper"
+            [(ngModel)]="isRegisterUser">
+            <mat-radio-button class="example-radio-button" [value]="true" (change)="selectUserRegister(1)">
+              {{ STRINGS.userType.user }}
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button" [value]="false" (change)="selectUserRegister(2)">
+              {{ STRINGS.userType.partner }}
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <div class="form-box">
+ 
+    
+            <form>
+              <div>
+                <div *ngIf="userType == 2">
+                  <a href="javascript:void(0)">
+                    <div class="tab-list" (click)="selectPartnerType(STRINGS.userType.lowerCaseVenuer)">
+                      <p class="tab-list-item" [ngClass]="{ active: partnerType === STRINGS.userType.lowerCaseVenuer }">
+                        <img src="../../../assets/img/venue@2x.png" class="tab-icon" />
+                        {{ STRINGS.userType.venueOwner }}
+                      </p>
+                      <img *ngIf="partnerType === STRINGS.userType.lowerCaseVenuer" src="../../../assets/img/e-tick.svg" />
+                    </div>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <div class="tab-list" (click)="selectPartnerType(STRINGS.userType.lowerCaseHost)">
+                      <p class="tab-list-item" [ngClass]="{ active: partnerType === STRINGS.userType.lowerCaseHost }">
+                        <img src="../../../assets/img/host@2x.png" class="tab-icon" />
+                        {{ STRINGS.userType.host }}
+                      </p>
+                      <img *ngIf="partnerType === STRINGS.userType.lowerCaseHost" src="../../../assets/img/e-tick.svg" />
+                    </div>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <div class="tab-list" (click)="selectPartnerType(STRINGS.userType.lowerCasePromoter)">
+                      <p class="tab-list-item" [ngClass]="{ active: partnerType === STRINGS.userType.lowerCasePromoter }">
+                        <img src="../../../assets/img/promoter@2x.png" class="tab-icon" />
+                        {{ STRINGS.userType.promoter }}
+                      </p>
+                      <img *ngIf="partnerType === STRINGS.userType.lowerCasePromoter" src="../../../assets/img/e-tick.svg" />
+                    </div>
+                  </a>
+                  <div style="text-align: center">
+                    <button class="primary-btn" (click)="submitPartnerType()">
+                      {{ STRINGS.buttons.continue }}
+                    </button>
+                  </div>
+                </div>
+      
+                <!--....... register partner form....... -->
+                <div *ngIf="userType == 1">
+                  <form [formGroup]="registerForm">
+                    <div class="download-btn-wrapper width-100">
+                      <button  type="button" class="direct-login-btn" (click)="signInWithGoogle()">
+                        <img src="../../../assets/img/google@2x.png" class="btn-icon" />
+                        <span class="hide-text">{{ STRINGS.register.google }}</span>
+                      </button>
+                      <button  type="button" class="direct-login-btn" (click)="signInWithFB()">
+                        <img src="../../../assets/img/facebook@2x.png" class="btn-icon" />
+                        <span class="hide-text">{{ STRINGS.register.facebook }}</span>
+                      </button>
+                      <button  type="button" class="direct-login-btn" id="appleid-signin" data-color="black" data-border="true"
+                        data-type="sign in">
+                        <img src="../../../assets/img/AppleId.png" class="btn-icon" />
+                        <span class="hide-text">{{ STRINGS.register.apple }}</span>
+                      </button>
+                    </div>
+                    <div class="form-group input-error-wrapper">
+                      <label for="name" class="input-label">{{
+                        STRINGS.labels.name
+                        }}</label>
+                      <input type="name" formControlName="name" class="form-control form-input" id="name" [ngClass]="{
+                          'border-error':
+                            isSubmitted && registerForm.get('name')?.errors
+                        }" placeholder="{{ STRINGS.placeholder.placeholderName }}" name="name" />
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('name')?.errors?.required && isSubmitted
+                        ">
+                        {{ STRINGS.validations.name }}
+                      </p>
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('name')?.errors?.maxlength && isSubmitted
+                        ">
+                        {{ STRINGS.validations.nameMaxLength }}
+                      </p>
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('name')?.errors?.pattern && isSubmitted
+                        ">
+                        {{ STRINGS.validations.invalidName }}
+                      </p>
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('name')?.errors?.minlength &&
+                          isSubmitted
+                        ">
+                        {{ STRINGS.validations.nameMin2Length}}
+                      </p>
+                    </div>
+      
+                    <div class="form-group input-error-wrapper">
+                      <label for="email" class="input-label">{{
+                        STRINGS.labels.email
+                        }}</label>
+                      <input type="email" formControlName="email" class="form-control form-input" id="email" [ngClass]="{
+                          'border-error':
+                            isSubmitted && registerForm.get('email')?.errors
+                        }" placeholder="{{ STRINGS.placeholder.placeholderEmail }}" name="email" />
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('email')?.errors?.required && isSubmitted
+                        ">
+                        {{ STRINGS.validations.email }}
+                      </p>
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('email')?.errors?.pattern && isSubmitted
+                        ">
+                        {{ STRINGS.validations.validEmail }}
+                      </p>
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('email')?.errors?.maxlength && isSubmitted
+                        ">
+                        {{ STRINGS.validations.characterExceed }}
+                      </p>
+                    </div>
+      
+                    <div class="form-group input-error-wrapper">
+                      <label for="password" class="input-label">{{
+                        STRINGS.labels.password
+                        }}</label>
+                      <div class="position-relative">
+                        <input [type]="fieldTextType ? 'text' : 'password'" formControlName="password"
+                          class="form-control form-input" id="pwd" [ngClass]="{
+                            'border-error':
+                              isSubmitted && registerForm.get('password')?.errors
+                          }" placeholder="{{ STRINGS.placeholder.placeholderPassword }}" name="pwd" />
+                        <img src="../../../assets/img/visibility.svg" *ngIf="fieldTextType" class="input-icon"
+                          (click)="showpassword()" />
+                        <img src="../../../assets/img/visibility-hidden.svg" *ngIf="!fieldTextType" class="input-icon"
+                          (click)="showpassword()" />
+                      </div>
+                        <p class="error-msg" *ngIf="
+                          registerForm.get('password')?.errors?.required&&
+                          isSubmitted
+                        ">
+                        {{ STRINGS.validations.password }}
+                      </p>
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('password')?.errors?.minlength &&
+                          isSubmitted
+                        ">
+                        {{ STRINGS.validations.passwordMinLength }}
+                      </p>
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('password')?.errors?.maxlength &&
+                          isSubmitted
+                        ">
+                        {{ STRINGS.validations.passwordMaxLength }}
+                      </p>
+                      <p class="error-msg" *ngIf="
+                          registerForm.get('password')?.errors?.pattern &&
+                          isSubmitted
+                        ">
+                        {{ STRINGS.validations.atLeastOneNumber }}
+                      </p>
+                    </div>
+                    <div style="width: 100%; display: flex; justify-content: flex-end;">
+                      <a href="javascript: void(0)" class="forgot-link" routerLink="/auth/forgot-password">{{
+                        STRINGS.register.forgotPassword }}</a>
+                    </div>
+                    <div style="text-align: center">
+                      <button type="submit" class="primary-btn btn-margin-decrease" (click)="submitdetails()">
+                        {{ STRINGS.buttons.continue }}
+                      </button>
+                    </div>
+                    <p class="bottom-txt">
+                      {{ STRINGS.register.alreadyAccount }}
+                      <a href="javascript: void(0)" class="login-in" routerLink="/auth/login">{{ STRINGS.register.login }}</a>
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        </div>
+        </div>
+  </mat-card>
+</div>
+
+

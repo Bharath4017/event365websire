@@ -1,0 +1,29 @@
+<div fxLayout="column"  class="delete-alert px-2">
+    <div fxFlex="100" fxLayoutAlign="end center">
+       <button type="button" mat-dialog-close>×</button>
+     </div>
+    <div fxFlex="100" fxLayout="column"  fxLayoutAlign="center center" mat-dialog-alert>
+        <div fxLayout="row">
+            <mat-icon>error</mat-icon><span class="span-text">Alert</span>
+        </div>
+         
+          <h1 *ngIf="venuePart">Are you Sure You Want to delete This Venue</h1>
+          <h1 *ngIf="bankpart">Are you sure you want to delete this bank account?</h1>
+          <h1 *ngIf="venueRemovedDateAndTime"> Updated Time and Date cause you to select venue again </h1>
+     </div>
+  <div mat-dialog-actions>
+      <div fxLayout="row" fxLayoutGap="20px" class="w-100">
+         <div fxFlex="50">
+            <button *ngIf="venuePart" mat-button class="delete-btn cancel-btn" (click)="deleteVenue()" > Yes </button>
+            <button *ngIf="bankpart"  mat-button class="delete-btn cancel-btn" (click)="deleteBank()" > Yes </button>
+            <!-- <button *ngIf="venueRemovedDateAndTime"  mat-button class="delete-btn cancel-btn" (click)="removeVenue()" > Return </button> -->
+         </div>
+         <div fxFlex="50">
+            <button mat-button  class="delete-btn" [mat-dialog-close]="true" > No </button>
+        </div>
+      </div>
+    <p *ngIf="errorText" class="error-text">{{errorText}}</p>
+ 
+  </div>
+  
+  </div>

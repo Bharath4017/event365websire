@@ -1,0 +1,470 @@
+<div class="create_event">
+  <mat-card>
+    <form [formGroup]="eventForm" (ngSubmit)="creteEventFormSubmit()">
+      <div *ngIf="this.id" fxLayout="row">
+        <div fxFlex="100" fxLayoutAlign="end center">
+          <button type="button" class="delete" fxLayoutAlign="center center" (click)="deleteEvent()"> <img
+              [src]="deleteImage" class="mr-2"> Delete
+            Event</button>
+        </div>
+      </div>
+      <!-- First Step -->
+      <div class="first-step" [hidden]="secondStep">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <div fxFlex="100">
+            <h1 class="pb-4">{{ STRINGS.createEvent.EventType }}</h1>
+            <mat-radio-group [ngClass.lt-md]="'pr-3'" [ngClass.gt-sm]="{ 'pr-5': true }" #eventradio
+              [(ngModel)]="eventTypeStatus" formControlName="eventType" *ngFor="let label of radiotype; let i = index"
+              value="label.value">
+              <mat-radio-button class="mb-3 mb-sm-0 " [value]="i">{{ label.name }}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start start" [ngClass.lt-sm]="'pt-3'" [ngClass.gt-xs]="{ 'pt-5': true }">
+          <div fxFlex="100">
+            <h1 class="pb-4">{{ STRINGS.createEvent.EventCategory }}</h1>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start" fxLayoutAlign="center center"
+          fxLayoutGap="25px">
+          <div fxFlex="25" fxFlex.lt-md="100" fxFlex.lt-lg="35" ngClass.lt-md="mb-2">
+            <mat-label>{{ STRINGS.createEvent.SelectEventCategory }}</mat-label>
+          </div>
+          <div fxFlex="75" fxFlex.xs="100" fxFlex.lt-md="100" fxFlex.lt-lg="65">
+            <mat-form-field appearance="standard">
+              <mat-select panelClass="scrollbarcustomwithpaadding"
+                placeholder="{{ STRINGS.createEvent.SelectEventCategory }}" formControlName="categoryId"
+                (selectionChange)="FetchSubcatogoryID($event.value)">
+                <mat-option *ngFor="let label of categoryList" value="{{ label.id }}">
+                  {{ label.categoryName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start start" class="" [ngClass.lt-sm]="'mt-4'"
+          [ngClass.gt-xs]="{ 'mt-5': true }">
+          <div fxFlex="100">
+            <mat-label>{{ STRINGS.createEvent.SelectSubCategory }}</mat-label>
+            <mat-error *ngIf="selectSubCategoryError">
+              {{ STRINGS.validations.subCategory }}
+            </mat-error>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start start" class="mt-4">
+          <div fxFlex="100">
+            <mat-chip-list selectable multiple formControlName="subCategoryId">
+              <mat-chip #c="matChip" *ngFor="let subvalue of subCategoryList" [selected]="true"
+                (click)="toggleSelection(c)" [value]="subvalue">
+                {{subvalue.subCategoryName}}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="pt-3">
+          <div fxFlex="100" fxLayoutAlign="center center" class="pt-5">
+            <button mat-button type="button" (click)="nextButton()">
+              {{ STRINGS.buttons.next }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- First Step End -->
+
+      <!-- Second Step Start -->
+      <div class="second-step" [hidden]="firstStep">
+        <button *ngIf="!this.id" type="button" (click)="backToFirstStep()" class="back_step">
+          <img src="../../../assets/img/left-arrow.svg" class="back-icon" />
+          {{ STRINGS.buttons.back }}
+        </button>
+
+        <h1>{{ STRINGS.createEvent.EventCreation }}</h1>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start" fxLayoutGap="25px"
+          fxLayoutAlign="center center" class="pb-6">
+          <div fxFlex="25" fxFlex.lt-md="100" fxFlex.lt-lg="30" ngClass.lt-lg="mb-2">
+            <mat-label>{{ STRINGS.createEvent.NameofEvent }}</mat-label>
+          </div>
+          <div fxFlex="75" fxFlex.lt-md="100" fxFlex.lt-lg="70">
+            <mat-form-field appearance="standard">
+              <input type="text" class="capitalize" matInput #name formControlName="name"
+                placeholder="{{ STRINGS.createEvent.NameofEventPlaceholder }}" autocomplete="off" />
+              <mat-error class="mt-3" *ngIf="eventForm.controls.name.errors?.maxlength">
+                {{ STRINGS.validations.eventNameLengthError }}
+              </mat-error>
+              <mat-error class="mt-3" *ngIf="eventForm.controls.name.errors?.required">
+                {{ STRINGS.validations.eventName }}
+              </mat-error>
+              <span *ngIf="!eventForm.controls.name.value" class="leftinput-text">{{
+                STRINGS.createEvent.MaxWords
+                }}</span>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start start" class="mb-3">
+          <div fxFlex="100">
+            <mat-label>{{ STRINGS.createEvent.oftenEvent }}</mat-label>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="25px">
+          <div fxFlex="100">
+            <mat-radio-group [ngClass.lt-md]="'pr-3'" [ngClass.gt-sm]="{ 'pr-5': true }" #eventOccurrenceType
+              formControlName="eventOccurrenceType" *ngFor="let label of radioLabel"
+              (click)="eventOccurenceTypeSelection($event, label.value )" [(ngModel)]="eventOccurrenceTypeStatus">
+              <mat-radio-button [value]="label.value">
+                {{ label.name }}
+              </mat-radio-button>
+            </mat-radio-group>
+            <div fxLayout="row" fxLayoutAlign="start start" class="mt-4">
+              <div fxFlex="100" class="mb-3">
+                <mat-chip-list [hidden]="eventOccurrenceTypeStatus !=='weekly'" selectable formControlName="occurredOn">
+                  <mat-chip #chip="matChip" *ngFor="let weekDay of weekDays" [selected]="true"
+                    (click)="toggleOccuredOnSelection(chip)" [value]="weekDay.value">
+                    {{weekDay.name}}
+                  </mat-chip>
+                </mat-chip-list>
+                <mat-chip-list [hidden]="eventOccurrenceTypeStatus !=='daily'" multiple selectable
+                  formControlName="occurredOn">
+                  <mat-chip #chip="matChip" *ngFor="let weekDay of weekDays" [selected]="true"
+                    (click)="toggleOccuredOnSelection(chip)" [value]="weekDay.value">
+                    {{weekDay.name}}
+                  </mat-chip>
+                </mat-chip-list>
+                <div fxFlex="50" fxFlex.lt-lg s="100">
+                  <mat-chip-list [hidden]="eventOccurrenceTypeStatus !=='monthly'" multiple selectable
+                    formControlName="occurredOn">
+                    <mat-chip #chip="matChip" *ngFor="let day of monthDays" [selected]="true"
+                      (click)="toggleOccuredOnSelection(chip)" [value]="day.value">
+                      {{day.name}}
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-error *ngIf="occuredOnSelectionError">
+          {{ STRINGS.validations.occuredOn }}
+        </mat-error>
+        <div fxLayout="row" fxLayoutAlign="start start" class="cus_datepicker" fxLayoutGap="25px" fxLayoutGap.xs="10px">
+          <div fxFlex="25" fxFlex.lt-lg="50">
+            <mat-form-field appearance="standard" floatLabel="always" class="w-auto" (click)="startdate.open()">
+              <mat-label>{{ STRINGS.createEvent.StartDate }}</mat-label>
+              <input matInput [matDatepicker]="startdate" placeholder="MM/DD/YYYY" #start [(ngModel)]="startDate"
+                formControlName="start" [min]="minDate" (click)="startdate.open()"
+                (dateChange)="removeVenue(); emptyEndDate()" />
+              <mat-datepicker #startdate [calendarHeaderComponent]="customHeader"></mat-datepicker>
+              <mat-error class="mt-3">
+                {{ STRINGS.validations.startDate }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="75" fxFlex.lt-lg="50">
+            <mat-form-field appearance="standard" floatLabel="always" class="w-auto" (click)="enddate.open()">
+              <mat-label>{{ STRINGS.createEvent.EndDate }}</mat-label>
+              <input matInput [min]="startDate" [matDatepicker]="enddate" placeholder="MM/DD/YYYY" [(ngModel)]="endDate"
+                formControlName="end" #end (click)="enddate.open()" (dateChange)="removeVenue(); emptyEndDate()" />
+              <mat-datepicker #enddate [calendarHeaderComponent]="customHeader"></mat-datepicker>
+              <mat-error class="mt-3">
+                {{ STRINGS.validations.endDate }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start start" class="cus_datepicker cus_timer" fxLayoutGap="25px"
+          fxLayoutGap.xs="10px">
+          <div fxFlex="25" fxFlex.lt-lg="50">
+            <mat-form-field appearance="standard" floatLabel="always" class="w-auto">
+              <mat-label>{{ STRINGS.createEvent.StartTime }}</mat-label>
+              <input matTimepicker matInput mode="24h" placeholder="00:00" #startTime
+                (timeChange)="removeVenue(); emptyEndDate()" [(ngModel)]="starttime" formControlName="startTime" />
+              <mat-error class="mt-3">
+                {{ STRINGS.validations.startTime }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="75" fxFlex.lt-lg="50">
+            <mat-form-field appearance="standard" floatLabel="always" class="w-auto">
+              <mat-label>{{ STRINGS.createEvent.EndTime }}</mat-label>
+              <input matTimepicker matInput mode="24h" placeholder="00:00" #endTime
+                (timeChange)="removeVenue(); emptyEndDate()" [(ngModel)]="endtime" formControlName="endTime" />
+              <mat-error class="mt-3">
+                {{ STRINGS.validations.endTime }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start" fxLayoutAlign="center center"
+          class="pt-3" fxLayoutGap="25px">
+          <div fxFlex="25" fxFlex.lt-lg="30" fxFlex.lt-md="30" ngClass.lt-md="mb-2">
+            <mat-label>{{ STRINGS.createEvent.Selectvenue }} </mat-label>
+          </div>
+          <div fxFlex="75" fxFlex.lt-lg="70" fxFlex.lt-md="70">
+            <mat-form-field appearance="standard" floatLabel="always" style="cursor: pointer;" (click)="selectVenue()">
+            
+              <input type="text" style="cursor: pointer;" matInput #venueName onkeydown="return false"
+                formControlName="venueName" placeholder="{{ STRINGS.createEvent.VenueNamePlaceholder }}"
+                autocomplete="off" />
+              <mat-error class="mt-3">
+                {{ STRINGS.validations.venue }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start" fxLayoutAlign="center center"
+        class="pt-5" fxLayoutGap="25px">
+        <div fxFlex="25" fxFlex.lt-lg="30" fxFlex.lt-md="30" ngClass.lt-md="mb-2">
+          <mat-label>Custom Url (Optional)</mat-label>
+        </div>
+        <div fxFlex="75" fxLayout="column" fxFlex.lt-lg="70" fxFlex.lt-md="70">
+          <mat-form-field fxFlex="100" fxLayoutGap="1px"  appearance="standard" floatLabel="always">
+            <span class="add-url">https://365live.com/event/detail/</span>
+            <input fxFlex="40" (change)="checkCustomUrl(eventForm.value.eventUrl)" type="text" class="uri-hidden" formControlName="eventUrl" matInput #eventUrl 
+             placeholder="{{ STRINGS.createEvent.AddCustomeUUrl }}"
+              autocomplete="off" />
+              <div class="url-varify" *ngIf="showUrlVarify">
+                <mat-icon >check_circles</mat-icon>
+              </div>
+             
+          </mat-form-field>
+          
+          <mat-error class="mt-3" *ngIf="eventForm.controls.eventUrl.errors?.pattern">
+            {{ STRINGS.validations.onlyChar }}
+          </mat-error>
+          <p style="color: #f44336;" *ngIf="showErrorMessage">
+            {{ errorMessage }}
+        </p>
+
+        </div>
+      </div>
+
+        <!-- VenueImages -->
+        <div *ngIf="venueImages != ''" fxLayout="row" fxLayoutAlign="start center" class="pt-3">
+          <div fxFlex="100">
+            <mat-label>{{ STRINGS.createEvent.venueImages }}</mat-label>
+            <input type="text" class="d-none" style="display: none" />
+            <div class="filesinput" fxLayoutAlign="start center" fxLayout.lt-lg="row wrap">
+              <div class="filepreviewadd" *ngFor="let images of venueImages; let i = index">
+                <img src="{{ images.venueImages }}" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="pt-5" fxLayoutGap="25px">
+          <div fxFlex="100">
+            <mat-label>{{ STRINGS.createEvent.galleryImages }}</mat-label>
+            <input type="text" class="d-none" style="display: none" formControlName="images" />
+            <div class="filesinput" fxLayoutAlign="start center" fxLayout.lt-lg="row wrap"
+            cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+              <div class="filepreviewadd" cdkDragBoundary=".example-boundary" *ngFor="let eventImage of images; let i = index" cdkDrag>
+                <div class="example-handle">
+                  <div class="circle drag">
+                    <svg width="18px" fill="#fff" viewBox="0 0 24 24">
+                      <path
+                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                      </path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                  </div>
+                  <div class="circle cancel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 14.14 14.14"
+                      (click)="removeImage(i, eventImage)">
+                      <path fill="#fff" stroke="#bbbcc2"
+                        d="M10240.721 6513.574l-.579-.579-5.785 5.785-5.784-5.785-.577.579 5.783 5.784-5.783 5.784.577.579 5.784-5.784 5.785 5.784.579-.579-5.785-5.784z"
+                        transform="translate(-10227.288 -6512.287)" />
+                    </svg>
+                  </div>
+                </div>
+                <img src="{{ eventImage.eventImage }}" />
+              </div>
+              <div class="filepreview" (click)="imageupload()" fxLayoutAlign="center center">
+                <img class="add" src="{{ addImage }}" />
+                <p class="bestfit" *ngIf="!imagesError">best fit 800 * 400</p>
+              </div>
+              <p class="firsruplod" *ngIf="!selectedImages.length">
+                {{ STRINGS.createEvent.ImageUpload }}
+              
+              </p>
+             
+            </div>
+            <mat-error *ngIf="imagesError">
+              {{ STRINGS.validations.image }}
+            </mat-error>
+          </div>
+        </div>
+
+        <!-- Talent Images -->
+        <div fxLayout="row" fxLayoutAlign="start center" class="pt-5" fxLayoutGap="25px">
+          <div fxFlex="100">
+            <mat-label>{{ STRINGS.createEvent.talentImages }}</mat-label>
+            <mat-checkbox name="istelentImages" formControlName="istelentImages" class="ml-5" color='primary'
+              [(ngModel)]="imagesCheckbox.istelentImages"></mat-checkbox>
+            <!-- <mat-checkbox class= "ml-5" color='primary' [(ngModel)]= "isTalentImages" ></mat-checkbox> -->
+            <input *ngIf="imagesCheckbox.istelentImages" type="text" class="d-none" style="display: none"
+              formControlName="telentImages" />
+            <div *ngIf="imagesCheckbox.istelentImages" class="filesinput" fxLayoutAlign="start center"
+              fxLayout.lt-lg="row wrap"  cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="droptelentImages($event)">
+              <div class="filepreviewadd" *ngFor="let image of telentImages; let i = index" cdkDrag>
+                <div class="example-handle">
+                  <div class="circle drag">
+                    <svg width="18px" fill="#fff" viewBox="0 0 24 24">
+                      <path
+                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                      </path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                  </div>
+                  <div class="circle cancel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 14.14 14.14"
+                      (click)="removeTalentImage(i, image)">
+                      <path fill="#fff" stroke="#bbbcc2"
+                        d="M10240.721 6513.574l-.579-.579-5.785 5.785-5.784-5.785-.577.579 5.783 5.784-5.783 5.784.577.579 5.784-5.784 5.785 5.784.579-.579-5.785-5.784z"
+                        transform="translate(-10227.288 -6512.287)" />
+                    </svg>
+                  </div>
+                </div>
+                <img src="{{ image.eventImage }}" />
+              </div>
+              <div class="filepreview" (click)="talentImageUpload()" fxLayoutAlign="center center">
+                <img class="add" src="{{ addImage }}" />
+                <!-- <p class="bestfit">best fit 1280 * 800</p> -->
+              </div>
+              <!-- <p class="firsruplod" *ngIf="!selectedImages.length">
+                {{ STRINGS.createEvent.ImageUpload }}
+              </p> -->
+            </div>
+            <mat-error *ngIf="imagesError">
+              {{ STRINGS.validations.image }}
+            </mat-error>
+          </div>
+        </div>
+
+        <!-- Sponser Images -->
+        <div fxLayout="row" fxLayoutAlign="start center" class="pt-5" fxLayoutGap="25px">
+          <div fxFlex="100">
+            <mat-label>{{ STRINGS.createEvent.sponserImages }}</mat-label>
+            <mat-checkbox name="isSponserImages" formControlName="isSponserImages" class="ml-4" color='primary'
+              [(ngModel)]="imagesCheckbox.isSponserImages"></mat-checkbox>
+            <input *ngIf="imagesCheckbox.isSponserImages" type="text" class="d-none" style="display: none"
+              formControlName="sponserImages" />
+            <div *ngIf="imagesCheckbox.isSponserImages" class="filesinput" fxLayoutAlign="start center"
+              fxLayout.lt-lg="row wrap"  cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropSponserImages($event)">
+              <div class="filepreviewadd" *ngFor="let image of sponserImages; let i = index" cdkDrag>
+                <div class="example-handle">
+                  <div class="circle drag">
+                    <svg width="18px" fill="#fff" viewBox="0 0 24 24">
+                      <path
+                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                      </path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                  </div>
+                  <div class="circle cancel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 14.14 14.14"
+                      (click)="removeSponserImage(i, image)">
+                      <path fill="#fff" stroke="#bbbcc2"
+                        d="M10240.721 6513.574l-.579-.579-5.785 5.785-5.784-5.785-.577.579 5.783 5.784-5.783 5.784.577.579 5.784-5.784 5.785 5.784.579-.579-5.785-5.784z"
+                        transform="translate(-10227.288 -6512.287)" />
+                    </svg>
+                  </div>
+                </div>
+                <img src="{{ image.eventImage }}" />
+              </div>
+              <div class="filepreview" (click)="sponserImageupload()" fxLayoutAlign="center center">
+                <img class="add" src="{{ addImage }}" />
+                <!-- <p class="bestfit">best fit 1280 * 800</p> -->
+              </div>
+              <!-- <p class="firsruplod" *ngIf="!selectedImages.length">
+                {{ STRINGS.createEvent.ImageUpload }}
+              </p> -->
+            </div>
+            <mat-error *ngIf="imagesError">
+              {{ STRINGS.validations.image }}
+            </mat-error>
+          </div>
+        </div>
+
+
+
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start" fxLayoutAlign="center center"
+          class="pt-3" fxLayoutGap="25px">
+          <div fxFlex="25" fxFlex.lt-lg="100" fxFlex.lt-lg="30" ngClass.lt-md="mb-2">
+            <mat-label>{{ STRINGS.createEvent.EventDetails }}</mat-label>
+          </div>
+          <div fxFlex="75">
+            <div class="cus_teatarea quill-customized">
+              <quill-editor formControlName="description" [modules]="quillConfig"
+                placeholder="{{ STRINGS.createEvent.EventDetailsPlaceholder }}">
+              </quill-editor>
+              <span class="mt-3 error-text" *ngIf="eventForm.controls.description.errors?.minlength">
+                {{ STRINGS.validations.eventDetailsMinLength }}</span>
+              <span class="mt-3 error-text" *ngIf="eventForm.controls.description.errors?.maxlength">
+                {{ STRINGS.validations.eventDetailsMaxLength }}
+              </span>
+              <span class="mt-3 error-text" *ngIf="eventForm.controls.description.errors?.required">
+                {{ STRINGS.validations.eventDetails }}
+              </span>
+            </div>
+        
+            <!-- <mat-form-field appearance="standard" class="cus_teatarea">
+                      <textarea matInput class="border-0" #description formControlName="description"
+                        placeholder="{{ STRINGS.createEvent.EventDetailsPlaceholder }} "></textarea> 
+                      <mat-error class="mt-3" *ngIf="eventForm.controls.description.errors?.minlength">
+                        {{ STRINGS.validations.eventDetailsMinLength }}
+                      </mat-error>
+                      <mat-error class="mt-3" *ngIf="eventForm.controls.description.errors?.maxlength">
+                        {{ STRINGS.validations.eventDetailsMaxLength }}
+                      </mat-error>
+                      <mat-error class="mt-3" *ngIf="eventForm.controls.description.errors?.required">
+                        {{ STRINGS.validations.eventDetails }}
+                      </mat-error>
+                      <span *ngIf="!eventForm.controls.description.value" class="leftinput-text">{{
+                        STRINGS.createEvent.MaxMinWords
+                        }}</span>
+                    </mat-form-field> -->
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center start" fxLayoutAlign="center center"
+          class="pt-5" fxLayoutGap="25px">
+          <div fxFlex="25" fxFlex.lt-lg="100" fxFlex.lt-lg="30" ngClass.lt-md="mb-2">
+            <mat-label>{{ STRINGS.createEvent.AddonsInfo }}</mat-label>
+          </div>
+          <div fxFlex="75" >
+            <mat-form-field appearance="standard" class="cus_teatarea_min">
+              <textarea matInput class="border-0" #description2 formControlName="description2"
+                placeholder="{{ STRINGS.createEvent.AddonsInfoPlaceholder }} "></textarea>
+              <mat-error class="mt-3" *ngIf="eventForm.controls.description2.errors?.minlength">
+                {{ STRINGS.validations.addOnInfoMinLength }}
+              </mat-error>
+              <mat-error class="mt-3" *ngIf="eventForm.controls.description2.errors?.maxlength">
+                {{ STRINGS.validations.addOnInfoMaxLength }}
+              </mat-error>
+              <mat-error class="mt-3" *ngIf="eventForm.controls.description2.errors?.required">
+                {{ STRINGS.validations.addOnInfo }}
+              </mat-error>
+              <span *ngIf="!eventForm.controls.description2.value" class="leftinput-text">{{
+                STRINGS.createEvent.MinMaxWords
+                }}</span>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="pt-3 finalbtn">
+          <div *ngIf=!this.id fxFlex="100" fxLayoutGap.xs="25px" fxLayout.xs="column" fxLayoutAlign="center center"
+            class="pt-5">
+            <button type="submit" mat-button class="mr-3">
+              {{ STRINGS.createEvent.PostEvent }}
+            </button>
+            <button type="button" mat-button (click)="createTicket()">
+              {{ STRINGS.createEvent.CreateTicket }}
+            </button>
+          </div>
+          <div *ngIf=!!this.id fxFlex="100" fxLayoutAlign="center center" class="pt-5">
+            <button type="button" (click)="updateEventFormSubmit()" mat-button class="mr-3">
+              {{ STRINGS.buttons.update }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

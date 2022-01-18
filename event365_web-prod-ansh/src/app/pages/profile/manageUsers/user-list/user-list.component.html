@@ -1,0 +1,30 @@
+ <div class="profile_list width-80">
+    <mat-card class=" mb-5 shadow-none bg-transparent">
+      <div fxLayout="row">
+        <div fxFlex="100" fxLayoutAlign="end center">
+          <button mat-button class="add-more float-right" routerLink="../add-user"><span
+              class="add-icon">+</span>{{ STRINGS.manageUser.addNewUserTitle }}</button>
+        </div>
+      </div>
+      <div *ngIf="allUserList?.length == 0; else userList" fxLayoutAlign="center center" class="pt-5">
+        <h3>{{ STRINGS.manageUser.emptyUserList}} </h3>
+      </div>
+      <ng-template #userList>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between space-between" class="mt-3">
+          <div fxFlex="49" fxFlex.lt-md="100" *ngFor="let user of allUserList ; let i = index" class="pt-4">
+
+            <mat-card class="shadow-none mb-3 justify-content-between cardstyle"  fxLayoutAlign="start center">
+              <div class="left" fxLayoutAlign="start center">
+                <img class="imagestyle" src="{{user.profilePic ? user.profilePic : 'assets/img/host@2x.png'}}" alt="">
+                <p>{{ user.name}}</p>
+              </div>
+              <div class="right"> 
+                <mat-icon style="cursor: pointer;" class="iconstyle" [routerLink]="['/profile/edit-user', user.id]" *ngIf="user.createdBy !== user.id">edit</mat-icon>
+                <mat-icon style="cursor: pointer;" class="iconstyle" (click)="deleteUser(user.id)" *ngIf="user.createdBy !== user.id">delete</mat-icon>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </ng-template>
+    </mat-card>
+  </div>

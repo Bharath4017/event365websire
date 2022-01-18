@@ -1,0 +1,31 @@
+<div class="main-div subvenuealert">
+  <mat-icon (click)="closePopup()" class="close-btn">close</mat-icon>
+  <div class="header">
+    <mat-icon class="alert-icon mr-3">error</mat-icon>
+    <h4>Alert !</h4>
+  </div>
+  <div class="modal-body">
+    <h4 class="my-4">Available Sub - Venue</h4>
+    <mat-spinner *ngIf="matSpinner"></mat-spinner>
+    <p *ngIf="errorMessage.length>0" style="text-align: center; font-size: 14px;">{{errorMessage}}</p>
+    <div *ngIf="!matSpinner">
+      <div   class="checkbox" *ngFor="let subvenue of subVenuesData">
+        <input (change)="onCheckboxChange($event)" [disabled]="subvenue.isBooked=='yes'"  [value]="subvenue.id"  type="checkbox"> 
+        <p class="pl-3" [class.disabled]="subvenue.isBooked=='yes'">{{subvenue.subVenueName}} ( {{subvenue.subVenueCapacity}} capacity )</p>
+      </div>
+      <div class="hint-msg pb-4">
+        <!-- <p>*</p>
+        <p >
+          {{STRINGS.subVenue.twenty_minutes_alert}}
+        </p> -->
+      </div>
+    </div>
+   
+    <div  class="modal-venue-footer">
+      
+      <button (click)="closePopup()" matRipple class="mr-2"> Cancel </button>
+      <button (click)="selctionSubVenue()" matRipple> Process </button>
+    </div>
+    </div>
+   
+</div>

@@ -1,0 +1,47 @@
+<div class="notification_wrapper width-80" >
+    <mat-card class="prefrence_inner mb-5 shadow-none bg-transparent">
+        <div fxLayout="row">
+            <div fxFlex="100" fxLayoutAlign="space-between space-between">
+                <mat-chip-list chipListAutocompleteFix  selectable multiple=false >
+                    <mat-chip #c="matChip" *ngFor="let notification of notification; let i = index"
+                       [value]="notification.value"  selected="{{i == 0}}" readonly
+                       (click)=" toggleSelection(c, notification.notificationType, notification.notificationTab); 
+                       getNotification(notification.notificationType, notification.notificationTab  ); 
+                       hideChipCount(i)" >
+                      {{notification.name}} 
+                 <span *ngIf="notification.value > 0">
+                    <span class="chip_count" *ngIf="chipcounthide[i]">{{notification.value}}</span> 
+                 </span>
+                 
+                    </mat-chip>
+                  </mat-chip-list>
+
+                  <!-- <button (click)="senddata()" [item]="items.child">senddata</button> -->
+            </div>
+        </div>
+        <div fxLayout="row wrap" *ngFor="let notification of notificationList; let i = index"  #refdiv>
+            <h1 fxLayoutAlign="start center" >{{todayAndYesterday(notification.date) ? todayAndYesterday(notification.date) : notification.date}}</h1>
+            <mat-card  class="shadow-none mb-4 w-100 px-sm-5" *ngFor="let list of notification.list">
+                                <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" >
+                                    <div fxFlex="80" fxFlex.xs="100" class="d-flex">
+                                        <div class="mr-4"> 
+                                            <ngx-avatar class="profle-image" name="{{'Shawn Jaminson'}}"></ngx-avatar>
+                                        </div>
+                                        <div fxLayout="column">
+                                            <h4 class="pb-2">{{list.sender.name}} Notification</h4>
+                                            <p>{{list.msg}}</p>
+                                        </div>
+                                    </div>
+                                    <div fxFlex="20" fxFlex.xs="100" fxLayoutAlign="end start" class="w-100">
+                                        <span> 
+                                            {{ getIimeDiff(list.dateTime) }} ago
+                                        </span>
+                                    </div>
+                                </div>
+                            </mat-card>
+        </div>
+        <div class="datanotFound" *ngIf="dataNotAvailable" >
+                {{STRINGS.dataNotFound.dataNfound}}
+     </div>  
+    </mat-card>
+  </div> 

@@ -1,0 +1,36 @@
+<div class="profile_setting">
+  <mat-card>
+
+    <h1 class="pt-5 mb-5">Account </h1>
+
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="60px"  fxLayoutGap.sm="20px" fxLayoutGap.xs="0px" >
+      <div fxFlex="50" fxFlex.lt-md="100">
+      
+        <mat-list>
+          <mat-list-item routerLink="../update-profile">{{STRINGS.ProfileLabel.EditProfile}}</mat-list-item>
+          <mat-list-item routerLink="../change-password">{{STRINGS.ProfileLabel.ChangePassword}}</mat-list-item>
+          <mat-list-item *ngIf="user">
+            <mat-slide-toggle  (change)="submitNotication(1, userRemind)" [(ngModel)]="userRemind" labelPosition="before">{{STRINGS.ProfileLabel.EventReminder}}</mat-slide-toggle>
+          </mat-list-item>
+          <mat-list-item *ngIf="user">
+            <mat-slide-toggle  (change)="submitNotication(2, userNotify)" [(ngModel)]="userNotify"  labelPosition="before"> {{STRINGS.ProfileLabel.EventNotification}}</mat-slide-toggle>
+          </mat-list-item>
+          <mat-list-item *ngIf="!user">
+            <mat-slide-toggle (change)="submitNoticationForPartner()" [(ngModel)]="partnerNotify"  labelPosition="before"> {{STRINGS.ProfileLabel.Notification}}</mat-slide-toggle>
+          </mat-list-item>
+          <mat-list-item (click)="openSharePopUp()" class="share">{{STRINGS.ProfileLabel.Share}}</mat-list-item>
+
+        </mat-list>
+      </div>
+      <div fxFlex="50" fxFlex.lt-md="100">
+        <!-- <h1>&nbsp;</h1> -->
+        <mat-list>
+          <a routerLink="/profile/privacy-policy"><mat-list-item>{{STRINGS.ProfileLabel.PrivacyPoilcy}}</mat-list-item></a>
+          <!-- <a routerLink="/profile/terms-and-conditions"><mat-list-item>{{STRINGS.ProfileLabel.TermsUse}}</mat-list-item></a> -->
+          <!-- <a routerLink="/profile/faq"><mat-list-item>{{STRINGS.ProfileLabel.faqs}}</mat-list-item></a> -->
+          
+        </mat-list>
+      </div>
+    </div>
+  </mat-card>
+</div>

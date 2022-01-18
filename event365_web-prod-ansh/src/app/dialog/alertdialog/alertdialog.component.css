@@ -1,0 +1,77 @@
+/*for button*/
+/*for font styling*/
+.cus_modal [mat-dialog-close] {
+  font-size: 3rem;
+  color: #9697b5;
+  height: 30px;
+  line-height: 30px;
+}
+
+.cus_modal [mat-dialog-alert] {
+  min-height: 3rem;
+  color: #343a43;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.cus_modal [mat-dialog-content] {
+  font-family: Caros;
+  font-size: 14px;
+  text-align: center;
+  color: var(--charcoal-grey);
+  margin: 30px 0;
+}
+
+.cus_modal [mat-button] {
+  height: 40px;
+  background-color: #7966fe;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  text-shadow: -13.1px -9.2px 68px rgba(102, 81, 251, 0.2);
+  font-family: 'HelveticaNeueLTPro-Md';
+  width: 154px;
+  height: 49.5px;
+  text-transform: capitalize;
+  margin-bottom: 3rem;
+}
+
+.cus_modal .mat-button-wrapper {
+  font-family: Caros;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: 1.8px;
+  text-align: center;
+  color: var(--charcoal-grey);
+}
+
+.cus_modal .mat-icon {
+  color: #f25555;
+  font-size: 32px;
+  height: 32px;
+  width: 32px;
+  margin-right: 12px;
+}
+
+.cus_modal .succes {
+  color: green;
+  font-size: 32px;
+  height: 32px;
+  width: 32px;
+  margin-right: 12px;
+}
+
+.cus_modal h1 {
+  font-family: Caros;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--charcoal-grey);
+}
+/*# sourceMappingURL=alertdialog.component.css.map */

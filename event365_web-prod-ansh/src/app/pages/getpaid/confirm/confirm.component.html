@@ -1,0 +1,38 @@
+<div class="confirm-main">
+    <div class="blanK-section" fxFlex="100%" fxLayout="column" fxLayoutGap="30px">
+        <div class="header-margin width-80 mb-4" fxLayout="column">
+            <mat-card class="shadow-none"  fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+                <form [formGroup]="withDrawnForm">
+                <div fxLayout="column"  fxLayoutGap="60px" >
+                    <div class="mt-5" fxFlex="50%">
+                    <div  fxLayoutAlign="center center" class="available-background p-5">
+                        <h1 *ngIf="getPaidDetail.currentAmounts != 0" class="span-text" style="color: var(--charcoal-grey);" >Available Balance : <span class="span-text">${{getPaidDetail?.currentAmounts}}0</span></h1>
+                        <h1 *ngIf="getPaidDetail.currentAmounts == 0" class="span-text" style="color: var(--charcoal-grey);" >Available Balance : <span class="span-text">$0.0</span></h1>
+                    </div>
+                    <mat-form-field  class="w-100 mt-5" appearance="fill" floatLabel="always">
+                        <input matInput  class="custom-input" formControlName="withdrawnAmount"  placeholder="">
+                        <span style="font-size: 24px;" matPrefix>$&nbsp;</span>
+                      </mat-form-field>
+                      <mat-error *ngIf="withDrawnForm.get('withdrawnAmount')?.errors?.required && submit">
+                        Amount is required
+                    </mat-error>
+                    <mat-error *ngIf="withDrawnForm.get('withdrawnAmount')?.errors?.pattern && submit">
+                      Amount Not should be in characters
+                    </mat-error>
+                     </div>
+                </div>
+                </form>
+               
+               <div  fxLayout="column" fxLayoutAlign="center center" >
+                    <p class="paragraph-text">{{STRINGS.getpaid.confirmNote}}</p>
+                    <div>
+                        <button class="bank-btn m-3" (click)="withdrawAmmount()">{{STRINGS.getpaid.WithdrawNow}}</button>
+                    </div>
+                    
+               </div>
+               
+            
+            </mat-card>
+        </div>
+    </div>
+</div>

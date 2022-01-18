@@ -1,0 +1,90 @@
+.get-main{
+  font-family: 'HelveticaNeueLTPro-Md';
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  color: var(--charcoal-grey);
+  .header-margin{
+    margin-top: -5%;
+}
+
+.span-text{
+    
+  font-size: 25px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: 0.5px;
+  text-align: left;
+  font-weight: bold;
+  color: #715ff2;
+}
+.bank-btn{
+  width: calc(100% - 70px);
+  height: 46.2px;
+  background-color: #7966fe;
+  border-radius: 75.8px;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 1.4px;
+  text-align: center;
+  color: #ffffff;
+  float: right;
+}
+.paragraph-text{
+    font-size: 12px;
+    line-height: 2.25;
+    letter-spacing: 0.24px;
+    text-align: left;
+    color: #eb5050;
+}
+.invite-tabs {
+    display: flex;
+  }
+  .invite-tabs-btn {
+    width: 20.8rem;
+    height: 5rem;
+    border-radius: 0.9rem;
+    border: 1px solid #9697b5;
+    color: #9697b5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-right: 1.2rem;
+    background-color: transparent;
+  
+    &.active {
+      background-color: #343a43;
+      color: #ffffff;
+    }
+     &.Completeactive{
+      background-color: #715ff2;
+      color: #ffffff;
+     }
+  }
+  .amount-req{
+    font-family: 'HelveticaNeueLTPro-Md';
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #6aca5b;
+      }
+      h2{
+        font-family: 'HelveticaNeueLTPro-Md';
+        font-size: 20px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.35;
+        letter-spacing: 0.4px;
+        text-align: left;
+        color: var(--charcoal-grey);
+      }
+}
+

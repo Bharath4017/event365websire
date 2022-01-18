@@ -1,0 +1,14 @@
+<div class="share-PopUP-div">
+    <button type="button" class="btn btn-cross btn-lg close" (click)="onCloseModal()" aria-label="Close">
+        <mat-icon>close</mat-icon>
+    </button>
+    <div class="share-btn-wrapper">
+        <h1 class="form-heading">Share via</h1>
+        <div class="share-btn">
+            <share-buttons [theme]="'circles-dark'"
+                [include]="['facebook','email','twitter']"
+                [show]="3" [size]="10" [showText]="false"
+                [autoSetMeta]="false"></share-buttons>
+        </div>
+    </div>
+</div>
